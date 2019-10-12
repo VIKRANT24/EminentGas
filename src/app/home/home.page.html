@@ -1,44 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Dashboard
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+   
+  
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+           
+          </div>
+          <div padding>
+          
+       
+            <div style="height: 8vh;width: 100%;"></div>
+            <ion-img src="http://eminentgas.com/images/logo.png" style="height: 12vh;width:70%;margin-left: 12.5%;"></ion-img>
+            <div style="height: 6vh;width: 100%;"></div>
+            <ion-item>
+              <ion-label position="floating" class="custom-label">User ID</ion-label>
+              <ion-input name="userid" type="userid" autocorrect="on" clearInput="true" clearOnEdit="true"></ion-input>
+              <ion-icon name="person" class="custom-icon" slot="start"></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating"  class="custom-label" >Password</ion-label>
+              <ion-input name="pwd" type="pwd" autocorrect="on"  clearInput="true" type="password" clearOnEdit="true"></ion-input>
+              <ion-icon name="lock" class="custom-icon" slot="start"></ion-icon>
+            </ion-item>
+            
+   
+            
+          </div>
+          <div padding>
+              <ion-button size="large" color="shade"  type="submit"  expand="block" (focus)="presentToast()">Login</ion-button>
+            <!-- <ion-button size="large" color="shade" type="submit" [disabled]="form.invalid" expand="block" (click)="login()">Login</ion-button> -->
+          </div>
+        </ion-col>
+      </ion-row>
+   
+      
+    </ion-grid>
+
+ 
+
+
+
+
+
+
+  
 </ion-content>

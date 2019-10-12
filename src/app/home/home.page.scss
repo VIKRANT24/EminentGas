@@ -2,3 +2,31 @@
   max-height: 35vh;
   overflow: hidden;
 }
+.custom-label
+{
+  color: #a2a4ab !important;
+  font-size: 2.3vh !important;
+}
+ .button-native
+{
+  background-color: #45b0d5 !important;
+}
+
+.custom-icon
+{
+  color: #45b0d5 ;
+}
+
+ion-button {
+border-radius:50px ;
+background-color: #d32715 !important;
+--box-shadow:none;
+
+}
+
+
+ion-content {
+ // --ion-background-color: #e5eaee
+ 
+}
+
