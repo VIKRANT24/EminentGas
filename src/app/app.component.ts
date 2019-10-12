@@ -11,11 +11,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
 
-  public devices                   : Array<{ name : string, icon : string}>    = [];
-   public groups             : Array<{ name : string, icon : string}>    = [];
-   public profiles                : Array<{ name : string, icon : string}>    = [];
-   public find               : Array<{ name : string, icon : string}>    = [];
-   public accounts                : Array<{ name : string, icon : string}>    = [];
+  public devices: Array<{ name : string, icon : string}>    = [];
+   public groups: Array<{ name : string, icon : string}>    = [];
+   public profiles: Array<{ name : string, icon : string}>    = [];
+   public find: Array<{ name : string, icon : string}>    = [];
+   public accounts: Array<{ name : string, icon : string}>    = [];
   flag:boolean = true
    // public appPages = [
   //   {

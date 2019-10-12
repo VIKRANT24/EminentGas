@@ -1,27 +1,70 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+     <ion-grid>
+        <ion-row>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title class="header_style">
+                  Devices
+                </ion-title>
+              </ion-toolbar>
+        </ion-row>
+        <ion-row>
+            <ion-label class="sub_header_style">
+                There are 58 devices registered
+              </ion-label>
+        </ion-row>
+          <ion-row>
+              <ion-col col-4>
+                  <ion-button color="light" size="small">
+                      <div>
+                          <ion-icon name="add" ></ion-icon>
+                          <label style="padding-left: 1vh">Add Device</label>
+                      </div>
+                    </ion-button>
+                    </ion-col>
+                    <ion-col col-4>
+                  <ion-button color="light" size="small">
+                      <div>
+                           <ion-icon name="add"></ion-icon>
+                           <label style="padding-left: 1vh"> Add Device w/o profile</label>
+                       </div>
+                    </ion-button>
+                    </ion-col>
+                    <ion-col col-4>
+                <ion-button color="light" size="small">
+                    <div>
+                         <ion-icon name="sync"></ion-icon>
+                         <label style="padding-left: 1vh">Refresh List</label>
+                     </div>
+                  </ion-button>
+                  </ion-col>
+         
+      
+          </ion-row>
+        </ion-grid>
+        <p-table [columns]="cols" [value]="cars" [(selection)]="selectedCars3" dataKey="DEVEUI" [paginator]="true" [rows]="10" >
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 3em">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td>
+                        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                    </td>
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
 </ion-content>
