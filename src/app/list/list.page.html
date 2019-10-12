@@ -44,7 +44,7 @@
       
           </ion-row>
         </ion-grid>
-        <p-table [columns]="cols" [value]="cars" [(selection)]="selectedCars3" dataKey="DEVEUI" [scrollable]="true">
+        <p-table [columns]="cols" [value]="cars" [(selection)]="selectedCars3" dataKey="DEVEUI" [paginator]="true" [rows]="10" >
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th style="width: 3em">
