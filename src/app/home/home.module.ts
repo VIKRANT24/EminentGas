@@ -25,12 +25,12 @@ export class HomePageModule {
 
   }
 
-  async login() {
+  async presentToast() {
     const toast = await this.toastController.create({
       message: 'Your settings have been saved.',
       duration: 2000
     });
     toast.present();
   }
-
+  
 }
