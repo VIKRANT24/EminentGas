@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-split-pane>
+  <ion-split-pane disabled>
     <ion-menu type="overlay">
       <ion-header>
         <ion-toolbar>
@@ -7,15 +7,61 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+        <ion-list >
+          <!-- <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>
             </ion-item>
-          </ion-menu-toggle>
+          </ion-menu-toggle> -->
+          
+          <ion-item-group>
+              <ion-item-divider (click)="subList('device')" color="light">Devices</ion-item-divider>
+                
+              <ion-item 
+                    *ngFor="let device of devices" lines="none">
+                    <ion-icon name="{{ device.icon }}" item-left></ion-icon>
+                    {{ device.name }}
+                 </ion-item>
+               
+           </ion-item-group>
+            <ion-item-group>
+              <ion-item-divider (click)="subList('group')" color="light">Groups</ion-item-divider>
+                 <ion-item
+                    *ngFor="let group of groups" lines="none">
+                    <ion-icon name="{{ group.icon }}" item-left></ion-icon>
+                    {{ group.name }}
+                 </ion-item>
+           </ion-item-group>
+           <ion-item-group>
+              <ion-item-divider (click)="subList('profile')" color="light">Profiles</ion-item-divider>
+                 <ion-item style="animation: backwards;"
+                    *ngFor="let profile of profiles"
+                    (click)="sectionToLoad(profile)" lines="none">
+                    <ion-icon name="{{ profile.icon }}" item-left></ion-icon>
+                    {{ profile.name }}
+                 </ion-item>
+           </ion-item-group>
+            <ion-item-group>
+              <ion-item-divider  (click)="subList('find')" color="light">Find</ion-item-divider>
+                 <ion-item 
+                    *ngFor="let find of find"
+                    (click)="sectionToLoad(find)" lines="none">
+                    <ion-icon name="{{ find.icon }}" item-left></ion-icon>
+                    {{ find.name }}
+                 </ion-item>
+           </ion-item-group>
+         <ion-item-group>
+             <ion-item-divider   (click)="subList('account')"color="light">Accounts</ion-item-divider>
+                <ion-item 
+                   *ngFor="let account of accounts"
+                   (click)="sectionToLoad(account)" lines="none">
+                   <ion-icon name="{{ account.icon }}" item-left></ion-icon>
+                   {{ account.name }}
+                </ion-item>
+          </ion-item-group>
         </ion-list>
       </ion-content>
     </ion-menu>
