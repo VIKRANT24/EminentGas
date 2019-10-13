@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { ListPage } from './list.page';
 import {TableModule} from 'primeng/table';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {TableModule} from 'primeng/table';
         path: '',
         component: ListPage
       }
-    ])
+    ]),
+    NgxDatatableModule
   ],
   declarations: [ListPage]
 })

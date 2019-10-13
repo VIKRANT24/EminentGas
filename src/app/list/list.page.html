@@ -1,5 +1,16 @@
 <ion-content>
-     <ion-grid>
+
+        <ion-header >
+                <ion-toolbar class="custom-toolbar">
+                  <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                  </ion-buttons>
+                  <ion-title>
+                    Devices
+                  </ion-title>
+                </ion-toolbar>
+              </ion-header>
+     <!-- <ion-grid>
         <ion-row>
             <ion-toolbar>
                 <ion-buttons slot="start">
@@ -65,6 +76,35 @@
                     </td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table> -->
+        <input
+        type="text"
+        style="padding:8px;margin:15px auto;width:30%;"
+        placeholder="Type to filter the name column..."
+        (keyup)="updateFilter($event)"
+      />
+        <ngx-datatable 
+        #table
+        [rows]="companies" 
+        [ngClass]="tableStyle"
+        [rowHeight]="'auto'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [columnMode]="'force'"
+        [limit]="10"
+        [scrollbarH]="true"
+       > 
+
+            <ngx-datatable-column name="Name"></ngx-datatable-column>
+            <ngx-datatable-column name="Gender"></ngx-datatable-column>
+            <ngx-datatable-column name="Company"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions" [sortable]="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <ion-button size="small" fill="outline" (click)="open(row)">Details</ion-button>
+                </ng-template>
+
+            </ngx-datatable-column>
+
+        </ngx-datatable>
 
 </ion-content>
