@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
+import {HttpClientModule} from '@angular/common/http';
+import { SharedComponentModule } from './shared-component/shared-component.module';
 
 @NgModule({
   declarations: [AppComponent,
@@ -22,7 +24,8 @@ import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    
+    HttpClientModule,
+    SharedComponentModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

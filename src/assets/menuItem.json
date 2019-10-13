@@ -1,0 +1,86 @@
+{
+    "items":[
+        {
+          "name": "Devices",
+          "children": [
+                            {
+                              "name" : "Manage Devices",
+                              "icon" : "construct"
+                           },
+                           {
+                              "name" : "Device Activity",
+                              "icon" : "folder-open"
+                           },
+                           {
+                              "name" : "Network Map",
+                              "icon" : "logo-apple"
+                           },
+                           {
+                              "name" : "Batch Registration",
+                              "icon" : "logo-android"
+                           }
+               
+          ]
+         
+        },
+        {
+            "name": "Group",
+            "children": [
+                                {
+                                  "name" : "Manage Groups",
+                                  "icon" : "construct"
+                                 
+                               },
+                               {
+                                  "name" : "Group Activity",
+                                  "icon" : "folder-open"
+                               }
+              ]
+           
+          },
+          {
+            "name": "Profile",
+            "children": [
+                                {
+                                  "name" :  "Device Profiles",
+                                  "icon" : "construct"
+                               },
+                               {
+                                  "name" : "Service Profiles",
+                                  "icon" : "folder-open"
+                               }
+                   
+              ]
+           
+          },
+          {
+            "name": "Find",
+            "children": [
+                                 {
+                                  "name" : "Find Devices",
+                                  "icon" : "construct"
+                               },
+                               {
+                                  "name" : "Find Users",
+                                  "icon" : "folder-open"
+                               }
+              ]
+           
+          },
+          {
+            "name": "Account",
+            "children": [
+                                {
+                                  "name" : "Manage Users",
+                                  "icon" : "construct"
+                               },
+                               {
+                                  "name" : "Manage Customers",
+                                  "icon" : "folder-open"
+                               }
+              ]
+           
+          }
+    ]
+}
+
