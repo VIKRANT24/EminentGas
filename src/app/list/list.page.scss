@@ -5,6 +5,7 @@
     font-size: 2vh;
     padding-left: 5vh;
 }
+
 body {
     cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
@@ -26,3 +27,9 @@ body {
 .row:last-child .col {
     border-bottom: solid 1px grey;
 }
+.subtitle {
+    position: absolute;
+    top: 2vw;
+    left:7.8vh;
+    font-size: 66%;
+  }

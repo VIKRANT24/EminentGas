@@ -5,7 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { ListPage } from './list.page';
 import {TableModule} from 'primeng/table';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable'
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable'
     FormsModule,
     IonicModule,
     TableModule,
+    ButtonModule,
     RouterModule.forChild([
       {
         path: '',
