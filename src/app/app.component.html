@@ -18,7 +18,8 @@
           </ion-menu-toggle> -->
           
           <ion-item-group>
-              <ion-item-divider (click)="subList('device')" color="light">Devices</ion-item-divider>
+              <ion-item-divider icon="construct"(click)="subList('device')" color="light">Devices
+              </ion-item-divider>
                 
               <ion-item 
                     *ngFor="let device of devices" lines="none">
