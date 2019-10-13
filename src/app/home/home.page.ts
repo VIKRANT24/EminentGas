@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { IonicModule,ToastController } from '@ionic/angular';
+import { IonicModule,ToastController, ModalController } from '@ionic/angular';
+import {AddDeviceModalPage} from 'src/app/add-device-modal/add-device-modal.page'
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +9,7 @@ import { IonicModule,ToastController } from '@ionic/angular';
 export class HomePage {
 userid:any="";
 pwd:any="";
-  constructor(public toastController: ToastController) {
+  constructor(public toastController: ToastController,public modalCtrl:ModalController,) {
 
   }
 
@@ -55,12 +55,15 @@ pwd:any="";
 
 
 
-//   public openModal(){
-//     var data = {
-//        message : 'hello world'
-//   };
-//     var modalPage = this.modalCtrl.create('AddDeviceModalPage',data);
-//     AddDeviceModalPage.present();
-// }
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddDeviceModalPage,
+      componentProps: {
+        'firstName': 'Douglas',
+        'lastName': 'Adams',
+      }
+    });
+    return await modal.present();
+  }
 
 }
