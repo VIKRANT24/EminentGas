@@ -21,16 +21,8 @@ import { HomePage } from './home.page';
   declarations: [HomePage]
 })
 export class HomePageModule {
-  constructor(public toastController: ToastController) {
+ 
 
-  }
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
-      duration: 2000
-    });
-    toast.present();
-  }
+ 
   
 }

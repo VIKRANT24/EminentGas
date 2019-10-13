@@ -1,6 +1,6 @@
 <ion-content>
     <ion-header >
-        <ion-toolbar>
+        <ion-toolbar class="custom-toolbar">
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
@@ -24,13 +24,13 @@
             <div style="height: 6vh;width: 100%;"></div>
             <ion-item>
               <ion-label position="floating" class="custom-label">User ID</ion-label>
-              <ion-input name="userid" type="userid" autocorrect="on" clearInput="true" clearOnEdit="true"></ion-input>
+              <ion-input name="userid" type="userid" autocorrect="on" clearInput="true" [(ngModel)]="userid" clearOnEdit="true"></ion-input>
               <ion-icon name="person" class="custom-icon" slot="start"></ion-icon>
             </ion-item>
 
             <ion-item>
               <ion-label position="floating"  class="custom-label" >Password</ion-label>
-              <ion-input name="pwd" type="pwd" autocorrect="on"  clearInput="true" type="password" clearOnEdit="true"></ion-input>
+              <ion-input name="pwd" type="pwd" autocorrect="on"  clearInput="true" [(ngModel)]="pwd" type="password" clearOnEdit="true"></ion-input>
               <ion-icon name="lock" class="custom-icon" slot="start"></ion-icon>
             </ion-item>
             
@@ -38,7 +38,7 @@
             
           </div>
           <div padding>
-              <ion-button size="large" color="shade"  type="submit"  expand="block" (focus)="presentToast()">Login</ion-button>
+              <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="login()">Login</ion-button>
             <!-- <ion-button size="large" color="shade" type="submit" [disabled]="form.invalid" expand="block" (click)="login()">Login</ion-button> -->
           </div>
         </ion-col>
