@@ -12,7 +12,7 @@ export class ListPage {
   //@ViewChild(DatatableComponent) table: DatatableComponent;
   private companies = data;
   private temp = data
-  tableStyle = 'bootstrap';//material
+  tableStyle = 'bootstrap';//material bootstrap
   cars: any[];
 
     cols: any[];
@@ -59,7 +59,7 @@ console.log(row)
 
   // filter our data
   const temp = this.temp.filter(function(d) {
-    return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    return d.gender.toLowerCase().indexOf(val) !== -1 || !val;
   });
 
   // update the rows
