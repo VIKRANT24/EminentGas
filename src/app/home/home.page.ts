@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { IonicModule,ToastController } from '@ionic/angular';
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -53,7 +51,16 @@ pwd:any="";
    //toast.present();
 
    }
-
   }
+
+
+
+//   public openModal(){
+//     var data = {
+//        message : 'hello world'
+//   };
+//     var modalPage = this.modalCtrl.create('AddDeviceModalPage',data);
+//     AddDeviceModalPage.present();
+// }
 
 }
