@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ListPage } from './list.page';
 import {TableModule} from 'primeng/table';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable'
+import { ActionsComponent } from '../actions/actions.component';
 
 @NgModule({
   imports: [

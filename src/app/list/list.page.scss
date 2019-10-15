@@ -26,3 +26,17 @@ body {
 .row:last-child .col {
     border-bottom: solid 1px grey;
 }
+
+ion-button {
+    border-radius:50px ;
+    background-color: #ffc400 !important;
+    --box-shadow:none;
+    color:black
+    
+    }
+    .shade
+    {
+        display: none;
+    }
+
+

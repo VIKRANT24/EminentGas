@@ -8,103 +8,88 @@
                   <ion-title>
                     Devices
                   </ion-title>
+                  <ion-icon (click) ="search()"name="funnel" slot="end" style="font-size: 24px;margin-right: 15px;"></ion-icon>
                 </ion-toolbar>
               </ion-header>
-     <!-- <ion-grid>
-        <ion-row>
-            <ion-toolbar>
-                <ion-buttons slot="start">
-                  <ion-menu-button></ion-menu-button>
-                </ion-buttons>
-                <ion-title class="header_style">
-                  Devices
-                </ion-title>
-              </ion-toolbar>
-        </ion-row>
-        <ion-row>
-            <ion-label class="sub_header_style">
-                There are 58 devices registered
-              </ion-label>
-        </ion-row>
-          <ion-row>
-              <ion-col col-4>
-                  <ion-button color="light" size="small">
-                      <div>
-                          <ion-icon name="add" ></ion-icon>
-                          <label style="padding-left: 1vh">Add Device</label>
-                      </div>
-                    </ion-button>
-                    </ion-col>
-                    <ion-col col-4>
-                  <ion-button color="light" size="small">
-                      <div>
-                           <ion-icon name="add"></ion-icon>
-                           <label style="padding-left: 1vh"> Add Device w/o profile</label>
-                       </div>
-                    </ion-button>
-                    </ion-col>
-                    <ion-col col-4>
-                <ion-button color="light" size="small">
-                    <div>
-                         <ion-icon name="sync"></ion-icon>
-                         <label style="padding-left: 1vh">Refresh List</label>
-                     </div>
-                  </ion-button>
+
+
+              <div *ngIf="showfilter">
+               
+ <ion-searchbar  placeholder="Search Deveui" mode="ios" expand="full"  (keyup)="updateFilter($event)"></ion-searchbar>
+                
+ <ion-item>
+    <ion-label>Start Date</ion-label>
+    <ion-datetime displayFormat="D MMM YYYY" min="1997" max="2010" ></ion-datetime>
+  </ion-item>
+  <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY" min="1997" max="2010" ></ion-datetime>
+    </ion-item>
+                      
+              
+            </div>
+
+              <ion-grid>
+                
+                <ion-row>
+                  <ion-col>
+                      <ion-button  shape="round" color="shade" expand="full" ><ion-icon name="add"></ion-icon> Add Device</ion-button>
                   </ion-col>
-         
-      
-          </ion-row>
-        </ion-grid>
-        <p-table [columns]="cols" [value]="cars" [(selection)]="selectedCars3" dataKey="DEVEUI" [paginator]="true" [rows]="10" >
-            <ng-template pTemplate="header" let-columns>
-                <tr>
-                    <th style="width: 3em">
-                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                    </th>
-                    <th *ngFor="let col of columns">
-                        {{col.header}}
-                    </th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-rowData let-columns="columns">
-                <tr [pSelectableRow]="rowData">
-                    <td>
-                        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
-                    </td>
-                    <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table> -->
-        <input
-        type="text"
-        style="padding:8px;margin:15px auto;width:30%;"
-        placeholder="Type to filter the name column..."
-        (keyup)="updateFilter($event)"
-      />
-        <ngx-datatable 
-        #table
-        [rows]="companies" 
-        [ngClass]="tableStyle"
-        [rowHeight]="'auto'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [columnMode]="'force'"
-        [limit]="10"
-        [scrollbarH]="true"
-       > 
+                  <ion-col>
+                      <ion-button shape="round" expand="full" color="shade" ><ion-icon name="add"></ion-icon>  Add Device w/o profile</ion-button>
+                  </ion-col>
+                  <ion-col>
+                      <ion-button shape="round" expand="full" color="shade" ><ion-icon name="refresh"></ion-icon>  Refresh List</ion-button>
+                  </ion-col>
+                
+                
+                </ion-row>
+              </ion-grid>
+ 
+    
+     
+           
+      <div padding>    <ngx-datatable 
+      [ngClass]="tableStyle"
+      [rows]="companies"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [limit]="10"
+      [selected]="selected"
+      [selectionType]="SelectionType.checkbox"
+      [selectAllRowsOnPage]="false"
+      [displayCheck]="displayCheck"
+      (activate)="onActivate($event)"
+      (select)="onSelect($event)"
+      [scrollbarH]="true" 
+    >
+      <ngx-datatable-column
+        [width]="30"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true"
+      >
+      </ngx-datatable-column>   
+      <ngx-datatable-column name="Deveui" [width]="200"></ngx-datatable-column>
+      <ngx-datatable-column name="Comment" color="primary"></ngx-datatable-column>
+      <ngx-datatable-column name="Groups"></ngx-datatable-column>
+      <ngx-datatable-column name="Applications"></ngx-datatable-column>
+      <ngx-datatable-column name="Bulk Actions" sortable="false" prop="id">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+           <a (click)="action()">Action</a>  
+           </ng-template>
+      </ngx-datatable-column>
+   
+  
+    </ngx-datatable>
 
-            <ngx-datatable-column name="Name"></ngx-datatable-column>
-            <ngx-datatable-column name="Gender"></ngx-datatable-column>
-            <ngx-datatable-column name="Company"></ngx-datatable-column>
-            <ngx-datatable-column name="Actions" [sortable]="false">
-                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                    <ion-button size="small" fill="outline" (click)="open(row)">Details</ion-button>
-                </ng-template>
+   
 
-            </ngx-datatable-column>
-
-        </ngx-datatable>
-
+  </div>  
 </ion-content>
+

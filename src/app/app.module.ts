@@ -11,16 +11,17 @@ import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
+import { ActionsComponent } from './actions/actions.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,ActionsComponent],
+  entryComponents: [ActionsComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    SharedComponentModule
+    SharedComponentModule,
   ],
   providers: [
     StatusBar,
