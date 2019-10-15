@@ -45,6 +45,9 @@ export class ListPage {
       translucent: true
     });
     return await popover.present();
+
+
+    
   }
 
  switchStyle()
