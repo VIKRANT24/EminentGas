@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { IonicModule,ToastController } from '@ionic/angular';
+import { IonicModule,ToastController,NavController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +9,7 @@ import { IonicModule,ToastController } from '@ionic/angular';
 export class HomePage {
 userid:any="";
 pwd:any="";
-  constructor(public toastController: ToastController) {
+  constructor(public toastController: ToastController,public navController: NavController) {
 
   }
 
@@ -35,6 +35,7 @@ pwd:any="";
    toast.present();
    }
    else{
+
     //error
     // const toast = await this.toastController.create({
     //   message: 'Your username or password was incorrect.',
