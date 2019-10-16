@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
 import { ActionsComponent } from './actions/actions.component';
-
+import {DropdownModule} from 'primeng/primeng';
 @NgModule({
   declarations: [AppComponent,ActionsComponent],
   entryComponents: [ActionsComponent],
@@ -22,6 +22,7 @@ import { ActionsComponent } from './actions/actions.component';
     AppRoutingModule,
     HttpClientModule,
     SharedComponentModule,
+    DropdownModule
   ],
   providers: [
     StatusBar,

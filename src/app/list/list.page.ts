@@ -4,6 +4,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { ActionsComponent } from '../actions/actions.component';
 import { PopoverController } from '@ionic/angular';
+
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -21,11 +22,34 @@ export class ListPage {
   showfilter:boolean=false;
 
     cols: any[];
+    colors: any[];
     ColumnMode = ColumnMode;
     SelectionType = SelectionType;
     
   constructor(public popoverCtrl:PopoverController) {
-
+    this.cols = [
+      { field: 'deveui', header: 'Deveui' },
+      { field: 'registration_status', header: 'Status' },
+      { field: 'comment', header: 'Comments' },
+      { field: 'groups', header: 'Groups' },
+      { field: 'applications', header: 'Apps' },
+      { field: 'applications', header: 'Last Seen' },
+      { field: 'applications', header: 'Bulk Action' },
+    ]
+    
+      this.colors = [
+        { label: 'White', value: 'White' },
+        { label: 'Green', value: 'Green' },
+        { label: 'Silver', value: 'Silver' },
+        { label: 'Black', value: 'Black' },
+        { label: 'Red', value: 'Red' },
+        { label: 'Maroon', value: 'Maroon' },
+        { label: 'Brown', value: 'Brown' },
+        { label: 'Orange', value: 'Orange' },
+        { label: 'Blue', value: 'Blue' }
+    ]
+     
+  
   }
 
   search()

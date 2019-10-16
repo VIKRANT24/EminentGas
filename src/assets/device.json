@@ -13,7 +13,7 @@
       "registration_status": 1,
       "expiry_time_uplink": 168,
       "expiry_time_downlink": 168,
-      "last_reception": 1516114044582,
+      "last_reception": "1516114044582",
       "groups": "",
       "applications": "",
       "tags": null
