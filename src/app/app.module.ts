@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
 import { ActionsComponent } from './actions/actions.component';
 import {DropdownModule} from 'primeng/primeng';
+
 @NgModule({
   declarations: [AppComponent,ActionsComponent],
   entryComponents: [ActionsComponent],
@@ -22,7 +23,8 @@ import {DropdownModule} from 'primeng/primeng';
     AppRoutingModule,
     HttpClientModule,
     SharedComponentModule,
-    DropdownModule
+    DropdownModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     StatusBar,

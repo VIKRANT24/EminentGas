@@ -5,15 +5,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminListPage } from './admin-list.page';
-import {TableModule} from 'primeng/table';
+import { EditAdminPage } from './edit-admin.page';
 import {InputTextModule} from 'primeng/inputtext';
-import {DialogModule} from 'primeng/dialog';
+import {CardModule} from 'primeng/card';
+import {PanelModule} from 'primeng/panel';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminListPage
+    component: EditAdminPage
   }
 ];
 
@@ -22,11 +22,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    TableModule,
     InputTextModule,
-    DialogModule,
+    CardModule,
+    PanelModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdminListPage]
+  declarations: [EditAdminPage]
 })
-export class AdminListPageModule {}
+export class EditAdminPageModule {}

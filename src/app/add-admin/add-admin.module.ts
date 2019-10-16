@@ -6,6 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AddAdminPage } from './add-admin.page';
+import {InputTextModule} from 'primeng/inputtext';
+import {CardModule} from 'primeng/card';
+import {PanelModule} from 'primeng/panel';
 
 const routes: Routes = [
   {
@@ -19,6 +22,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    InputTextModule,
+    CardModule,
+    PanelModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddAdminPage]

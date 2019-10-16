@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'super-admin', loadChildren: './super-admin/super-admin.module#SuperAdminPageModule' },
   { path: 'menu-page', loadChildren: './menu-page/menu-page.module#MenuPagePageModule' },
   { path: 'add-admin', loadChildren: './add-admin/add-admin.module#AddAdminPageModule' },
-  { path: 'admin-list', loadChildren: './admin-list/admin-list.module#AdminListPageModule' }
+  { path: 'admin-list', loadChildren: './admin-list/admin-list.module#AdminListPageModule' },
+  { path: 'edit-admin', loadChildren: './edit-admin/edit-admin.module#EditAdminPageModule' }
 
 ];
 
