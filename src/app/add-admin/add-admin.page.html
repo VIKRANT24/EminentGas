@@ -1,61 +1,121 @@
- <ion-header>
-  <ion-toolbar>
-    <ion-title>Add Admin</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content  color="primary">
-
-    <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Admin Registration</h3>
-          </div>
-          <div padding>
-            <ion-item>
-              <ion-label position="floating">Client Name</ion-label>
-              <ion-input  type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Address</ion-label>
-                <ion-input  type="text"></ion-input>
-              </ion-item>
-              <ion-item>
-                  <ion-label position="floating">No Of AMRS</ion-label>
-                  <ion-input  type="number"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label position="floating">Project Name</ion-label>
-                    <ion-input  type="text"></ion-input>
-                  </ion-item>
-            <ion-item>
-                <ion-label position="floating">Company Email Id</ion-label>
-              <ion-input type="email"></ion-input>
-            </ion-item>
-            <ion-item expand="block">
-                <ion-label position="floating">Mobile No</ion-label>
-                <ion-input  type="tel"></ion-input>
-              </ion-item>
-          </div>
-          <div padding>
-              <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="presentToast()">Save</ion-button>
-          </div>
-      
-
-        </ion-col>
-      </ion-row>
-      <div  class='fields'>
-          <ion-item >
-              <ion-label text-end>Admin Login Id : </ion-label>
-              <ion-label >ABC@1234</ion-label>
-          </ion-item>
-     
+<ion-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center;">Add Admin</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content >
+      <ion-card>
+  
+    <div class="p-grid p-justify-center" style="margin-top: 3vh;">
+      <div class="p-col-2" style="padding-top: 2vh;">
        
-          <ion-item>
-              <ion-label text-end>Admin Password : </ion-label>
-              <ion-label >***********</ion-label>
-          </ion-item>
-     </div>
-    </ion-grid>
-</ion-content>
+          <ion-label position="floating">Client Name</ion-label>
+        
+      
+      </div>
+      <div class="p-col-2"  p-justify-left>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="text1"> 
+      </div>
+     
+  </div>
+  <div class="p-grid p-justify-center">
+      <div class="p-col-2" style="padding-top: 2vh;">
+       
+          <ion-label position="floating">Address</ion-label>
+        
+      
+      </div>
+      <div class="p-col-2"  p-justify-left>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="text2"> 
+      </div>
+     
+  </div>
+  <div class="p-grid p-justify-center">
+      <div class="p-col-2" style="padding-top: 2vh;">
+       
+          <ion-label position="floating">No Of ARMS</ion-label>
+        
+      
+      </div>
+      <div class="p-col-2"  p-justify-left>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="text3"> 
+      </div>
+     
+  </div>
+  <div class="p-grid p-justify-center">
+      <div class="p-col-2" style="padding-top: 2vh;">
+       
+          <ion-label position="floating">Project Name</ion-label>
+        
+      
+      </div>
+      <div class="p-col-2"  p-justify-left>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="text4"> 
+      </div>
+     
+  </div>
+  
+
+  <div class="p-grid p-justify-center">
+      <div class="p-col-2" style="padding-top: 2vh;">
+       
+          <ion-label position="floating">Email Id</ion-label>
+        
+      
+      </div>
+      <div class="p-col-2"  p-justify-left>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="text7"> 
+      </div>
+     
+  </div>
+  <div class="p-grid p-justify-center">
+      <div class="p-col-2" style="padding-top: 2vh;">
+       
+          <ion-label position="floating">Mobile No</ion-label>
+        
+      
+      </div>
+      <div class="p-col-2"  p-justify-left>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="text8"> 
+      </div>
+     
+  </div>
+  <div class="p-grid p-justify-center">
+      <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="presentToast()">Save</ion-button>
+     
+  </div>
+</ion-card>
+  
+  <ion-card>
+
+    
+      <div class="p-grid p-justify-center">
+          <div class="p-col-2" style="padding-top: 2vh;">
+           
+              <ion-label position="floating">Admin Login Id</ion-label>
+            
+          
+          </div>
+          <div class="p-col-2 p-justify-left">
+              <ion-label position="floating">ABC@1234</ion-label>
+          </div>
+         
+      </div>
+      <div class="p-grid p-justify-center">
+          <div class="p-col-2" style="padding-top: 2vh;">
+           
+              <ion-label position="floating">Admin Password : </ion-label>
+            
+          
+          </div>
+          <div class="p-col-2  p-justify-left">
+              <ion-label position="floating">***********</ion-label>
+          </div>
+         
+      </div>
+         
+    </ion-card>
+    
+    
+    </ion-content>

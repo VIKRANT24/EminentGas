@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
 import { ActionsComponent } from './actions/actions.component';
 
+
 @NgModule({
   declarations: [AppComponent,ActionsComponent],
   entryComponents: [ActionsComponent],
@@ -22,6 +23,7 @@ import { ActionsComponent } from './actions/actions.component';
     AppRoutingModule,
     HttpClientModule,
     SharedComponentModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     StatusBar,
