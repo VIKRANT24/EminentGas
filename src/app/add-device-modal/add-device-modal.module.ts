@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
+import {SelectButtonModule} from 'primeng/selectbutton';
 import { AddDeviceModalPage } from './add-device-modal.page';
 
 const routes: Routes = [
@@ -19,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    SelectButtonModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddDeviceModalPage]

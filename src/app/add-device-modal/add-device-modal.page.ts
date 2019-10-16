@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-add-device-modal',
@@ -7,13 +8,24 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./add-device-modal.page.scss'],
 })
 export class AddDeviceModalPage implements OnInit {
+  types: SelectItem[];
 
-  constructor(public modalCtrl :ModalController) { }
+  selectedType: string;
 
+  constructor(private modal:ModalController) { 
+
+    this.types = [
+      {label: 'A', value: 'A'},
+      {label: 'B', value: 'B'},
+      {label: 'C', value: 'C'}
+  ];
+  }
 
   ngOnInit() {
   }
-closeModal(){
-  this.modalCtrl.dismiss()
-}
+
+  closeModal(){
+    this.modal.dismiss()
+  }
+
 }
