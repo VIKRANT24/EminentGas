@@ -1,18 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Welcome To Menu Page</ion-title>
+    <ion-title style="text-align: center;">Welcome To Menu Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-      <ion-row>
-          <ion-col>
-              <ion-button color="light" size="small" (click)="addAdmin()">Add Admin</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button color="light" size="small" (click)="adminList()">Admin List</ion-button>
-                </ion-col>
-                </ion-row>
-                </ion-grid>
+<ion-card>
+                <div class="p-grid p-justify-center" style="margin-top: 3vh;">
+                    <div class="p-col-2">
+                     
+                        <!-- <ion-button color="light" size="small"  expand="full" (click)="addAdmin()">Add Admin</ion-button> -->
+                        <ion-button size="large" color="shade"  type="submit"  expand="block"  (click)="addAdmin()">Add Admin</ion-button>
+                    
+                    </div>
+                    <div class="p-col-2">
+                     
+                        <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="adminList()">Admin List</ion-button>
+                      
+                    
+                    </div>
+                  
+                </div>
+              </ion-card>
 </ion-content>

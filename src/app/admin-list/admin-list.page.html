@@ -1,4 +1,4 @@
-<ion-content>
+ <ion-content>
 
     <ion-header >
             <ion-toolbar class="custom-toolbar">
@@ -17,13 +17,18 @@
                   <div class="p-col-4"  p-justify-end>
                       <span class="ui-float-label">
                           <input id="float-input" type="text" size="30" pInputText> 
-                          <label for="float-input">Username</label>
+                          <label for="float-input">Name</label>
                       </span>
                     </div>
               </div>
              
           </div>
-          <p-table [value]="cars">
+          <p-table [columns]="cols" [value]="data" [resizableColumns]="true">
+                <ng-template pTemplate="colgroup" let-columns>
+                        <colgroup>
+                            <col *ngFor="let col of columns" [style.width]="col.width">
+                        </colgroup>
+                    </ng-template>
               <ng-template pTemplate="header">
                   <tr>
                       <th>SR No</th>
@@ -40,12 +45,20 @@
             
                   </tr>
               </ng-template>
-              <ng-template pTemplate="body" let-car>
+              <ng-template pTemplate="body" let-data>
                   <tr>
-                      <td>{{car.vin}}</td>
-                      <td>{{car.year}}</td>
-                      <td>{{car.brand}}</td>
-                      <td>{{car.color}}</td>
+                      <td>{{data.SRNo}}</td>
+                      <td>{{data.ClientName}}</td>
+                      <td>{{data.Address}}</td>
+                      <td>{{data.ARMS}}</td>
+                      <td>{{data.Person}}</td>
+                      <td>{{data.Wings}}</td>
+                      <td>{{data.Flats}}</td>
+                      <td>{{data.pName}}</td>
+                      <td>{{data.aDetails}}</td>
+                      <td>{{data.email}}</td>
+                      <td>{{data.mobile}}</td>
+                     
                   </tr>
               </ng-template>
           </p-table>
@@ -53,21 +66,21 @@
                 <div class="p-grid p-justify-center" style="margin-top: 3vh;">
                     <div class="p-col-2">
                      
-                        <ion-button color="light" size="small" (click)="viewAdmin()">View</ion-button>
+                            <ion-button size="large" color="shade"  type="submit"  expand="block"(click)="viewAdmin()">View</ion-button>
                       
                     
                     </div>
                     <div class="p-col-2">
                      
-                        <ion-button color="light" size="small" (click)="editAdmin()">Edit Admin</ion-button>
+                            <ion-button size="large" color="shade"  type="submit"  expand="block"(click)="editAdmin()">Edit Admin</ion-button>
                       
                     
                     </div>
                     <div class="p-col-2"  p-justify-left>
-                        <ion-button color="light" size="small" (click)="deleteAdmin()">Delete Admin</ion-button>
+                            <ion-button size="large" color="shade"  type="submit"  expand="block"(click)="deleteAdmin()">Delete Admin</ion-button>
                     </div>
                    
                 </div>
-                
+           
 </ion-content>
-
+ 

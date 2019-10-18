@@ -3,110 +3,104 @@
     <ion-title style="text-align: center;">Edit Admin</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content >
-    <p-card  >
-
-  <div class="p-grid p-justify-center" style="margin-top: 3vh;">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">Client Name</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text1"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">Authorized Person</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text2"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">No Of Wings</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text3"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">No oF fLAGS</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text4"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">Project Name</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text5"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">Account Details</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text6"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">Email Id</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text7"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <div class="p-col-2" style="padding-top: 2vh;">
-     
-        <ion-label position="floating">Mobile No</ion-label>
-      
-    
-    </div>
-    <div class="p-col-2"  p-justify-left>
-      <input id="input" type="text" size="30" pInputText [(ngModel)]="text8"> 
-    </div>
-   
-</div>
-<div class="p-grid p-justify-center">
-    <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="presentToast()">Save Edit</ion-button>
-   
-</div>
-</p-card>
-
+<ion-content>
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <p-panel >
+        <ion-card>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4 " style="text-align: center;">
+                    Client Name *:
+                </div>
+                <div class="ui-grid-col-4">
+                    <input pInputText type="text" formControlName="firstname" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Firstname is required" *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty"></p-message>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                    <div class="ui-grid-col-4 " style="text-align: center;">
+                        Authorized Person *:
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <input pInputText type="text" formControlName="authPerson" placeholder="Required"/>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <p-message severity="error" text="Name is required" *ngIf="!userform.controls['authPerson'].valid&&userform.controls['authPerson'].dirty"></p-message>
+                    </div>
+                </div>
+                <div class="ui-grid-row">
+                        <div class="ui-grid-col-4 " style="text-align: center;">
+                            Number Of Wings *:
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <input pInputText type="number" formControlName="wings" placeholder="Required"/>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <p-message severity="error" text="Required" *ngIf="!userform.controls['wings'].valid&&userform.controls['wings'].dirty"></p-message>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                            <div class="ui-grid-col-4 " style="text-align: center;">
+                                No Of Flats *:
+                            </div>
+                            <div class="ui-grid-col-4">
+                                <input pInputText type="number" formControlName="flats" placeholder="Required"/>
+                            </div>
+                            <div class="ui-grid-col-4">
+                                <p-message severity="error" text="Required" *ngIf="!userform.controls['flats'].valid&&userform.controls['flats'].dirty"></p-message>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                                <div class="ui-grid-col-4 " style="text-align: center;">
+                                    Project Name *:
+                                </div>
+                                <div class="ui-grid-col-4">
+                                    <input pInputText type="text" formControlName="projectname" placeholder="Required"/>
+                                </div>
+                                <div class="ui-grid-col-4">
+                                    <p-message severity="error" text="Project name is required" *ngIf="!userform.controls['projectname'].valid&&userform.controls['projectname'].dirty"></p-message>
+                                </div>
+                            </div>     <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4 " style="text-align: center;">
+                                        Account Details *:
+                                    </div>
+                                    <div class="ui-grid-col-4">
+                                        <input pInputText type="text" formControlName="account" placeholder="Required"/>
+                                    </div>
+                                    <div class="ui-grid-col-4">
+                                        <p-message severity="error" text="Account details are required" *ngIf="!userform.controls['account'].valid&&userform.controls['account'].dirty"></p-message>
+                                    </div>
+                                </div>     <div class="ui-grid-row">
+                                        <div class="ui-grid-col-4 " style="text-align: center;">
+                                            Email Id *:
+                                        </div>
+                                        <div class="ui-grid-col-4">
+                                            <input pInputText type="text" formControlName="email" placeholder="Required"/>
+                                        </div>
+                                        <div class="ui-grid-col-4">
+                                            <p-message severity="error" text="Correct format required" *ngIf="!userform.controls['email'].valid&&userform.controls['email'].dirty"></p-message>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4 " style="text-align: center;">
+                                                Mobile Number *:
+                                            </div>
+                                            <div class="ui-grid-col-4">
+                                                <input pInputText type="number" formControlName="mobile" placeholder="Required" minlength=10 maxlength=10/>
+                                            </div>
+                                            <div class="ui-grid-col-4">
+                                                <p-message severity="error" text="Mobile no is required" *ngIf="!userform.controls['mobile'].valid&&userform.controls['mobile'].dirty"></p-message>
+                                            </div>
+                                        </div>
+            <div class="p-grid p-justify-center">
+                <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="presentToast()" [disabled]="!userform.valid">Save Edit</ion-button>
+               
+            </div>
+        
+        </div>
+    </ion-card>
+    </p-panel>
+</form>
 </ion-content>

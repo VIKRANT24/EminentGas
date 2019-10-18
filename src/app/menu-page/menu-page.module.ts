@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MenuPagePage } from './menu-page.page';
+import {ButtonModule} from 'primeng/button';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ButtonModule,
     RouterModule.forChild(routes)
   ],
   declarations: [MenuPagePage]
