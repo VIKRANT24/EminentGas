@@ -1,23 +1,67 @@
-@media screen and (min-width: 600px) {  
-    .center-login {
-      width: 600px;
-      margin: 0 auto;
-    }
-  }
-  ion-button {
-    border-radius:10px ;
-    background-color: #d32715 !important;
-    --box-shadow:none;
-    height: 5vh;
-    margin-top: 3vw;
-    margin-bottom: 3vh;
+// @media screen and (min-width: 600px) {  
+//     .center-login {
+//       width: 600px;
+//       margin: 0 auto;
+//     }
+//   }
+//   ion-button {
+//     border-radius:10px ;
+//     background-color: #d32715 !important;
+//     --box-shadow:none;
+//     height: 5vh;
+//     margin-top: 3vw;
+//     margin-bottom: 3vh;
     
-    }
-    ion-content{
+//     }
+//     ion-content{
 
-      --ion-background-color:#def2f1;
-  }
-  ion-header{
-    --ion-background-color:#5596e6;
-  }
+//       --ion-background-color:#def2f1;
+//   }
+//   ion-header{
+//     --ion-background-color:#5596e6;
+//   }
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+.custom-label
+{
+  color: #a2a4ab !important;
+  font-size: 2.3vh !important;
+}
+ .button-native
+{
+  background-color: #45b0d5 !important;
+}
+
+.custom-icon
+{
+  color: #45b0d5 ;
+}
+
+ion-button {
+border-radius:50px ;
+background-color: #d32715 !important;
+--box-shadow:none;
+
+}
+ion-item {
+  border-radius: 30px !important;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  border: 1px solid #ffffff;
+  border-bottom: 0px !important;
+  box-shadow: none !important;
+}
+
+ion-content {
+ // --ion-background-color: #e5eaee
  
+}
+
+.custom-toolbar{
+  --background: #182535;color:#fff
+}
+
+
+
