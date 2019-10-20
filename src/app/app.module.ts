@@ -11,21 +11,29 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
 import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
+import { ActionsComponent } from './actions/actions.component';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {DropdownModule} from 'primeng/dropdown';
+import { AddDeviceWithoutProfilePage } from './add-device-without-profile/add-device-without-profile.page';
 
 @NgModule({
-  declarations: [AppComponent,
-  AddDeviceModalPage
+  declarations: [AppComponent,ActionsComponent,
+  AddDeviceModalPage,
+  AddDeviceWithoutProfilePage
 ],
   entryComponents: [
-    AddDeviceModalPage
+    AddDeviceModalPage,ActionsComponent,AddDeviceWithoutProfilePage
   ],
-  
+
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    SharedComponentModule
+    SharedComponentModule,
+    SelectButtonModule,
+    DropdownModule,
+    BrowserAnimationsModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

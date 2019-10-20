@@ -1,0 +1,46 @@
+<ion-content>
+
+    <ion-header >
+            <ion-toolbar class="custom-toolbar">
+              <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+              </ion-buttons>
+              <ion-title>
+                Admin List
+              </ion-title>
+              <!-- <p class="subtitle">There are 58 devices register</p> -->
+            </ion-toolbar>
+          </ion-header>
+
+          <span class="ui-float-label">
+              <input id="float-input" slot="end" type="text" size="30" pInputText> 
+              <label for="float-input">Search Admin Name</label>
+          </span>
+  
+    <ngx-datatable 
+    #table
+    [rows]="companies" 
+    [ngClass]="tableStyle"
+    [rowHeight]="'auto'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [columnMode]="'force'"
+    [limit]="10"
+    [scrollbarH]="true"
+   > 
+   <ngx-datatable-column name="SR No"></ngx-datatable-column>
+        <ngx-datatable-column name="Client Name"></ngx-datatable-column>
+        <ngx-datatable-column name="Address"></ngx-datatable-column>
+        <ngx-datatable-column name="No Of ARMS"></ngx-datatable-column>
+        <ngx-datatable-column name="Authorized Person"></ngx-datatable-column>
+        <ngx-datatable-column name="No Of Wings"></ngx-datatable-column>
+        <ngx-datatable-column name="No Of Flats"></ngx-datatable-column>
+        <ngx-datatable-column name="Project Name"></ngx-datatable-column>
+        <ngx-datatable-column name="Account Detail"></ngx-datatable-column>
+        <ngx-datatable-column name="Email Id"></ngx-datatable-column>
+        <ngx-datatable-column name="Mobile No"></ngx-datatable-column>
+
+
+    </ngx-datatable>
+
+</ion-content>

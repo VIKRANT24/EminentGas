@@ -4,15 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import { AddDeviceModalPage } from './add-device-modal.page';
-import { DropdownModule } from 'primeng/dropdown';
 
+import { AdminListPage } from './admin-list.page';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {InputTextModule} from 'primeng/inputtext';
 
 const routes: Routes = [
   {
     path: '',
-    component: AddDeviceModalPage
+    component: AdminListPage
   }
 ];
 
@@ -21,10 +21,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectButtonModule,
-    DropdownModule,
+    NgxDatatableModule,
+    InputTextModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddDeviceModalPage]
+  declarations: [AdminListPage]
 })
-export class AddDeviceModalPageModule {}
+export class AdminListPageModule {}

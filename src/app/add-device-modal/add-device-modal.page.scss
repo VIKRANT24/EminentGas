@@ -28,3 +28,20 @@
     color: #e62100;
     border-width: thin;
   }
+
+.ui-dropdown {
+    background: #ffffff;
+    border: 1px solid #a6a6a6;
+    -webkit-transition: border-color 0.2s;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+body .ui-selectbutton .ui-button {
+    background-color: #dadada;
+    /* border: 1px solid #dadada; */
+    color: #333333;
+    -webkit-transition: background-color 0.2s, box-shadow 0.2s;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    width:233.33px
+}

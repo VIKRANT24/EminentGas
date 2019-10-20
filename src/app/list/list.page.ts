@@ -1,6 +1,9 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import data from '../../assets/company.json'
+import { Component, OnInit,ViewChild} from '@angular/core';
+import data from '../../assets/device.json'
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
+import { ActionsComponent } from '../actions/actions.component';
+import { PopoverController } from '@ionic/angular';
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -12,31 +15,39 @@ export class ListPage {
   //@ViewChild(DatatableComponent) table: DatatableComponent;
   private companies = data;
   private temp = data
-  tableStyle = 'bootstrap';//material
+  selected = [];
+  tableStyle = 'bootstrap';//material bootstrap
   cars: any[];
+  showfilter:boolean=false;
 
     cols: any[];
+    ColumnMode = ColumnMode;
+    SelectionType = SelectionType;
     
-  constructor() {
-  //   this.cols = [
-  //     { field: 'DEVEUI', header: 'DEVEUI' },
-  //     {field: 'Status', header: 'Status' },
-  //     { field: 'Comment', header: 'Comment' },
-  //     { field: 'Groups', header: 'Groups' },
-  //     { field: 'Apps', header: 'Apps' },
-  //     { field: 'Last Seen', header: 'Last Seen' },
-  //     { field: 'Bulk Action', header: 'Bulk Action' }
-  // ];
-  // this.cars=[
-  //   { DEVEUI: 'vin', Status: 'Vin', Comment:'fdgdg', Groups:'dgdg',Apps:'rtert',LastSeen:'rtgdrtt',BulkAction:'grtdgd'},
-  //   { DEVEUI: 'vin', Status: 'Vin', Comment:'fdgdg', Groups:'dgdg',Apps:'rtert',LastSeen:'rtgdrtt',BulkAction:'grtdgd'},
-  //   { DEVEUI: 'vin', Status: 'Vin', Comment:'fdgdg', Groups:'dgdg',Apps:'rtert',LastSeen:'rtgdrtt',BulkAction:'grtdgd'},
-  //   { DEVEUI: 'vin', Status: 'Vin', Comment:'fdgdg', Groups:'dgdg',Apps:'rtert',LastSeen:'rtgdrtt',BulkAction:'grtdgd'},
-  //   { DEVEUI: 'vin', Status: 'Vin', Comment:'fdgdg', Groups:'dgdg',Apps:'rtert',LastSeen:'rtgdrtt',BulkAction:'grtdgd'},
-  //   { DEVEUI: 'vin', Status: 'Vin', Comment:'fdgdg', Groups:'dgdg',Apps:'rtert',LastSeen:'rtgdrtt',BulkAction:'grtdgd'}
+  constructor(public popoverCtrl:PopoverController) {
+
+  }
+
+  search()
+  {
+    if(this.showfilter == true)
+    this.showfilter=false
+    else
+    this.showfilter =true
+
+  }
+
+  async action(ev)
+  {
+    const popover = await this.popoverCtrl.create({
+      component: ActionsComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+
 
     
-  // ]
   }
 
  switchStyle()
@@ -59,7 +70,7 @@ console.log(row)
 
   // filter our data
   const temp = this.temp.filter(function(d) {
-    return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    return d.deveui.toLowerCase().indexOf(val) !== -1 || !val;
   });
 
   // update the rows
@@ -67,5 +78,31 @@ console.log(row)
   // Whenever the filter changes, always go back to the first page
   this.table.offset = 0;
 }
+
+
+onSelect({ selected }) {
+  console.log('Select Event', selected, this.selected);
+
+  this.selected.splice(0, this.selected.length);
+  this.selected.push(...selected);
+}
+
+onActivate(event) {
+  console.log('Activate Event', event);
+}
+
+add() {
+  this.selected.push(this.companies[1], this.companies[3]);
+}
+
+update() {
+  this.selected = [this.companies[1], this.companies[3]];
+}
+
+remove() {
+  this.selected = [];
+}
+
+
 
 }
