@@ -5,6 +5,16 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { ActionsComponent } from '../actions/actions.component';
 import { PopoverController } from '@ionic/angular';
 
+declare var firebase;
+
+var config={
+  apiKey: 'AIzaSyCxk372bpVybPuj_5xKrB9Xy_vTD93REd4',
+  authDomaim : 'eminent-gas-tech.firebase',
+  databaseURL : 'https://eminent-gas-tech.firebaseio.com'
+};
+
+firebase.initializeApp(config)
+
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -14,7 +24,7 @@ export class ListPage {
   @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
 
   //@ViewChild(DatatableComponent) table: DatatableComponent;
-  private companies = data;
+  public companies = data;
   private temp = data
   selected = [];
   tableStyle = 'bootstrap';//material bootstrap
@@ -27,6 +37,13 @@ export class ListPage {
     SelectionType = SelectionType;
     
   constructor(public popoverCtrl:PopoverController) {
+
+firebase.database().ref('/eminent-gas-tech').once('value').then(function (data) {
+
+alert(JSON.stringify(data.val()))
+
+})
+    
     this.cols = [
       { field: 'deveui', header: 'Deveui' },
       { field: 'registration_status', header: 'Status' },
