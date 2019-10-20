@@ -12,17 +12,23 @@
             </ion-toolbar>
           </ion-header>
 
-          <div class="p-grid p-justify-start" style="margin-top: .5vw;">
-              <div class="p-col-2">
-                  <div class="p-col-4"  p-justify-end>
-                      <span class="ui-float-label">
-                          <input id="float-input" type="text" size="30" pInputText> 
-                          <label for="float-input">Name</label>
-                      </span>
-                    </div>
-              </div>
-             
-          </div>
+                     
+                            <ion-card>
+                                    <div class="p-grid p-justify-start">
+                                        <div class="p-col-2">
+                                            <input type="text" pInputText placeholder="Keyword">         
+                                        
+                                        </div>
+                                        <div class="p-col-2">
+                                         
+                                                <button  type="button" (click)="toggleDisabled()" pButton label="Search"></button>
+                                          
+                                        
+                                        </div>
+                                      
+                                    </div>
+                                  </ion-card>
+       
           <p-table [columns]="cols" [value]="data" [resizableColumns]="true">
                 <ng-template pTemplate="colgroup" let-columns>
                         <colgroup>
