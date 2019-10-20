@@ -6,8 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AdminListPage } from './admin-list.page';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
+import {DialogModule} from 'primeng/dialog';
+
 
 const routes: Routes = [
   {
@@ -21,8 +23,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    NgxDatatableModule,
+    TableModule,
     InputTextModule,
+    DialogModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AdminListPage]

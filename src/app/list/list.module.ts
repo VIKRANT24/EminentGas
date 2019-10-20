@@ -8,6 +8,8 @@ import {TableModule} from 'primeng/table';
 
 import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 import { ActionsComponent } from '../actions/actions.component';
+import { DataTableModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/primeng';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ActionsComponent } from '../actions/actions.component';
         component: ListPage
       }
     ]),
-    NgxDatatableModule
+    NgxDatatableModule,
+    DataTableModule,
+    DropdownModule
   ],
   declarations: [ListPage]
 })

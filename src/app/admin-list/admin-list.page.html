@@ -1,46 +1,86 @@
-<ion-content>
+ <ion-content>
 
     <ion-header >
             <ion-toolbar class="custom-toolbar">
               <ion-buttons slot="start">
                 <ion-menu-button></ion-menu-button>
               </ion-buttons>
-              <ion-title>
+              <ion-title style="text-align: center;">
                 Admin List
               </ion-title>
-              <!-- <p class="subtitle">There are 58 devices register</p> -->
+             
             </ion-toolbar>
           </ion-header>
 
-          <span class="ui-float-label">
-              <input id="float-input" slot="end" type="text" size="30" pInputText> 
-              <label for="float-input">Search Admin Name</label>
-          </span>
-  
-    <ngx-datatable 
-    #table
-    [rows]="companies" 
-    [ngClass]="tableStyle"
-    [rowHeight]="'auto'"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    [columnMode]="'force'"
-    [limit]="10"
-    [scrollbarH]="true"
-   > 
-   <ngx-datatable-column name="SR No"></ngx-datatable-column>
-        <ngx-datatable-column name="Client Name"></ngx-datatable-column>
-        <ngx-datatable-column name="Address"></ngx-datatable-column>
-        <ngx-datatable-column name="No Of ARMS"></ngx-datatable-column>
-        <ngx-datatable-column name="Authorized Person"></ngx-datatable-column>
-        <ngx-datatable-column name="No Of Wings"></ngx-datatable-column>
-        <ngx-datatable-column name="No Of Flats"></ngx-datatable-column>
-        <ngx-datatable-column name="Project Name"></ngx-datatable-column>
-        <ngx-datatable-column name="Account Detail"></ngx-datatable-column>
-        <ngx-datatable-column name="Email Id"></ngx-datatable-column>
-        <ngx-datatable-column name="Mobile No"></ngx-datatable-column>
-
-
-    </ngx-datatable>
-
+          <div class="p-grid p-justify-start" style="margin-top: .5vw;">
+              <div class="p-col-2">
+                  <div class="p-col-4"  p-justify-end>
+                      <span class="ui-float-label">
+                          <input id="float-input" type="text" size="30" pInputText> 
+                          <label for="float-input">Name</label>
+                      </span>
+                    </div>
+              </div>
+             
+          </div>
+          <p-table [columns]="cols" [value]="data" [resizableColumns]="true">
+                <ng-template pTemplate="colgroup" let-columns>
+                        <colgroup>
+                            <col *ngFor="let col of columns" [style.width]="col.width">
+                        </colgroup>
+                    </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>SR No</th>
+                      <th>Client Name</th>
+                      <th>Address</th>
+                      <th>No Of ARMS</th>
+                      <th>Authorized Person</th>
+                      <th>No Of Wings</th>
+                      <th>No Of Flats</th>
+                      <th>Project Name</th>
+                      <th>Account Detail</th>
+                      <th>Email Id</th>
+                      <th>Mobile No</th>
+            
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-data>
+                  <tr>
+                      <td>{{data.SRNo}}</td>
+                      <td>{{data.ClientName}}</td>
+                      <td>{{data.Address}}</td>
+                      <td>{{data.ARMS}}</td>
+                      <td>{{data.Person}}</td>
+                      <td>{{data.Wings}}</td>
+                      <td>{{data.Flats}}</td>
+                      <td>{{data.pName}}</td>
+                      <td>{{data.aDetails}}</td>
+                      <td>{{data.email}}</td>
+                      <td>{{data.mobile}}</td>
+                     
+                  </tr>
+              </ng-template>
+          </p-table>
+ 
+                <div class="p-grid p-justify-center" style="margin-top: 3vh;">
+                    <div class="p-col-2">
+                     
+                            <ion-button size="large" color="shade"  type="submit"  expand="block"(click)="viewAdmin()">View</ion-button>
+                      
+                    
+                    </div>
+                    <div class="p-col-2">
+                     
+                            <ion-button size="large" color="shade"  type="submit"  expand="block"(click)="editAdmin()">Edit Admin</ion-button>
+                      
+                    
+                    </div>
+                    <div class="p-col-2"  p-justify-left>
+                            <ion-button size="large" color="shade"  type="submit"  expand="block"(click)="deleteAdmin()">Delete Admin</ion-button>
+                    </div>
+                   
+                </div>
+           
 </ion-content>
+ 

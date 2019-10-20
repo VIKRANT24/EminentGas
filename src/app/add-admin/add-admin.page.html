@@ -1,61 +1,117 @@
- <ion-header>
-  <ion-toolbar>
-    <ion-title>Add Admin</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content  color="primary">
-
-    <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Admin Registration</h3>
-          </div>
-          <div padding>
-            <ion-item>
-              <ion-label position="floating">Client Name</ion-label>
-              <ion-input  type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Address</ion-label>
-                <ion-input  type="text"></ion-input>
-              </ion-item>
-              <ion-item>
-                  <ion-label position="floating">No Of AMRS</ion-label>
-                  <ion-input  type="number"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label position="floating">Project Name</ion-label>
-                    <ion-input  type="text"></ion-input>
-                  </ion-item>
-            <ion-item>
-                <ion-label position="floating">Company Email Id</ion-label>
-              <ion-input type="email"></ion-input>
-            </ion-item>
-            <ion-item expand="block">
-                <ion-label position="floating">Mobile No</ion-label>
-                <ion-input  type="tel"></ion-input>
-              </ion-item>
-          </div>
-          <div padding>
-              <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="presentToast()">Save</ion-button>
-          </div>
+<ion-header>
+            <ion-toolbar>
+              <ion-title style="text-align: center;">Add Admin</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content justify-content-center align-items-center style="height: 100%">
+              <ion-card style=" background-color: #d8dae2;" >
+          <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+           
+                  <ion-card style=" background-color: #ffffff;">
+                  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                      <div class="ui-grid-row">
+                          <div class="ui-grid-col-4 " style="text-align: center;">
+                              Client Name *:
+                          </div>
+                          <div class="ui-grid-col-4">
+                              <input pInputText type="text" formControlName="clientName" placeholder="Required"/>
+                          </div>
+                          <div class="ui-grid-col-4">
+                              <p-message severity="error" text="client Name is required" *ngIf="!userform.controls['clientName'].valid&&userform.controls['clientName'].dirty"></p-message>
+                          </div>
+                      </div>
+                      <div class="ui-grid-row">
+                              <div class="ui-grid-col-4 " style="text-align: center;">
+                                  Address *:
+                              </div>
+                              <div class="ui-grid-col-4">
+                                  <input pInputText type="text" formControlName="address" placeholder="Required"/>
+                              </div>
+                              <div class="ui-grid-col-4">
+                                  <p-message severity="error" text="Address is required" *ngIf="!userform.controls['address'].valid&&userform.controls['address'].dirty"></p-message>
+                              </div>
+                          </div>
+                          <div class="ui-grid-row">
+                                  <div class="ui-grid-col-4 " style="text-align: center;">
+                                      Number Of Arms *:
+                                  </div>
+                                  <div class="ui-grid-col-4">
+                                      <input pInputText type="number" formControlName="arms" placeholder="Required"/>
+                                  </div>
+                                  <div class="ui-grid-col-4">
+                                      <p-message severity="error" text="Required" *ngIf="!userform.controls['arms'].valid&&userform.controls['arms'].dirty"></p-message>
+                                  </div>
+                              </div>
+                             
+                                  <div class="ui-grid-row">
+                                          <div class="ui-grid-col-4 " style="text-align: center;">
+                                              Project Name *:
+                                          </div>
+                                          <div class="ui-grid-col-4">
+                                              <input pInputText type="text" formControlName="projectname" placeholder="Required"/>
+                                          </div>
+                                          <div class="ui-grid-col-4">
+                                              <p-message severity="error" text="Project name is required" *ngIf="!userform.controls['projectname'].valid&&userform.controls['projectname'].dirty"></p-message>
+                                          </div>
+                                      </div>      <div class="ui-grid-row">
+                                                  <div class="ui-grid-col-4 " style="text-align: center;">
+                                                      Email Id *:
+                                                  </div>
+                                                  <div class="ui-grid-col-4">
+                                                      <input pInputText type="text" formControlName="email" placeholder="Required"/>
+                                                  </div>
+                                                  <div class="ui-grid-col-4">
+                                                      <p-message severity="error" text="Correct format required" *ngIf="!userform.controls['email'].valid&&userform.controls['email'].dirty"></p-message>
+                                                  </div>
+                                              </div>
+                                              <div class="ui-grid-row">
+                                                      <div class="ui-grid-col-4 " style="text-align: center;">
+                                                          Mobile Number *:
+                                                      </div>
+                                                      <div class="ui-grid-col-4">
+                                                          <input pInputText type="number" formControlName="mobile" placeholder="Required" minlength=10 maxlength=10/>
+                                                      </div>
+                                                      <div class="ui-grid-col-4">
+                                                          <p-message severity="error" text="Mobile no is required" *ngIf="!userform.controls['mobile'].valid&&userform.controls['mobile'].dirty"></p-message>
+                                                      </div>
+                                                  </div>
+                      <div class="p-grid p-justify-center">
+                          <ion-button size="large" color="shade"  type="submit"  expand="block" (click)="presentToast()" [disabled]="!userform.valid">Save</ion-button>
+                         
+                      </div>
+                  
+                  </div>
+              </ion-card>
       
+          </form>
+          <ion-card style=" background-color: #ffffff;">
 
-        </ion-col>
-      </ion-row>
-      <div  class='fields'>
-          <ion-item >
-              <ion-label text-end>Admin Login Id : </ion-label>
-              <ion-label >ABC@1234</ion-label>
-          </ion-item>
-     
-       
-          <ion-item>
-              <ion-label text-end>Admin Password : </ion-label>
-              <ion-label >***********</ion-label>
-          </ion-item>
-     </div>
-    </ion-grid>
-</ion-content>
+    
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-2" style="padding-top: 2vh;">
+                     
+                        <ion-label position="floating">Admin Login Id</ion-label>
+                      
+                    
+                    </div>
+                    <div class="p-col-2 p-justify-left">
+                        <ion-label position="floating">ABC@1234</ion-label>
+                    </div>
+                   
+                </div>
+                <div class="p-grid p-justify-center">
+                    <div class="p-col-2" style="padding-top: 2vh;">
+                     
+                        <ion-label position="floating">Admin Password : </ion-label>
+                      
+                    
+                    </div>
+                    <div class="p-col-2  p-justify-left">
+                        <ion-label position="floating">***********</ion-label>
+                    </div>
+                   
+                </div>
+                   
+              </ion-card>
+              </ion-card>
+          </ion-content>

@@ -13,16 +13,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
 import { ActionsComponent } from './actions/actions.component';
 import {SelectButtonModule} from 'primeng/selectbutton';
-import {DropdownModule} from 'primeng/dropdown';
 import { AddDeviceWithoutProfilePage } from './add-device-without-profile/add-device-without-profile.page';
+import {DropdownModule} from 'primeng/primeng';
+
 
 @NgModule({
-  declarations: [AppComponent,ActionsComponent,
-  AddDeviceModalPage,
-  AddDeviceWithoutProfilePage
+  declarations: [AppComponent,ActionsComponent
 ],
   entryComponents: [
-    AddDeviceModalPage,ActionsComponent,AddDeviceWithoutProfilePage
+    ActionsComponent
   ],
 
   imports: [
@@ -33,12 +32,14 @@ import { AddDeviceWithoutProfilePage } from './add-device-without-profile/add-de
     SharedComponentModule,
     SelectButtonModule,
     DropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BrowserAnimationsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     StatusBar,
     SplashScreen,
+ 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   
