@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { MenuPagePage } from './menu-page.page';
 import {ButtonModule} from 'primeng/button';
 
+import {SelectButtonModule} from 'primeng/selectbutton';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +23,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ButtonModule,
+    SelectButtonModule,
     RouterModule.forChild(routes)
   ],
   declarations: [MenuPagePage]
