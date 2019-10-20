@@ -9,6 +9,15 @@ import {MessageService} from 'primeng/api';
   providers: [MessageService]
 })
 export class EditAdminPage implements OnInit {
+text1:any=""
+text2:any=""
+text3:any=""
+text4:any=""
+text5:any=""
+text6:any=""
+text7:any=""
+text8:any=""
+ 
   userform: FormGroup;
 
   submitted: boolean;

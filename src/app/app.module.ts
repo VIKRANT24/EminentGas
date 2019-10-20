@@ -14,6 +14,8 @@ import { SharedComponentModule } from './shared-component/shared-component.modul
 import { ActionsComponent } from './actions/actions.component';
 import {DropdownModule} from 'primeng/primeng';
 
+
+
 @NgModule({
   declarations: [AppComponent,ActionsComponent],
   entryComponents: [ActionsComponent],
@@ -25,10 +27,12 @@ import {DropdownModule} from 'primeng/primeng';
     SharedComponentModule,
     DropdownModule,
     BrowserAnimationsModule,
+   
   ],
   providers: [
     StatusBar,
     SplashScreen,
+ 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
