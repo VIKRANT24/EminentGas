@@ -10,6 +10,7 @@ import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
 
+
 const routes: Routes = [
   {
     path: '',

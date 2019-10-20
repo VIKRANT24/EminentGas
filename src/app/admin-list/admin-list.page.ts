@@ -8,22 +8,36 @@ import { NavController, AlertController, ToastController } from '@ionic/angular'
 })
 export class AdminListPage implements OnInit {
   cols: any[];
+  data: any[];
   constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController) { }
 
   ngOnInit() {
+    
     this.cols = [
-      { field: 'SR No', header: 'SR No' },
-      {field: 'Client Name', header: 'Client Name' },
-      { field: 'Address', header: 'Address' },
-      { field: 'No Of ARMS', header: 'No Of ARMS' },
-      { field: 'Authorized Person', header: 'Authorized Person' },
-      {field: 'No Of Wings', header: 'No Of Wings' },
-      { field: 'No Of Flats', header: 'No Of Flats' },
-      { field: 'Project Name', header: 'Project Name' },
-      { field: 'Account Detail', header: 'Account Detail' },
-      {field: 'Email Id', header: 'Email Id' },
-      { field: 'Mobile No', header: 'Mobile No' }
+      { field: 'SR No', header: 'SR No',width: '5%' },
+      {field: 'Client Name', header: 'Client Name',width: '9%' },
+      { field: 'Address', header: 'Address',width: '15%' },
+      { field: 'No Of ARMS', header: 'No Of ARMS',width: '5%' },
+      { field: 'Authorized Person', header: 'Authorized Person',width: '9%' },
+      {field: 'No Of Wings', header: 'No Of Wings' ,width: '5%'},
+      { field: 'No Of Flats', header: 'No Of Flats',width: '5%' },
+      { field: 'Project Name', header: 'Project Name' ,width: '9%'},
+      { field: 'Account Detail', header: 'Account Detail',width: '15%' },
+      {field: 'Email Id', header: 'Email Id',width: '14%' },
+      { field: 'Mobile No', header: 'Mobile No',width: '9%' }
   ];
+this.data=[
+  {SRNo:'1',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'2',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'3',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'4',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'5',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'6',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'7',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'8',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+  {SRNo:'9',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+
+]
   }
 
   editAdmin(){

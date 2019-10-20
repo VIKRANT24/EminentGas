@@ -33,3 +33,12 @@ body {
     left:7.8vh;
     font-size: 66%;
   }
+  ion-button {
+    border-radius:10px ;
+    background-color: #d32715 !important;
+    --box-shadow:none;
+    height: 4vh;
+    margin-top: 3vw;
+    margin-bottom: 3vh;
+    
+    }

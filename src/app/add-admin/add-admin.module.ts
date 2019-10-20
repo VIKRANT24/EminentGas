@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
@@ -9,6 +8,11 @@ import { AddAdminPage } from './add-admin.page';
 import {InputTextModule} from 'primeng/inputtext';
 import {CardModule} from 'primeng/card';
 import {PanelModule} from 'primeng/panel';
+
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {KeyFilterModule} from 'primeng/keyfilter';
 
 const routes: Routes = [
   {
@@ -25,6 +29,10 @@ const routes: Routes = [
     InputTextModule,
     CardModule,
     PanelModule,
+    KeyFilterModule,
+    MessagesModule,
+    MessageModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddAdminPage]
