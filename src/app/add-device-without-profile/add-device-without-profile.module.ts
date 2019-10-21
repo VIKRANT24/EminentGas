@@ -4,15 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import { AddDeviceModalPage } from './add-device-modal.page';
-import { DropdownModule } from 'primeng/dropdown';
 
+import { AddDeviceWithoutProfilePage } from './add-device-without-profile.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AddDeviceModalPage
+    component: AddDeviceWithoutProfilePage
   }
 ];
 
@@ -21,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectButtonModule,
-    DropdownModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddDeviceModalPage]
+  declarations: [AddDeviceWithoutProfilePage]
 })
-export class AddDeviceModalPageModule {}
+export class AddDeviceWithoutProfilePageModule {}

@@ -3,10 +3,11 @@
               <ion-title style="text-align: center;">Add Admin</ion-title>
             </ion-toolbar>
           </ion-header>
-          <ion-content>
+          <ion-content justify-content-center align-items-center style="height: 100%">
+              <ion-card style=" background-color: #d8dae2;" >
           <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
-              <p-panel >
-                  <ion-card>
+           
+                  <ion-card style=" background-color: #ffffff;">
                   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
                       <div class="ui-grid-row">
                           <div class="ui-grid-col-4 " style="text-align: center;">
@@ -81,9 +82,9 @@
                   
                   </div>
               </ion-card>
-              </p-panel>
+      
           </form>
-          <ion-card>
+          <ion-card style=" background-color: #ffffff;">
 
     
                 <div class="p-grid p-justify-center">
@@ -111,5 +112,6 @@
                    
                 </div>
                    
+              </ion-card>
               </ion-card>
           </ion-content>
