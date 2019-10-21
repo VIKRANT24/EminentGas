@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'edit-admin', loadChildren: './edit-admin/edit-admin.module#EditAdminPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },  { path: 'table', loadChildren: './table/table.module#TablePageModule' }
+
 
 ];
 

@@ -13,6 +13,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
 import { ActionsComponent } from './actions/actions.component';
 import {DropdownModule} from 'primeng/primeng';
+import { AgGridModule } from 'ag-grid-angular';
+
 
 
 
@@ -27,6 +29,7 @@ import {DropdownModule} from 'primeng/primeng';
     SharedComponentModule,
     DropdownModule,
     BrowserAnimationsModule,
+    AgGridModule
    
   ],
   providers: [

@@ -5,27 +5,26 @@ import { Routes, RouterModule } from '@angular/router';
 import { AgGridModule } from "ag-grid-angular";
 import { IonicModule } from '@ionic/angular';
 
-import { ListPage } from './list.page';
+import { TablePage } from './table.page';
 
 
 
 
+const routes: Routes = [
+  {
+    path: '',
+    component: TablePage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgGridModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: ListPage
-      }
-    ]),
+    RouterModule.forChild(routes),
+    AgGridModule
   ],
-  declarations: [ListPage]
+  declarations: [TablePage]
 })
-export class ListPageModule {
-  
-}
+export class TablePageModule {}
