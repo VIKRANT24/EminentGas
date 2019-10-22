@@ -9,6 +9,26 @@
                     Devices
                   </ion-title>
                 </ion-toolbar>
+  
+        
+        <input
+        type="text"
+        style="padding:8px;margin:15px auto;width:30%;"
+        placeholder="Type to filter the name column..."
+        (keyup)="updateFilter($event)"
+      />
+        <ngx-datatable 
+        #table
+        [rows]="companies" 
+        [ngClass]="tableStyle"
+        [rowHeight]="'auto'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [columnMode]="'force'"
+        [limit]="10"
+        [scrollbarH]="true"
+       > 
+
                 </ion-header >
                      
 
@@ -88,4 +108,4 @@
 
  
 </ion-content>
-
+ 

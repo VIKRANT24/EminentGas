@@ -36,3 +36,12 @@ ion-item {
   @import "~@swimlane/ngx-datatable/themes/bootstrap.css";
   @import "~@swimlane/ngx-datatable/themes/material.css";
   @import "~@swimlane/ngx-datatable/assets/icons.css";
+
+  .sc-ion-modal-md-h {
+    --width: 700px;
+    --height: 500px;
+    --ion-safe-area-top: 0px;
+    --ion-safe-area-bottom: 0px;
+    --ion-safe-area-right: 0px;
+    --ion-safe-area-left: 0px;
+}

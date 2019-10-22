@@ -26,7 +26,7 @@
   </ion-label>
 </ion-item>
 <div *ngIf="item.children && item.open">
-  <ion-list *ngFor="let child of item.children; let j= index;" lines="none" class="child-list">
+  <ion-list *ngFor="let child of item.children; let j= index;"  class="child-list">
         <ion-label (click)="toggleItem(i,j)">
           {{child.name}}
         </ion-label>

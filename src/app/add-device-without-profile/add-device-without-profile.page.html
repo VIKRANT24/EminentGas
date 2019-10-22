@@ -1,0 +1,119 @@
+
+
+<ion-header>
+    <ion-toolbar class="custom-toolbar">
+      <ion-title>Add Device W/O Profile</ion-title>
+      <!-- <button ion-button icon-only (click)="closeModal()">
+          
+  
+      </button> -->
+      <ion-buttons slot="end">
+          <ion-button (click)="closeModal()">
+          <ion-icon end name="close" md="md-close" style="background-color: transparent;"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+          <ion-grid>
+              <ion-row>
+                <ion-col  style="padding-top: 27px;"><ion-label >DEVEID</ion-label></ion-col>
+                <ion-col size="10">
+                  <ion-card>
+              
+                    <ion-input  clearInput="true" ></ion-input>
+                    <!-- [(ngModel)]="addDeviceID" -->
+               
+                </ion-card>
+  
+                  <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="padding-top: 27px;"><ion-label >Comment</ion-label></ion-col>
+                    <ion-col size="10">
+                        <ion-card>
+                   
+                        <ion-input  clearInput="true" ></ion-input>
+                        <!-- [(ngModel)]="addDeviceID" -->
+                  
+                      </ion-card>
+  
+                      <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                    </ion-row>
+                </ion-grid>
+                <div class="ui-fluid"  style="padding-top: 2vh;">
+                <p-selectButton tabindex [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton>
+            </div>
+  
+            <ion-card>
+                <ion-row>
+                    <ion-col style="padding-top: 27px;"><ion-label >Activated</ion-label></ion-col>
+                    <ion-col size="10">
+                <ion-segment style="margin-top: 23px;">
+                    <ion-segment-button checked>
+                      <ion-label>Yes</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button>
+                      <ion-label>No</ion-label>
+                    </ion-segment-button>
+                  </ion-segment>
+                  <label>Select Yes to allow the device to actively operate on the network. If a device not activated, no data will be received from it and data cannot be sent to it.</label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="padding-top: 27px;"><ion-label >Downlink Enabled</ion-label></ion-col>
+                    <ion-col size="10">
+                <ion-segment style="margin-top: 23px;">
+                    <ion-segment-button checked>
+                      <ion-label>Yes</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button>
+                      <ion-label>No</ion-label>
+                    </ion-segment-button>
+                  </ion-segment>
+                  <label>Select Yes to allow the network to send downlink on the network. If a not allowed, the network will not send any user payloads to thw device.</label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="padding-top: 27px;"><ion-label >Registration Type</ion-label></ion-col>
+                    <ion-col size="5">
+                <ion-segment style="margin-top: 23px;">
+                    <ion-segment-button checked>
+                      <ion-label>OTAA</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button>
+                      <ion-label>ABP</ion-label>
+                    </ion-segment-button>
+                  </ion-segment>
+                  </ion-col>
+                  <ion-col style="padding-top: 27px;"><ion-label >LoRA WAN Mac Version</ion-label></ion-col>
+                  <ion-col style="padding-top: 27px;">
+                    <ion-card>
+                      <ion-input  clearInput="true" type="number" ></ion-input>
+                      <!-- [(ngModel)]="addDeviceID" -->
+                  </ion-card></ion-col>
+                </ion-row>
+                <label>personalised devices have pre-generated session keys and will not perform the JOIN procedure.</label>
+                <ion-row>
+                    <ion-col  style="padding-top: 27px;"><ion-label >App Key</ion-label></ion-col>
+                    <ion-col size="10">
+                      <ion-card>
+                      <ion-item>
+                        <ion-input  clearInput="true" ></ion-input>
+                        <!-- [(ngModel)]="addDeviceID" -->
+                      </ion-item>
+                    </ion-card>
+      
+                      <ion-label>The App Key is a 16-byte encryption key used the data payloads. If provided all encryption is managed by the network. If not provided, the payload encryption must be managedby the application.Optional.</ion-label></ion-col>
+                    </ion-row>
+            </ion-card>
+        <div style="padding-top:3vh">
+              <ion-button style="color:red" size="small"  float-right fill="outline" >Cancel</ion-button>
+            <ion-button size="small"  float-right >OK</ion-button>
+           </div>
+           
+  
+  
+  </ion-content>
+  

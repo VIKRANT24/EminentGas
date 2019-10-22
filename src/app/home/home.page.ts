@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { IonicModule,ToastController,NavController } from '@ionic/angular';
+import { IonicModule,ToastController, ModalController,NavController } from '@ionic/angular';
+import {AddDeviceModalPage} from 'src/app/add-device-modal/add-device-modal.page'
+import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +11,9 @@ import { IonicModule,ToastController,NavController } from '@ionic/angular';
 export class HomePage {
 userid:any="";
 pwd:any="";
-  constructor(public toastController: ToastController,public navController: NavController) {
+
+
+  constructor(public toastController: ToastController,public navController: NavController,public modalCtrl:ModalController) {
 
   }
 
@@ -56,12 +60,15 @@ pwd:any="";
 
 
 
-//   public openModal(){
-//     var data = {
-//        message : 'hello world'
-//   };
-//     var modalPage = this.modalCtrl.create('AddDeviceModalPage',data);
-//     AddDeviceModalPage.present();
-// }
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddDeviceModalPage,
+      componentProps: {
+        'firstName': 'Douglas',
+        'lastName': 'Adams',
+      }
+    });
+    return await modal.present();
+  }
 
 }
