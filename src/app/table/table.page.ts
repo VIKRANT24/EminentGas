@@ -1,24 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import data from '../../assets/company.json'
-
-
-
-// declare var firebase;
-
-// var config={
-//   apiKey: 'AIzaSyCxk372bpVybPuj_5xKrB9Xy_vTD93REd4',
-//   authDomaim : 'eminent-gas-tech.firebase',
-//   databaseURL : 'https://eminent-gas-tech.firebaseio.com'
-// };
-
-// firebase.initializeApp(config)
-
 @Component({
-  selector: 'app-list',
-  templateUrl: 'list.page.html',
-  styleUrls: ['list.page.scss']
+  selector: 'app-table',
+  templateUrl: "table.page.html",
+  styleUrls: ['./table.page.scss'],
 })
-export class ListPage {
+
+
+export class TablePage {
   public gridApi;
   public gridColumnApi;
 
@@ -27,7 +16,8 @@ export class ListPage {
   public frameworkComponents;
    rowData:any= [];
    rowSelection:any="multiple";
-   constructor() { 
+
+  constructor() { 
 
     this.columnDefs = [
       {

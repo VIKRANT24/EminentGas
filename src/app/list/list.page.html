@@ -1,111 +1,53 @@
-<ion-content>
-
-        <ion-header >
-                <ion-toolbar class="custom-toolbar">
-                  <ion-buttons slot="start">
-                    <ion-menu-button></ion-menu-button>
-                  </ion-buttons>
-                  <ion-title>
-                    Devices
-                  </ion-title>
-                </ion-toolbar>
-  
-        
-        <input
-        type="text"
-        style="padding:8px;margin:15px auto;width:30%;"
-        placeholder="Type to filter the name column..."
-        (keyup)="updateFilter($event)"
-      />
-        <ngx-datatable 
-        #table
-        [rows]="companies" 
-        [ngClass]="tableStyle"
-        [rowHeight]="'auto'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [columnMode]="'force'"
-        [limit]="10"
-        [scrollbarH]="true"
-       > 
-
-                </ion-header >
-                     
-
-
-
-  <ion-grid>
+<ion-header >
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Devices
+      </ion-title>
+     
+    </ion-toolbar>
+  </ion-header>
+      
+      <ion-content>
+        <p style="margin-bottom: 10px;margin-left: 20px;margin-top: 30px">There are 58 devices registered.</p>
+          <ion-grid>
                 
-    <ion-row>
-      <ion-col>
-          <ion-button  shape="round" color="shade" expand="full" ><ion-icon name="add"></ion-icon> Add Device</ion-button>
-      </ion-col>
-      <ion-col>
-          <ion-button shape="round" expand="full" color="shade" ><ion-icon name="add"></ion-icon>  Add Device w/o profile</ion-button>
-      </ion-col>
-      <ion-col>
-          <ion-button shape="round" expand="full" color="shade" ><ion-icon name="refresh"></ion-icon>  Refresh List</ion-button>
-      </ion-col>
-    
-    
-    </ion-row>
-  </ion-grid>
-
-
-
-<p-table #dt1 [columns]="cols" [value]="companies" [paginator]="true" [rows]="10"  [resizableColumns]="true" [reorderableColumns]="true"
-    selectionMode="single" stateStorage="session" stateKey="statedemo-session" [scrollable]="true">
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-                <th style="width: 3em">
-                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                    </th>
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn>
-                {{col.header}}
-                <p-sortIcon [field]="col.field"></p-sortIcon>
-            </th>
-        </tr>
-        <tr>
-            <th *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-fluid">
-                <input pInputText  *ngSwitchCase="'deveui'" type="text" (input)="dt1.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt1.filters[col.field]?.value">
+              <ion-row>
+                <ion-col>
+                    <ion-button  shape="round" color="shade" expand="full" ><ion-icon name="add"></ion-icon> Add Device</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button shape="round" expand="full" color="shade" ><ion-icon name="add"></ion-icon>  Add Device w/o profile</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button shape="round" expand="full" color="shade" ><ion-icon name="refresh"></ion-icon>  Refresh List</ion-button>
+                </ion-col>
               
-                <input pInputText  *ngSwitchCase="'comment'" type="text" (input)="dt1.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt1.filters[col.field]?.value">
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
-
-
-<p-table [columns]="cols" [value]="companies" [paginator]="true" [rows]="10" [reorderableColumns]="true" [reorderableColumns]="true">
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th style="width: 3em">
-                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
-                <th *ngFor="let col of columns">
-                    {{col.header}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-columns="columns">
-            <tr [pSelectableRow]="rowData">
-                <td>
-                    <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
-                </td>
-                <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
-                </td>
-            </tr>
-        </ng-template>
-        </p-table>
-
- 
-</ion-content>
- 
+              
+              </ion-row>
+            </ion-grid>
+        <ion-card>
+      <ion-card-content>
+          <ag-grid-angular
+          style="width: 100%; height: 600px;"
+          class="ag-theme-balham"
+          [columnDefs]="columnDefs"
+          [rowData]="rowData"
+          [enableSorting]="true"
+          [multiSortKey]="multiSortKey"
+          [animateRows]="true"
+          (gridReady)="onGridReady($event)"
+          [pagination]="true"
+          [paginationPageSize]="50"
+          [enableFilter]="true"
+          [floatingFilter]="true"
+          [suppressRowClickSelection]="true"
+          [rowSelection]="rowSelection">
+          </ag-grid-angular>
+      </ion-card-content>
+      
+          </ion-card>
+      </ion-content>
+      

@@ -39,20 +39,20 @@
   color: #45b0d5 ;
 }
 
-ion-button {
-border-radius:50px ;
-background-color: #d32715 !important;
---box-shadow:none;
+// ion-button {
+// border-radius:50px ;
+// background-color: #d32715 !important;
+// --box-shadow:none;
 
-}
-ion-item {
-  border-radius: 30px !important;
-  font-size: 0.9em;
-  margin-bottom: 10px;
-  border: 1px solid #ffffff;
-  border-bottom: 0px !important;
-  box-shadow: none !important;
-}
+// }
+// ion-item {
+//   border-radius: 30px !important;
+//   font-size: 0.9em;
+//   margin-bottom: 10px;
+//   border: 1px solid #ffffff;
+//   border-bottom: 0px !important;
+//   box-shadow: none !important;
+// }
 
 ion-content {
  // --ion-background-color: #e5eaee
@@ -65,3 +65,15 @@ ion-content {
 
 
 
+ion-input{
+  --background:#e6e6e6;
+ }
+
+ ion-item{
+  --background:#e6e6e6;
+ }
+
+ ion-button{
+--background: #49c5b6;
+
+ }

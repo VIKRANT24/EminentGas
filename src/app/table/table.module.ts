@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { AgGridModule } from "ag-grid-angular";
 import { IonicModule } from '@ionic/angular';
 
-import { SuperAdminPage } from './super-admin.page';
+import { TablePage } from './table.page';
 
 
 
@@ -13,7 +13,7 @@ import { SuperAdminPage } from './super-admin.page';
 const routes: Routes = [
   {
     path: '',
-    component: SuperAdminPage
+    component: TablePage
   }
 ];
 
@@ -22,13 +22,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    AgGridModule
   ],
-  declarations: [SuperAdminPage]
+  declarations: [TablePage]
 })
-export class SuperAdminPageModule {}
-
-
-
-
-
+export class TablePageModule {}
