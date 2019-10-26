@@ -15,9 +15,9 @@ import { ActionsComponent } from './actions/actions.component';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { AddDeviceWithoutProfilePage } from './add-device-without-profile/add-device-without-profile.page';
 import {DropdownModule} from 'primeng/primeng';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AgGridModule } from 'ag-grid-angular';
 import {MultiSelectModule} from 'primeng/primeng';
-
 
 
 @NgModule({
@@ -44,7 +44,8 @@ import {MultiSelectModule} from 'primeng/primeng';
   providers: [
     StatusBar,
     SplashScreen,
- 
+ EmailComposer,
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   

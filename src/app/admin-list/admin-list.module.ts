@@ -9,7 +9,7 @@ import { AdminListPage } from './admin-list.page';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
-
+import { AgGridModule } from "ag-grid-angular";
 
 const routes: Routes = [
   {
@@ -26,6 +26,7 @@ const routes: Routes = [
     TableModule,
     InputTextModule,
     DialogModule,
+    AgGridModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AdminListPage]

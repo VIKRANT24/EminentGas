@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
 import {MessageService} from 'primeng/api'; 
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-admin',
@@ -21,32 +22,103 @@ text8:any=""
   userform: FormGroup;
 
   submitted: boolean;
-
+  clientName=""
+  authPerson=""
+  wings=""
+  flats=""
+  projName=""
+  accDetails=""
+  email=""
+  mobNo=""
   description: string;
-  constructor(private fb: FormBuilder, private messageService: MessageService) { }
+  constructor(private fb: FormBuilder, private messageService: MessageService, public toastController: ToastController) { }
 
   ngOnInit() {
-    this.userform = this.fb.group({
-      'firstname': new FormControl('', Validators.required),
-      'authPerson': new FormControl('', Validators.required),
-      'wings': new FormControl('', Validators.required),
-      'flats': new FormControl('', Validators.required),
-      'projectname': new FormControl('', Validators.required),
-      'account': new FormControl('', Validators.required),
-      'email': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6),Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])),
-      'mobile': new FormControl('', Validators.compose([Validators.required, Validators.maxLength(10),Validators.pattern(/^((\+)?(\d{2}[-]))?(\d{10}){1}?$/)])),
-      // 'gender': new FormControl('', Validators.required)
-  });
+
 
  
 }
 
-onSubmit(value: string) {
-  this.submitted = true;
-  this.messageService.add({severity:'info', summary:'Success', detail:'Form Submitted'});
-}
-
-presentToast(){
-
+async saveClick(){
+  if(this.clientName == "")
+    {
+       const toast = await this.toastController.create({
+       message: 'Please enter client name',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.authPerson == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter Person name',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.wings == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter no Of Wings',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.flats == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter no Of Flats',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.projName == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter Project Name',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.accDetails == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter Account Details',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.email == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter Email',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
+    else if(this.mobNo == "")
+    {
+     const toast = await this.toastController.create({
+       message: 'Please enter Mobile no',
+       duration: 2000,
+       color:'medium',
+       position: 'top'
+     });
+    toast.present();
+    }
 }
 }

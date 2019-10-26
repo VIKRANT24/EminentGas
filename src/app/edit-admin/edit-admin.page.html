@@ -5,7 +5,7 @@
   </ion-toolbar>
 </ion-header>
 
-<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" >
+<!-- <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" >
         <ion-card style=" background-color: #d8dae2;">
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
             <div class="ui-grid-row">
@@ -99,12 +99,9 @@
                
             </div>
         
-        </div>
-    </ion-card>
-</form>
-</ion-content>
-
- <ion-grid>
+        </div> -->
+        <!-- <ion-card>
+        <ion-grid>
             <ion-row color="primary" justify-content-center>
               <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
                 <div text-center>
@@ -158,3 +155,79 @@
          
             
           </ion-grid>
+    </ion-card> -->
+<!-- </form> -->
+  <ion-card>
+            <ion-card-header>
+            
+              <ion-card-title>Admin Form</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content style="text-align: center;">
+                <ion-item style="    border-style: solid;
+                border-width: thin;
+                border-color: #e6e6e6;
+               margin-top:10px;height:40px;border-radius: 25px;"  >
+                   
+                    <ion-input placeholder="Client Name" style="margin-top:-10px;color:#666666;"  [(ngModel)]="clientName"></ion-input>
+                  </ion-item>
+
+                  <ion-item style="    border-style: solid;
+                  border-width: thin;
+                  border-color: #e6e6e6;
+                 margin-top:10px;height:40px;border-radius: 25px;"  >
+                     
+                      <ion-input placeholder="Authorized Person" style="margin-top:-10px;color:#666666;"  [(ngModel)]="authPerson"></ion-input>
+                    </ion-item>
+
+                    <ion-item style="    border-style: solid;
+                    border-width: thin;
+                    border-color: #e6e6e6;
+                   margin-top:10px;height:40px;border-radius: 25px;"  >
+                       
+                        <ion-input placeholder="Number Of Wings" style="margin-top:-10px;color:#666666;"  [(ngModel)]="wings"></ion-input>
+                      </ion-item>
+
+                      <ion-item style="    border-style: solid;
+                      border-width: thin;
+                      border-color: #e6e6e6;
+                     margin-top:10px;height:40px;border-radius: 25px;"  >
+                         
+                          <ion-input placeholder=" No Of Flats" style="margin-top:-10px;color:#666666;"  [(ngModel)]="flats"></ion-input>
+                        </ion-item>
+                        <ion-item style="    border-style: solid;
+                        border-width: thin;
+                        border-color: #e6e6e6;
+                       margin-top:10px;height:40px;border-radius: 25px;"  >
+                           
+                            <ion-input placeholder=" Project Name " style="margin-top:-10px;color:#666666;"  [(ngModel)]="projName"></ion-input>
+                          </ion-item>
+                          <ion-item style="    border-style: solid;
+                          border-width: thin;
+                          border-color: #e6e6e6;
+                         margin-top:10px;height:40px;border-radius: 25px;"  >
+                             
+                              <ion-input placeholder="Account Details" style="margin-top:-10px;color:#666666;"  [(ngModel)]="accDetails"></ion-input>
+                            </ion-item>
+                            <ion-item style="    border-style: solid;
+                            border-width: thin;
+                            border-color: #e6e6e6;
+                           margin-top:10px;height:40px;border-radius: 25px;"  >
+                               
+                                <ion-input placeholder="Email Id" style="margin-top:-10px;color:#666666;"  [(ngModel)]="email"></ion-input>
+                              </ion-item>
+                              <ion-item style="    border-style: solid;
+                              border-width: thin;
+                              border-color: #e6e6e6;
+                             margin-top:10px;height:40px;border-radius: 25px;"  >
+                                 
+                                  <ion-input placeholder="Mobile No" style="margin-top:-10px;color:#666666;"  [(ngModel)]="mobNo"></ion-input>
+                                </ion-item>
+
+                        <ion-button expand="block" slot="end"  (click)="saveClick()" style="width:30%;color:white;
+                        margin-top: 20px;margin-bottom: 20px;">Save</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+</ion-content>
+

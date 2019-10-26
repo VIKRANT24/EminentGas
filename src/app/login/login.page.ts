@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 
@@ -12,7 +13,7 @@ import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 export class LoginPage implements OnInit {
   userid:any="";
   pwd:any="";
-  constructor(public toastController: ToastController,public navController: NavController) {
+  constructor(public toastController: ToastController,public navController: NavController,private emailComposer: EmailComposer) {
   }
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class LoginPage implements OnInit {
     toast.present();
     }
     else{
- 
+    
      //error
      // const toast = await this.toastController.create({
      //   message: 'Your username or password was incorrect.',
@@ -60,5 +61,6 @@ export class LoginPage implements OnInit {
  
     }
    }
+   
 
 }

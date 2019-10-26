@@ -1,6 +1,8 @@
 {
   "name": "EminentGas",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "b6d0e1aa"
 }

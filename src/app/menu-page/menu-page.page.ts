@@ -7,8 +7,16 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./menu-page.page.scss'],
 })
 export class MenuPagePage implements OnInit {
-
-  constructor(public navCtrl:NavController) { }
+  types: any[];
+  selectedType: string;
+  
+  constructor(public navCtrl:NavController) {
+    this.types = [
+      {label: 'Paypal', value: 'PayPal', icon: 'fa fa-fw fa-cc-paypal'},
+      {label: 'Visa', value: 'Visa', icon: 'fa fa-fw fa-cc-visa'},
+      {label: 'MasterCard', value: 'MasterCard', icon: 'fa fa-fw fa-cc-mastercard'}
+  ];
+   }
 
   ngOnInit() {
   }
