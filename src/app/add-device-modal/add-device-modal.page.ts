@@ -17,7 +17,7 @@ export class AddDeviceModalPage implements OnInit {
   types: SelectItem[];
   keysDevice: SelectItem[];
   keyActivated:SelectItem[];
-  selectedType:String;
+  selectedType:String
   cities: City[];
   selectedCity: City;
   profile = false
@@ -27,6 +27,7 @@ export class AddDeviceModalPage implements OnInit {
 
 
   constructor(private modal:ModalController) { 
+    this.selectedType = "Profiles"
 
     this.cities = [
       {name: 'New York', code: 'NY'},

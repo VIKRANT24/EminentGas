@@ -18,7 +18,7 @@
   <ion-content>
           <ion-grid>
               <ion-row>
-                <ion-col  style="padding-top: 27px;"><ion-label >DEVEID</ion-label></ion-col>
+                <ion-col  style="margin-top:3vh"><ion-label >DEVEID</ion-label></ion-col>
                 <ion-col size="10">
                   <ion-card>
               
@@ -27,10 +27,10 @@
                
                 </ion-card>
   
-                  <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                  <ion-label style="color: black;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col style="padding-top: 27px;"><ion-label >Comment</ion-label></ion-col>
+                    <ion-col style="margin-top:3vh"><ion-label >Comment</ion-label></ion-col>
                     <ion-col size="10">
                         <ion-card>
                    
@@ -39,64 +39,43 @@
                   
                       </ion-card>
   
-                      <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                      <ion-label style="color: black;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
                     </ion-row>
                 </ion-grid>
                 <div class="ui-fluid"  style="padding-top: 2vh;">
-                <p-selectButton tabindex [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton>
+                <p-selectButton [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton>
             </div>
-  
-            <ion-card>
+  <div *ngIf="!keys">
                 <ion-row>
-                    <ion-col style="padding-top: 27px;"><ion-label >Activated</ion-label></ion-col>
-                    <ion-col size="10">
-                <ion-segment style="margin-top: 23px;">
-                    <ion-segment-button checked>
-                      <ion-label>Yes</ion-label>
-                    </ion-segment-button>
-                    <ion-segment-button>
-                      <ion-label>No</ion-label>
-                    </ion-segment-button>
-                  </ion-segment>
-                  <label>Select Yes to allow the device to actively operate on the network. If a device not activated, no data will be received from it and data cannot be sent to it.</label>
+                    <ion-col style="margin-top:1vh"><ion-label >Activated</ion-label></ion-col>
+                    <ion-col size="10" >
+                        <p-selectButton [options]="activatedType" [(ngModel)]="ActivatedSelectType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
                   </ion-col>
                 </ion-row>
+                <p style="font-size: 12px;margin-left:15vh">Select Yes to allow the device to actively operate on the network. If a device not activated, no data will be received from it and data cannot be sent to it.</p>
                 <ion-row>
-                    <ion-col style="padding-top: 27px;"><ion-label >Downlink Enabled</ion-label></ion-col>
-                    <ion-col size="10">
-                <ion-segment style="margin-top: 23px;">
-                    <ion-segment-button checked>
-                      <ion-label>Yes</ion-label>
-                    </ion-segment-button>
-                    <ion-segment-button>
-                      <ion-label>No</ion-label>
-                    </ion-segment-button>
-                  </ion-segment>
-                  <label>Select Yes to allow the network to send downlink on the network. If a not allowed, the network will not send any user payloads to thw device.</label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col style="padding-top: 27px;"><ion-label >Registration Type</ion-label></ion-col>
-                    <ion-col size="5">
-                <ion-segment style="margin-top: 23px;">
-                    <ion-segment-button checked>
-                      <ion-label>OTAA</ion-label>
-                    </ion-segment-button>
-                    <ion-segment-button>
-                      <ion-label>ABP</ion-label>
-                    </ion-segment-button>
-                  </ion-segment>
-                  </ion-col>
-                  <ion-col style="padding-top: 27px;"><ion-label >LoRA WAN Mac Version</ion-label></ion-col>
-                  <ion-col style="padding-top: 27px;">
+                    <ion-col style="margin-top:1vh"><ion-label >Downlink Enabled</ion-label></ion-col>
+                    <ion-col size="10" >
+                        <p-selectButton [options]="DownlinkType" [(ngModel)]="DownlinkSelectType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
+                      </ion-col>
+                    </ion-row>
+                        <p style="font-size: 12px;margin-left:15vh">Select Yes to allow the network to send downlink on the network. If a not allowed, the network will not send any user payloads to thw device.</p>
+
+                    <ion-row>
+                         <ion-col style="margin-top:2vh"><ion-label >Registration Type</ion-label></ion-col>
+                        <ion-col style="margin-top:1vh">
+                            <p-selectButton [options]="registrationType" [(ngModel)]="registrationSelectType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
+                          </ion-col>
+                  <ion-col style="margin-top:2vh"><ion-label >LoRA WAN Mac Version</ion-label></ion-col>
+                  <ion-col>
                     <ion-card>
                       <ion-input  clearInput="true" type="number" ></ion-input>
                       <!-- [(ngModel)]="addDeviceID" -->
                   </ion-card></ion-col>
                 </ion-row>
-                <label>personalised devices have pre-generated session keys and will not perform the JOIN procedure.</label>
+                <p style="font-size: 12px;margin-left:15vh">personalised devices have pre-generated session keys and will not perform the JOIN procedure.</p>
                 <ion-row>
-                    <ion-col  style="padding-top: 27px;"><ion-label >App Key</ion-label></ion-col>
+                    <ion-col  style="margin-top:3vh"><ion-label >App Key</ion-label></ion-col>
                     <ion-col size="10">
                       <ion-card>
                       <ion-item>
@@ -104,12 +83,133 @@
                         <!-- [(ngModel)]="addDeviceID" -->
                       </ion-item>
                     </ion-card>
-      
-                      <ion-label>The App Key is a 16-byte encryption key used the data payloads. If provided all encryption is managed by the network. If not provided, the payload encryption must be managedby the application.Optional.</ion-label></ion-col>
+      </ion-col>
                     </ion-row>
-            </ion-card>
-        <div style="padding-top:3vh">
-              <ion-button style="color:red" size="small"  float-right fill="outline" >Cancel</ion-button>
+                    <p style="font-size: 12px;margin-left:15vh">The App Key is a 16-byte encryption key used the data payloads. If provided all encryption is managed by the network. If not provided, the payload encryption must be managedby the application.Optional.</p>
+          </div>
+          <div *ngIf="!QoS">
+              <ion-grid>
+
+                  <ion-row>
+                      <ion-col style="margin-top:1vh" size="2"><ion-label >Device Properties</ion-label></ion-col>
+                      <ion-col  size="5">
+                          <p-selectButton [options]="devicePropertiesStaMob" [(ngModel)]="devicePropertiesStaMobType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
+                    </ion-col>
+                    <ion-col size="5" >
+                        <p-selectButton [options]="devicePropertiesInOUt" [(ngModel)]="devicePropertiesInOUtType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
+                  </ion-col>
+                    <!-- <label style="color: black;font-size:9px;position: absolute;margin-left: 18px;">Select Device Properties or not specified.</label> -->
+                  </ion-row>
+                  <p style="font-size:12px;margin-left:19vh">Select Device Properties or not specified.</p>
+                  <ion-row>
+                      <ion-col style="margin-top:1vh"><ion-label >QoS Class</ion-label></ion-col>
+                      <ion-col size="10">
+                          <p-selectButton [options]="qosClass" [(ngModel)]="qosClassType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
+                    </ion-col>
+                    <!-- <label style="color: black;font-size:9px;position: absolute;margin-left: 18px;">Select the QoS level for the device.</label> -->
+                  </ion-row>
+                  <p style="font-size:12px;margin-left:19vh">Select the QoS level for the device.</p>
+
+                  <ion-row>
+                      <ion-col style="margin-top:1vh"><ion-label >Uplink redundancy</ion-label></ion-col>
+                      <ion-col size="10">
+                          <p-selectButton [options]="uplinkType" [(ngModel)]="uplinkSelectType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
+                    </ion-col>
+                    <!-- <label style="color: black;font-size:9px;position: absolute;margin-left: 18px;">Select number of transmissions device will do for each uplink. Setting the count to 1 means no reduncancy.</label> -->
+                  </ion-row>
+                  <p style="font-size:12px;margin-left:19vh">Select number of transmissions device will do for each uplink. Setting the count to 1 means no reduncancy.</p>
+                  <ion-row>
+                    <ion-col  style="margin-top:3vh"><ion-label >Allowed duty cycle</ion-label></ion-col>
+                    <ion-col size="9.5">
+                      <ion-card>
+                  
+                        <ion-input  clearInput="true" ></ion-input>
+                        <!-- [(ngModel)]="addDeviceID" -->
+                   
+                    </ion-card>
+                  </ion-col>
+                    </ion-row>
+                    <p style="font-size:12px;margin-left: 19vh;">Specify the maximum dutycycle in % the device is allowed. If it is exceeded the network try to enforce it. Optional.</p>
+                    <ion-row>
+                        <ion-col style="margin-top:3vh"><ion-label >Expected duty cycle</ion-label></ion-col>
+                        <ion-col size="9.5">
+                            <ion-card>
+                       
+                            <ion-input  clearInput="true" ></ion-input>
+                            <!-- [(ngModel)]="addDeviceID" -->
+                      
+                          </ion-card>
+                        </ion-col>
+                        </ion-row>
+                        <p style="font-size:12px;margin-left: 19vh;">Specify the expected average duty cycle. Optional.</p>
+                    </ion-grid>
+
+          </div>
+          <div *ngIf="!packetStorage">
+              <ion-grid>
+                  <ion-row>
+                    <ion-col  style="margin-top:3vh"><ion-label >Downlink Packet Expiry Time</ion-label></ion-col>
+                    <ion-col size="9">
+                      <ion-card>
+                  
+                        <ion-input  clearInput="true" ></ion-input>
+                        <!-- [(ngModel)]="addDeviceID" -->
+                   
+                      </ion-card>
+                    </ion-col>
+                    </ion-row>
+                    <p style="font-size:12px;margin-left: 20vh;">Time in hours that a downlink packet is stored in the persistent storage. After expiry the packet will be discarded regardless if the packet was sent or not, or if the applicaiton have seen the status of the packet.</p>
+                    <ion-row>
+                        <ion-col style="margin-top:3vh"><ion-label >Uplink Packet Expiry Time</ion-label></ion-col>
+                        <ion-col size="9">
+                            <ion-card>
+                       
+                            <ion-input  clearInput="true" ></ion-input>
+                            <!-- [(ngModel)]="addDeviceID" -->
+                      
+                          </ion-card>
+                        </ion-col>
+                        </ion-row>
+                        <p style="font-size:12px;margin-left: 20vh;">Time in hours that a received packet will be stored in the persistent storage. After expiry the packet will be discarded regardless if the packet have been read or not.</p>
+                    </ion-grid>
+          </div>
+          <div *ngIf="!LoRaLocation">
+                <ion-grid>
+                <ion-row>
+                  <ion-col style="margin-top:1vh">
+                    <ion-label >LoRa Location</ion-label>
+                  </ion-col>
+                  <ion-col size="10" >
+                      <p-selectButton [options]="loRaLocationType" [(ngModel)]="LoRaLocationSelectedType" (onOptionClick)="LoRaLocation($event)" ></p-selectButton>
+                  </ion-col>
+                </ion-row>
+                <p style="font-size: 12px;margin-left: 19vh;">Select enable to make have the location estimated for this device.</p>
+              </ion-grid>
+          
+          </div>
+
+
+
+          <div  *ngIf="!Additional">
+           
+              <ion-grid>
+                  <ion-row>
+                    <ion-col  style="margin-top:3vh"><ion-label >Options</ion-label></ion-col>
+                    <ion-col size="11">
+                      <ion-card>
+                      
+                        <ion-input   style="background-color: white;" clearInput="true" ></ion-input>
+                        <!-- [(ngModel)]="addDeviceID" -->
+                    
+                    </ion-card>
+                  </ion-col>
+                    </ion-row>
+                    <p style=" font-size:12px;margin-left: 15vh;">The Options is a 4 byte hex value. Normally Left blank.</p>
+                    </ion-grid>
+                 
+                  </div>
+        <div style="padding-top:3vh;">
+              <ion-button style="color:black" size="small"  float-right fill="outline" >Cancel</ion-button>
             <ion-button size="small"  float-right >OK</ion-button>
            </div>
            

@@ -5,7 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'add-device-modal',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {

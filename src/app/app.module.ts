@@ -18,10 +18,14 @@ import {DropdownModule} from 'primeng/primeng';
 
 
 @NgModule({
-  declarations: [AppComponent,ActionsComponent
+  declarations: [AppComponent,ActionsComponent,
+    AddDeviceModalPage,
+    AddDeviceWithoutProfilePage
 ],
   entryComponents: [
-    ActionsComponent
+    ActionsComponent,
+    AddDeviceModalPage,
+    AddDeviceWithoutProfilePage
   ],
 
   imports: [
