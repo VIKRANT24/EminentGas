@@ -16,6 +16,7 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import { AddDeviceWithoutProfilePage } from './add-device-without-profile/add-device-without-profile.page';
 import {DropdownModule} from 'primeng/primeng';
 import { AgGridModule } from 'ag-grid-angular';
+import {MultiSelectModule} from 'primeng/primeng';
 
 
 
@@ -35,7 +36,8 @@ import { AgGridModule } from 'ag-grid-angular';
     SelectButtonModule,
     DropdownModule,
     BrowserAnimationsModule,
-    AgGridModule
+    AgGridModule,
+    MultiSelectModule
    
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

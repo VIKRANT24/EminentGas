@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

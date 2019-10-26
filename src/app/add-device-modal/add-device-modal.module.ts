@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { AddDeviceModalPage } from './add-device-modal.page';
 import { DropdownModule } from 'primeng/dropdown';
-
+import {MultiSelectModule} from 'primeng/primeng';
 
 const routes: Routes = [
   {
@@ -23,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     SelectButtonModule,
     DropdownModule,
+    MultiSelectModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddDeviceModalPage]

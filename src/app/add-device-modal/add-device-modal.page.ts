@@ -23,6 +23,8 @@ export class AddDeviceModalPage implements OnInit {
   profile = false
   key = true
   additional = true
+  selectedkeyDevice:any=""
+  selectedkeyActivated:any=""
 
 
 
