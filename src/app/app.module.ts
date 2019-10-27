@@ -23,10 +23,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent,ActionsComponent
+  declarations: [AppComponent,ActionsComponent,
+    AddDeviceModalPage,
+    AddDeviceWithoutProfilePage
 ],
   entryComponents: [
-    ActionsComponent
+    ActionsComponent,
+    AddDeviceModalPage,
+    AddDeviceWithoutProfilePage
   ],
 
   imports: [

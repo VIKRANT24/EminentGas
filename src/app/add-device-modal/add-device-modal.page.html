@@ -25,7 +25,7 @@
              
               </ion-card>
 
-                <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                <ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
               </ion-row>
               <ion-row>
                   <ion-col style="padding-top: 27px;"><ion-label >Comment</ion-label></ion-col>
@@ -37,12 +37,16 @@
                 
                     </ion-card>
 
-                    <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                    <ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
                   </ion-row>
               </ion-grid>
               <div class="ui-fluid"  style="padding-top: 2vh;">
+<<<<<<< HEAD
+              <p-selectButton [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton>
+=======
               <!-- <p-selectButton tabindex [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton> -->
               <p-selectButton [options]="types" [(ngModel)]="selectedTypes" (onOptionClick)="onOptionClick($event)"></p-selectButton>
+>>>>>>> 82d2d6b7f3099422c882c7cb04e12e10ec2e188d
           </div>
 
           <div style="margin-top: 5vh; background-color: darkgrey;" *ngIf="!profile">
@@ -53,7 +57,7 @@
               <ion-col size="9">
                   <p-dropdown autowidth="false" [style]="{'width':'100%'}" [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a Profile" optionLabel="name" [showClear]="true"></p-dropdown>
               </ion-col>
-              <!-- <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;">Registered Device Class</ion-label> -->
+              <!-- <ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;">Registered Device Class</ion-label> -->
             </ion-row>
             <ion-row>
                 <ion-col >
@@ -63,34 +67,32 @@
 
                     <p-dropdown autowidth="false" [style]="{'width':'100%'}" [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a Profile" optionLabel="name" [showClear]="true"></p-dropdown>
                 </ion-col>
-                <!-- <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;">Registered Device Class</ion-label> -->
+                <!-- <ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;">Registered Device Class</ion-label> -->
               </ion-row>
             </div>
-            <div style="margin-top: 5vh; background-color: darkgrey;" *ngIf="!key">
+            <div style="margin-top: 5vh; background-color: darkgrey;height: 19vh;" *ngIf="!key">
                 <ion-row>
                     <ion-col >
                         <label>Device Class</label>
                     </ion-col>
                     <ion-col size="9">
                         <p-selectButton [options]="keysDevice" [(ngModel)]="selectedkeyDevice"></p-selectButton>
-                   
-                    <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">Supported Device Class</ion-label></ion-col>
+                   </ion-col>
                   </ion-row>
-                  <!-- <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;"></ion-label> -->
-                 
+                  <!-- <ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;"></ion-label> -->
+                 <ion-row><ion-label style="color:black; margin-left:18vh;font-size:11px">Supported Device Class</ion-label></ion-row>
                   <ion-row>
                       <ion-col >
                           <label>Activated</label>
                       </ion-col>
                       <ion-col size="9">
                           <p-selectButton [options]="keyActivated" [(ngModel)]="selectedkeyActivated"></p-selectButton>
-                    
-                      <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">Select Yes to allow the device to actively operate on the network. If a device not Activated, no data will be received from it and data cannot be sent to it.</ion-label></ion-col>
+                    </ion-col>
                     </ion-row>
-                    <!-- <ion-label style="color: red;font-size:8px;position: absolute;">Select Yes to allow the device to actively operate on the network. If a device not Activated, no data will be received from it and data cannot be sent to it.</ion-label> -->
+                   <ion-row><ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;">Select Yes to allow the device to actively operate on the network. If a device not Activated, no data will be received from it and data cannot be sent to it.</ion-label></ion-row>
                   </div>
             
-               <div style="margin-top: 5vh; background-color: darkgrey;" *ngIf="!additional">
+               <div style="margin-top: 5vh; background-color: darkgrey;height: 13vh;" *ngIf="!additional">
                   <ion-grid>
                       <ion-row>
                         <ion-col  style="padding-top: 27px;"><ion-label >Options</ion-label></ion-col>
@@ -102,13 +104,13 @@
                         
                         </ion-card>
           
-                          <ion-label style="color: red;font-size:8px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
+                          <ion-label style="color:black;font-size:11px;position: absolute;margin-left: 18px;">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>
                         </ion-row>
                         </ion-grid>
                       </div>
       <div style="padding-top:3vh">
-            <ion-button style="color:red" size="small"  float-right fill="outline" >Cancel</ion-button>
-          <ion-button size="small"  float-right >OK</ion-button>
+            <ion-button style="color:black" size="small"  float-right fill="outline" >Cancel</ion-button>
+          <ion-button size="small" style="background-color:gray;"  float-right >OK</ion-button>
          </div>
          
 

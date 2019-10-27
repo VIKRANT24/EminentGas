@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule,ToastController,NavController } from '@ionic/angular';
+import { IonicModule,ToastController,NavController, ModalController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
+import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
 //import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
 
 
 
@@ -13,7 +15,8 @@ import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 export class LoginPage implements OnInit {
   userid:any="";
   pwd:any="";
-  constructor(public toastController: ToastController,public navController: NavController) {
+ 
+  constructor(public toastController: ToastController,public navController: NavController,public modalController: ModalController) {
   }
 
   ngOnInit() {
@@ -61,6 +64,11 @@ export class LoginPage implements OnInit {
  
     }
    }
-   
-
+   async presentModal() {
+    const modal = await this.modalController.create({
+      component: AddDeviceWithoutProfilePage,
+      cssClass: 'my-custom-modal-css'
+    });
+    return await modal.present();
+  }
 }
