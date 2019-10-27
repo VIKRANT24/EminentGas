@@ -7,26 +7,84 @@ import { NavController, AlertController, ToastController } from '@ionic/angular'
   styleUrls: ['./admin-list.page.scss'],
 })
 export class AdminListPage implements OnInit {
-  cols: any[];
-  data: any[];
+  public gridApi;
+  public gridColumnApi;
+  
+  public columnDefs;
+  public defaultColDef;
+  public frameworkComponents;
+   rowData:any= [];
+   rowSelection:any="multiple";
+  
   constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController) { }
 
   ngOnInit() {
-    
-    this.cols = [
-      { field: 'SR No', header: 'SR No',width: '5%' },
-      {field: 'Client Name', header: 'Client Name',width: '9%' },
-      { field: 'Address', header: 'Address',width: '15%' },
-      { field: 'No Of ARMS', header: 'No Of ARMS',width: '5%' },
-      { field: 'Authorized Person', header: 'Authorized Person',width: '9%' },
-      {field: 'No Of Wings', header: 'No Of Wings' ,width: '5%'},
-      { field: 'No Of Flats', header: 'No Of Flats',width: '5%' },
-      { field: 'Project Name', header: 'Project Name' ,width: '9%'},
-      { field: 'Account Detail', header: 'Account Detail',width: '15%' },
-      {field: 'Email Id', header: 'Email Id',width: '14%' },
-      { field: 'Mobile No', header: 'Mobile No',width: '9%' }
-  ];
-this.data=[
+
+    this.columnDefs = [
+      {
+        headerName: "SR No",
+        field: "SRNo",
+        width: 170,
+      },
+      {
+        headerName: "Client Name",
+        field: "ClientName",
+        width: 170
+      },
+      {
+        headerName: "Address",
+        field: "Address",
+        width: 170
+      },
+      {
+        headerName: "No Of ARMS",
+        field: "ARMS",
+        width: 170
+      },
+      {
+        headerName: "Authorized Person",
+        field: "Person",
+        width: 170,
+       
+      },
+      {
+        headerName: "No Of Wings",
+        field: "Wings",
+        width: 170,
+       
+      },
+      {
+        headerName: "No Of Flats",
+        field: "Flats",
+        width: 170,
+        
+      },
+      {
+        headerName: "Project Name",
+        field: "pName",
+        width: 170,
+      
+      },
+      {
+        headerName: "Account Detail",
+        field: "aDetails",
+        width: 170,
+      },
+      {
+        headerName: "Email Id",
+        field: "email",
+        width: 170,
+      
+      },
+      {
+        headerName: "Mobile No",
+        field: "mobile",
+        width: 170,
+      filter:false
+      }
+    ];
+
+this.rowData=[
   {SRNo:'1',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
   {SRNo:'2',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
   {SRNo:'3',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
@@ -38,6 +96,7 @@ this.data=[
   {SRNo:'9',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
 
 ]
+
   }
 
   editAdmin(){
@@ -79,4 +138,34 @@ async deleteAdmin() {
     }
  
   }
+
+  async AlertConfirmDelete() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Do you want to delete this admin ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
+
+
+  
+
+
+ 

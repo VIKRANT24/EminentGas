@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController, ModalController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
+
 
 @Component({
   selector: 'app-login',
@@ -41,7 +44,7 @@ export class LoginPage implements OnInit {
     toast.present();
     }
     else{
- 
+    
      //error
      // const toast = await this.toastController.create({
      //   message: 'Your username or password was incorrect.',

@@ -23,9 +23,11 @@ export class AddDeviceModalPage implements OnInit {
   profile = false
   key = true
   additional = true
+  selectedkeyDevice:any=""
+  selectedkeyActivated:any=""
 
-
-
+ 
+  selectedTypes: string = 'Profiles';
   constructor(private modal:ModalController) { 
     this.selectedType = "Profiles"
 

@@ -10,20 +10,21 @@ import { ModalController } from '@ionic/angular';
 export class AddDeviceWithoutProfilePage implements OnInit {
   types: SelectItem[];
   loRaLocationType: SelectItem[]
-  selectedType :String
-  loRaLocationSelectedType:String
+  selectedType :any = 'Keys'
+  loRaLocationSelectedType:any
   activatedType:SelectItem[]
-  activatedSelectype:String
+  activatedSelectype:any
   devicePropertiesStaMob:SelectItem[]
   devicePropertiesInOUt:SelectItem[]
   qosClass:SelectItem[]
   DownlinkType:SelectItem[]
   registrationType:SelectItem[]
   uplinkType:SelectItem[]
-  devicePropertiesStaMobType:String
-  devicePropertiesInOUtType:String
-  qosClassType:String
-  uplinkSelectType:String
+  devicePropertiesStaMobType:any
+  devicePropertiesInOUtType:any
+  qosClassType:any
+  uplinkSelectType:any
+  MacVersion: SelectItem[]
   keys = false
   QoS =true
 packetStorage =true
@@ -31,7 +32,7 @@ LoRaParameters =true
 LoRaLocation =true
 Additional =true
   constructor(private modal:ModalController) { 
-    this.selectedType = "Keys"
+    this.selectedType = 'Keys'
     this.loRaLocationSelectedType = "Disable"
     this.types = [
       {label: 'Keys', value: 'Keys'},
@@ -83,6 +84,11 @@ this.uplinkType = [
   {label:'4' , value: '4'},
   {label:'5' , value: '5'},
   {label:'6' , value: '6'}
+]
+
+this.MacVersion = [
+  {label:'Rev A' , value: 'revA'},
+  {label:'Rev B' , value: 'revB'}
 ]
   }
 

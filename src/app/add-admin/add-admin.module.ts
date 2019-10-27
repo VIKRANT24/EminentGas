@@ -13,6 +13,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {MultiSelectModule} from 'primeng/primeng';
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
     MessagesModule,
     MessageModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MultiSelectModule
   ],
   declarations: [AddAdminPage]
 })

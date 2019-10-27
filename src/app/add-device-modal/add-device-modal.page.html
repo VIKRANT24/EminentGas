@@ -41,7 +41,12 @@
                   </ion-row>
               </ion-grid>
               <div class="ui-fluid"  style="padding-top: 2vh;">
+<<<<<<< HEAD
               <p-selectButton [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton>
+=======
+              <!-- <p-selectButton tabindex [options]="types" [(ngModel)]="selectedType" (onOptionClick)="onOptionClick($event)" ></p-selectButton> -->
+              <p-selectButton [options]="types" [(ngModel)]="selectedTypes" (onOptionClick)="onOptionClick($event)"></p-selectButton>
+>>>>>>> 82d2d6b7f3099422c882c7cb04e12e10ec2e188d
           </div>
 
           <div style="margin-top: 5vh; background-color: darkgrey;" *ngIf="!profile">
