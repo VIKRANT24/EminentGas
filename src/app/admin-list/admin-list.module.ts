@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AdminListPage } from './admin-list.page';
+import { AddAdminPage } from '../add-admin/add-admin.page';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: '',
     component: AdminListPage
+  },
+  {
+    path: '',
+    component: AddAdminPage
   }
 ];
 
@@ -29,6 +34,6 @@ const routes: Routes = [
     AgGridModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdminListPage]
+  declarations: [AdminListPage,AddAdminPage]
 })
 export class AdminListPageModule {}

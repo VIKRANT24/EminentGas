@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController, ToastController } from '@ionic/angular';
+import { Component, OnInit,ViewChild} from '@angular/core';
+import { NavController, AlertController, ToastController, ModalController, } from '@ionic/angular';
+import { AddAdminPage } from '../add-admin/add-admin.page';
+import { FirebaseService } from '../services/firebase.service';
+import { AgGridAngular } from 'ag-grid-angular';
 
 @Component({
   selector: 'app-admin-list',
@@ -7,95 +10,104 @@ import { NavController, AlertController, ToastController } from '@ionic/angular'
   styleUrls: ['./admin-list.page.scss'],
 })
 export class AdminListPage implements OnInit {
+ // @ViewChild('agGrid',{static: false}) agGrid: AgGridAngular;
+
+
   public gridApi;
   public gridColumnApi;
   
   public columnDefs;
   public defaultColDef;
   public frameworkComponents;
-   rowData:any= [];
+   rowData1:any=[]; 
+   rowData:any=[]; 
    rowSelection:any="multiple";
-  
-  constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController) { }
+   items: Array<any>;
+  constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService) { 
+ 
+
+  }
+
+
 
   ngOnInit() {
 
     this.columnDefs = [
-      {
-        headerName: "SR No",
-        field: "SRNo",
-        width: 170,
-      },
+      // {
+      //   headerName: "SR No",
+      //   field: "SRNo",
+      //   width: 100,
+      //   filter:false,
+      //   headerCheckboxSelection: true,
+      //   headerCheckboxSelectionFilteredOnly: true,
+      //   checkboxSelection: true
+      // },
       {
         headerName: "Client Name",
-        field: "ClientName",
-        width: 170
+        field: "client_name",
+        width: 170,
+        checkboxSelection: true
       },
       {
         headerName: "Address",
-        field: "Address",
-        width: 170
+        field: "address",
+        width: 170,
+        filter:false
       },
       {
         headerName: "No Of ARMS",
-        field: "ARMS",
-        width: 170
+        field: "no_of_arms",
+        width: 100,
+        filter:false
       },
       {
         headerName: "Authorized Person",
-        field: "Person",
+        field: "authorized_person",
         width: 170,
-       
+        filter:false
       },
       {
         headerName: "No Of Wings",
-        field: "Wings",
-        width: 170,
-       
+        field: "no_of_wings",
+        width: 100,
+        filter:false
       },
       {
         headerName: "No Of Flats",
-        field: "Flats",
-        width: 170,
-        
+        field: "no_of_flats",
+        width: 100,
+        filter:false
       },
       {
         headerName: "Project Name",
-        field: "pName",
+        field: "project_name",
         width: 170,
       
       },
       {
         headerName: "Account Detail",
-        field: "aDetails",
+        field: "account_details",
         width: 170,
+        filter:false
       },
       {
         headerName: "Email Id",
-        field: "email",
+        field: "email_id",
         width: 170,
-      
       },
       {
         headerName: "Mobile No",
         field: "mobile",
         width: 170,
-      filter:false
       }
     ];
 
-this.rowData=[
-  {SRNo:'1',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'2',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'3',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'4',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'5',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'6',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'7',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'8',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
-  {SRNo:'9',ClientName:'Saurabh',Address:'Address1',ARMS:'2',Person:'Person1',Wings:'3',Flats:'7',pName:'demo',aDetails:'data',email:'saurabh@gmail.com',mobile:'8390784356'},
+    this.getData();
 
-]
+
+
+
+
 
   }
 
@@ -155,6 +167,18 @@ async deleteAdmin() {
           text: 'Yes',
           handler: () => {
             console.log('Confirm Okay');
+
+
+            var selected_row = this.gridApi.getSelectedRows()
+            this.firebaseService.deleteUser(selected_row[0].id)
+  .then(
+    res => {
+      //this.router.navigate(['/home']);
+    },
+    err => {
+      console.log(err);
+    }
+  )
           }
         }
       ]
@@ -162,6 +186,67 @@ async deleteAdmin() {
 
     await alert.present();
   }
+
+  async add()
+  {
+    const modal = await this.modalController.create({
+      component: AddAdminPage
+    });
+    return await modal.present();
+  }
+
+  getData(){
+    this.firebaseService.getUsers()
+    .subscribe(result => {
+     for(var i=0;i<result.length;i++)
+    {
+      var account_details = result[i].payload.doc.data()['account_details']
+      var address = result[i].payload.doc.data()['address']
+      var authorized_person = result[i].payload.doc.data()['authorized_person']
+      var client_name = result[i].payload.doc.data()['client_name']
+      var email_id = result[i].payload.doc.data()['email_id']
+      var mobile =result[i].payload.doc.data()['mobile']
+      var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+      var no_of_flats = result[i].payload.doc.data()['no_of_flats']
+      var no_of_wings = result[i].payload.doc.data()['no_of_wings']
+      var project_name =result[i].payload.doc.data()['project_name']
+      var id = result[i].payload.doc.id
+      this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+
+      
+    }
+
+    this.rowData = this.rowData1
+    })
+    
+   
+  }
+
+  onGridReady(params)
+  {
+    this.gridApi=params.api;
+    this.gridColumnApi=params.columnApi
+  }
+
+
+
+ async edit()
+  {
+    var selected_row = this.gridApi.getSelectedRows()
+
+    const modal = await this.modalController.create({
+      component: AddAdminPage,
+      componentProps: { 
+        data: selected_row,
+      }
+    });
+    return await modal.present();
+  
+    
+  }
+
+ 
+  
 }
 
 

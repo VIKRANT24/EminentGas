@@ -1,24 +1,43 @@
 import { Component } from '@angular/core';
-
+import * as firebase from 'firebase';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClient } from '@angular/common/http';
 
+// const config = {
+//   apiKey: "AIzaSyCxk372bpVybPuj_5xKrB9Xy_vTD93REd4",
+//   authDomain: "eminent-gas-tech.firebaseapp.com",
+//   databaseURL: "https://eminent-gas-tech.firebaseio.com",
+//   projectId: "eminent-gas-tech",
+//   storageBucket: "eminent-gas-tech.appspot.com",
+// };
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
+
 export class AppComponent {
+ 
 information:any[];
 automaticClose = false;
-constructor(private httpData:HttpClient){
+constructor(private httpData:HttpClient,public platform:Platform,public statusBar:StatusBar,public splashScreen:SplashScreen){
 this.httpData.get('assets/menuItem.json').subscribe(res => {
   this.information =res['items'];
   this.information[0].open =false;
+  this.initializeApp();
 });
 }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+   // firebase.initializeApp(config);
+  }
+
 toggleSection(index){
 this.information[index].open= !this.information[index].open;
 if(this.information && this.information[index].open){
@@ -28,6 +47,8 @@ if(this.information && this.information[index].open){
 
 }
 }
+
+
 toggleItem(index,childIndex){
 alert(JSON.stringify( this.information[index].children[childIndex].name))
 }

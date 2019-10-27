@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
+//import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Component({
   selector: 'app-super-admin',
@@ -13,7 +13,7 @@ export class SuperAdminPage {
 
   userid:any="";
   pwd:any="";
-  constructor(public toastController: ToastController,public navController: NavController,private emailComposer: EmailComposer) {
+  constructor(public toastController: ToastController,public navController: NavController) {
   }
 
   ngOnInit() {

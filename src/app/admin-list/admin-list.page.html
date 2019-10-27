@@ -4,7 +4,7 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>
-        Devices
+        Admin List
       </ion-title>
      
     </ion-toolbar>
@@ -12,10 +12,10 @@
       
       <ion-content>
 
-        <span class="ui-float-label" style="margin-top: 2vh;margin-left: 1vh;">
+        <!-- <span class="ui-float-label" style="margin-top: 2vh;margin-left: 1vh;">
             <input id="float-input" type="text" size="30" pInputText> 
             <label for="float-input">Username</label>
-        </span>
+        </span> -->
 
         <ion-card>
       <ion-card-content>
@@ -25,11 +25,14 @@
           [columnDefs]="columnDefs"
           [rowData]="rowData"
           [animateRows]="true"
-          (gridReady)="onGridReady($event)"
+          [enableSorting]="true"
+          [animateRows]="true"
           [pagination]="true"
           [paginationPageSize]="50"
-          [floatingFilter]="false"
+          [enableFilter]="true"
+          [floatingFilter]="true"
           [suppressRowClickSelection]="true"
+          (gridReady)="onGridReady($event)"
          >
           </ag-grid-angular>
       </ion-card-content>
@@ -40,10 +43,10 @@
                 
             <ion-row>
               <ion-col>
-                  <ion-button  shape="round" color="shade" expand="full" ><ion-icon name="add"></ion-icon> Add Admin</ion-button>
+                  <ion-button  shape="round" color="shade" expand="full" (click)="add()"><ion-icon name="add" ></ion-icon> Add Admin</ion-button>
               </ion-col>
               <ion-col>
-                  <ion-button shape="round" expand="full" color="shade" ><ion-icon name="create"></ion-icon> Edit Admin</ion-button>
+                  <ion-button shape="round" expand="full" color="shade" (click)="edit()"><ion-icon name="create" ></ion-icon> Edit Admin</ion-button>
               </ion-col>
               <ion-col>
                   <ion-button shape="round" expand="full" color="shade" (click)="AlertConfirmDelete()" ><ion-icon name="trash"></ion-icon> Delete Admin</ion-button>
@@ -54,6 +57,8 @@
             
             </ion-row>
           </ion-grid>
+
+        
       </ion-content>
       
 
