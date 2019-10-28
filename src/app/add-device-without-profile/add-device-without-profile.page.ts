@@ -17,12 +17,18 @@ export class AddDeviceWithoutProfilePage implements OnInit {
   devicePropertiesStaMob:SelectItem[]
   devicePropertiesInOUt:SelectItem[]
   qosClass:SelectItem[]
+  deviceClass:SelectItem[]
+  fcntSize:SelectItem[]
   DownlinkType:SelectItem[]
   registrationType:SelectItem[]
   uplinkType:SelectItem[]
+  downSlotDelay:SelectItem[]
   devicePropertiesStaMobType:any
   devicePropertiesInOUtType:any
   qosClassType:any
+  deviceClassType:any
+  fcntSizeType:any
+  downSlotDelayType:any
   uplinkSelectType:any
   MacVersion: SelectItem[]
   keys = false
@@ -90,6 +96,24 @@ this.MacVersion = [
   {label:'Rev A' , value: 'revA'},
   {label:'Rev B' , value: 'revB'}
 ]
+this.deviceClass = [
+  {label:'A' , value: 'A'},
+{label:'B' , value: 'B'},
+{label:'C' , value: 'C'}
+]
+
+this.fcntSize = [
+  {label:'16-Bit' , value: '16bit'},
+{label:'32-Bit' , value: '32bit'}
+]
+this.downSlotDelay = [
+  {label:'1s', value: '1s'},
+  {label:'2s', value: '2s'},
+  {label:'3s', value: '3s'},
+  {label:'4s', value: '4s'},
+  {label:'5s', value: '5s'}
+]
+
   }
 
   ngOnInit() {
