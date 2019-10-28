@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { ModalController } from '@ionic/angular';
+import { Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-admin',
@@ -32,7 +33,7 @@ export class AddAdminPage implements OnInit {
   submitted: boolean;
 
   description: string;
-  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController) { }
+  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events) { }
 
   ngOnInit() {
     
@@ -72,6 +73,7 @@ create()
 	  res => {
 var data =  res
 console.log(data)
+this.events.publish('update_list');
 this.modalCtrl.dismiss();
 	  }
 	)
