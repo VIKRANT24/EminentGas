@@ -46,6 +46,8 @@ import { environment } from '../environments/environment';
     MultiSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    
+    
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
