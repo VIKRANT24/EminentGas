@@ -84,6 +84,7 @@ update()
   this.firebaseService.updateUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.account,this.email,this.mobile,this.id)
   .then(
     res => {
+      this.events.publish('update_list');
      // this.router.navigate(['/home']);
      this.modalCtrl.dismiss();
     }
