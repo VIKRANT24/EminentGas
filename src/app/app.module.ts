@@ -21,16 +21,17 @@ import {MultiSelectModule} from 'primeng/primeng';
 import { AngularFireModule, } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { AddDeviceModalPageModule } from './add-device-modal/add-device-modal.module';
 
 @NgModule({
   declarations: [AppComponent,ActionsComponent,
-    AddDeviceModalPage,
-    AddDeviceWithoutProfilePage
+    // AddDeviceModalPage,
+    // AddDeviceWithoutProfilePage
 ],
   entryComponents: [
     ActionsComponent,
-    AddDeviceModalPage,
-    AddDeviceWithoutProfilePage
+    // AddDeviceModalPage,
+    // AddDeviceWithoutProfilePage
   ],
 
   imports: [
@@ -44,6 +45,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     AgGridModule,
     MultiSelectModule,
+    AddDeviceModalPageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],

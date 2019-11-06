@@ -14,10 +14,14 @@ interface City {
 })
 
 export class AddDeviceModalPage implements OnInit {
-  types: SelectItem[];
+  addDeviceID:any = "";
+  comment:any;
   keysDevice: SelectItem[];
   keyActivated:SelectItem[];
-  selectedType:String
+  
+  selectedType = 'Profiles';
+
+  types: any[];  
   cities: City[];
   selectedCity: City;
   profile = false
@@ -25,11 +29,9 @@ export class AddDeviceModalPage implements OnInit {
   additional = true
   selectedkeyDevice:any=""
   selectedkeyActivated:any=""
-
- 
-  selectedTypes: string = 'Profiles';
+  option:any = ""
   constructor(private modal:ModalController) { 
-    this.selectedType = "Profiles"
+  
 
     this.cities = [
       {name: 'New York', code: 'NY'},
@@ -39,11 +41,7 @@ export class AddDeviceModalPage implements OnInit {
       {name: 'Paris', code: 'PRS'}
   ];
 
-    this.types = [
-      {label: 'Profiles', value: 'Profiles'},
-      {label: 'Keys', value: 'Keys'},
-      {label: 'Additional', value: 'Additional'}
-  ];
+ 
   this.keysDevice = [
     {label: 'A', value: 'A'},
     {label: 'B', value: 'B'},
@@ -60,6 +58,11 @@ this.keyActivated = [
   }
 
   ngOnInit() {
+    this.types = [
+      {label: 'Profiles', value: 'Profiles'},
+      {label: 'Keys', value: 'Keys'},
+      {label: 'Additional', value: 'Additional'}
+  ];
   }
 
   closeModal(){
@@ -85,6 +88,11 @@ else if(count == 1){
   this.additional = false
 }
 
+  }
+
+  finalCall(){
+
+   alert(this.selectedType)
   }
 
 }
