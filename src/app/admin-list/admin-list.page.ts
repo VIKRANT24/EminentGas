@@ -3,7 +3,7 @@ import { NavController, AlertController, ToastController, ModalController, } fro
 import { AddAdminPage } from '../add-admin/add-admin.page';
 import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
-
+import { Events } from '@ionic/angular';
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.page.html',
@@ -23,7 +23,7 @@ export class AdminListPage implements OnInit {
    rowData:any=[]; 
    rowSelection:any="multiple";
    items: Array<any>;
-  constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService) { 
+  constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
  
 
   }
@@ -31,6 +31,10 @@ export class AdminListPage implements OnInit {
 
 
   ngOnInit() {
+
+    this.events.subscribe('update_list', (data) => {
+      this.getData();
+    });
 
     this.columnDefs = [
       // {
@@ -174,6 +178,7 @@ async deleteAdmin() {
   .then(
     res => {
       //this.router.navigate(['/home']);
+      this.getData()
     },
     err => {
       console.log(err);
@@ -196,6 +201,8 @@ async deleteAdmin() {
   }
 
   getData(){
+    this.rowData1 = []
+    this.rowData = []
     this.firebaseService.getUsers()
     .subscribe(result => {
      for(var i=0;i<result.length;i++)

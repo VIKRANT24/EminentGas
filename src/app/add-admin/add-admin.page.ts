@@ -1,6 +1,11 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController,AlertController } from '@ionic/angular';
+import { Events } from '@ionic/angular';
+import { FirebaseDatabase } from '@angular/fire';
+
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-add-admin',
@@ -32,7 +37,7 @@ export class AddAdminPage implements OnInit {
   submitted: boolean;
 
   description: string;
-  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController) { }
+  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController) { }
 
   ngOnInit() {
     
@@ -72,9 +77,12 @@ create()
 	  res => {
 var data =  res
 console.log(data)
+this.events.publish('update_list');
 this.modalCtrl.dismiss();
 	  }
-	)
+  )
+  this.send_email(this.email)
+  this.success_msg()
 }
 
 update()
@@ -82,11 +90,58 @@ update()
   this.firebaseService.updateUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.account,this.email,this.mobile,this.id)
   .then(
     res => {
+      this.events.publish('update_list');
      // this.router.navigate(['/home']);
      this.modalCtrl.dismiss();
+     this.update_msg()
     }
   )
 }
 
+send_email(email)
+{
+  var headers = new Headers();
+  headers.append("Accept", 'application/json');
+  headers.append('Content-Type', 'application/json' );
+  //const requestOptions = new RequestOptions({ headers: headers });
 
+  let postData = {"lib_version":"2.3.2",
+  "user_id":"user_XzQoUSMjq7kwY5ATSk6Ns",
+  "service_id":"vinitarane0731_gmail_com",
+  "template_id":"template_Gl1QX8GU",
+  "template_params":{"reply_to":this.email,"from_name":"Eminent Gas Tech","to_name": this.client, "message_html":'<p>Your account information is as follows:</p> <p>----------------------------------------------------</p> <p>Username : '+this.email+'</p> <p>Password : Abc@123</p> <p>----------------------------------------------------</p>',}}
+
+  this.http.post("https://api.emailjs.com/api/v1.0/email/send", postData)
+    .subscribe(data => {
+    
+     }, error => {
+      console.log(error);
+    });
 }
+
+async success_msg()
+{
+  const alert = await this.alertController.create({
+    header: 'Eminent Gas Tech',
+    message: 'Admin has been created successfully and credentials has been sent through email.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+
+async update_msg()
+{
+  const alert = await this.alertController.create({
+    header: 'Eminent Gas Tech',
+    message: 'Admin has been updated successfully.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+  
+}
+
+
+

@@ -48,6 +48,8 @@ import { AddDeviceModalPageModule } from './add-device-modal/add-device-modal.mo
     AddDeviceModalPageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    
+    
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
