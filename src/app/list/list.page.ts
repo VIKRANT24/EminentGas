@@ -130,6 +130,7 @@ export class ListPage {
       {headerName: 'Actions',
        field: 'action', 
        width: 330,
+       filter: false,
        cellRendererFramework: CellCustomComponent},
        
     ];

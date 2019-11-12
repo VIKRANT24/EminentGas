@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { Route,Router } from '@angular/router';
+
+import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 @Component({
   selector: 'app-cell-custom',
   templateUrl: './cell-custom.component.html',
@@ -8,7 +11,7 @@ import { PopoverController } from '@ionic/angular';
 export class CellCustomComponent implements OnInit {
   data: any;
   params: any;
-  constructor(public popoverController: PopoverController) { }
+  constructor(public modalController: ModalController,public router:Router) { }
   
   agInit(params) {
   this.params = params;
@@ -24,20 +27,30 @@ export class CellCustomComponent implements OnInit {
   console.log(rowData);
 
 
-  const popover = await this.popoverController.create({
-    component: 'popover-example-page',
-    event: ev,
-    translucent: true
+  // const popover = await this.popoverController.create({
+  //   component: 'popover-example-page',
+  //   event: ev,
+  //   translucent: true
+  // });
+  // return await popover.present();
+
+  const modal = await this.modalController.create({
+    component: AddDeviceModalPage,
+    cssClass: 'my-custom-modal-css'
   });
-  return await popover.present();
+  return await modal.present();
   
   }
   
   viewRow() {
   let rowData = this.params;
   console.log(rowData);
+  localStorage.setItem("viewdevice",rowData.data.appeui)
+  this.router.navigateByUrl('/deviceactivity');
+  
   }
 
+ 
 
 
 
