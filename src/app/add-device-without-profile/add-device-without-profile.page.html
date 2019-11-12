@@ -1,4 +1,5 @@
-
+<!-- <ion-row></ion-row>
+<ion-row></ion-row> -->
 
 <ion-header>
     <ion-toolbar class="custom-toolbar">
@@ -200,7 +201,7 @@
                         <ion-col size="10">
                             <p-selectButton [options]="deviceClass" [(ngModel)]="deviceClassType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
                       </ion-col>
-                      <!-- <label style="color: black;font-size:9px;position: absolute;margin-left: 18px;">Select the QoS level for the device.</label> -->
+                    
                     </ion-row>
                     <p style="font-size: 12px;margin-left:15vh">Supported device class.</p>
                     <ion-row>
@@ -208,7 +209,7 @@
                         <ion-col size="10">
                             <p-selectButton [options]="fcntSize" [(ngModel)]="fcntSizeType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
                       </ion-col>
-                      <!-- <label style="color: black;font-size:9px;position: absolute;margin-left: 18px;">Select the QoS level for the device.</label> -->
+                     
                     </ion-row>
                     <p style="font-size: 12px;margin-left:15vh">Select size of FCNT.</p>
                     <ion-row>
@@ -216,7 +217,7 @@
                         <ion-col size="10">
                             <p-selectButton [options]="downSlotDelay" [(ngModel)]="downSlotDelayType" (onOptionClick)="ActivatedSelectType($event)" ></p-selectButton>
                       </ion-col>
-                      <!-- <label style="color: black;font-size:9px;position: absolute;margin-left: 18px;">Select the QoS level for the device.</label> -->
+                    
                     </ion-row>
                     <p style="font-size: 12px;margin-left:15vh">Select default delay from end of tranmission till the device listen for downlink. This parameter is only important for personalized devices.</p>
                     <ion-row>

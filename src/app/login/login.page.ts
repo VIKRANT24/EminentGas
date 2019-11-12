@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController, ModalController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
-//import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { FirebaseService } from '../services/firebase.service';
-import { Router } from '@angular/router';
+import { Routes } from '@angular/router';
+import { Route,Router } from '@angular/router';
 
+
+const routes: Routes = [
+
+  ];
 
 @Component({
   selector: 'app-login',
@@ -16,8 +20,10 @@ export class LoginPage implements OnInit {
   userid:any="";
   pwd:any="";
  
+
   constructor(public navCtrl:NavController,private router: Router,public firebaseService: FirebaseService,public toastController: ToastController,public navController: NavController,public modalController: ModalController) {
   }
+ 
 
   ngOnInit() {
   }
@@ -78,10 +84,14 @@ export class LoginPage implements OnInit {
     }
    }
    async presentModal() {
-    const modal = await this.modalController.create({
-      component: AddDeviceWithoutProfilePage,
-      cssClass: 'my-custom-modal-css'
-    });
-    return await modal.present();
-  }
+
+    // const modal = await this.modalController.create({
+    //   component: AddDeviceModalPage,
+    //   cssClass: 'my-custom-modal-css'
+    // });
+    // return await modal.present();
+
+
+   // this.route.navigateByUrl('/add-device-modal');
+}
 }

@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
+  // { 
+  //   path: 'add-device-modal',
+  //  loadChildren: () => import('./add-device-modal/add-device-modal.module').then(m => m.AddDeviceModalPageModule)  
+  // }, 
   { path: 'add-device-modal', loadChildren: './add-device-modal/add-device-modal.module#AddDeviceModalPageModule' },
   { path: 'super-admin', loadChildren: './super-admin/super-admin.module#SuperAdminPageModule' },
   { path: 'menu-page', loadChildren: './menu-page/menu-page.module#MenuPagePageModule' },

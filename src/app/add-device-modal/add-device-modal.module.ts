@@ -11,7 +11,7 @@ import {MultiSelectModule} from 'primeng/primeng';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'AddDevice',
     component: AddDeviceModalPage
   }
 ];
