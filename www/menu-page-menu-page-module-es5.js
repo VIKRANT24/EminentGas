@@ -25,7 +25,7 @@ __export(__webpack_require__(/*! ./components/button/button */ "./node_modules/p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title style=\"text-align: center;\">Welcome To Menu Page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-card>\n                <div class=\"p-grid p-justify-center\" style=\"margin-top: 3vh;\">\n                    <div class=\"p-col-2\">\n                     \n                        <!-- <ion-button color=\"light\" size=\"small\"  expand=\"full\" (click)=\"addAdmin()\">Add Admin</ion-button> -->\n                        <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\"  (click)=\"addAdmin()\">Add Admin</ion-button>\n                    \n                    </div>\n                    <div class=\"p-col-2\">\n                     \n                        <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\" (click)=\"adminList()\">Admin List</ion-button>\n                      \n                    \n                    </div>\n                  \n                </div>\n              </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title style=\"text-align: center;\">Welcome To Menu Page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-card>\n                <div class=\"p-grid p-justify-center\" style=\"margin-top: 3vh;\">\n                    <div class=\"p-col-2\">\n                     \n                        <!-- <ion-button color=\"light\" size=\"small\"  expand=\"full\" (click)=\"addAdmin()\">Add Admin</ion-button> -->\n                        <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\"  (click)=\"addAdmin()\">Add Admin</ion-button>\n                    \n                    </div>\n                    <div class=\"p-col-2\">\n                     \n                        <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\" (click)=\"adminList()\">Admin List</ion-button>\n                      \n                    \n                    </div>\n                  \n                </div>\n              </ion-card>\n              <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\" [disabled]=\"check_fixed\" name=\"selectedType\"></p-selectButton>\n</ion-content>\n"
 
 /***/ }),
 
@@ -48,6 +48,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_page_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./menu-page.page */ "./src/app/menu-page/menu-page.page.ts");
 /* harmony import */ var primeng_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primeng/button */ "./node_modules/primeng/button.js");
 /* harmony import */ var primeng_button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(primeng_button__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -72,6 +75,7 @@ var MenuPagePageModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
                 primeng_button__WEBPACK_IMPORTED_MODULE_7__["ButtonModule"],
+                primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8__["SelectButtonModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
             ],
             declarations: [_menu_page_page__WEBPACK_IMPORTED_MODULE_6__["MenuPagePage"]]
@@ -114,6 +118,11 @@ __webpack_require__.r(__webpack_exports__);
 var MenuPagePage = /** @class */ (function () {
     function MenuPagePage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.types = [
+            { label: 'Paypal', value: 'PayPal', icon: 'fa fa-fw fa-cc-paypal' },
+            { label: 'Visa', value: 'Visa', icon: 'fa fa-fw fa-cc-visa' },
+            { label: 'MasterCard', value: 'MasterCard', icon: 'fa fa-fw fa-cc-mastercard' }
+        ];
     }
     MenuPagePage.prototype.ngOnInit = function () {
     };

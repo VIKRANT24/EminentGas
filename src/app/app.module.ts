@@ -21,16 +21,18 @@ import {MultiSelectModule} from 'primeng/primeng';
 import { AngularFireModule, } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-
+import { CellCustomComponent } from './cell-custom/cell-custom.component';
 @NgModule({
   declarations: [AppComponent,ActionsComponent,
     AddDeviceModalPage,
-    AddDeviceWithoutProfilePage
+    AddDeviceWithoutProfilePage,
+    CellCustomComponent
 ],
   entryComponents: [
     ActionsComponent,
     AddDeviceModalPage,
-    AddDeviceWithoutProfilePage
+    AddDeviceWithoutProfilePage,
+    CellCustomComponent
   ],
 
   imports: [
@@ -53,10 +55,8 @@ import { environment } from '../environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
-    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  
   bootstrap: [AppComponent]
 })
 export class AppModule {}

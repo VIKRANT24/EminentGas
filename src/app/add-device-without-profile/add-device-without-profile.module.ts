@@ -23,6 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MultiSelectModule
   ],
-  declarations: [AddDeviceWithoutProfilePage]
+  declarations: []
 })
 export class AddDeviceWithoutProfilePageModule {}

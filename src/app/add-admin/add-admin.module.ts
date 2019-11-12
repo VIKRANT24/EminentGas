@@ -37,6 +37,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MultiSelectModule
   ],
-  declarations: [AddAdminPage]
+  declarations: []
 })
 export class AddAdminPageModule {}

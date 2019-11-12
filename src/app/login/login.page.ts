@@ -3,8 +3,8 @@ import { IonicModule,ToastController,NavController, ModalController } from '@ion
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
 //import { EmailComposer } from '@ionic-native/email-composer/ngx';
-
-
+import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   userid:any="";
   pwd:any="";
  
-  constructor(public toastController: ToastController,public navController: NavController,public modalController: ModalController) {
+  constructor(public navCtrl:NavController,private router: Router,public firebaseService: FirebaseService,public toastController: ToastController,public navController: NavController,public modalController: ModalController) {
   }
 
   ngOnInit() {
@@ -47,20 +47,33 @@ export class LoginPage implements OnInit {
     }
     else{
     
-     //error
-     // const toast = await this.toastController.create({
-     //   message: 'Your username or password was incorrect.',
-     //   duration: 2000,
-     //   color:'danger'
-     // });
- 
-     //sucess
-   //   const toast = await this.toastController.create({
-   //     message: 'Your username or password was incorrect.',
-   //     duration: 2000,
-   //     color:'success'
-   //   });
-    //toast.present();
+      this.firebaseService.searchUsers(this.userid ,this.pwd).subscribe(async result => {
+        if(result.length>0)
+        {
+          const toast = await this.toastController.create({
+            message: 'Succesfully logged-in.',
+            duration: 2000,
+            color:'success',
+            position: 'top'
+          });
+         toast.present();
+         this.router.navigateByUrl('/list');
+         localStorage.setItem("username",this.userid)
+         localStorage.setItem("pwd",this.pwd)
+       // this.router.navigate([ 'list', { id: this.userid } ]);
+       // this.navCtrl.navigateForward('list',{'data':'dsd'})
+        }
+        else
+        {
+          const toast = await this.toastController.create({
+            message: 'Invalid Email or Password.',
+            duration: 2000,
+            color:'danger',
+            position: 'top'
+          });
+         toast.present();
+        }
+      })
  
     }
    }

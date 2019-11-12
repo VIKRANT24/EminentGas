@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController } from '@ionic/angular';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 //import { EmailComposer } from '@ionic-native/email-composer/ngx';
-
+import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-super-admin',
   templateUrl: './super-admin.page.html',
@@ -13,7 +14,7 @@ export class SuperAdminPage {
 
   userid:any="";
   pwd:any="";
-  constructor(public toastController: ToastController,public navController: NavController) {
+  constructor(public navCtrl:NavController,private router: Router,public toastController: ToastController,public navController: NavController,public firebaseService: FirebaseService) {
   }
 
   ngOnInit() {
@@ -43,22 +44,30 @@ export class SuperAdminPage {
     toast.present();
     }
     else{
-      this.navController.navigateForward('/admin-list')
+      this.firebaseService.searchUsers(this.userid ,this.pwd).subscribe(async result => {
+        if(result.length>0)
+        {
+          const toast = await this.toastController.create({
+            message: 'Succesfully logged-in.',
+            duration: 2000,
+            color:'success',
+            position: 'top'
+          });
+         toast.present();
+         this.router.navigateByUrl('/admin-list');
+        }
+        else
+        {
+          const toast = await this.toastController.create({
+            message: 'Invalid Email or Password.',
+            duration: 2000,
+            color:'danger',
+            position: 'top'
+          });
+         toast.present();
+        }
+      })
     
-     //error
-     // const toast = await this.toastController.create({
-     //   message: 'Your username or password was incorrect.',
-     //   duration: 2000,
-     //   color:'danger'
-     // });
- 
-     //sucess
-   //   const toast = await this.toastController.create({
-   //     message: 'Your username or password was incorrect.',
-   //     duration: 2000,
-   //     color:'success'
-   //   });
-    //toast.present();
  
     }
    }
