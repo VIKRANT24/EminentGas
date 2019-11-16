@@ -3,6 +3,11 @@ import  moment from 'moment';
 import data from '../../assets/company.json'
 import { FirebaseService } from '../services/firebase.service';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
+import { AgGridAngular } from 'ag-grid-angular';
+
+
+import { NavController, AlertController, ToastController, ModalController, } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-selectdevicemodal',
@@ -21,7 +26,8 @@ export class SelectdevicemodalPage {
    rowData:any=[]; 
   rowSelection:any="multiple";
   devices:any;
-   constructor(public firebaseService: FirebaseService) { 
+  display=false;
+   constructor(public firebaseService: FirebaseService, public toastController:ToastController, public modalCtrl:ModalController) { 
     var user = localStorage.getItem("username")
     var pwd = localStorage.getItem("pwd")
 
@@ -68,6 +74,7 @@ export class SelectdevicemodalPage {
 
   }
 
+
   getDevices(no_of_arms)
   {
    
@@ -105,6 +112,29 @@ export class SelectdevicemodalPage {
     })
   }
 
+  onGridReady(params)
+  {
+    this.gridApi=params.api;
+    this.gridColumnApi=params.columnApi
+  }
+
+  async onOkClick()
+  {
+    var selected_row = this.gridApi.getSelectedRows()
+
+    if(selected_row.length==0)
+    {
+      this.display=true
+    }
+    else
+    {
+      this.display=false
+    }
+
+   
+  
+    
+  }
 }
 
 
