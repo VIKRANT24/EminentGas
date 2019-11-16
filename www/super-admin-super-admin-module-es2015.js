@@ -11,6 +11,91 @@ module.exports = "\n<head>\n  <meta charset=\"utf-8\" />\n  <title>Ionic App</ti
 
 /***/ }),
 
+/***/ "./src/app/services/firebase.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/firebase.service.ts ***!
+  \**********************************************/
+/*! exports provided: FirebaseService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseService", function() { return FirebaseService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+
+
+
+let FirebaseService = class FirebaseService {
+    constructor(db) {
+        this.db = db;
+    }
+    getAvatars() {
+        return this.db.collection('/avatar').valueChanges();
+    }
+    getUser(userKey) {
+        return this.db.collection('users').doc(userKey).snapshotChanges();
+    }
+    updateUser(client, address, arm, person, wings, flats, project, account, email, mobile, id) {
+        // value.nameToSearch = value.name.toLowerCase();
+        return this.db.collection('Admin').doc(id).set({
+            account_details: account,
+            address: address,
+            authorized_person: person,
+            client_name: client,
+            email_id: email, mobile,
+            no_of_arms: arm,
+            no_of_flats: flats,
+            no_of_wings: wings,
+            project_name: project,
+            pwd: 'Abc@123'
+        });
+    }
+    deleteUser(userKey) {
+        return this.db.collection('Admin').doc(userKey).delete();
+    }
+    getUsers() {
+        return this.db.collection('Admin').snapshotChanges();
+    }
+    getDevices() {
+        return this.db.collection('Devices').snapshotChanges();
+    }
+    searchUsers(email, pwd) {
+        return this.db.collection('Admin', ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges();
+    }
+    searchUsersByAge(value) {
+        return this.db.collection('users', ref => ref.orderBy('age').startAt(value)).snapshotChanges();
+    }
+    createUser(client, address, arm, person, wings, flats, project, account, email, mobile) {
+        return this.db.collection('Admin').add({
+            account_details: account,
+            address: address,
+            authorized_person: person,
+            client_name: client,
+            email_id: email, mobile,
+            no_of_arms: arm,
+            no_of_flats: flats,
+            no_of_wings: wings,
+            project_name: project,
+            pwd: 'Abc@123'
+        });
+    }
+};
+FirebaseService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+], FirebaseService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/super-admin/super-admin.module.ts":
 /*!***************************************************!*\
   !*** ./src/app/super-admin/super-admin.module.ts ***!
@@ -83,14 +168,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 
 
 
 //import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
+
 let SuperAdminPage = class SuperAdminPage {
-    constructor(toastController, navController) {
+    constructor(navCtrl, router, toastController, navController, firebaseService) {
+        this.navCtrl = navCtrl;
+        this.router = router;
         this.toastController = toastController;
         this.navController = navController;
+        this.firebaseService = firebaseService;
         this.userid = "";
         this.pwd = "";
     }
@@ -117,27 +209,37 @@ let SuperAdminPage = class SuperAdminPage {
                 toast.present();
             }
             else {
-                this.navController.navigateForward('/admin-list');
-                //error
-                // const toast = await this.toastController.create({
-                //   message: 'Your username or password was incorrect.',
-                //   duration: 2000,
-                //   color:'danger'
-                // });
-                //sucess
-                //   const toast = await this.toastController.create({
-                //     message: 'Your username or password was incorrect.',
-                //     duration: 2000,
-                //     color:'success'
-                //   });
-                //toast.present();
+                this.firebaseService.searchUsers(this.userid, this.pwd).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+                    if (result.length > 0) {
+                        const toast = yield this.toastController.create({
+                            message: 'Succesfully logged-in.',
+                            duration: 2000,
+                            color: 'success',
+                            position: 'top'
+                        });
+                        toast.present();
+                        this.router.navigateByUrl('/admin-list');
+                    }
+                    else {
+                        const toast = yield this.toastController.create({
+                            message: 'Invalid Email or Password.',
+                            duration: 2000,
+                            color: 'danger',
+                            position: 'top'
+                        });
+                        toast.present();
+                    }
+                }));
             }
         });
     }
 };
 SuperAdminPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
+    { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"] }
 ];
 SuperAdminPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -145,7 +247,7 @@ SuperAdminPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./super-admin.page.html */ "./node_modules/raw-loader/index.js!./src/app/super-admin/super-admin.page.html"),
         styles: [__webpack_require__(/*! ./super-admin.page.scss */ "./src/app/super-admin/super-admin.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"]])
 ], SuperAdminPage);
 
 

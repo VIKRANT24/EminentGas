@@ -176,7 +176,7 @@ export class ListPage {
         var expiry_time_downlink =result[i].payload.doc.data()['expiry_time_downlink']
        // var last_reception = moment(result[i].payload.doc.data()['last_reception'].toInt()).format("DD-MM-YYYY h:mm:ss");
        var date_data = result[i].payload.doc.data()['last_reception']
-       var last_reception = moment(11111).format("DD-MM-YYYY h:mm:ss")
+       var last_reception = moment(date_data).format("DD/MM/YYYY h:mm:ss")
         var groups =result[i].payload.doc.data()['groups']
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']

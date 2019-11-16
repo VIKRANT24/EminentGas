@@ -3821,6 +3821,7 @@ let AdminListPage = class AdminListPage {
         this.rowData1 = [];
         this.rowData = [];
         this.rowSelection = "multiple";
+        this.getData();
     }
     ngOnInit() {
         this.events.subscribe('update_list', (data) => {
@@ -3894,7 +3895,6 @@ let AdminListPage = class AdminListPage {
                 width: 170,
             }
         ];
-        this.getData();
     }
     editAdmin() {
         this.navCtrl.navigateForward('/edit-admin');
