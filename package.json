@@ -38,6 +38,7 @@
     "firebase": "^7.2.2",
     "font-awesome": "^4.7.0",
     "intersection-observer": "^0.7.0",
+    "moment": "^2.24.0",
     "primeflex": "^1.0.0",
     "primeicons": "^1.0.0",
     "primeng": "^7.1.3",

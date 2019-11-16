@@ -24,13 +24,15 @@ export class AdminListPage implements OnInit {
    rowSelection:any="multiple";
    items: Array<any>;
   constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
- 
+    this.getData();
 
   }
 
-
+ 
 
   ngOnInit() {
+
+    
 
     this.events.subscribe('update_list', (data) => {
       this.getData();
@@ -106,12 +108,7 @@ export class AdminListPage implements OnInit {
       }
     ];
 
-    this.getData();
-
-
-
-
-
+   
 
   }
 

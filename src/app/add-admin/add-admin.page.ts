@@ -3,7 +3,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { ModalController,AlertController } from '@ionic/angular';
 import { Events } from '@ionic/angular';
 import { FirebaseDatabase } from '@angular/fire';
-
+import data from '../../assets/device.json'
 import { HttpClient } from '@angular/common/http';
 
 
@@ -30,6 +30,7 @@ export class AddAdminPage implements OnInit {
   create_show:boolean=false
   update_show:boolean=false
   @Input() data: any;
+  arms:any=[];
 
  
 
@@ -37,7 +38,10 @@ export class AddAdminPage implements OnInit {
   submitted: boolean;
 
   description: string;
-  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController) { }
+  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController) { 
+    this.arms = data;
+    console.log(this.arm)
+  }
 
   ngOnInit() {
     
@@ -83,6 +87,8 @@ this.modalCtrl.dismiss();
   )
   this.send_email(this.email)
   this.success_msg()
+
+
 }
 
 update()

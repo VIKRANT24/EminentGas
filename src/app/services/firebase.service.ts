@@ -15,6 +15,7 @@ export class FirebaseService {
   getUser(userKey){
     return this.db.collection('users').doc(userKey).snapshotChanges();
   }
+  
 
   updateUser(client,address,arm,person,wings,flats,project,account,email,mobile,id){
    // value.nameToSearch = value.name.toLowerCase();
@@ -27,7 +28,8 @@ export class FirebaseService {
       no_of_arms:arm,
       no_of_flats:flats,
       no_of_wings:wings,
-      project_name:project
+      project_name:project,
+      pwd:'Abc@123'
   }
     );
   }
@@ -40,10 +42,13 @@ export class FirebaseService {
     return this.db.collection('Admin').snapshotChanges();
   }
 
-  searchUsers(searchValue){
-    return this.db.collection('users',ref => ref.where('nameToSearch', '>=', searchValue)
-      .where('nameToSearch', '<=', searchValue + '\uf8ff'))
-      .snapshotChanges()
+  getDevices(){
+    return this.db.collection('Devices').snapshotChanges();
+  }
+
+  searchUsers(email,pwd){
+    return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges()
+  
   }
 
   searchUsersByAge(value){
@@ -61,7 +66,8 @@ export class FirebaseService {
         no_of_arms:arm,
         no_of_flats:flats,
         no_of_wings:wings,
-        project_name:project
+        project_name:project,
+        pwd:'Abc@123'
     });
   }
 }

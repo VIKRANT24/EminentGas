@@ -71,7 +71,7 @@ var AddDeviceModalPageModule = /** @class */ (function () {
                 primeng_primeng__WEBPACK_IMPORTED_MODULE_9__["MultiSelectModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
             ],
-            declarations: [_add_device_modal_page__WEBPACK_IMPORTED_MODULE_7__["AddDeviceModalPage"]]
+            declarations: []
         })
     ], AddDeviceModalPageModule);
     return AddDeviceModalPageModule;

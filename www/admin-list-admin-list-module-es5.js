@@ -3704,7 +3704,7 @@ __export(__webpack_require__(/*! ./components/table/table */ "./node_modules/pri
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <ion-content>\n\n    <ion-header >\n            <ion-toolbar class=\"custom-toolbar\">\n              <ion-buttons slot=\"start\">\n                <ion-menu-button></ion-menu-button>\n              </ion-buttons>\n              <ion-title style=\"text-align: center;\">\n                Admin List\n              </ion-title>\n             \n            </ion-toolbar>\n          </ion-header>\n\n                     \n                            <ion-card>\n                                    <div class=\"p-grid p-justify-start\">\n                                        <div class=\"p-col-2\">\n                                            <input type=\"text\" pInputText placeholder=\"Keyword\">         \n                                        \n                                        </div>\n                                        <div class=\"p-col-2\">\n                                         \n                                                <button  type=\"button\" (click)=\"toggleDisabled()\" pButton label=\"Search\"></button>\n                                          \n                                          </div>\n                                      </div>\n                                  </ion-card>\n       \n          <p-table [columns]=\"cols\" [value]=\"data\" [resizableColumns]=\"true\">\n                <ng-template pTemplate=\"colgroup\" let-columns>\n                        <colgroup>\n                            <col *ngFor=\"let col of columns\" [style.width]=\"col.width\">\n                        </colgroup>\n                    </ng-template>\n              <ng-template pTemplate=\"header\">\n                  <tr>\n                      <th>SR No</th>\n                      <th>Client Name</th>\n                      <th>Address</th>\n                      <th>No Of ARMS</th>\n                      <th>Authorized Person</th>\n                      <th>No Of Wings</th>\n                      <th>No Of Flats</th>\n                      <th>Project Name</th>\n                      <th>Account Detail</th>\n                      <th>Email Id</th>\n                      <th>Mobile No</th>\n            \n                  </tr>\n              </ng-template>\n              <ng-template pTemplate=\"body\" let-data>\n                  <tr>\n                      <td>{{data.SRNo}}</td>\n                      <td>{{data.ClientName}}</td>\n                      <td>{{data.Address}}</td>\n                      <td>{{data.ARMS}}</td>\n                      <td>{{data.Person}}</td>\n                      <td>{{data.Wings}}</td>\n                      <td>{{data.Flats}}</td>\n                      <td>{{data.pName}}</td>\n                      <td>{{data.aDetails}}</td>\n                      <td>{{data.email}}</td>\n                      <td>{{data.mobile}}</td>\n                     \n                  </tr>\n              </ng-template>\n          </p-table>\n \n                <div class=\"p-grid p-justify-center\" style=\"margin-top: 3vh;\">\n                    <div class=\"p-col-2\">\n                     \n                            <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\"(click)=\"viewAdmin()\">View</ion-button>\n                      \n                    \n                    </div>\n                    <div class=\"p-col-2\">\n                     \n                            <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\"(click)=\"editAdmin()\">Edit Admin</ion-button>\n                      \n                    \n                    </div>\n                    <div class=\"p-col-2\"  p-justify-left>\n                            <ion-button size=\"large\" color=\"shade\"  type=\"submit\"  expand=\"block\"(click)=\"deleteAdmin()\">Delete Admin</ion-button>\n                    </div>\n                   \n                </div>\n           \n</ion-content>\n \n"
+module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Admin List\n      </ion-title>\n     \n    </ion-toolbar>\n  </ion-header>\n      \n      <ion-content>\n\n        <!-- <span class=\"ui-float-label\" style=\"margin-top: 2vh;margin-left: 1vh;\">\n            <input id=\"float-input\" type=\"text\" size=\"30\" pInputText> \n            <label for=\"float-input\">Username</label>\n        </span> -->\n\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 400px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [animateRows]=\"true\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          (gridReady)=\"onGridReady($event)\"\n         >\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n\n          <ion-grid>\n                \n            <ion-row>\n              <ion-col>\n                  <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"add()\"><ion-icon name=\"add\" ></ion-icon> Add Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"edit()\"><ion-icon name=\"create\" ></ion-icon> Edit Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"AlertConfirmDelete()\" ><ion-icon name=\"trash\"></ion-icon> Delete Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" ><ion-icon name=\"add\"></ion-icon> View</ion-button>\n            </ion-col>\n            \n            </ion-row>\n          </ion-grid>\n\n        \n      </ion-content>\n      \n\n \n "
 
 /***/ }),
 
@@ -3725,12 +3725,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _admin_list_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin-list.page */ "./src/app/admin-list/admin-list.page.ts");
-/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primeng/table */ "./node_modules/primeng/table.js");
-/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(primeng_table__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/inputtext */ "./node_modules/primeng/inputtext.js");
-/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_inputtext__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeng/dialog */ "./node_modules/primeng/dialog.js");
-/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(primeng_dialog__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../add-admin/add-admin.page */ "./src/app/add-admin/add-admin.page.ts");
+/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/table */ "./node_modules/primeng/table.js");
+/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_table__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeng/inputtext */ "./node_modules/primeng/inputtext.js");
+/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(primeng_inputtext__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primeng/dialog */ "./node_modules/primeng/dialog.js");
+/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(primeng_dialog__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_11__);
+
+
 
 
 
@@ -3745,6 +3750,10 @@ var routes = [
     {
         path: '',
         component: _admin_list_page__WEBPACK_IMPORTED_MODULE_6__["AdminListPage"]
+    },
+    {
+        path: '',
+        component: _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_7__["AddAdminPage"]
     }
 ];
 var AdminListPageModule = /** @class */ (function () {
@@ -3756,12 +3765,13 @@ var AdminListPageModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
-                primeng_table__WEBPACK_IMPORTED_MODULE_7__["TableModule"],
-                primeng_inputtext__WEBPACK_IMPORTED_MODULE_8__["InputTextModule"],
-                primeng_dialog__WEBPACK_IMPORTED_MODULE_9__["DialogModule"],
+                primeng_table__WEBPACK_IMPORTED_MODULE_8__["TableModule"],
+                primeng_inputtext__WEBPACK_IMPORTED_MODULE_9__["InputTextModule"],
+                primeng_dialog__WEBPACK_IMPORTED_MODULE_10__["DialogModule"],
+                ag_grid_angular__WEBPACK_IMPORTED_MODULE_11__["AgGridModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
             ],
-            declarations: [_admin_list_page__WEBPACK_IMPORTED_MODULE_6__["AdminListPage"]]
+            declarations: [_admin_list_page__WEBPACK_IMPORTED_MODULE_6__["AdminListPage"], _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_7__["AddAdminPage"]]
         })
     ], AdminListPageModule);
     return AdminListPageModule;
@@ -3778,7 +3788,7 @@ var AdminListPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header_style {\n  font-size: 5vh;\n}\n\n.sub_header_style {\n  font-size: 2vh;\n  padding-left: 5vh;\n}\n\nbody {\n  cursor: url(\"http://ionicframework.com/img/finger.png\"), auto;\n}\n\n.header .col {\n  background-color: lightgrey;\n}\n\n.col {\n  border: solid 1px grey;\n  border-bottom-style: none;\n  border-right-style: none;\n}\n\n.col:last-child {\n  border-right: solid 1px grey;\n}\n\n.row:last-child .col {\n  border-bottom: solid 1px grey;\n}\n\n.subtitle {\n  position: absolute;\n  top: 2vw;\n  left: 7.8vh;\n  font-size: 66%;\n}\n\nion-button {\n  border-radius: 10px;\n  background-color: #d32715 !important;\n  --box-shadow:none;\n  height: 4vh;\n  margin-top: 3vw;\n  margin-bottom: 3vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQUE7QUNDSjs7QURDQTtFQUNJLGNBQUE7RUFDQSxpQkFBQTtBQ0VKOztBRENBO0VBQ0ksNkRBQUE7QUNFSjs7QURDQTtFQUNJLDJCQUFBO0FDRUo7O0FEQ0E7RUFDSSxzQkFBQTtFQUNBLHlCQUFBO0VBQ0Esd0JBQUE7QUNFSjs7QURDQTtFQUNJLDRCQUFBO0FDRUo7O0FEQ0E7RUFDSSw2QkFBQTtBQ0VKOztBREFBO0VBQ0ksa0JBQUE7RUFDQSxRQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7QUNHSjs7QURERTtFQUNFLG1CQUFBO0VBQ0Esb0NBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7QUNJSiIsImZpbGUiOiJzcmMvYXBwL2FkbWluLWxpc3QvYWRtaW4tbGlzdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyX3N0eWxle1xuICAgIGZvbnQtc2l6ZTogNXZoO1xufVxuLnN1Yl9oZWFkZXJfc3R5bGV7XG4gICAgZm9udC1zaXplOiAydmg7XG4gICAgcGFkZGluZy1sZWZ0OiA1dmg7XG59XG5cbmJvZHkge1xuICAgIGN1cnNvcjogdXJsKCdodHRwOi8vaW9uaWNmcmFtZXdvcmsuY29tL2ltZy9maW5nZXIucG5nJyksIGF1dG87XG59XG5cbi5oZWFkZXIgLmNvbCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjpsaWdodGdyZXk7XG59XG5cbi5jb2wge1xuICAgIGJvcmRlcjogc29saWQgMXB4IGdyZXk7XG4gICAgYm9yZGVyLWJvdHRvbS1zdHlsZTogbm9uZTtcbiAgICBib3JkZXItcmlnaHQtc3R5bGU6IG5vbmU7XG59XG5cbi5jb2w6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAxcHggZ3JleTtcbn1cblxuLnJvdzpsYXN0LWNoaWxkIC5jb2wge1xuICAgIGJvcmRlci1ib3R0b206IHNvbGlkIDFweCBncmV5O1xufVxuLnN1YnRpdGxlIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAydnc7XG4gICAgbGVmdDo3Ljh2aDtcbiAgICBmb250LXNpemU6IDY2JTtcbiAgfVxuICBpb24tYnV0dG9uIHtcbiAgICBib3JkZXItcmFkaXVzOjEwcHggO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNkMzI3MTUgIWltcG9ydGFudDtcbiAgICAtLWJveC1zaGFkb3c6bm9uZTtcbiAgICBoZWlnaHQ6IDR2aDtcbiAgICBtYXJnaW4tdG9wOiAzdnc7XG4gICAgbWFyZ2luLWJvdHRvbTogM3ZoO1xuICAgIFxuICAgIH0iLCIuaGVhZGVyX3N0eWxlIHtcbiAgZm9udC1zaXplOiA1dmg7XG59XG5cbi5zdWJfaGVhZGVyX3N0eWxlIHtcbiAgZm9udC1zaXplOiAydmg7XG4gIHBhZGRpbmctbGVmdDogNXZoO1xufVxuXG5ib2R5IHtcbiAgY3Vyc29yOiB1cmwoXCJodHRwOi8vaW9uaWNmcmFtZXdvcmsuY29tL2ltZy9maW5nZXIucG5nXCIpLCBhdXRvO1xufVxuXG4uaGVhZGVyIC5jb2wge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyZXk7XG59XG5cbi5jb2wge1xuICBib3JkZXI6IHNvbGlkIDFweCBncmV5O1xuICBib3JkZXItYm90dG9tLXN0eWxlOiBub25lO1xuICBib3JkZXItcmlnaHQtc3R5bGU6IG5vbmU7XG59XG5cbi5jb2w6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogc29saWQgMXB4IGdyZXk7XG59XG5cbi5yb3c6bGFzdC1jaGlsZCAuY29sIHtcbiAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4IGdyZXk7XG59XG5cbi5zdWJ0aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAydnc7XG4gIGxlZnQ6IDcuOHZoO1xuICBmb250LXNpemU6IDY2JTtcbn1cblxuaW9uLWJ1dHRvbiB7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNkMzI3MTUgIWltcG9ydGFudDtcbiAgLS1ib3gtc2hhZG93Om5vbmU7XG4gIGhlaWdodDogNHZoO1xuICBtYXJnaW4tdG9wOiAzdnc7XG4gIG1hcmdpbi1ib3R0b206IDN2aDtcbn0iXX0= */"
+module.exports = "ion-button {\n  border-radius: 50px;\n  background-color: #49c5b6 !important;\n  --box-shadow:none;\n  color: white;\n}\n\nion-toolbar {\n  --background: #2a3f54;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0VBQ0Esb0NBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURHSTtFQUNKLHFCQUFBO0VBQ0EsV0FBQTtBQ0FBIiwiZmlsZSI6InNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b24ge1xuICAgIGJvcmRlci1yYWRpdXM6NTBweCA7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzQ5YzViNiAhaW1wb3J0YW50O1xuICAgIC0tYm94LXNoYWRvdzpub25lO1xuICAgIGNvbG9yOndoaXRlXG4gICAgXG4gICAgfVxuXG4gICAgaW9uLXRvb2xiYXJ7XG4tLWJhY2tncm91bmQ6ICMyYTNmNTQ7XG5jb2xvcjojZmZmXG4gICAgfSIsImlvbi1idXR0b24ge1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDljNWI2ICFpbXBvcnRhbnQ7XG4gIC0tYm94LXNoYWRvdzpub25lO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiAjMmEzZjU0O1xuICBjb2xvcjogI2ZmZjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -3795,40 +3805,100 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-admin/add-admin.page */ "./src/app/add-admin/add-admin.page.ts");
+/* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
+
+
+
 
 
 
 var AdminListPage = /** @class */ (function () {
-    function AdminListPage(navCtrl, alertController, toastController) {
+    function AdminListPage(navCtrl, alertController, toastController, modalController, firebaseService, events) {
         this.navCtrl = navCtrl;
         this.alertController = alertController;
         this.toastController = toastController;
+        this.modalController = modalController;
+        this.firebaseService = firebaseService;
+        this.events = events;
+        this.rowData1 = [];
+        this.rowData = [];
+        this.rowSelection = "multiple";
     }
     AdminListPage.prototype.ngOnInit = function () {
-        this.cols = [
-            { field: 'SR No', header: 'SR No', width: '5%' },
-            { field: 'Client Name', header: 'Client Name', width: '9%' },
-            { field: 'Address', header: 'Address', width: '15%' },
-            { field: 'No Of ARMS', header: 'No Of ARMS', width: '5%' },
-            { field: 'Authorized Person', header: 'Authorized Person', width: '9%' },
-            { field: 'No Of Wings', header: 'No Of Wings', width: '5%' },
-            { field: 'No Of Flats', header: 'No Of Flats', width: '5%' },
-            { field: 'Project Name', header: 'Project Name', width: '9%' },
-            { field: 'Account Detail', header: 'Account Detail', width: '15%' },
-            { field: 'Email Id', header: 'Email Id', width: '14%' },
-            { field: 'Mobile No', header: 'Mobile No', width: '9%' }
+        var _this = this;
+        this.events.subscribe('update_list', function (data) {
+            _this.getData();
+        });
+        this.columnDefs = [
+            // {
+            //   headerName: "SR No",
+            //   field: "SRNo",
+            //   width: 100,
+            //   filter:false,
+            //   headerCheckboxSelection: true,
+            //   headerCheckboxSelectionFilteredOnly: true,
+            //   checkboxSelection: true
+            // },
+            {
+                headerName: "Client Name",
+                field: "client_name",
+                width: 170,
+                checkboxSelection: true
+            },
+            {
+                headerName: "Address",
+                field: "address",
+                width: 170,
+                filter: false
+            },
+            {
+                headerName: "No Of ARMS",
+                field: "no_of_arms",
+                width: 100,
+                filter: false
+            },
+            {
+                headerName: "Authorized Person",
+                field: "authorized_person",
+                width: 170,
+                filter: false
+            },
+            {
+                headerName: "No Of Wings",
+                field: "no_of_wings",
+                width: 100,
+                filter: false
+            },
+            {
+                headerName: "No Of Flats",
+                field: "no_of_flats",
+                width: 100,
+                filter: false
+            },
+            {
+                headerName: "Project Name",
+                field: "project_name",
+                width: 170,
+            },
+            {
+                headerName: "Account Detail",
+                field: "account_details",
+                width: 170,
+                filter: false
+            },
+            {
+                headerName: "Email Id",
+                field: "email_id",
+                width: 170,
+            },
+            {
+                headerName: "Mobile No",
+                field: "mobile",
+                width: 170,
+            }
         ];
-        this.data = [
-            { SRNo: '1', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '2', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '3', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '4', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '5', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '6', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '7', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '8', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-            { SRNo: '9', ClientName: 'Saurabh', Address: 'Address1', ARMS: '2', Person: 'Person1', Wings: '3', Flats: '7', pName: 'demo', aDetails: 'data', email: 'saurabh@gmail.com', mobile: '8390784356' },
-        ];
+        this.getData();
     };
     AdminListPage.prototype.editAdmin = function () {
         this.navCtrl.navigateForward('/edit-admin');
@@ -3891,10 +3961,120 @@ var AdminListPage = /** @class */ (function () {
             });
         });
     };
+    AdminListPage.prototype.AlertConfirmDelete = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: 'Confirm!',
+                            message: 'Do you want to delete this admin ?',
+                            buttons: [
+                                {
+                                    text: 'No',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function (blah) {
+                                        console.log('Confirm Cancel: blah');
+                                    }
+                                }, {
+                                    text: 'Yes',
+                                    handler: function () {
+                                        console.log('Confirm Okay');
+                                        var selected_row = _this.gridApi.getSelectedRows();
+                                        _this.firebaseService.deleteUser(selected_row[0].id)
+                                            .then(function (res) {
+                                            //this.router.navigate(['/home']);
+                                            _this.getData();
+                                        }, function (err) {
+                                            console.log(err);
+                                        });
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AdminListPage.prototype.add = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.modalController.create({
+                            component: _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__["AddAdminPage"]
+                        })];
+                    case 1:
+                        modal = _a.sent();
+                        return [4 /*yield*/, modal.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    AdminListPage.prototype.getData = function () {
+        var _this = this;
+        this.rowData1 = [];
+        this.rowData = [];
+        this.firebaseService.getUsers()
+            .subscribe(function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var account_details = result[i].payload.doc.data()['account_details'];
+                var address = result[i].payload.doc.data()['address'];
+                var authorized_person = result[i].payload.doc.data()['authorized_person'];
+                var client_name = result[i].payload.doc.data()['client_name'];
+                var email_id = result[i].payload.doc.data()['email_id'];
+                var mobile = result[i].payload.doc.data()['mobile'];
+                var no_of_arms = result[i].payload.doc.data()['no_of_arms'];
+                var no_of_flats = result[i].payload.doc.data()['no_of_flats'];
+                var no_of_wings = result[i].payload.doc.data()['no_of_wings'];
+                var project_name = result[i].payload.doc.data()['project_name'];
+                var id = result[i].payload.doc.id;
+                _this.rowData1.push({ 'account_details': account_details, 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id });
+            }
+            _this.rowData = _this.rowData1;
+        });
+    };
+    AdminListPage.prototype.onGridReady = function (params) {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+    };
+    AdminListPage.prototype.edit = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var selected_row, modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        selected_row = this.gridApi.getSelectedRows();
+                        return [4 /*yield*/, this.modalController.create({
+                                component: _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__["AddAdminPage"],
+                                componentProps: {
+                                    data: selected_row,
+                                }
+                            })];
+                    case 1:
+                        modal = _a.sent();
+                        return [4 /*yield*/, modal.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     AdminListPage.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+        { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] }
     ]; };
     AdminListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3902,7 +4082,7 @@ var AdminListPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./admin-list.page.html */ "./node_modules/raw-loader/index.js!./src/app/admin-list/admin-list.page.html"),
             styles: [__webpack_require__(/*! ./admin-list.page.scss */ "./src/app/admin-list/admin-list.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
     ], AdminListPage);
     return AdminListPage;
 }());

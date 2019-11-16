@@ -22,16 +22,18 @@ import { AngularFireModule, } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AddDeviceModalPageModule } from './add-device-modal/add-device-modal.module';
-
+import { CellCustomComponent } from './cell-custom/cell-custom.component';
 @NgModule({
   declarations: [AppComponent,ActionsComponent,
-    // AddDeviceModalPage,
-    // AddDeviceWithoutProfilePage
+    AddDeviceModalPage,
+    AddDeviceWithoutProfilePage,
+    CellCustomComponent
 ],
   entryComponents: [
     ActionsComponent,
-    // AddDeviceModalPage,
-    // AddDeviceWithoutProfilePage
+    AddDeviceModalPage,
+    AddDeviceWithoutProfilePage,
+    CellCustomComponent
   ],
 
   imports: [
@@ -55,10 +57,8 @@ import { AddDeviceModalPageModule } from './add-device-modal/add-device-modal.mo
   providers: [
     StatusBar,
     SplashScreen,
-    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  
   bootstrap: [AppComponent]
 })
 export class AppModule {}

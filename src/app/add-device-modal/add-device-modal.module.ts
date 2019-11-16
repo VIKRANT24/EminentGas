@@ -26,6 +26,6 @@ const routes: Routes = [
     MultiSelectModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddDeviceModalPage]
+  declarations: []
 })
 export class AddDeviceModalPageModule {}

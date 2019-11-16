@@ -14,9 +14,16 @@
                     <ion-item>
                         <ion-input placeholder="Address" style="margin-top:-10px;color:#666666;" [(ngModel)]="address"></ion-input>
                      </ion-item>
-                     <ion-item>
+                     <!-- <ion-item>
                         <ion-input placeholder="No of AMRS" style="margin-top:-10px;color:#666666;" [(ngModel)]="arm"></ion-input>
-                     </ion-item>
+                     </ion-item> -->
+                     <ion-item>
+                        <ion-label>No of AMRS</ion-label>
+                        <ion-select placeholder="Select ARM"  multiple="true" [(ngModel)]="arm">
+                          <ion-select-option  *ngFor="let device of arms">{{device.deveui}}</ion-select-option>
+                          
+                        </ion-select>
+                      </ion-item>
                      <ion-item>
                         <ion-input placeholder="Authorized Person" style="margin-top:-10px;color:#666666;" [(ngModel)]="person"></ion-input>
                      </ion-item>
