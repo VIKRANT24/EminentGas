@@ -85,13 +85,13 @@ export class LoginPage implements OnInit {
    }
    async presentModal() {
 
-    // const modal = await this.modalController.create({
-    //   component: AddDeviceModalPage,
-    //   cssClass: 'my-custom-modal-css'
-    // });
-    // return await modal.present();
+    const modal = await this.modalController.create({
+      component: AddDeviceModalPage,
+      cssClass: 'my-custom-modal-css'
+    });
+    return await modal.present();
 
 
-   this.router.navigateByUrl('/add-device-modal');
+   //this.route.navigateByUrl('/add-device-modal');
 }
 }

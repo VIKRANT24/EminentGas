@@ -25,13 +25,13 @@ import { AddDeviceModalPageModule } from './add-device-modal/add-device-modal.mo
 import { CellCustomComponent } from './cell-custom/cell-custom.component';
 @NgModule({
   declarations: [AppComponent,ActionsComponent,
-                     // AddDeviceModalPage,
+    AddDeviceModalPage,
     AddDeviceWithoutProfilePage,
     CellCustomComponent
 ],
   entryComponents: [
     ActionsComponent,
-   // AddDeviceModalPage,
+    AddDeviceModalPage,
     AddDeviceWithoutProfilePage,
     CellCustomComponent
   ],
@@ -47,7 +47,7 @@ import { CellCustomComponent } from './cell-custom/cell-custom.component';
     BrowserAnimationsModule,
     AgGridModule,
     MultiSelectModule,
-    //AddDeviceModalPageModule,
+    AddDeviceModalPageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     

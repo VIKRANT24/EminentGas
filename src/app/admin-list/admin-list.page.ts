@@ -4,6 +4,7 @@ import { AddAdminPage } from '../add-admin/add-admin.page';
 import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
+import { Route,Router } from '@angular/router';
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.page.html',
@@ -23,7 +24,7 @@ export class AdminListPage implements OnInit {
    rowData:any=[]; 
    rowSelection:any="multiple";
    items: Array<any>;
-  constructor(public navCtrl:NavController, public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
+  constructor(public navCtrl:NavController, private router: Router,public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
     this.getData();
 
   }
@@ -63,7 +64,7 @@ export class AdminListPage implements OnInit {
       {
         headerName: "No Of ARMS",
         field: "no_of_arms",
-        width: 100,
+        width: 150,
         filter:false
       },
       {
@@ -99,7 +100,7 @@ export class AdminListPage implements OnInit {
       {
         headerName: "Email Id",
         field: "email_id",
-        width: 170,
+        width: 200,
       },
       {
         headerName: "Mobile No",
@@ -166,21 +167,41 @@ async deleteAdmin() {
           }
         }, {
           text: 'Yes',
-          handler: () => {
+          handler: async () => {
             console.log('Confirm Okay');
 
 
             var selected_row = this.gridApi.getSelectedRows()
+           if(selected_row.length==0)
+   {
+      const toast = await this.toastController.create({
+        message: 'Please select Admin to delete.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
+   }
+    else
+   {
             this.firebaseService.deleteUser(selected_row[0].id)
   .then(
-    res => {
+    async res => {
       //this.router.navigate(['/home']);
       this.getData()
+      const toast = await this.toastController.create({
+        message: 'Admin has been deleted successfully.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
     },
     err => {
       console.log(err);
     }
   )
+         }
           }
         }
       ]
@@ -238,15 +259,57 @@ async deleteAdmin() {
   {
     var selected_row = this.gridApi.getSelectedRows()
 
-    const modal = await this.modalController.create({
-      component: AddAdminPage,
-      componentProps: { 
-        data: selected_row,
-      }
-    });
-    return await modal.present();
+    if(selected_row.length==0)
+    {
+      const toast = await this.toastController.create({
+        message: 'Please select Admin to edit.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
+    }
+    else
+    {
+      const modal = await this.modalController.create({
+        component: AddAdminPage,
+        componentProps: { 
+          data: selected_row,
+        }
+      });
+      return await modal.present();
+    }
+
+   
   
     
+  }
+
+  async logout()
+  {
+    const alert = await this.alertController.create({
+      header: 'Logout!',
+      message: 'Do you want to logout ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: async () => {
+          //  this.router.navigateByUrl('/login');
+          }
+        }
+      ]
+    });
+
+
+
+
   }
 
  
