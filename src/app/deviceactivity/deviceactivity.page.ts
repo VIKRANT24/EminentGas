@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { SelectdevicemodalPage } from '../selectdevicemodal/selectdevicemodal.page';
+
 
 @Component({
   selector: 'app-deviceactivity',
@@ -16,7 +19,7 @@ export class DeviceactivityPage implements OnInit {
   rowData1:any=[]; 
    rowData:any=[]; 
   rowSelection:any="multiple";
-  constructor() { 
+  constructor(public modalController: ModalController) { 
     this.device = localStorage.getItem("viewdevice")
     this.columnDefs = [
       {
@@ -81,5 +84,14 @@ export class DeviceactivityPage implements OnInit {
 
   ngOnInit() {
   }
+
+  async selectDevice() 
+    {
+      
+      const modal = await this.modalController.create({
+        component: SelectdevicemodalPage
+      });
+      return await modal.present();
+    }
 
 }

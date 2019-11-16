@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>
+      Select Devices
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+    
+    <ion-content>
+      <ion-card>
+    <ion-card-content>
+        <ag-grid-angular
+        style="width: 100%; height: 350px;"
+        class="ag-theme-balham"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [enableSorting]="true"
+        [animateRows]="true"
+        [pagination]="true"
+        [paginationPageSize]="10"
+        [enableFilter]="true"
+        [floatingFilter]="true"
+        [suppressRowClickSelection]="true"
+        [rowSelection]="rowSelection">
+        </ag-grid-angular>
+    </ion-card-content>
+
+    
+  
+        </ion-card>
+        
+        <ion-button fill="outline" style="float:right" >Cancel</ion-button>
+        <ion-button style="float:right">Ok</ion-button>
+    </ion-content>
+    
+    <!-- [multiSortKey]="multiSortKey"         (gridReady)="onGridReady($event)"-->

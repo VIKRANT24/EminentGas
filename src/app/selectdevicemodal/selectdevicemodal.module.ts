@@ -4,16 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { AgGridModule } from "ag-grid-angular";
-import { DeviceactivityPage } from './deviceactivity.page';
-import { SelectdevicemodalPage } from '../selectdevicemodal/selectdevicemodal.page';
 
+import { SelectdevicemodalPage } from './selectdevicemodal.page';
+import { AgGridModule } from "ag-grid-angular";
+import {ButtonModule} from 'primeng/button';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: DeviceactivityPage
-  },
   {
     path: '',
     component: SelectdevicemodalPage
@@ -23,11 +19,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ButtonModule,
     FormsModule,
     IonicModule,
     AgGridModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DeviceactivityPage,SelectdevicemodalPage]
+  declarations: [SelectdevicemodalPage]
 })
-export class DeviceactivityPageModule {}
+export class SelectdevicemodalPageModule {}

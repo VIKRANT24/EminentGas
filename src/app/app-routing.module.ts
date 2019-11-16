@@ -30,7 +30,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'table', loadChildren: './table/table.module#TablePageModule' },
   { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
-  { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' }
+  { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },  { path: 'selectdevicemodal', loadChildren: './selectdevicemodal/selectdevicemodal.module#SelectdevicemodalPageModule' }
+
 
 
 ];
