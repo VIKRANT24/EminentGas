@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddDeviceModalPage } from './add-device-modal.page';
+import { AddDeviceWOProfilePage } from './add-device-woprofile.page';
 
-describe('AddDeviceModalPage', () => {
-  let component: AddDeviceModalPage;
-  let fixture: ComponentFixture<AddDeviceModalPage>;
+describe('AddDeviceWOProfilePage', () => {
+  let component: AddDeviceWOProfilePage;
+  let fixture: ComponentFixture<AddDeviceWOProfilePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddDeviceModalPage ],
+      declarations: [ AddDeviceWOProfilePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddDeviceModalPage);
+    fixture = TestBed.createComponent(AddDeviceWOProfilePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

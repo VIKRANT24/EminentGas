@@ -8,17 +8,17 @@ interface City {
   code: string;
 }
 @Component({
-  selector: 'app-add-device-modal',
-  templateUrl: './add-device-modal.page.html',
-  styleUrls: ['./add-device-modal.page.scss'],
+  selector: 'app-add-device',
+  templateUrl: './add-device.page.html',
+  styleUrls: ['./add-device.page.scss'],
 })
-
-export class AddDeviceModalPage implements OnInit {
+export class AddDevicePage implements OnInit {
   addDeviceID:any = "";
   comment:any;
   keysDevice: SelectItem[];
   keyActivated:SelectItem[];
-  
+  service:City[]
+  selectedService:City;
   selectedType = 'Profiles';
 
   types: any[];  
@@ -27,9 +27,10 @@ export class AddDeviceModalPage implements OnInit {
   profile = false
   key = true
   additional = true
-  selectedkeyDevice:any=""
-  selectedkeyActivated:any=""
+  selectedkeyDevice:any="A"
+  selectedkeyActivated:any="No"
   option:any = ""
+  
   constructor(private modal:ModalController) { 
   
 
@@ -41,6 +42,10 @@ export class AddDeviceModalPage implements OnInit {
       {name: 'Paris', code: 'PRS'}
   ];
 
+this.service = [
+   {name: 'Istanbul', code: 'IST'},
+      {name: 'Paris', code: 'PRS'}
+];
  
   this.keysDevice = [
     {label: 'A', value: 'A'},
@@ -65,9 +70,6 @@ this.keyActivated = [
   ];
   }
 
-  closeModal(){
-    this.modal.dismiss()
-  }
   onOptionClick(event){
     var count = event.index
 if(count == 0){
@@ -91,8 +93,19 @@ else if(count == 1){
   }
 
   finalCall(){
-
-   alert(this.selectedType)
-  }
+ //alert(this.selectedType+"_"+"_"+this.addDeviceID+"_"+this.comment+"_"+this.selectedCity.code+"_"+this.selectedService.code+"_"+this.selectedkeyDevice+"_"+this.selectedkeyActivated+"_"+this.option)
+ if(this.selectedType==undefined || this.selectedType=="" || this.addDeviceID==undefined || this.addDeviceID=="" || this.selectedCity.code==undefined || this.selectedCity.code==""
+ || this.selectedService.code==undefined || this.selectedService.code=="" || this.selectedkeyDevice == undefined || this.selectedkeyDevice == ""  || this.selectedkeyActivated == undefined || this.selectedkeyActivated ==""
+ || this.option ==undefined || this.option ==""){
+   alert("Enter all Details")
+ }else{
+  alert("True")         //API Call
+ }
 
 }
+
+closeModal(){
+  this.modal.dismiss()
+}
+}
+

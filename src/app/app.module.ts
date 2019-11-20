@@ -8,12 +8,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
+//import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
 import {HttpClientModule} from '@angular/common/http';
 import { SharedComponentModule } from './shared-component/shared-component.module';
 import { ActionsComponent } from './actions/actions.component';
 import {SelectButtonModule} from 'primeng/selectbutton';
-import { AddDeviceWithoutProfilePage } from './add-device-without-profile/add-device-without-profile.page';
 import {DropdownModule} from 'primeng/primeng';
 //import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AgGridModule } from 'ag-grid-angular';
@@ -21,19 +20,23 @@ import {MultiSelectModule} from 'primeng/primeng';
 import { AngularFireModule, } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import { AddDeviceModalPageModule } from './add-device-modal/add-device-modal.module';
 import { CellCustomComponent } from './cell-custom/cell-custom.component';
+import { AddDevicePageModule } from './add-device/add-device.module';
+import { AddDeviceWOProfilePageModule } from './add-device-woprofile/add-device-woprofile.module'
+import { AddDeviceWithoutProfilePageModule } from './add-device-without-profile/add-device-without-profile.module';
+import { AddDeviceWOProfilePage } from './add-device-woprofile/add-device-woprofile.page';
+
 @NgModule({
   declarations: [AppComponent,ActionsComponent,
-    AddDeviceModalPage,
-    AddDeviceWithoutProfilePage,
-    CellCustomComponent
+    // AddDeviceModalPage,
+    // AddDeviceWithoutProfilePage,
+    CellCustomComponent,
 ],
   entryComponents: [
     ActionsComponent,
-    AddDeviceModalPage,
-    AddDeviceWithoutProfilePage,
-    CellCustomComponent
+    // AddDeviceModalPage,
+    // AddDeviceWithoutProfilePage,
+    CellCustomComponent,
   ],
 
   imports: [
@@ -47,11 +50,11 @@ import { CellCustomComponent } from './cell-custom/cell-custom.component';
     BrowserAnimationsModule,
     AgGridModule,
     MultiSelectModule,
-    AddDeviceModalPageModule,
+    AddDevicePageModule,
+    //AddDeviceWithoutProfilePageModule,
+    AddDeviceWOProfilePageModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    
-    
+    AngularFirestoreModule,  
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

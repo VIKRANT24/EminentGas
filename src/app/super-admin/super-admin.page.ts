@@ -1,7 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController } from '@ionic/angular';
-import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 //import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { FirebaseService } from '../services/firebase.service';
 import { Router } from '@angular/router';

@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import { AddDeviceModalPage } from './add-device-modal.page';
-import { DropdownModule } from 'primeng/dropdown';
+import { AddDeviceWOProfilePage } from './add-device-woprofile.page';
 import {MultiSelectModule} from 'primeng/primeng';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 const routes: Routes = [
   {
-    path: 'AddDevice',
-    component: AddDeviceModalPage
+    path: '',
+    component: AddDeviceWOProfilePage
   }
 ];
 
@@ -26,6 +26,6 @@ const routes: Routes = [
     MultiSelectModule,
     RouterModule.forChild(routes)
   ],
-  declarations: []
+  declarations: [AddDeviceWOProfilePage]
 })
-export class AddDeviceModalPageModule {}
+export class AddDeviceWOProfilePageModule {}

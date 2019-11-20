@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
-
-import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
+import { AddDevicePage } from '../add-device/add-device.page';
 @Component({
   selector: 'app-cell-custom',
   templateUrl: './cell-custom.component.html',
@@ -35,7 +34,7 @@ export class CellCustomComponent implements OnInit {
   // return await popover.present();
 
   const modal = await this.modalController.create({
-    component: AddDeviceModalPage,
+    component: AddDevicePage,
     cssClass: 'my-custom-modal-css'
   });
   return await modal.present();
