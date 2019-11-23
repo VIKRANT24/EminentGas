@@ -3,6 +3,9 @@ import data from '../../assets/company.json'
 import { FirebaseService } from '../services/firebase.service';
 import  moment from 'moment';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
+
+
+
 // declare var firebase;
 
 // var config={
@@ -29,7 +32,16 @@ export class ListPage {
    rowData:any=[]; 
   rowSelection:any="multiple";
   devices:any;
+  cities1:any =[];
    constructor(public firebaseService: FirebaseService) { 
+    this.cities1 = [
+      {label:'Select City', value:null},
+      {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
+      {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
+      {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
+      {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
+      {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
+  ];
     var user = localStorage.getItem("username")
     var pwd = localStorage.getItem("pwd")
 
@@ -125,13 +137,14 @@ export class ListPage {
         headerName: "Last Seen",
         field: "last_reception",
         width: 250,
-        filter:"agDateColumnFilter"
       },
       {headerName: 'Actions',
        field: 'action', 
        width: 330,
        filter: false,
-       cellRendererFramework: CellCustomComponent},
+       cellRendererFramework: CellCustomComponent
+       //template: '<p-overlayPanel #op>Content</p-overlayPanel><button type="text" pButton label="Basic" (click)="op.toggle($event)">zxzzx</button>'
+      },
        
     ];
     
@@ -187,6 +200,8 @@ export class ListPage {
       this.rowData = this.rowData1
     })
   }
+
+  
 
 }
 

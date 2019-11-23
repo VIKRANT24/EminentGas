@@ -32,7 +32,6 @@ const routes: Routes = [
   { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
   { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' }
 
-
 ];
 
 @NgModule({

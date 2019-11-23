@@ -5,6 +5,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
+import { AddDeviceModalPageModule } from '../add-device-modal/add-device-modal.module';
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.page.html',
@@ -26,6 +27,12 @@ export class AdminListPage implements OnInit {
    items: Array<any>;
   constructor(public navCtrl:NavController, private router: Router,public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
     this.getData();
+    var isLogin = localStorage.getItem("admin")
+    if(isLogin==null)
+    [
+      this.router.navigateByUrl('/super-admin')
+    ]
+    
 
   }
 
@@ -287,8 +294,9 @@ async deleteAdmin() {
 
   async logout()
   {
+    localStorage.removeItem("admin")
     const alert = await this.alertController.create({
-      header: 'Logout!',
+      header: 'Logout !',
       message: 'Do you want to logout ?',
       buttons: [
         {
@@ -301,19 +309,22 @@ async deleteAdmin() {
         }, {
           text: 'Yes',
           handler: async () => {
-          //  this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/super-admin');
           }
         }
       ]
     });
-
+    await alert.present();
 
 
 
   }
 
  
-  
+  async view()
+  {
+   
+  }
 }
 
 

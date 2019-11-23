@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController,PopoverController } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
-
+import { ActionsComponent } from '../actions/actions.component';
 import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 @Component({
   selector: 'app-cell-custom',
@@ -11,7 +11,10 @@ import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 export class CellCustomComponent implements OnInit {
   data: any;
   params: any;
-  constructor(public modalController: ModalController,public router:Router) { }
+ 
+  constructor(public modalController: ModalController,public router:Router,public popoverController:PopoverController) { 
+
+  }
   
   agInit(params) {
   this.params = params;
@@ -51,6 +54,27 @@ export class CellCustomComponent implements OnInit {
   }
 
  
+async action(ev)
+{
+  // const popover = await this.popoverController.create({
+  //   component: ActionsComponent,
+  //   translucent: true
+  // });
+  // return await popover.present();
+
+  const popover = await this.popoverController.create({
+    component: ActionsComponent,
+    event: ev,
+    translucent: true,
+    mode:'ios'
+    
+  });
+  return await popover.present();
+}
+
+
+
+
 
 
 
