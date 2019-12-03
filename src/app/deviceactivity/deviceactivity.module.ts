@@ -6,11 +6,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { AgGridModule } from "ag-grid-angular";
 import { DeviceactivityPage } from './deviceactivity.page';
+import { SelectdevicemodalPage } from '../selectdevicemodal/selectdevicemodal.page';
+
 
 const routes: Routes = [
   {
     path: '',
     component: DeviceactivityPage
+  },
+  {
+    path: '',
+    component: SelectdevicemodalPage
   }
 ];
 
@@ -22,6 +28,6 @@ const routes: Routes = [
     AgGridModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DeviceactivityPage]
+  declarations: [DeviceactivityPage,SelectdevicemodalPage]
 })
 export class DeviceactivityPageModule {}

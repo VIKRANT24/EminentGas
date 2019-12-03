@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AgGridModule } from "ag-grid-angular";
 import { IonicModule } from '@ionic/angular';
-
 import { ListPage } from './list.page';
-
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 @NgModule({
   imports: [
@@ -14,6 +13,7 @@ import { ListPage } from './list.page';
     FormsModule,
     IonicModule,
     AgGridModule,
+    OverlayPanelModule,
     RouterModule.forChild([
       {
         path: '',

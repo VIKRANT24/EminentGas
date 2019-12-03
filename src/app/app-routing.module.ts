@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'table', loadChildren: './table/table.module#TablePageModule' },
   { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
   { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },
-  { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },  { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' }
+  { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },
+  { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' }
 
 
 

@@ -3824,6 +3824,7 @@ var AdminListPage = /** @class */ (function () {
         this.rowData1 = [];
         this.rowData = [];
         this.rowSelection = "multiple";
+        this.getData();
     }
     AdminListPage.prototype.ngOnInit = function () {
         var _this = this;
@@ -3898,7 +3899,6 @@ var AdminListPage = /** @class */ (function () {
                 width: 170,
             }
         ];
-        this.getData();
     };
     AdminListPage.prototype.editAdmin = function () {
         this.navCtrl.navigateForward('/edit-admin');

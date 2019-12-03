@@ -54,6 +54,8 @@ export class SuperAdminPage {
           });
          toast.present();
          this.router.navigateByUrl('/admin-list');
+         localStorage.setItem("admin",this.userid)
+         //localStorage.setItem("pwd",this.pwd)
         }
         else
         {
