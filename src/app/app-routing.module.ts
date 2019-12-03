@@ -14,12 +14,7 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
-  // { 
-  //   path: 'add-device-modal',
-  //  loadChildren: () => import('./add-device-modal/add-device-modal.module').then(m => m.AddDeviceModalPageModule)  
-  // }, 
-  { path: 'add-device-modal', loadChildren: './add-device-modal/add-device-modal.module#AddDeviceModalPageModule' },
+  }, 
   { path: 'super-admin', loadChildren: './super-admin/super-admin.module#SuperAdminPageModule' },
   { path: 'menu-page', loadChildren: './menu-page/menu-page.module#MenuPagePageModule' },
   { path: 'add-admin', loadChildren: './add-admin/add-admin.module#AddAdminPageModule' },
@@ -31,7 +26,9 @@ const routes: Routes = [
   { path: 'table', loadChildren: './table/table.module#TablePageModule' },
   { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
   { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },
-  { path: 'selectdevicemodal', loadChildren: './selectdevicemodal/selectdevicemodal.module#SelectdevicemodalPageModule' }
+  { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },
+  { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' }
+
 
 
 

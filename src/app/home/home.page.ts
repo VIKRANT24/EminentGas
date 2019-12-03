@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicModule,ToastController, ModalController,NavController } from '@ionic/angular';
-import {AddDeviceModalPage} from 'src/app/add-device-modal/add-device-modal.page'
 import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
+import { AddDevicePage } from '../add-device/add-device.page';
 
 @Component({
   selector: 'app-home',
@@ -62,7 +62,7 @@ pwd:any="";
 
   async openModal() {
     const modal = await this.modalCtrl.create({
-      component: AddDeviceModalPage,
+      component: AddDevicePage,
       componentProps: {
         'firstName': 'Douglas',
         'lastName': 'Adams',

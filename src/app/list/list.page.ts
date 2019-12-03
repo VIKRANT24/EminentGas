@@ -3,8 +3,10 @@ import data from '../../assets/company.json'
 import { FirebaseService } from '../services/firebase.service';
 import  moment from 'moment';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
-
-
+import { ModalController } from '@ionic/angular';
+import { AddDevicePage } from '../add-device/add-device.page';
+import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
+import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-woprofile.page'
 
 // declare var firebase;
 
@@ -32,16 +34,7 @@ export class ListPage {
    rowData:any=[]; 
   rowSelection:any="multiple";
   devices:any;
-  cities1:any =[];
-   constructor(public firebaseService: FirebaseService) { 
-    this.cities1 = [
-      {label:'Select City', value:null},
-      {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
-      {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
-      {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
-      {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
-      {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
-  ];
+   constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
     var user = localStorage.getItem("username")
     var pwd = localStorage.getItem("pwd")
 
@@ -201,8 +194,28 @@ export class ListPage {
     })
   }
 
-  
+  async addDevice() {
 
+    const modal = await this.modalController.create({
+      component: AddDevicePage,
+      cssClass: 'my-custom-modal-css'
+    });
+    return await modal.present();
+
+    
+   //this.router.navigateByUrl('/add-device');
+}
+async addDeviceWithoutProfile() {
+
+  const modal = await this.modalController.create({
+    component: AddDeviceWOProfilePage,
+    cssClass: 'my-custom-modal-css'
+  });
+  return await modal.present();
+
+  
+ //this.router.navigateByUrl('/add-device');
+}
 }
 
 

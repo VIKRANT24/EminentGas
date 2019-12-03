@@ -7,9 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ListPage } from './list.page';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 
-
-
-
 @NgModule({
   imports: [
     CommonModule,

@@ -23,6 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
 
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage,
+  ]
 })
 export class LoginPageModule {}

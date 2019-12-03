@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule,ToastController,NavController, ModalController } from '@ionic/angular';
-import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
 import { FirebaseService } from '../services/firebase.service';
 import { Routes } from '@angular/router';
 import { Route,Router } from '@angular/router';
+import { AddDevicePage } from '../add-device/add-device.page';
+import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-woprofile.page'
 
 
 const routes: Routes = [
@@ -86,12 +87,12 @@ export class LoginPage implements OnInit {
    async presentModal() {
 
     const modal = await this.modalController.create({
-      component: AddDeviceModalPage,
+      component: AddDeviceWOProfilePage,
       cssClass: 'my-custom-modal-css'
     });
     return await modal.present();
 
-
-   //this.route.navigateByUrl('/add-device-modal');
+    
+   //this.router.navigateByUrl('/add-device');
 }
 }
