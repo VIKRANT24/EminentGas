@@ -3,6 +3,10 @@ import data from '../../assets/company.json'
 import { FirebaseService } from '../services/firebase.service';
 import  moment from 'moment';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
+import { ModalController } from '@ionic/angular';
+import { AddDevicePage } from '../add-device/add-device.page';
+import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
+import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-woprofile.page'
 // declare var firebase;
 
 // var config={
@@ -29,7 +33,7 @@ export class ListPage {
    rowData:any=[]; 
   rowSelection:any="multiple";
   devices:any;
-   constructor(public firebaseService: FirebaseService) { 
+   constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
     var user = localStorage.getItem("username")
     var pwd = localStorage.getItem("pwd")
 
@@ -188,6 +192,28 @@ export class ListPage {
     })
   }
 
+  async addDevice() {
+
+    const modal = await this.modalController.create({
+      component: AddDevicePage,
+      cssClass: 'my-custom-modal-css'
+    });
+    return await modal.present();
+
+    
+   //this.router.navigateByUrl('/add-device');
+}
+async addDeviceWithoutProfile() {
+
+  const modal = await this.modalController.create({
+    component: AddDeviceWOProfilePage,
+    cssClass: 'my-custom-modal-css'
+  });
+  return await modal.present();
+
+  
+ //this.router.navigateByUrl('/add-device');
+}
 }
 
 
