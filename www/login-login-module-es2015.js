@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<head>\n  <meta charset=\"utf-8\" />\n  <title>Ionic App</title>\n\n  <base href=\"/\" />\n\n  <meta name=\"viewport\" content=\"viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\" />\n  <meta name=\"format-detection\" content=\"telephone=no\" />\n  <meta name=\"msapplication-tap-highlight\" content=\"no\" />\n\n  <link rel=\"icon\" type=\"image/png\" href=\"assets/icon/favicon.png\" />\n  \n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/bootstrap/css/bootstrap.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/fonts/font-awesome-4.7.0/css/font-awesome.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/animate/animate.css\">\n  \n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/css-hamburgers/hamburgers.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/select2/select2.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/css/util.css\">\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/css/main.css\">\n\n \n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />\n</head> \n<ion-content>\n \n    \n    <div class=\"limiter\">\n      <div class=\"container-login100\">\n        <div class=\"wrap-login100\">\n          <div class=\"login100-pic js-tilt\" data-tilt style=\"margin-top:100px\">\n            <div class=\"logo\" style=\"width:220px\">\n                <img class=\"logo__image\" src=\"http://eminentgas.com/images/logo.png\" />\n              \n              </div>\n          </div>\n  \n          <form class=\"login100-form validate-form\">\n            <span class=\"login100-form-title\">\n              Client Login\n            </span>\n  \n            <div class=\"wrap-input100 validate-input\" data-validate = \"Valid email is required: ex@abc.xyz\">\n              <input class=\"input100\" type=\"text\" name=\"email\" placeholder=\"User Id\" [(ngModel)]=\"userid\"> \n              <span class=\"focus-input100\"></span>\n              <span class=\"symbol-input100\">\n                <i class=\"fa fa-envelope\" aria-hidden=\"true\"></i>\n              </span>\n            </div>\n  \n            <div class=\"wrap-input100 validate-input\" data-validate = \"Password is required\">\n              <input class=\"input100\" type=\"password\" name=\"pass\" placeholder=\"Password\" type=\"password\" [(ngModel)]=\"pwd\">\n              <span class=\"focus-input100\"></span>\n              <span class=\"symbol-input100\">\n                <i class=\"fa fa-lock\" aria-hidden=\"true\"></i>\n              </span>\n            </div>\n            \n            <div class=\"container-login100-form-btn\">\n              <button class=\"login100-form-btn\" (click)=\"login()\">\n                Login\n              </button>\n              \n            </div>\n            <!-- <button class=\"login100-form-btn\" (click)=\"presentModal()\" >\n                presentModal\n              </button> -->\n  \n            <div class=\"text-center p-t-12\">\n              <!-- <span class=\"txt1\">\n                Forgot\n              </span>\n              <a class=\"txt2\" href=\"#\">\n                Username / Password?\n              </a> -->\n            </div>\n  \n            <div class=\"text-center p-t-136\">\n              <!-- <a class=\"txt2\" href=\"#\">\n                Create your Account\n                <i class=\"fa fa-long-arrow-right m-l-5\" aria-hidden=\"true\"></i>\n              </a> -->\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n\n      <!--===============================================================================================-->\t\n  <script src=\"assets/thirdparty/vendor/jquery/jquery-3.2.1.min.js\"></script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/vendor/bootstrap/js/popper.js\"></script>\n    <script src=\"assets/thirdparty/vendor/bootstrap/js/bootstrap.min.js\"></script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/vendor/select2/select2.min.js\"></script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/vendor/tilt/tilt.jquery.min.js\"></script>\n    <script >\n      $('.js-tilt').tilt({\n        scale: 1.1\n      })\n    </script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/js/main.js\"></script>\n    <script src=\"https:/www.gstatic.com/firebasejs/6.0.4/firebase.js\"></script>\n\n</ion-content>\n"
+module.exports = "\n<head>\n  <meta charset=\"utf-8\" />\n  <title>Ionic App</title>\n\n  <base href=\"/\" />\n\n  <meta name=\"viewport\" content=\"viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\" />\n  <meta name=\"format-detection\" content=\"telephone=no\" />\n  <meta name=\"msapplication-tap-highlight\" content=\"no\" />\n\n  <link rel=\"icon\" type=\"image/png\" href=\"assets/icon/favicon.png\" />\n  \n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/bootstrap/css/bootstrap.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/fonts/font-awesome-4.7.0/css/font-awesome.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/animate/animate.css\">\n  \n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/css-hamburgers/hamburgers.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/vendor/select2/select2.min.css\">\n\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/css/util.css\">\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/thirdparty/css/main.css\">\n\n \n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />\n</head> \n<ion-content>\n \n    \n    <div class=\"limiter\">\n      <div class=\"container-login100\">\n        <div class=\"wrap-login100\">\n          <div class=\"login100-pic js-tilt\" data-tilt style=\"margin-top:100px\">\n            <div class=\"logo\" style=\"width:220px\">\n                <!-- <img class=\"logo__image\" src=\"http://eminentgas.com/images/logo.png\" /> -->\n                <img class=\"logo__image\" src=\"assets/imgs/transparent_logo.png\" />\n              \n              </div>\n          </div>\n  \n          <form class=\"login100-form validate-form\">\n            <span class=\"login100-form-title\">\n              Client Login\n            </span>\n  \n            <div class=\"wrap-input100 validate-input\" data-validate = \"Valid email is required: ex@abc.xyz\">\n              <input class=\"input100\" type=\"text\" name=\"email\" placeholder=\"User Id\" [(ngModel)]=\"userid\"> \n              <span class=\"focus-input100\"></span>\n              <span class=\"symbol-input100\">\n                <i class=\"fa fa-envelope\" aria-hidden=\"true\"></i>\n              </span>\n            </div>\n  \n            <div class=\"wrap-input100 validate-input\" data-validate = \"Password is required\">\n              <input class=\"input100\" type=\"password\" name=\"pass\" placeholder=\"Password\" type=\"password\" [(ngModel)]=\"pwd\">\n              <span class=\"focus-input100\"></span>\n              <span class=\"symbol-input100\">\n                <i class=\"fa fa-lock\" aria-hidden=\"true\"></i>\n              </span>\n            </div>\n            \n            <div class=\"container-login100-form-btn\">\n              <button class=\"login100-form-btn\" (click)=\"login()\">\n                Login\n              </button>\n              \n            </div>\n            <!-- <button class=\"login100-form-btn\" (click)=\"presentModal()\" >\n                presentModal\n\n              </button>\n   -->\n            <div class=\"text-center p-t-12\">\n              <!-- <span class=\"txt1\">\n                Forgot\n              </span>\n              <a class=\"txt2\" href=\"#\">\n                Username / Password?\n              </a> -->\n            </div>\n  \n            <div class=\"text-center p-t-136\">\n              <!-- <a class=\"txt2\" href=\"#\">\n                Create your Account\n                <i class=\"fa fa-long-arrow-right m-l-5\" aria-hidden=\"true\"></i>\n              </a> -->\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n\n      <!--===============================================================================================-->\t\n  <script src=\"assets/thirdparty/vendor/jquery/jquery-3.2.1.min.js\"></script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/vendor/bootstrap/js/popper.js\"></script>\n    <script src=\"assets/thirdparty/vendor/bootstrap/js/bootstrap.min.js\"></script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/vendor/select2/select2.min.js\"></script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/vendor/tilt/tilt.jquery.min.js\"></script>\n    <script >\n      $('.js-tilt').tilt({\n        scale: 1.1\n      })\n    </script>\n  <!--===============================================================================================-->\n    <script src=\"assets/thirdparty/js/main.js\"></script>\n    <script src=\"https:/www.gstatic.com/firebasejs/6.0.4/firebase.js\"></script>\n\n</ion-content>\n"
 
 /***/ }),
 
@@ -51,7 +51,8 @@ LoginPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
         ],
-        declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]]
+        declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"],
+        ]
     })
 ], LoginPageModule);
 
@@ -83,9 +84,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-device-modal/add-device-modal.page */ "./src/app/add-device-modal/add-device-modal.page.ts");
-/* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _add_device_woprofile_add_device_woprofile_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../add-device-woprofile/add-device-woprofile.page */ "./src/app/add-device-woprofile/add-device-woprofile.page.ts");
 
 
 
@@ -158,18 +159,18 @@ let LoginPage = class LoginPage {
     presentModal() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const modal = yield this.modalController.create({
-                component: _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_3__["AddDeviceModalPage"],
+                component: _add_device_woprofile_add_device_woprofile_page__WEBPACK_IMPORTED_MODULE_5__["AddDeviceWOProfilePage"],
                 cssClass: 'my-custom-modal-css'
             });
             return yield modal.present();
-            //this.route.navigateByUrl('/add-device-modal');
+            //this.router.navigateByUrl('/add-device');
         });
     }
 };
 LoginPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
-    { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
@@ -180,7 +181,7 @@ LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./login.page.html */ "./node_modules/raw-loader/index.js!./src/app/login/login.page.html"),
         styles: [__webpack_require__(/*! ./login.page.scss */ "./src/app/login/login.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
 ], LoginPage);
 
 
@@ -215,7 +216,7 @@ let FirebaseService = class FirebaseService {
     }
     updateUser(client, address, arm, person, wings, flats, project, account, email, mobile, id) {
         // value.nameToSearch = value.name.toLowerCase();
-        return this.db.collection('Admin').doc(id).set({
+        return this.db.collection('Admin/').doc(id).set({
             account_details: account,
             address: address,
             authorized_person: person,
@@ -244,7 +245,7 @@ let FirebaseService = class FirebaseService {
         return this.db.collection('users', ref => ref.orderBy('age').startAt(value)).snapshotChanges();
     }
     createUser(client, address, arm, person, wings, flats, project, account, email, mobile) {
-        return this.db.collection('Admin').add({
+        return this.db.collection('Admin/').add({
             account_details: account,
             address: address,
             authorized_person: person,

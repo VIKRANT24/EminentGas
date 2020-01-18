@@ -3704,7 +3704,7 @@ __export(__webpack_require__(/*! ./components/table/table */ "./node_modules/pri
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Admin List\n      </ion-title>\n     \n    </ion-toolbar>\n  </ion-header>\n      \n      <ion-content>\n\n        <!-- <span class=\"ui-float-label\" style=\"margin-top: 2vh;margin-left: 1vh;\">\n            <input id=\"float-input\" type=\"text\" size=\"30\" pInputText> \n            <label for=\"float-input\">Username</label>\n        </span> -->\n\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 400px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [animateRows]=\"true\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          (gridReady)=\"onGridReady($event)\"\n         >\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n\n          <ion-grid>\n                \n            <ion-row>\n              <ion-col>\n                  <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"add()\"><ion-icon name=\"add\" ></ion-icon> Add Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"edit()\"><ion-icon name=\"create\" ></ion-icon> Edit Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"AlertConfirmDelete()\" ><ion-icon name=\"trash\"></ion-icon> Delete Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" ><ion-icon name=\"add\"></ion-icon> View</ion-button>\n            </ion-col>\n            \n            </ion-row>\n          </ion-grid>\n\n        \n      </ion-content>\n      \n\n \n "
+module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Admin List\n      </ion-title>\n      <div (click)=\"logout()\" slot=\"end\">\n        <ion-icon  name=\"log-out\" style=\"margin-right: 15px;font-size: 25px;\" ></ion-icon>\n      </div>\n     \n    </ion-toolbar>\n   \n  </ion-header>\n      \n      <ion-content>\n\n        <!-- <span class=\"ui-float-label\" style=\"margin-top: 2vh;margin-left: 1vh;\">\n            <input id=\"float-input\" type=\"text\" size=\"30\" pInputText> \n            <label for=\"float-input\">Username</label>\n        </span> -->\n\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 400px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [animateRows]=\"true\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          (gridReady)=\"onGridReady($event)\"\n         >\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n\n          <ion-grid>\n                \n            <ion-row>\n              <ion-col>\n                  <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"add()\"><ion-icon name=\"add\" ></ion-icon> Add Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"edit()\"><ion-icon name=\"create\" ></ion-icon> Edit Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"AlertConfirmDelete()\" ><ion-icon name=\"trash\"></ion-icon> Delete Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"view()\"><ion-icon name=\"add\" ></ion-icon> View</ion-button>\n            </ion-col>\n            \n            </ion-row>\n          </ion-grid>\n\n        \n      </ion-content>\n      \n\n \n "
 
 /***/ }),
 
@@ -3804,15 +3804,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-admin/add-admin.page */ "./src/app/add-admin/add-admin.page.ts");
 /* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 
 
 
 
 
 
+
+//import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
 let AdminListPage = class AdminListPage {
-    constructor(navCtrl, alertController, toastController, modalController, firebaseService, events) {
+    constructor(navCtrl, router, alertController, toastController, modalController, firebaseService, events) {
         this.navCtrl = navCtrl;
+        this.router = router;
         this.alertController = alertController;
         this.toastController = toastController;
         this.modalController = modalController;
@@ -3822,6 +3826,11 @@ let AdminListPage = class AdminListPage {
         this.rowData = [];
         this.rowSelection = "multiple";
         this.getData();
+        var isLogin = localStorage.getItem("admin");
+        if (isLogin == null)
+            [
+                this.router.navigateByUrl('/super-admin')
+            ];
     }
     ngOnInit() {
         this.events.subscribe('update_list', (data) => {
@@ -3852,7 +3861,7 @@ let AdminListPage = class AdminListPage {
             {
                 headerName: "No Of ARMS",
                 field: "no_of_arms",
-                width: 100,
+                width: 150,
                 filter: false
             },
             {
@@ -3887,7 +3896,7 @@ let AdminListPage = class AdminListPage {
             {
                 headerName: "Email Id",
                 field: "email_id",
-                width: 170,
+                width: 200,
             },
             {
                 headerName: "Mobile No",
@@ -3952,17 +3961,35 @@ let AdminListPage = class AdminListPage {
                         }
                     }, {
                         text: 'Yes',
-                        handler: () => {
+                        handler: () => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
                             console.log('Confirm Okay');
                             var selected_row = this.gridApi.getSelectedRows();
-                            this.firebaseService.deleteUser(selected_row[0].id)
-                                .then(res => {
-                                //this.router.navigate(['/home']);
-                                this.getData();
-                            }, err => {
-                                console.log(err);
-                            });
-                        }
+                            if (selected_row.length == 0) {
+                                const toast = yield this.toastController.create({
+                                    message: 'Please select Admin to delete.',
+                                    duration: 2000,
+                                    color: 'danger',
+                                    position: 'top'
+                                });
+                                toast.present();
+                            }
+                            else {
+                                this.firebaseService.deleteUser(selected_row[0].id)
+                                    .then((res) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+                                    //this.router.navigate(['/home']);
+                                    this.getData();
+                                    const toast = yield this.toastController.create({
+                                        message: 'Admin has been deleted successfully.',
+                                        duration: 2000,
+                                        color: 'danger',
+                                        position: 'top'
+                                    });
+                                    toast.present();
+                                }), err => {
+                                    console.log(err);
+                                });
+                            }
+                        })
                     }
                 ]
             });
@@ -4006,18 +4033,59 @@ let AdminListPage = class AdminListPage {
     edit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             var selected_row = this.gridApi.getSelectedRows();
-            const modal = yield this.modalController.create({
-                component: _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__["AddAdminPage"],
-                componentProps: {
-                    data: selected_row,
-                }
+            if (selected_row.length == 0) {
+                const toast = yield this.toastController.create({
+                    message: 'Please select Admin to edit.',
+                    duration: 2000,
+                    color: 'danger',
+                    position: 'top'
+                });
+                toast.present();
+            }
+            else {
+                const modal = yield this.modalController.create({
+                    component: _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__["AddAdminPage"],
+                    componentProps: {
+                        data: selected_row,
+                    }
+                });
+                return yield modal.present();
+            }
+        });
+    }
+    logout() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            localStorage.removeItem("admin");
+            const alert = yield this.alertController.create({
+                header: 'Logout !',
+                message: 'Do you want to logout ?',
+                buttons: [
+                    {
+                        text: 'No',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            console.log('Confirm Cancel: blah');
+                        }
+                    }, {
+                        text: 'Yes',
+                        handler: () => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+                            this.router.navigateByUrl('/super-admin');
+                        })
+                    }
+                ]
             });
-            return yield modal.present();
+            yield alert.present();
+        });
+    }
+    view() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
         });
     }
 };
 AdminListPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
@@ -4030,7 +4098,7 @@ AdminListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./admin-list.page.html */ "./node_modules/raw-loader/index.js!./src/app/admin-list/admin-list.page.html"),
         styles: [__webpack_require__(/*! ./admin-list.page.scss */ "./src/app/admin-list/admin-list.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
 ], AdminListPage);
 
 

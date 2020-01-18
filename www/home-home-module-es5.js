@@ -85,7 +85,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var src_app_add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/add-device-modal/add-device-modal.page */ "./src/app/add-device-modal/add-device-modal.page.ts");
+/* harmony import */ var _add_device_add_device_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-device/add-device.page */ "./src/app/add-device/add-device.page.ts");
 
 
 
@@ -136,7 +136,7 @@ var HomePage = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.modalCtrl.create({
-                            component: src_app_add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_3__["AddDeviceModalPage"],
+                            component: _add_device_add_device_page__WEBPACK_IMPORTED_MODULE_3__["AddDevicePage"],
                             componentProps: {
                                 'firstName': 'Douglas',
                                 'lastName': 'Adams',

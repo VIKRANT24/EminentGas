@@ -5,6 +5,7 @@ import { Events } from '@ionic/angular';
 import { FirebaseDatabase } from '@angular/fire';
 import data from '../../assets/device.json'
 import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -31,14 +32,14 @@ export class AddAdminPage implements OnInit {
   update_show:boolean=false
   @Input() data: any;
   arms:any=[];
-
+ loaderToShow: any;
  
 
 
   submitted: boolean;
 
   description: string;
-  constructor(public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController) { 
+  constructor(public loadingController: LoadingController,public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController) { 
     this.arms = data;
     console.log(this.arm)
   }
@@ -64,7 +65,7 @@ console.log(this.data)
   this.wings=this.data[0].no_of_wings
   this.flats=this.data[0].no_of_flats
   this.project=this.data[0].project_name
-  this.account=this.data[0].account_details
+  //this.account=this.data[0].account_details
   this.email=this.data[0].email_id
   this.mobile=this.data[0].mobile
   this.id=this.data[0].id
@@ -74,9 +75,31 @@ console.log(this.data)
  
 }
 
+showLoader() {
+  this.loaderToShow = this.loadingController.create({
+   // message: 'This Loader will Not AutoHide'
+   spinner:'crescent',
+   cssClass:'custom-loader-class'
+  }).then((res) => {
+    res.present();
+
+    res.onDidDismiss().then((dis) => {
+      console.log('Loading dismissed!');
+    });
+  });
+//  this.hideLoader();
+}
+
+hideLoader() {
+  setTimeout(() => {
+    this.loadingController.dismiss();
+  }, 4000);
+}
+
 create()
 {
-  this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.account,this.email,this.mobile)
+  this.showLoader()
+  this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
 	.then(
 	  res => {
 var data =  res
@@ -86,6 +109,7 @@ this.modalCtrl.dismiss();
 	  }
   )
   this.send_email(this.email)
+  this.hideLoader()
   this.success_msg()
 
 
@@ -93,12 +117,14 @@ this.modalCtrl.dismiss();
 
 update()
 {
-  this.firebaseService.updateUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.account,this.email,this.mobile,this.id)
+  this.showLoader()
+  this.firebaseService.updateUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile,this.id)
   .then(
     res => {
       this.events.publish('update_list');
      // this.router.navigate(['/home']);
      this.modalCtrl.dismiss();
+    this.hideLoader()
      this.update_msg()
     }
   )

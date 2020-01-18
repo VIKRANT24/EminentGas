@@ -17,10 +17,10 @@ export class FirebaseService {
   }
   
 
-  updateUser(client,address,arm,person,wings,flats,project,account,email,mobile,id){
+  updateUser(client,address,arm,person,wings,flats,project,email,mobile,id){
    // value.nameToSearch = value.name.toLowerCase();
-    return this.db.collection('Admin').doc(id).set({
-      account_details:account,
+    return this.db.collection('Admin/').doc(id).set({
+    //  account_details:account,
       address:address,
       authorized_person:person,
       client_name:client,
@@ -56,9 +56,9 @@ export class FirebaseService {
   }
 
 
-  createUser(client,address,arm,person,wings,flats,project,account,email,mobile){
-    return this.db.collection('Admin').add({
-        account_details:account,
+  createUser(client,address,arm,person,wings,flats,project,email,mobile){
+    return this.db.collection('Admin/').add({
+      // account_details:account,
         address:address,
         authorized_person:person,
         client_name:client,
