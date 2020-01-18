@@ -5,7 +5,6 @@ import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
-import { AddDeviceModalPageModule } from '../add-device-modal/add-device-modal.module';
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.page.html',
