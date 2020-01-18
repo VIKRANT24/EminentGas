@@ -311,6 +311,9 @@ async deleteAdmin() {
     }
     else
     {
+    localStorage.setItem("viewdevice",selected_row[0].no_of_arms)
+    localStorage.setItem("username",selected_row[0].email_id)
+    localStorage.setItem("pwd",'Abc@123')
       const modal = await this.modalController.create({
         component: DeviceActivitySuperadminPage,
         componentProps: { 
