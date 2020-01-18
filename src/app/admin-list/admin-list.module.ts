@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AdminListPage } from './admin-list.page';
 import { AddAdminPage } from '../add-admin/add-admin.page';
+import { DeviceActivitySuperadminPage } from '../device-activity-superadmin/device-activity-superadmin.page';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: '',
     component: AddAdminPage
+  },
+  {
+    path: '',
+    component: DeviceActivitySuperadminPage
   }
 ];
 
@@ -33,6 +38,6 @@ const routes: Routes = [
     AgGridModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdminListPage,AddAdminPage]
+  declarations: [AdminListPage,AddAdminPage,DeviceActivitySuperadminPage]
 })
 export class AdminListPageModule {}

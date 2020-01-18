@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
-import { Platform } from '@ionic/angular';
+import { Platform ,AlertController} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClient } from '@angular/common/http';
+import { Route,Router } from '@angular/router';
 
 // const config = {
 //   apiKey: "AIzaSyCxk372bpVybPuj_5xKrB9Xy_vTD93REd4",
@@ -22,7 +23,7 @@ export class AppComponent {
  
 information:any[];
 automaticClose = false;
-constructor(private httpData:HttpClient,public platform:Platform,public statusBar:StatusBar,public splashScreen:SplashScreen){
+constructor(private httpData:HttpClient,public platform:Platform,public statusBar:StatusBar,public splashScreen:SplashScreen,public alertController:AlertController, private router: Router){
 this.httpData.get('assets/menuItem.json').subscribe(res => {
   this.information =res['items'];
   this.information[0].open =false;
@@ -53,7 +54,31 @@ toggleItem(index,childIndex){
 alert(JSON.stringify( this.information[index].children[childIndex].name))
 }
 
+async logout(){
+  localStorage.removeItem("admin")
+  const alert = await this.alertController.create({
+    header: 'Logout !',
+    message: 'Do you want to logout ?',
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Yes',
+        handler: async () => {
+          this.router.navigateByUrl('/super-admin');
+        }
+      }
+    ]
+  });
+  await alert.present();
 
+
+}
 
 
 

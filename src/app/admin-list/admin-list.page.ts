@@ -5,10 +5,9 @@ import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
-<<<<<<< HEAD
-=======
+import { DeviceActivitySuperadminPage } from '../device-activity-superadmin/device-activity-superadmin.page';
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
->>>>>>> 3e7adbab66932061f27a6f7fd941ae30c57229f6
+
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.page.html',
@@ -296,7 +295,35 @@ async deleteAdmin() {
   
     
   }
+  async viewDetails()
+  {
+    var selected_row = this.gridApi.getSelectedRows()
 
+    if(selected_row.length==0)
+    {
+      const toast = await this.toastController.create({
+        message: 'Please select Admin to edit.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
+    }
+    else
+    {
+      const modal = await this.modalController.create({
+        component: DeviceActivitySuperadminPage,
+        componentProps: { 
+          data: selected_row,
+        }
+      });
+      return await modal.present();
+    }
+
+   
+  
+    
+  }
   async logout()
   {
     localStorage.removeItem("admin")
@@ -314,7 +341,7 @@ async deleteAdmin() {
         }, {
           text: 'Yes',
           handler: async () => {
-            this.router.navigateByUrl('/super-admin');
+            this.router.navigateByUrl('/login');
           }
         }
       ]
