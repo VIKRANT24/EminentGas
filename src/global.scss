@@ -59,3 +59,18 @@ ion-item {
   color: #ffffff;
 }
 
+.custom-loader-class{
+  --background:none;
+  --spinner-color:#2a3f54;
+  --width:500px;
+  
+}
+
+.loading-wrapper.sc-ion-loading-md{
+  box-shadow: none !important;
+}
+
+.spinner svg {
+  width: 19% !important;
+  height: 85px !important;
+}

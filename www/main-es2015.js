@@ -14,12 +14,15 @@ var map = {
 		"common",
 		"add-admin-add-admin-module"
 	],
-	"./add-device-modal/add-device-modal.module": [
-		"./src/app/add-device-modal/add-device-modal.module.ts"
-	],
 	"./add-device-without-profile/add-device-without-profile.module": [
 		"./src/app/add-device-without-profile/add-device-without-profile.module.ts",
 		"add-device-without-profile-add-device-without-profile-module"
+	],
+	"./add-device-woprofile/add-device-woprofile.module": [
+		"./src/app/add-device-woprofile/add-device-woprofile.module.ts"
+	],
+	"./add-device/add-device.module": [
+		"./src/app/add-device/add-device.module.ts"
 	],
 	"./admin-list/admin-list.module": [
 		"./src/app/admin-list/admin-list.module.ts",
@@ -28,6 +31,7 @@ var map = {
 	],
 	"./deviceactivity/deviceactivity.module": [
 		"./src/app/deviceactivity/deviceactivity.module.ts",
+		"default~deviceactivity-deviceactivity-module~list-list-module",
 		"deviceactivity-deviceactivity-module"
 	],
 	"./edit-admin/edit-admin.module": [
@@ -496,25 +500,25 @@ module.exports = "<ion-content>\n    <ion-list>\n      <ion-item >\n       Add D
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/add-device-modal/add-device-modal.page.html":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/add-device-modal/add-device-modal.page.html ***!
-  \***************************************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/add-device-woprofile/add-device-woprofile.page.html":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/add-device-woprofile/add-device-woprofile.page.html ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"custom-toolbar\">\n    <ion-title>Add Device</ion-title>\n    <!-- <button ion-button icon-only (click)=\"closeModal()\">\n        \n\n    </button> -->\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal()\">\n        <ion-icon end name=\"close\" md=\"md-close\" style=\"background-color: transparent;\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col style=\"padding-top: 27px;\">\n        <ion-label>DEVEID</ion-label>\n      </ion-col>\n      <ion-col size=\"10\">\n        <ion-card>\n          <ion-input type=\"text\" [(ngModel)]=\"addDeviceID\"></ion-input>\n        </ion-card>\n\n        <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;\">The devEUI is a 8-byte\n          unique identified based on IEEE EUI-64. Mandatory</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col style=\"padding-top: 27px;\">\n        <ion-label>Comment</ion-label>\n      </ion-col>\n      <ion-col size=\"10\">\n        <ion-card>\n\n          <ion-input clearInput=\"true\" [(ngModel)]=\"comment\"></ion-input>\n\n\n        </ion-card>\n\n        <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;\">The devEUI is a 8-byte\n          unique identified based on IEEE EUI-64. Mandatory</ion-label>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  <div class=\"ui-fluid\" style=\"padding-top: 2vh;\">\n    <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\" name=\"Profiles\" (onOptionClick)=\"onOptionClick($event)\">\n    </p-selectButton>\n  </div>\n  <!-- <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\"></p-selectButton> -->\n\n  <div style=\"margin-top: 5vh; background-color: darkgrey;\" *ngIf=\"!profile\">\n    <ion-row>\n      <ion-col>\n        <label>Device Profile</label>\n      </ion-col>\n      <ion-col size=\"9\">\n        <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"cities\" [(ngModel)]=\"selectedCity\"\n          placeholder=\"Select a Device Profile\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n      </ion-col>\n      <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\">Registered Device Class</ion-label> -->\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <label>Service Profile</label>\n      </ion-col>\n      <ion-col size=\"9\">\n\n        <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"service\" [(ngModel)]=\"selectedCity\"\n          placeholder=\"Select a Service Profile\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n      </ion-col>\n      <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\">Registered Device Class</ion-label> -->\n    </ion-row>\n  </div>\n  <div style=\"margin-top: 5vh; background-color: darkgrey;height: 21vh;\" *ngIf=\"!key\">\n    <ion-row>\n      <ion-col>\n        <label>Device Class</label>\n      </ion-col>\n      <ion-col size=\"9\">\n\n        <ion-row>\n          <p-selectButton [options]=\"keysDevice\" [(ngModel)]=\"selectedkeyDevice\"></p-selectButton>\n        </ion-row>\n        <ion-row>\n          <p style=\"font-size:11px\">Supported Device Class</p>\n        </ion-row>\n      </ion-col>\n    </ion-row>\n    <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\"></ion-label> -->\n\n    <ion-row>\n      <ion-col>\n        <label>Activated</label>\n      </ion-col>\n      <ion-col size=\"9\">\n        <ion-row>\n          <p-selectButton [options]=\"keyActivated\" [(ngModel)]=\"selectedkeyActivated\"></p-selectButton>\n        </ion-row>\n        <ion-row>\n          <p style=\"font-size:11px;\">Select Yes to allow the device to actively operate on the network. If a device not\n            Activated, no data will be received from it and data cannot be sent to it.</p>\n        </ion-row>\n      </ion-col>\n    </ion-row>\n  </div>\n\n  <div style=\"margin-top: 5vh; background-color: darkgrey;height: 13vh;\" *ngIf=\"!additional\">\n    <ion-grid>\n      <ion-row>\n        <ion-col style=\"padding-top: 27px;\">\n          <ion-label>Options</ion-label>\n        </ion-col>\n        <ion-col size=\"10\">\n          <ion-card>\n\n            <ion-input style=\"background-color: white;\" clearInput=\"true\" [(ngModel)]=\"option\"></ion-input>\n            \n\n          </ion-card>\n\n          <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;\">The Options is a 4 byte\n            hex value. Normally left blank.</ion-label>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n  <div style=\"padding-top:3vh\">\n    <ion-button style=\"color:black\" size=\"small\" float-right fill=\"outline\">Cancel</ion-button>\n    <ion-button size=\"small\" style=\"background-color:gray;\" float-right (click)=\"finalCall()\">OK</ion-button>\n  </div>\n</ion-content>"
+module.exports = "<!-- <ion-row></ion-row>\n<ion-row></ion-row> -->\n\n<ion-header>\n    <ion-toolbar class=\"custom-toolbar\">\n      <ion-title>Add Device W/O Profile</ion-title>\n      <!-- <button ion-button icon-only (click)=\"closeModal()\">\n          \n  \n      </button> -->\n      <ion-buttons slot=\"end\">\n          <ion-button (click)=\"closeModal()\">\n          <ion-icon end name=\"close\" md=\"md-close\" style=\"background-color: transparent;\"></ion-icon>\n        </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n          <ion-grid>\n              <ion-row>\n                <ion-col  style=\"margin-top:3vh\"><ion-label >DEVEID</ion-label></ion-col>\n                <ion-col size=\"10\">\n                  <ion-row>\n                      <ion-card>\n                          <ion-input  clearInput=\"true\" ></ion-input>\n                          <!-- [(ngModel)]=\"addDeviceID\" -->\n                      </ion-card>\n                  </ion-row>\n                <ion-row> <ion-label style=\"font-size:11px;\">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-row>\n  </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col style=\"margin-top:3vh\"><ion-label >Comment</ion-label></ion-col>\n                    <ion-col size=\"10\">\n                       <ion-row>\n                          <ion-card>\n                              <ion-input  clearInput=\"true\" ></ion-input>\n                              <!-- [(ngModel)]=\"addDeviceID\" -->\n                            </ion-card>\n                       </ion-row>\n                      <ion-row>\n                          <ion-label style=\"font-size:11px\">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label>\n                      </ion-row>\n                      </ion-col>\n                    </ion-row>\n                </ion-grid>\n                <div class=\"ui-fluid\"  style=\"padding-top: 2vh;\">\n                <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\" (onOptionClick)=\"onOptionClick($event)\" ></p-selectButton>\n            </div>\n  <div *ngIf=\"!keys\">\n                <ion-row>\n                    <ion-col style=\"margin-top:1vh\"><ion-label >Activated</ion-label></ion-col>\n                    <ion-col size=\"10\" >\n                      <ion-row>\n                          <p-selectButton [options]=\"activatedType\" [(ngModel)]=\"ActivatedSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-row>\n                  <ion-row>\n                      <p style=\"font-size: 11px;\">Select Yes to allow the device to actively operate on the network. If a device not activated, no data will be received from it and data cannot be sent to it.</p>\n                  </ion-row>\n                </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col style=\"margin-top:1vh\"><ion-label >Downlink Enabled</ion-label></ion-col>\n                    <ion-col size=\"10\" >\n                      <ion-row>\n                          <p-selectButton [options]=\"DownlinkType\" [(ngModel)]=\"DownlinkSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-row>\n                      <ion-row>\n                          <p style=\"font-size: 11px;\">Select Yes to allow the network to send downlink on the network. If a not allowed, the network will not send any user payloads to thw device.</p>\n                      </ion-row>\n                      </ion-col>\n                    </ion-row>\n                    <ion-row>\n                         <ion-col style=\"margin-top:2vh\"><ion-label >Registration Type</ion-label></ion-col>\n                        <ion-col style=\"margin-top:1vh\">\n                          <ion-row><p-selectButton [options]=\"registrationType\" [(ngModel)]=\"registrationSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton></ion-row>\n                          <ion-row><p style=\"font-size: 11px;\">personalised devices have pre-generated session keys and will not perform the JOIN procedure.</p></ion-row>\n                          </ion-col>\n                  <ion-col style=\"margin-top:2vh\"><ion-label >LoRA WAN Mac Version</ion-label></ion-col>\n                  <ion-col>\n                    <ion-card>\n                      <ion-input  clearInput=\"true\" type=\"number\" ></ion-input>\n                      <!-- [(ngModel)]=\"addDeviceID\" -->\n                  </ion-card></ion-col>\n                </ion-row>\n                \n                <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >App Key</ion-label></ion-col>\n                    <ion-col size=\"10\">\n                      <ion-row>\n                          <ion-card>\n                              <ion-item>\n                                <ion-input  clearInput=\"true\" ></ion-input>\n                                <!-- [(ngModel)]=\"addDeviceID\" -->\n                              </ion-item>\n                            </ion-card>\n                      </ion-row>\n                      <ion-row>\n                          <p style=\"font-size: 11px;\">The App Key is a 16-byte encryption key used the data payloads. If provided all encryption is managed by the network. If not provided, the payload encryption must be managedby the application.Optional.</p>\n                      </ion-row>               \n      </ion-col>\n                    </ion-row>\n                    \n          </div>\n          <div *ngIf=\"!QoS\">\n              <ion-grid>\n\n                  <ion-row>\n                      <ion-col style=\"margin-top:1vh\" size=\"2\"><ion-label >Device Properties</ion-label></ion-col>\n                      <ion-col  size=\"5\">\n                          <p-selectButton [options]=\"devicePropertiesStaMob\" [(ngModel)]=\"devicePropertiesStaMobType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                    </ion-col>\n                    <ion-col size=\"5\" >\n                        <p-selectButton [options]=\"devicePropertiesInOUt\" [(ngModel)]=\"devicePropertiesInOUtType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                  </ion-col>\n                    <!-- <label style=\"color: black;font-size:9px;position: absolute;margin-left: 18px;\">Select Device Properties or not specified.</label> -->\n                  </ion-row>\n                  <p style=\"font-size:12px;margin-left:19vh\">Select Device Properties or not specified.</p>\n                  <ion-row>\n                      <ion-col style=\"margin-top:1vh\"><ion-label >QoS Class</ion-label></ion-col>\n                      <ion-col size=\"10\">\n                          <p-selectButton [options]=\"qosClass\" [(ngModel)]=\"qosClassType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                    </ion-col>\n                    <!-- <label style=\"color: black;font-size:9px;position: absolute;margin-left: 18px;\">Select the QoS level for the device.</label> -->\n                  </ion-row>\n                  <p style=\"font-size:12px;margin-left:19vh\">Select the QoS level for the device.</p>\n\n                  <ion-row>\n                      <ion-col style=\"margin-top:1vh\"><ion-label >Uplink redundancy</ion-label></ion-col>\n                      <ion-col size=\"10\">\n                          <p-selectButton [options]=\"uplinkType\" [(ngModel)]=\"uplinkSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                    </ion-col>\n                    <!-- <label style=\"color: black;font-size:9px;position: absolute;margin-left: 18px;\">Select number of transmissions device will do for each uplink. Setting the count to 1 means no reduncancy.</label> -->\n                  </ion-row>\n                  <p style=\"font-size:12px;margin-left:19vh\">Select number of transmissions device will do for each uplink. Setting the count to 1 means no reduncancy.</p>\n                  <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >Allowed duty cycle</ion-label></ion-col>\n                    <ion-col size=\"9.5\">\n                      <ion-card>\n                  \n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                   \n                    </ion-card>\n                  </ion-col>\n                    </ion-row>\n                    <p style=\"font-size:12px;margin-left: 19vh;\">Specify the maximum dutycycle in % the device is allowed. If it is exceeded the network try to enforce it. Optional.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:3vh\"><ion-label >Expected duty cycle</ion-label></ion-col>\n                        <ion-col size=\"9.5\">\n                            <ion-card>\n                       \n                            <ion-input  clearInput=\"true\" ></ion-input>\n                            <!-- [(ngModel)]=\"addDeviceID\" -->\n                      \n                          </ion-card>\n                        </ion-col>\n                        </ion-row>\n                        <p style=\"font-size:12px;margin-left: 19vh;\">Specify the expected average duty cycle. Optional.</p>\n                    </ion-grid>\n\n          </div>\n          <div *ngIf=\"!packetStorage\">\n              <ion-grid>\n                  <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >Downlink Packet Expiry Time</ion-label></ion-col>\n                    <ion-col size=\"9\">\n                      <ion-card>\n                  \n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                   \n                      </ion-card>\n                    </ion-col>\n                    </ion-row>\n                    <p style=\"font-size:12px;margin-left: 20vh;\">Time in hours that a downlink packet is stored in the persistent storage. After expiry the packet will be discarded regardless if the packet was sent or not, or if the applicaiton have seen the status of the packet.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:3vh\"><ion-label >Uplink Packet Expiry Time</ion-label></ion-col>\n                        <ion-col size=\"9\">\n                            <ion-card>\n                       \n                            <ion-input  clearInput=\"true\" ></ion-input>\n                            <!-- [(ngModel)]=\"addDeviceID\" -->\n                      \n                          </ion-card>\n                        </ion-col>\n                        </ion-row>\n                        <p style=\"font-size:12px;margin-left: 20vh;\">Time in hours that a received packet will be stored in the persistent storage. After expiry the packet will be discarded regardless if the packet have been read or not.</p>\n                    </ion-grid>\n          </div>\n          <div *ngIf=\"!LoRaParameters\" style=\"padding-top:2vh\">\n              <ion-row>\n                  <ion-col size=\"3\">\n                      <label>LoRaWAN Mac Version</label>\n                  </ion-col>\n                  <ion-col size=\"2\">\n                      <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"cities\" [(ngModel)]=\"selectedCity\" placeholder=\"Select a Profile\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n                  </ion-col>\n                  <p-selectButton [options]=\"MacVersion\" [(ngModel)]=\"MacVersionType\" ></p-selectButton>\n                </ion-row>\n                <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >MaxEIRP</ion-label></ion-col>\n                    <ion-col size=\"10\">\n                      <ion-card>\n                      <ion-item>\n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                      </ion-item>\n                    </ion-card>\n      </ion-col>\n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Maximum output power in dBm of the device. This is only applicable to 1.0.2 Rev B or later devices.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:1vh\"><ion-label >Device Class</ion-label></ion-col>\n                        <ion-col size=\"10\">\n                            <p-selectButton [options]=\"deviceClass\" [(ngModel)]=\"deviceClassType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                    \n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Supported device class.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:1vh\"><ion-label >FCNT Size</ion-label></ion-col>\n                        <ion-col size=\"10\">\n                            <p-selectButton [options]=\"fcntSize\" [(ngModel)]=\"fcntSizeType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                     \n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Select size of FCNT.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:1vh\"><ion-label >Downlink slot delay</ion-label></ion-col>\n                        <ion-col size=\"10\">\n                            <p-selectButton [options]=\"downSlotDelay\" [(ngModel)]=\"downSlotDelayType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                    \n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Select default delay from end of tranmission till the device listen for downlink. This parameter is only important for personalized devices.</p>\n                    <ion-row>\n                        <ion-col >\n                            <label>RX Slot 2</label>\n                        </ion-col>\n                        <ion-col size=\"10\">\n        \n                            <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"rsSlot\" [(ngModel)]=\"rsSlotType\" placeholder=\"Select a Slot\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n                        </ion-col>\n                        <p style=\"font-size: 12px;margin-left:15vh\">Data rate (spreading factor and Bandwidth) used by default in downlink for slot-2 and for class C.</p>\n                          <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\">Registered Device Class</ion-label> -->\n                      </ion-row>\n       \n                  </div>\n          <div *ngIf=\"!LoRaLocation\">\n                <ion-grid>\n                <ion-row>\n                  <ion-col style=\"margin-top:1vh\">\n                    <ion-label >LoRa Location</ion-label>\n                  </ion-col>\n                  <ion-col size=\"10\" >\n                      <p-selectButton [options]=\"loRaLocationType\" [(ngModel)]=\"LoRaLocationSelectedType\" (onOptionClick)=\"LoRaLocation($event)\" ></p-selectButton>\n                  </ion-col>\n                </ion-row>\n                <p style=\"font-size: 12px;margin-left: 19vh;\"></p>\n              </ion-grid>\n          \n          </div>\n\n\n\n          <div  *ngIf=\"!Additional\">\n           \n              <ion-grid>\n                  <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >Options</ion-label></ion-col>\n                    <ion-col size=\"11\">\n                      <ion-card>\n                      \n                        <ion-input   style=\"background-color: white;\" clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                    \n                    </ion-card>\n                  </ion-col>\n                    </ion-row>\n                    <p style=\" font-size:12px;margin-left: 15vh;\">The Options is a 4 byte hex value. Normally Left blank.</p>\n                    </ion-grid>\n                 \n                  </div>\n        <div style=\"padding-top:3vh;\">\n              <ion-button style=\"color:black\" size=\"small\"  float-right fill=\"outline\" >Cancel</ion-button>\n            <ion-button size=\"small\"  float-right >OK</ion-button>\n           </div>\n           \n  \n  \n  </ion-content>\n  \n"
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/add-device-without-profile/add-device-without-profile.page.html":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/add-device-without-profile/add-device-without-profile.page.html ***!
-  \***********************************************************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/add-device/add-device.page.html":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/add-device/add-device.page.html ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <ion-row></ion-row>\n<ion-row></ion-row> -->\n\n<ion-header>\n    <ion-toolbar class=\"custom-toolbar\">\n      <ion-title>Add Device W/O Profile</ion-title>\n      <!-- <button ion-button icon-only (click)=\"closeModal()\">\n          \n  \n      </button> -->\n      <ion-buttons slot=\"end\">\n          <ion-button (click)=\"closeModal()\">\n          <ion-icon end name=\"close\" md=\"md-close\" style=\"background-color: transparent;\"></ion-icon>\n        </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n          <ion-grid>\n              <ion-row>\n                <ion-col  style=\"margin-top:3vh\"><ion-label >DEVEID</ion-label></ion-col>\n                <ion-col size=\"10\">\n                  <ion-card>\n              \n                    <ion-input  clearInput=\"true\" ></ion-input>\n                    <!-- [(ngModel)]=\"addDeviceID\" -->\n               \n                </ion-card>\n  \n                  <ion-label style=\"color: black;font-size:8px;position: absolute;margin-left: 18px;\">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col style=\"margin-top:3vh\"><ion-label >Comment</ion-label></ion-col>\n                    <ion-col size=\"10\">\n                        <ion-card>\n                   \n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                  \n                      </ion-card>\n  \n                      <ion-label style=\"color: black;font-size:8px;position: absolute;margin-left: 18px;\">The devEUI is a 8-byte unique identified based on IEEE  EUI-64. Mandatory</ion-label></ion-col>\n                    </ion-row>\n                </ion-grid>\n                <div class=\"ui-fluid\"  style=\"padding-top: 2vh;\">\n                <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\" (onOptionClick)=\"onOptionClick($event)\" ></p-selectButton>\n            </div>\n  <div *ngIf=\"!keys\">\n                <ion-row>\n                    <ion-col style=\"margin-top:1vh\"><ion-label >Activated</ion-label></ion-col>\n                    <ion-col size=\"10\" >\n                        <p-selectButton [options]=\"activatedType\" [(ngModel)]=\"ActivatedSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                  </ion-col>\n                </ion-row>\n                <p style=\"font-size: 12px;margin-left:15vh\">Select Yes to allow the device to actively operate on the network. If a device not activated, no data will be received from it and data cannot be sent to it.</p>\n                <ion-row>\n                    <ion-col style=\"margin-top:1vh\"><ion-label >Downlink Enabled</ion-label></ion-col>\n                    <ion-col size=\"10\" >\n                        <p-selectButton [options]=\"DownlinkType\" [(ngModel)]=\"DownlinkSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                    </ion-row>\n                        <p style=\"font-size: 12px;margin-left:15vh\">Select Yes to allow the network to send downlink on the network. If a not allowed, the network will not send any user payloads to thw device.</p>\n\n                    <ion-row>\n                         <ion-col style=\"margin-top:2vh\"><ion-label >Registration Type</ion-label></ion-col>\n                        <ion-col style=\"margin-top:1vh\">\n                            <p-selectButton [options]=\"registrationType\" [(ngModel)]=\"registrationSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                          </ion-col>\n                  <ion-col style=\"margin-top:2vh\"><ion-label >LoRA WAN Mac Version</ion-label></ion-col>\n                  <ion-col>\n                    <ion-card>\n                      <ion-input  clearInput=\"true\" type=\"number\" ></ion-input>\n                      <!-- [(ngModel)]=\"addDeviceID\" -->\n                  </ion-card></ion-col>\n                </ion-row>\n                <p style=\"font-size: 12px;margin-left:15vh\">personalised devices have pre-generated session keys and will not perform the JOIN procedure.</p>\n                <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >App Key</ion-label></ion-col>\n                    <ion-col size=\"10\">\n                      <ion-card>\n                      <ion-item>\n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                      </ion-item>\n                    </ion-card>\n      </ion-col>\n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">The App Key is a 16-byte encryption key used the data payloads. If provided all encryption is managed by the network. If not provided, the payload encryption must be managedby the application.Optional.</p>\n          </div>\n          <div *ngIf=\"!QoS\">\n              <ion-grid>\n\n                  <ion-row>\n                      <ion-col style=\"margin-top:1vh\" size=\"2\"><ion-label >Device Properties</ion-label></ion-col>\n                      <ion-col  size=\"5\">\n                          <p-selectButton [options]=\"devicePropertiesStaMob\" [(ngModel)]=\"devicePropertiesStaMobType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                    </ion-col>\n                    <ion-col size=\"5\" >\n                        <p-selectButton [options]=\"devicePropertiesInOUt\" [(ngModel)]=\"devicePropertiesInOUtType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                  </ion-col>\n                    <!-- <label style=\"color: black;font-size:9px;position: absolute;margin-left: 18px;\">Select Device Properties or not specified.</label> -->\n                  </ion-row>\n                  <p style=\"font-size:12px;margin-left:19vh\">Select Device Properties or not specified.</p>\n                  <ion-row>\n                      <ion-col style=\"margin-top:1vh\"><ion-label >QoS Class</ion-label></ion-col>\n                      <ion-col size=\"10\">\n                          <p-selectButton [options]=\"qosClass\" [(ngModel)]=\"qosClassType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                    </ion-col>\n                    <!-- <label style=\"color: black;font-size:9px;position: absolute;margin-left: 18px;\">Select the QoS level for the device.</label> -->\n                  </ion-row>\n                  <p style=\"font-size:12px;margin-left:19vh\">Select the QoS level for the device.</p>\n\n                  <ion-row>\n                      <ion-col style=\"margin-top:1vh\"><ion-label >Uplink redundancy</ion-label></ion-col>\n                      <ion-col size=\"10\">\n                          <p-selectButton [options]=\"uplinkType\" [(ngModel)]=\"uplinkSelectType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                    </ion-col>\n                    <!-- <label style=\"color: black;font-size:9px;position: absolute;margin-left: 18px;\">Select number of transmissions device will do for each uplink. Setting the count to 1 means no reduncancy.</label> -->\n                  </ion-row>\n                  <p style=\"font-size:12px;margin-left:19vh\">Select number of transmissions device will do for each uplink. Setting the count to 1 means no reduncancy.</p>\n                  <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >Allowed duty cycle</ion-label></ion-col>\n                    <ion-col size=\"9.5\">\n                      <ion-card>\n                  \n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                   \n                    </ion-card>\n                  </ion-col>\n                    </ion-row>\n                    <p style=\"font-size:12px;margin-left: 19vh;\">Specify the maximum dutycycle in % the device is allowed. If it is exceeded the network try to enforce it. Optional.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:3vh\"><ion-label >Expected duty cycle</ion-label></ion-col>\n                        <ion-col size=\"9.5\">\n                            <ion-card>\n                       \n                            <ion-input  clearInput=\"true\" ></ion-input>\n                            <!-- [(ngModel)]=\"addDeviceID\" -->\n                      \n                          </ion-card>\n                        </ion-col>\n                        </ion-row>\n                        <p style=\"font-size:12px;margin-left: 19vh;\">Specify the expected average duty cycle. Optional.</p>\n                    </ion-grid>\n\n          </div>\n          <div *ngIf=\"!packetStorage\">\n              <ion-grid>\n                  <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >Downlink Packet Expiry Time</ion-label></ion-col>\n                    <ion-col size=\"9\">\n                      <ion-card>\n                  \n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                   \n                      </ion-card>\n                    </ion-col>\n                    </ion-row>\n                    <p style=\"font-size:12px;margin-left: 20vh;\">Time in hours that a downlink packet is stored in the persistent storage. After expiry the packet will be discarded regardless if the packet was sent or not, or if the applicaiton have seen the status of the packet.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:3vh\"><ion-label >Uplink Packet Expiry Time</ion-label></ion-col>\n                        <ion-col size=\"9\">\n                            <ion-card>\n                       \n                            <ion-input  clearInput=\"true\" ></ion-input>\n                            <!-- [(ngModel)]=\"addDeviceID\" -->\n                      \n                          </ion-card>\n                        </ion-col>\n                        </ion-row>\n                        <p style=\"font-size:12px;margin-left: 20vh;\">Time in hours that a received packet will be stored in the persistent storage. After expiry the packet will be discarded regardless if the packet have been read or not.</p>\n                    </ion-grid>\n          </div>\n          <div *ngIf=\"!LoRaParameters\" style=\"padding-top:2vh\">\n              <ion-row>\n                  <ion-col size=\"3\">\n                      <label>LoRaWAN Mac Version</label>\n                  </ion-col>\n                  <ion-col size=\"2\">\n                      <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"cities\" [(ngModel)]=\"selectedCity\" placeholder=\"Select a Profile\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n                  </ion-col>\n                  <p-selectButton [options]=\"MacVersion\" [(ngModel)]=\"MacVersionType\" ></p-selectButton>\n                </ion-row>\n                <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >MaxEIRP</ion-label></ion-col>\n                    <ion-col size=\"10\">\n                      <ion-card>\n                      <ion-item>\n                        <ion-input  clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                      </ion-item>\n                    </ion-card>\n      </ion-col>\n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Maximum output power in dBm of the device. This is only applicable to 1.0.2 Rev B or later devices.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:1vh\"><ion-label >Device Class</ion-label></ion-col>\n                        <ion-col size=\"10\">\n                            <p-selectButton [options]=\"deviceClass\" [(ngModel)]=\"deviceClassType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                    \n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Supported device class.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:1vh\"><ion-label >FCNT Size</ion-label></ion-col>\n                        <ion-col size=\"10\">\n                            <p-selectButton [options]=\"fcntSize\" [(ngModel)]=\"fcntSizeType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                     \n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Select size of FCNT.</p>\n                    <ion-row>\n                        <ion-col style=\"margin-top:1vh\"><ion-label >Downlink slot delay</ion-label></ion-col>\n                        <ion-col size=\"10\">\n                            <p-selectButton [options]=\"downSlotDelay\" [(ngModel)]=\"downSlotDelayType\" (onOptionClick)=\"ActivatedSelectType($event)\" ></p-selectButton>\n                      </ion-col>\n                    \n                    </ion-row>\n                    <p style=\"font-size: 12px;margin-left:15vh\">Select default delay from end of tranmission till the device listen for downlink. This parameter is only important for personalized devices.</p>\n                    <ion-row>\n                        <ion-col >\n                            <label>RX Slot 2</label>\n                        </ion-col>\n                        <ion-col size=\"10\">\n        \n                            <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"rsSlot\" [(ngModel)]=\"rsSlotType\" placeholder=\"Select a Slot\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n                        </ion-col>\n                        <p style=\"font-size: 12px;margin-left:15vh\">Data rate (spreading factor and Bandwidth) used by default in downlink for slot-2 and for class C.</p>\n                          <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\">Registered Device Class</ion-label> -->\n                      </ion-row>\n       \n                  </div>\n          <div *ngIf=\"!LoRaLocation\">\n                <ion-grid>\n                <ion-row>\n                  <ion-col style=\"margin-top:1vh\">\n                    <ion-label >LoRa Location</ion-label>\n                  </ion-col>\n                  <ion-col size=\"10\" >\n                      <p-selectButton [options]=\"loRaLocationType\" [(ngModel)]=\"LoRaLocationSelectedType\" (onOptionClick)=\"LoRaLocation($event)\" ></p-selectButton>\n                  </ion-col>\n                </ion-row>\n                <p style=\"font-size: 12px;margin-left: 19vh;\"></p>\n              </ion-grid>\n          \n          </div>\n\n\n\n          <div  *ngIf=\"!Additional\">\n           \n              <ion-grid>\n                  <ion-row>\n                    <ion-col  style=\"margin-top:3vh\"><ion-label >Options</ion-label></ion-col>\n                    <ion-col size=\"11\">\n                      <ion-card>\n                      \n                        <ion-input   style=\"background-color: white;\" clearInput=\"true\" ></ion-input>\n                        <!-- [(ngModel)]=\"addDeviceID\" -->\n                    \n                    </ion-card>\n                  </ion-col>\n                    </ion-row>\n                    <p style=\" font-size:12px;margin-left: 15vh;\">The Options is a 4 byte hex value. Normally Left blank.</p>\n                    </ion-grid>\n                 \n                  </div>\n        <div style=\"padding-top:3vh;\">\n              <ion-button style=\"color:black\" size=\"small\"  float-right fill=\"outline\" >Cancel</ion-button>\n            <ion-button size=\"small\"  float-right >OK</ion-button>\n           </div>\n           \n  \n  \n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"custom-toolbar\">\n    <ion-title>Add Device</ion-title>\n    <!-- <button ion-button icon-only (click)=\"closeModal()\">\n        \n\n    </button> -->\n   <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal()\">\n        <ion-icon end name=\"close\" md=\"md-close\" style=\"background-color: transparent;\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!-- class=\"container-login100\" style=\"margin-top:5%;margin-bottom:5%;margin-right:5%;margin-left:5%\" -->\n \n  <!-- <ion-grid>\n    <ion-row style=\"margin-top:7%\">\n      <ion-col size=\"2\"></ion-col>\n      <ion-col  size=\"8\">\n          <div style=\"border:1px solid\"> -->\n          <ion-grid>\n              <ion-row>\n                <ion-col style=\"padding-top: 27px;text-align: center;\">\n                  <ion-label>DEVEID</ion-label>\n                </ion-col>\n                <ion-col size=\"10\">\n                  <ion-card>\n                    <ion-input type=\"text\" [(ngModel)]=\"addDeviceID\"></ion-input>\n                  </ion-card>\n          \n                  <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;\">The devEUI is a 8-byte\n                    unique identified based on IEEE EUI-64. Mandatory</ion-label>\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col style=\"padding-top: 27px;text-align: center;\">\n                  <ion-label>Comment</ion-label>\n                </ion-col>\n                <ion-col size=\"10\">\n                  <ion-card>\n          \n                    <ion-input clearInput=\"true\" [(ngModel)]=\"comment\"></ion-input>\n          \n          \n                  </ion-card>\n          \n                  <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;\">The devEUI is a 8-byte\n                    unique identified based on IEEE EUI-64. Mandatory</ion-label>\n                </ion-col>\n              </ion-row>\n            </ion-grid>\n            <div class=\"ui-fluid\" style=\"padding-top: 2vh;\">\n              <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\" name=\"Profiles\" (onOptionClick)=\"onOptionClick($event)\">\n              </p-selectButton>\n            </div>\n            <!-- <p-selectButton [options]=\"types\" [(ngModel)]=\"selectedType\"></p-selectButton> -->\n          \n            <div style=\"margin-top: 5vh;\" *ngIf=\"!profile\">\n              <ion-row>\n                <ion-col style=\"text-align: center;\">\n                  <label>Device Profile</label>\n                </ion-col>\n                <ion-col size=\"9\">\n                  <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"cities\" [(ngModel)]=\"selectedCity\"\n                    placeholder=\"Select a Device Profile\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n                </ion-col>\n                <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\">Registered Device Class</ion-label> -->\n              </ion-row>\n              <ion-row>\n                <ion-col style=\"text-align: center;\">\n                  <label>Service Profile</label>\n                </ion-col>\n                <ion-col size=\"9\">\n          \n                  <p-dropdown autowidth=\"false\" [style]=\"{'width':'100%'}\" [options]=\"service\" [(ngModel)]=\"selectedService\"\n                    placeholder=\"Select a Service Profile\" optionLabel=\"name\" [showClear]=\"true\"></p-dropdown>\n                </ion-col>\n                <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\">Registered Device Class</ion-label> -->\n              </ion-row>\n            </div>\n            <div style=\"margin-top: 5vh;height: 21vh;\" *ngIf=\"!key\">\n              <ion-row>\n                <ion-col style=\"text-align:center\">\n                  <label>Device Class</label>\n                </ion-col>\n                <ion-col size=\"9\">\n          \n                  <ion-row>\n                    <p-selectButton [options]=\"keysDevice\" [(ngModel)]=\"selectedkeyDevice\"></p-selectButton>\n                  </ion-row>\n                  <ion-row>\n                    <p style=\"font-size:11px\">Supported Device Class</p>\n                  </ion-row>\n                </ion-col>\n              </ion-row>\n              <!-- <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;    margin-left: 195px;margin-top: 42px;\"></ion-label> -->\n          \n              <ion-row>\n                <ion-col style=\"text-align: center;\">\n                  <label>Activated</label>\n                </ion-col>\n                <ion-col size=\"9\">\n                  <ion-row>\n                    <p-selectButton [options]=\"keyActivated\" [(ngModel)]=\"selectedkeyActivated\"></p-selectButton>\n                  </ion-row>\n                  <ion-row>\n                    <p style=\"font-size:11px;\">Select Yes to allow the device to actively operate on the network. If a device not\n                      Activated, no data will be received from it and data cannot be sent to it.</p>\n                  </ion-row>\n                </ion-col>\n              </ion-row>\n            </div>\n          \n            <div style=\"margin-top: 5vh;height: 13vh;\" *ngIf=\"!additional\">\n              <ion-grid>\n                <ion-row>\n                  <ion-col style=\"padding-top: 27px;text-align: center;\">\n                    <ion-label>Options</ion-label>\n                  </ion-col>\n                  <ion-col size=\"10\">\n                    <ion-card>\n          \n                      <ion-input style=\"background-color: white;\" clearInput=\"true\" [(ngModel)]=\"option\"></ion-input>\n                      \n          \n                    </ion-card>\n          \n                    <ion-label style=\"color:black;font-size:11px;position: absolute;margin-left: 18px;\">The Options is a 4 byte\n                      hex value. Normally left blank.</ion-label>\n                  </ion-col>\n                </ion-row>\n              </ion-grid>\n            </div>\n            <div style=\"padding-top:3vh\">\n              <ion-button style=\" background-color: #49c5b6;border-color:#49c5b6;\" size=\"small\" float-right fill=\"outline\">Cancel</ion-button>\n              <ion-button size=\"small\" style=\" background-color: #49c5b6;border-color:#49c5b6;\" float-right (click)=\"finalCall()\">OK</ion-button>\n            </div>\n          <!-- </div>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n    </ion-row>\n  </ion-grid> -->\n\n  \n</ion-content>"
 
 /***/ }),
 
@@ -525,7 +529,7 @@ module.exports = "<!-- <ion-row></ion-row>\n<ion-row></ion-row> -->\n\n<ion-head
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n<ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n<ion-header >\n    <ion-toolbar color=\"primary\">\n      <ion-title>\n        Home\n      </ion-title>\n      <ion-buttons slot=\"end\">\n        <ion-button (click)=\"automaticClose= !automaticClose\">\n          <ion-icon slot=\"icon-only\" name=\"close\" *ngIf=\"automaticClose\"></ion-icon>\n          <ion-icon slot=\"icon-only\" name=\"resize\" *ngIf=\"!automaticClose\"></ion-icon>\n        </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list *ngFor=\"let item of information; let i =index;\" class=\"accordion-list\" llines=\"none\" detail=\"false\" no-padding>\n<ion-item tappable (click)=\"toggleSection(i)\" [ngClass]=\"{'section-active':item.open, 'section': !item.open}\">\n    <ion-icon slot=\"end\" name=\"arrow-dropright\" *ngIf=\"!item.open\"></ion-icon>\n    <ion-icon name=\"arrow-dropdown\" slot=\"end\" *ngIf=\"item.open\"></ion-icon>\n   \n  <ion-label>\n    {{item.name}}\n  </ion-label>\n</ion-item>\n<div *ngIf=\"item.children && item.open\">\n  <ion-list *ngFor=\"let child of item.children; let j= index;\"  class=\"child-list\">\n        <ion-label (click)=\"toggleItem(i,j)\">\n          {{child.name}}\n        </ion-label>\n  </ion-list>\n</div>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n<ion-router-outlet main></ion-router-outlet>\n</ion-split-pane>\n</ion-app>\n\n  <!-- <ion-app>\n  <ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list >\n          <!-- <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle> -->\n          \n<!--          <ion-item-group>\n              <ion-item-divider icon=\"construct\"(click)=\"subList('device')\" color=\"light\">Devices\n              </ion-item-divider>\n                \n              <ion-item \n                    *ngFor=\"let device of devices\" lines=\"none\">\n                    <ion-icon name=\"{{ device.icon }}\" item-left></ion-icon>\n                    {{ device.name }}\n                 </ion-item>\n               \n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider (click)=\"subList('group')\" color=\"light\">Groups</ion-item-divider>\n                 <ion-item\n                    *ngFor=\"let group of groups\" lines=\"none\">\n                    <ion-icon name=\"{{ group.icon }}\" item-left></ion-icon>\n                    {{ group.name }}\n                 </ion-item>\n           </ion-item-group>\n           <ion-item-group>\n              <ion-item-divider (click)=\"subList('profile')\" color=\"light\">Profiles</ion-item-divider>\n                 <ion-item style=\"animation: backwards;\"\n                    *ngFor=\"let profile of profiles\"\n                    (click)=\"sectionToLoad(profile)\" lines=\"none\">\n                    <ion-icon name=\"{{ profile.icon }}\" item-left></ion-icon>\n                    {{ profile.name }}\n                 </ion-item>\n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider  (click)=\"subList('find')\" color=\"light\">Find</ion-item-divider>\n                 <ion-item \n                    *ngFor=\"let find of find\"\n                    (click)=\"sectionToLoad(find)\" lines=\"none\">\n                    <ion-icon name=\"{{ find.icon }}\" item-left></ion-icon>\n                    {{ find.name }}\n                 </ion-item>\n           </ion-item-group>\n         <ion-item-group>\n             <ion-item-divider   (click)=\"subList('account')\"color=\"light\">Accounts</ion-item-divider>\n                <ion-item \n                   *ngFor=\"let account of accounts\"\n                   (click)=\"sectionToLoad(account)\" lines=\"none\">\n                   <ion-icon name=\"{{ account.icon }}\" item-left></ion-icon>\n                   {{ account.name }}\n                </ion-item>\n          </ion-item-group>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app> -->"
+module.exports = "<ion-app>\n<ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n<!-- <ion-header >\n    <ion-toolbar color=\"primary\">\n      <ion-title>\n        Home\n      </ion-title>\n      <ion-buttons slot=\"end\">\n        <ion-button (click)=\"automaticClose= !automaticClose\">\n          <ion-icon slot=\"icon-only\" name=\"close\" *ngIf=\"automaticClose\"></ion-icon>\n          <ion-icon slot=\"icon-only\" name=\"resize\" *ngIf=\"!automaticClose\"></ion-icon>\n        </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n  </ion-header> -->\n\n  \n  <ion-content>\n      <div style=\"width:100%;height:200px;background-color:#2a3f54;text-align: center;\"> \n          <img  src=\"assets/imgs/transparent_logo.png\"  style=\"background-color: white;width: 70%;height: 65px;border-radius: 20px;margin-top: 5%;\"/>\n          <div style=\"color: white;margin-top: 20%;\">\n             vikrantrane24@gmail.com\n          </div>\n        </div>\n    <ion-list *ngFor=\"let item of information; let i =index;\" class=\"accordion-list\" llines=\"none\" detail=\"false\" no-padding>\n<ion-item tappable (click)=\"toggleSection(i)\" [ngClass]=\"{'section-active':item.open, 'section': !item.open}\">\n    <ion-icon slot=\"end\" name=\"arrow-dropright\" *ngIf=\"!item.open\"></ion-icon>\n    <ion-icon name=\"arrow-dropdown\" slot=\"end\" *ngIf=\"item.open\"></ion-icon>\n   \n  <ion-label >\n    {{item.name}}\n  </ion-label>\n</ion-item>\n<div *ngIf=\"item.children && item.open\">\n  <ion-list *ngFor=\"let child of item.children; let j= index;\"  class=\"child-list\">\n        <ion-label (click)=\"toggleItem(i,j)\">\n          {{child.name}}\n        </ion-label>\n       \n  </ion-list>\n \n</div>\n    </ion-list>\n    <ion-list  style=\"padding:0px\">\n        <ion-item>\n          \n                <ion-icon  name=\"log-out\" style=\"margin-right: 15px;font-size: 25px;\" slot=\"end\"></ion-icon>\n             \n            <ion-label>Logout</ion-label>\n          </ion-item>\n       \n  </ion-list>\n  </ion-content>\n</ion-menu>\n<ion-router-outlet main></ion-router-outlet>\n</ion-split-pane>\n</ion-app>\n\n  <!-- <ion-app>\n  <ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list >\n          <!-- <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle> -->\n          \n<!--          <ion-item-group>\n              <ion-item-divider icon=\"construct\"(click)=\"subList('device')\" color=\"light\">Devices\n              </ion-item-divider>\n                \n              <ion-item \n                    *ngFor=\"let device of devices\" lines=\"none\">\n                    <ion-icon name=\"{{ device.icon }}\" item-left></ion-icon>\n                    {{ device.name }}\n                 </ion-item>\n               \n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider (click)=\"subList('group')\" color=\"light\">Groups</ion-item-divider>\n                 <ion-item\n                    *ngFor=\"let group of groups\" lines=\"none\">\n                    <ion-icon name=\"{{ group.icon }}\" item-left></ion-icon>\n                    {{ group.name }}\n                 </ion-item>\n           </ion-item-group>\n           <ion-item-group>\n              <ion-item-divider (click)=\"subList('profile')\" color=\"light\">Profiles</ion-item-divider>\n                 <ion-item style=\"animation: backwards;\"\n                    *ngFor=\"let profile of profiles\"\n                    (click)=\"sectionToLoad(profile)\" lines=\"none\">\n                    <ion-icon name=\"{{ profile.icon }}\" item-left></ion-icon>\n                    {{ profile.name }}\n                 </ion-item>\n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider  (click)=\"subList('find')\" color=\"light\">Find</ion-item-divider>\n                 <ion-item \n                    *ngFor=\"let find of find\"\n                    (click)=\"sectionToLoad(find)\" lines=\"none\">\n                    <ion-icon name=\"{{ find.icon }}\" item-left></ion-icon>\n                    {{ find.name }}\n                 </ion-item>\n           </ion-item-group>\n         <ion-item-group>\n             <ion-item-divider   (click)=\"subList('account')\"color=\"light\">Accounts</ion-item-divider>\n                <ion-item \n                   *ngFor=\"let account of accounts\"\n                   (click)=\"sectionToLoad(account)\" lines=\"none\">\n                   <ion-icon name=\"{{ account.icon }}\" item-left></ion-icon>\n                   {{ account.name }}\n                </ion-item>\n          </ion-item-group>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app> -->"
 
 /***/ }),
 
@@ -536,7 +540,7 @@ module.exports = "<ion-app>\n<ion-split-pane disabled>\n    <ion-menu type=\"ove
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div style=\"text-align: center;\">\n<ion-button  color=\"danger\" style=\"height: 20px;margin-top: -5px;\"(click)=\"editRow()\">Edit</ion-button>\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">View</ion-button>\n<!-- <ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">Send</ion-button> -->\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">Delete</ion-button>\n\n</div>\n\n    "
+module.exports = "\n <div style=\"text-align: center;\">\n <ion-button  color=\"danger\" style=\"height: 20px;margin-top: -5px;\"(click)=\"editRow()\">Edit</ion-button>\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">View</ion-button>\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">Delete</ion-button> \n<!-- <ion-label (click)=\"action()\">Action   <ion-icon name=\"ios-arrow-down\"></ion-icon></ion-label> -->\n\n</div> \n<!-- <p-overlayPanel #op>\n        Content\n    </p-overlayPanel>\n    \n    <button type=\"text\" pButton label=\"Basic\" (click)=\"op.toggle($event)\"></button> -->\n\n\n    "
 
 /***/ }),
 
@@ -593,29 +597,29 @@ ActionsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/add-device-modal/add-device-modal.module.ts":
-/*!*************************************************************!*\
-  !*** ./src/app/add-device-modal/add-device-modal.module.ts ***!
-  \*************************************************************/
-/*! exports provided: AddDeviceModalPageModule */
+/***/ "./src/app/add-device-woprofile/add-device-woprofile.module.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/add-device-woprofile/add-device-woprofile.module.ts ***!
+  \*********************************************************************/
+/*! exports provided: AddDeviceWOProfilePageModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDeviceModalPageModule", function() { return AddDeviceModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDeviceWOProfilePageModule", function() { return AddDeviceWOProfilePageModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
-/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _add_device_modal_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./add-device-modal.page */ "./src/app/add-device-modal/add-device-modal.page.ts");
-/* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/dropdown */ "./node_modules/primeng/dropdown.js");
-/* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_dropdown__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
-/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _add_device_woprofile_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./add-device-woprofile.page */ "./src/app/add-device-woprofile/add-device-woprofile.page.ts");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeng/dropdown */ "./node_modules/primeng/dropdown.js");
+/* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(primeng_dropdown__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -628,162 +632,59 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'AddDevice',
-        component: _add_device_modal_page__WEBPACK_IMPORTED_MODULE_7__["AddDeviceModalPage"]
+        path: '',
+        component: _add_device_woprofile_page__WEBPACK_IMPORTED_MODULE_6__["AddDeviceWOProfilePage"]
     }
 ];
-let AddDeviceModalPageModule = class AddDeviceModalPageModule {
+let AddDeviceWOProfilePageModule = class AddDeviceWOProfilePageModule {
 };
-AddDeviceModalPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+AddDeviceWOProfilePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
-            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6__["SelectButtonModule"],
-            primeng_dropdown__WEBPACK_IMPORTED_MODULE_8__["DropdownModule"],
-            primeng_primeng__WEBPACK_IMPORTED_MODULE_9__["MultiSelectModule"],
+            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_8__["SelectButtonModule"],
+            primeng_dropdown__WEBPACK_IMPORTED_MODULE_9__["DropdownModule"],
+            primeng_primeng__WEBPACK_IMPORTED_MODULE_7__["MultiSelectModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
         ],
-        declarations: []
+        declarations: [_add_device_woprofile_page__WEBPACK_IMPORTED_MODULE_6__["AddDeviceWOProfilePage"]]
     })
-], AddDeviceModalPageModule);
+], AddDeviceWOProfilePageModule);
 
 
 
 /***/ }),
 
-/***/ "./src/app/add-device-modal/add-device-modal.page.scss":
-/*!*************************************************************!*\
-  !*** ./src/app/add-device-modal/add-device-modal.page.scss ***!
-  \*************************************************************/
+/***/ "./src/app/add-device-woprofile/add-device-woprofile.page.scss":
+/*!*********************************************************************!*\
+  !*** ./src/app/add-device-woprofile/add-device-woprofile.page.scss ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".sc-ion-segment-md-h {\n  --background: none;\n  --background-checked: none;\n  --background-hover: rgba(var(--ion-color-primary-rgb,56,128,255),0.04);\n  --background-activated: rgba(var(--ion-color-primary-rgb,56,128,255),0.16);\n  --color-checked: white;\n  --color-checked-disabled: var(--color-checked);\n  --indicator-color: transparent;\n  --background-checked: red;\n}\n\n.custom-toolbar {\n  --background: #182535;\n  color: #fff;\n}\n\n.button-native {\n  --background-color:red ;\n}\n\n.ion-segment-button {\n  border-style: solid;\n}\n\n.segment-button {\n  border-style: none;\n  border-color: #e62100;\n  color: #e62100;\n  border-width: thin;\n}\n\n.ui-dropdown {\n  background: #ffffff;\n  border: 1px solid #a6a6a6;\n  -webkit-transition: border-color 0.2s;\n  transition: border-color 0.2s;\n  width: 100%;\n}\n\nbody .ui-selectbutton .ui-button {\n  background-color: #dadada;\n  /* border: 1px solid #dadada; */\n  color: #333333;\n  -webkit-transition: background-color 0.2s, box-shadow 0.2s;\n  transition: background-color 0.2s, box-shadow 0.2s;\n  width: 233.33px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRkLWRldmljZS1tb2RhbC9hZGQtZGV2aWNlLW1vZGFsLnBhZ2Uuc2NzcyIsInNyYy9hcHAvYWRkLWRldmljZS1tb2RhbC9hZGQtZGV2aWNlLW1vZGFsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLGtCQUFBO0VBQ0EsMEJBQUE7RUFDQSxzRUFBQTtFQUNBLDBFQUFBO0VBQ0Esc0JBQUE7RUFDQSw4Q0FBQTtFQUNBLDhCQUFBO0VBQ0EseUJBQUE7QUNBSjs7QURHQTtFQUNJLHFCQUFBO0VBQXNCLFdBQUE7QUNDMUI7O0FEQ0U7RUFDSSx1QkFBQTtBQ0VOOztBRENFO0VBRUUsbUJBQUE7QUNDSjs7QURFRTtFQUNFLGtCQUFBO0VBQ0EscUJBQUE7RUFDQSxjQUFBO0VBQ0Esa0JBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0VBQ0EseUJBQUE7RUFDQSxxQ0FBQTtFQUNBLDZCQUFBO0VBQ0EsV0FBQTtBQ0NKOztBREVBO0VBQ0kseUJBQUE7RUFDQSwrQkFBQTtFQUNBLGNBQUE7RUFDQSwwREFBQTtFQUNBLGtEQUFBO0VBQ0EsZUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYWRkLWRldmljZS1tb2RhbC9hZGQtZGV2aWNlLW1vZGFsLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLnNjLWlvbi1zZWdtZW50LW1kLWgge1xuICAgIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgICAtLWJhY2tncm91bmQtY2hlY2tlZDogbm9uZTtcbiAgICAtLWJhY2tncm91bmQtaG92ZXI6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiLDU2LDEyOCwyNTUpLDAuMDQpO1xuICAgIC0tYmFja2dyb3VuZC1hY3RpdmF0ZWQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiLDU2LDEyOCwyNTUpLDAuMTYpO1xuICAgIC0tY29sb3ItY2hlY2tlZDogd2hpdGU7XG4gICAgLS1jb2xvci1jaGVja2VkLWRpc2FibGVkOiB2YXIoLS1jb2xvci1jaGVja2VkKTtcbiAgICAtLWluZGljYXRvci1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgLS1iYWNrZ3JvdW5kLWNoZWNrZWQ6IHJlZDtcbn1cblxuLmN1c3RvbS10b29sYmFye1xuICAgIC0tYmFja2dyb3VuZDogIzE4MjUzNTtjb2xvcjojZmZmXG4gIH1cbiAgLmJ1dHRvbi1uYXRpdmV7XG4gICAgICAtLWJhY2tncm91bmQtY29sb3I6cmVkXG4gIH1cblxuICAuaW9uLXNlZ21lbnQtYnV0dG9ue1xuICAgIC8vbWF4LXdpZHRoOiAyNXB4O1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIH1cbiAgXG4gIC5zZWdtZW50LWJ1dHRvbiB7XG4gICAgYm9yZGVyLXN0eWxlOiBub25lO1xuICAgIGJvcmRlci1jb2xvcjogI2U2MjEwMDtcbiAgICBjb2xvcjogI2U2MjEwMDtcbiAgICBib3JkZXItd2lkdGg6IHRoaW47XG4gIH1cblxuLnVpLWRyb3Bkb3duIHtcbiAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNhNmE2YTY7XG4gICAgLXdlYmtpdC10cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4ycztcbiAgICB0cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4ycztcbiAgICB3aWR0aDogMTAwJTtcbn1cblxuYm9keSAudWktc2VsZWN0YnV0dG9uIC51aS1idXR0b24ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNkYWRhZGE7XG4gICAgLyogYm9yZGVyOiAxcHggc29saWQgI2RhZGFkYTsgKi9cbiAgICBjb2xvcjogIzMzMzMzMztcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC4ycywgYm94LXNoYWRvdyAwLjJzO1xuICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC4ycywgYm94LXNoYWRvdyAwLjJzO1xuICAgIHdpZHRoOjIzMy4zM3B4XG59IiwiLnNjLWlvbi1zZWdtZW50LW1kLWgge1xuICAtLWJhY2tncm91bmQ6IG5vbmU7XG4gIC0tYmFja2dyb3VuZC1jaGVja2VkOiBub25lO1xuICAtLWJhY2tncm91bmQtaG92ZXI6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiLDU2LDEyOCwyNTUpLDAuMDQpO1xuICAtLWJhY2tncm91bmQtYWN0aXZhdGVkOiByZ2JhKHZhcigtLWlvbi1jb2xvci1wcmltYXJ5LXJnYiw1NiwxMjgsMjU1KSwwLjE2KTtcbiAgLS1jb2xvci1jaGVja2VkOiB3aGl0ZTtcbiAgLS1jb2xvci1jaGVja2VkLWRpc2FibGVkOiB2YXIoLS1jb2xvci1jaGVja2VkKTtcbiAgLS1pbmRpY2F0b3ItY29sb3I6IHRyYW5zcGFyZW50O1xuICAtLWJhY2tncm91bmQtY2hlY2tlZDogcmVkO1xufVxuXG4uY3VzdG9tLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6ICMxODI1MzU7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG4uYnV0dG9uLW5hdGl2ZSB7XG4gIC0tYmFja2dyb3VuZC1jb2xvcjpyZWQgO1xufVxuXG4uaW9uLXNlZ21lbnQtYnV0dG9uIHtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbn1cblxuLnNlZ21lbnQtYnV0dG9uIHtcbiAgYm9yZGVyLXN0eWxlOiBub25lO1xuICBib3JkZXItY29sb3I6ICNlNjIxMDA7XG4gIGNvbG9yOiAjZTYyMTAwO1xuICBib3JkZXItd2lkdGg6IHRoaW47XG59XG5cbi51aS1kcm9wZG93biB7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNhNmE2YTY7XG4gIC13ZWJraXQtdHJhbnNpdGlvbjogYm9yZGVyLWNvbG9yIDAuMnM7XG4gIHRyYW5zaXRpb246IGJvcmRlci1jb2xvciAwLjJzO1xuICB3aWR0aDogMTAwJTtcbn1cblxuYm9keSAudWktc2VsZWN0YnV0dG9uIC51aS1idXR0b24ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGFkYWRhO1xuICAvKiBib3JkZXI6IDFweCBzb2xpZCAjZGFkYWRhOyAqL1xuICBjb2xvcjogIzMzMzMzMztcbiAgLXdlYmtpdC10cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLWNvbG9yIDAuMnMsIGJveC1zaGFkb3cgMC4ycztcbiAgdHJhbnNpdGlvbjogYmFja2dyb3VuZC1jb2xvciAwLjJzLCBib3gtc2hhZG93IDAuMnM7XG4gIHdpZHRoOiAyMzMuMzNweDtcbn0iXX0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkZC1kZXZpY2Utd29wcm9maWxlL2FkZC1kZXZpY2Utd29wcm9maWxlLnBhZ2Uuc2NzcyJ9 */"
 
 /***/ }),
 
-/***/ "./src/app/add-device-modal/add-device-modal.page.ts":
-/*!***********************************************************!*\
-  !*** ./src/app/add-device-modal/add-device-modal.page.ts ***!
-  \***********************************************************/
-/*! exports provided: AddDeviceModalPage */
+/***/ "./src/app/add-device-woprofile/add-device-woprofile.page.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/add-device-woprofile/add-device-woprofile.page.ts ***!
+  \*******************************************************************/
+/*! exports provided: AddDeviceWOProfilePage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDeviceModalPage", function() { return AddDeviceModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDeviceWOProfilePage", function() { return AddDeviceWOProfilePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 
 
 
-let AddDeviceModalPage = class AddDeviceModalPage {
-    constructor(modal) {
-        this.modal = modal;
-        this.addDeviceID = "";
-        this.selectedType = 'Profiles';
-        this.profile = false;
-        this.key = true;
-        this.additional = true;
-        this.selectedkeyDevice = "";
-        this.selectedkeyActivated = "";
-        this.option = "";
-        this.cities = [
-            { name: 'New York', code: 'NY' },
-            { name: 'Rome', code: 'RM' },
-            { name: 'London', code: 'LDN' },
-            { name: 'Istanbul', code: 'IST' },
-            { name: 'Paris', code: 'PRS' }
-        ];
-        this.keysDevice = [
-            { label: 'A', value: 'A' },
-            { label: 'B', value: 'B' },
-            { label: 'C', value: 'C' }
-        ];
-        this.keyActivated = [
-            { label: 'Yes', value: 'Yes' },
-            { label: 'No', value: 'No' },
-        ];
-    }
-    ngOnInit() {
-        this.types = [
-            { label: 'Profiles', value: 'Profiles' },
-            { label: 'Keys', value: 'Keys' },
-            { label: 'Additional', value: 'Additional' }
-        ];
-    }
-    closeModal() {
-        this.modal.dismiss();
-    }
-    onOptionClick(event) {
-        var count = event.index;
-        if (count == 0) {
-            this.profile = false;
-            this.key = true;
-            this.additional = true;
-        }
-        else if (count == 1) {
-            this.key = false;
-            this.profile = true;
-            this.additional = true;
-        }
-        else {
-            this.key = true;
-            this.profile = true;
-            this.additional = false;
-        }
-    }
-    finalCall() {
-        alert(this.selectedType);
-    }
-};
-AddDeviceModalPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
-];
-AddDeviceModalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-add-device-modal',
-        template: __webpack_require__(/*! raw-loader!./add-device-modal.page.html */ "./node_modules/raw-loader/index.js!./src/app/add-device-modal/add-device-modal.page.html"),
-        styles: [__webpack_require__(/*! ./add-device-modal.page.scss */ "./src/app/add-device-modal/add-device-modal.page.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
-], AddDeviceModalPage);
-
-
-
-/***/ }),
-
-/***/ "./src/app/add-device-without-profile/add-device-without-profile.page.scss":
-/*!*********************************************************************************!*\
-  !*** ./src/app/add-device-without-profile/add-device-without-profile.page.scss ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".text {\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRkLWRldmljZS13aXRob3V0LXByb2ZpbGUvYWRkLWRldmljZS13aXRob3V0LXByb2ZpbGUucGFnZS5zY3NzIiwic3JjL2FwcC9hZGQtZGV2aWNlLXdpdGhvdXQtcHJvZmlsZS9hZGQtZGV2aWNlLXdpdGhvdXQtcHJvZmlsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9hZGQtZGV2aWNlLXdpdGhvdXQtcHJvZmlsZS9hZGQtZGV2aWNlLXdpdGhvdXQtcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGV4dCB7XG4gIGNvbG9yOiBibGFjaztcbn0iLCIudGV4dCB7XG4gIGNvbG9yOiBibGFjaztcbn0iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/add-device-without-profile/add-device-without-profile.page.ts":
-/*!*******************************************************************************!*\
-  !*** ./src/app/add-device-without-profile/add-device-without-profile.page.ts ***!
-  \*******************************************************************************/
-/*! exports provided: AddDeviceWithoutProfilePage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDeviceWithoutProfilePage", function() { return AddDeviceWithoutProfilePage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-
-
-
-let AddDeviceWithoutProfilePage = class AddDeviceWithoutProfilePage {
+let AddDeviceWOProfilePage = class AddDeviceWOProfilePage {
     constructor(modal) {
         this.modal = modal;
         this.selectedType = 'Keys';
@@ -922,17 +823,193 @@ let AddDeviceWithoutProfilePage = class AddDeviceWithoutProfilePage {
         }
     }
 };
-AddDeviceWithoutProfilePage.ctorParameters = () => [
+AddDeviceWOProfilePage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
 ];
-AddDeviceWithoutProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+AddDeviceWOProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-add-device-without-profile',
-        template: __webpack_require__(/*! raw-loader!./add-device-without-profile.page.html */ "./node_modules/raw-loader/index.js!./src/app/add-device-without-profile/add-device-without-profile.page.html"),
-        styles: [__webpack_require__(/*! ./add-device-without-profile.page.scss */ "./src/app/add-device-without-profile/add-device-without-profile.page.scss")]
+        selector: 'app-add-device-woprofile',
+        template: __webpack_require__(/*! raw-loader!./add-device-woprofile.page.html */ "./node_modules/raw-loader/index.js!./src/app/add-device-woprofile/add-device-woprofile.page.html"),
+        styles: [__webpack_require__(/*! ./add-device-woprofile.page.scss */ "./src/app/add-device-woprofile/add-device-woprofile.page.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
-], AddDeviceWithoutProfilePage);
+], AddDeviceWOProfilePage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-device/add-device.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/add-device/add-device.module.ts ***!
+  \*************************************************/
+/*! exports provided: AddDevicePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDevicePageModule", function() { return AddDevicePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primeng/dropdown */ "./node_modules/primeng/dropdown.js");
+/* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(primeng_dropdown__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _add_device_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./add-device.page */ "./src/app/add-device/add-device.page.ts");
+
+
+
+
+
+
+
+//import { AddDeviceModalPage } from './add-device-modal.page';
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _add_device_page__WEBPACK_IMPORTED_MODULE_9__["AddDevicePage"]
+    }
+];
+let AddDevicePageModule = class AddDevicePageModule {
+};
+AddDevicePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_6__["SelectButtonModule"],
+            primeng_dropdown__WEBPACK_IMPORTED_MODULE_7__["DropdownModule"],
+            primeng_primeng__WEBPACK_IMPORTED_MODULE_8__["MultiSelectModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_add_device_page__WEBPACK_IMPORTED_MODULE_9__["AddDevicePage"]]
+    })
+], AddDevicePageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-device/add-device.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/add-device/add-device.page.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".sc-ion-segment-md-h {\n  --background: none;\n  --background-checked: none;\n  --background-hover: rgba(var(--ion-color-primary-rgb,56,128,255),0.04);\n  --background-activated: rgba(var(--ion-color-primary-rgb,56,128,255),0.16);\n  --color-checked: white;\n  --color-checked-disabled: var(--color-checked);\n  --indicator-color: transparent;\n  --background-checked: red;\n}\n\n.custom-toolbar {\n  --background: #182535;\n  color: #fff;\n}\n\n.button-native {\n  --background-color:red ;\n}\n\n.ion-segment-button {\n  border-style: solid;\n}\n\n.segment-button {\n  border-style: none;\n  border-color: #e62100;\n  color: #e62100;\n  border-width: thin;\n}\n\n.ui-dropdown {\n  background: #ffffff;\n  border: 1px solid #a6a6a6;\n  -webkit-transition: border-color 0.2s;\n  transition: border-color 0.2s;\n  width: 100%;\n}\n\nbody .ui-selectbutton .ui-button {\n  background-color: #dadada;\n  /* border: 1px solid #dadada; */\n  color: #333333;\n  -webkit-transition: background-color 0.2s, box-shadow 0.2s;\n  transition: background-color 0.2s, box-shadow 0.2s;\n  width: 233.33px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRkLWRldmljZS9hZGQtZGV2aWNlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvYWRkLWRldmljZS9hZGQtZGV2aWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLGtCQUFBO0VBQ0EsMEJBQUE7RUFDQSxzRUFBQTtFQUNBLDBFQUFBO0VBQ0Esc0JBQUE7RUFDQSw4Q0FBQTtFQUNBLDhCQUFBO0VBQ0EseUJBQUE7QUNBSjs7QURHQTtFQUNJLHFCQUFBO0VBQXNCLFdBQUE7QUNDMUI7O0FEQ0U7RUFDSSx1QkFBQTtBQ0VOOztBRENFO0VBRUUsbUJBQUE7QUNDSjs7QURFRTtFQUNFLGtCQUFBO0VBQ0EscUJBQUE7RUFDQSxjQUFBO0VBQ0Esa0JBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0VBQ0EseUJBQUE7RUFDQSxxQ0FBQTtFQUNBLDZCQUFBO0VBQ0EsV0FBQTtBQ0NKOztBREVBO0VBQ0kseUJBQUE7RUFDQSwrQkFBQTtFQUNBLGNBQUE7RUFDQSwwREFBQTtFQUNBLGtEQUFBO0VBQ0EsZUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYWRkLWRldmljZS9hZGQtZGV2aWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLnNjLWlvbi1zZWdtZW50LW1kLWgge1xuICAgIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgICAtLWJhY2tncm91bmQtY2hlY2tlZDogbm9uZTtcbiAgICAtLWJhY2tncm91bmQtaG92ZXI6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiLDU2LDEyOCwyNTUpLDAuMDQpO1xuICAgIC0tYmFja2dyb3VuZC1hY3RpdmF0ZWQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiLDU2LDEyOCwyNTUpLDAuMTYpO1xuICAgIC0tY29sb3ItY2hlY2tlZDogd2hpdGU7XG4gICAgLS1jb2xvci1jaGVja2VkLWRpc2FibGVkOiB2YXIoLS1jb2xvci1jaGVja2VkKTtcbiAgICAtLWluZGljYXRvci1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgLS1iYWNrZ3JvdW5kLWNoZWNrZWQ6IHJlZDtcbn1cblxuLmN1c3RvbS10b29sYmFye1xuICAgIC0tYmFja2dyb3VuZDogIzE4MjUzNTtjb2xvcjojZmZmXG4gIH1cbiAgLmJ1dHRvbi1uYXRpdmV7XG4gICAgICAtLWJhY2tncm91bmQtY29sb3I6cmVkXG4gIH1cblxuICAuaW9uLXNlZ21lbnQtYnV0dG9ue1xuICAgIC8vbWF4LXdpZHRoOiAyNXB4O1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIH1cbiAgXG4gIC5zZWdtZW50LWJ1dHRvbiB7XG4gICAgYm9yZGVyLXN0eWxlOiBub25lO1xuICAgIGJvcmRlci1jb2xvcjogI2U2MjEwMDtcbiAgICBjb2xvcjogI2U2MjEwMDtcbiAgICBib3JkZXItd2lkdGg6IHRoaW47XG4gIH1cblxuLnVpLWRyb3Bkb3duIHtcbiAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNhNmE2YTY7XG4gICAgLXdlYmtpdC10cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4ycztcbiAgICB0cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4ycztcbiAgICB3aWR0aDogMTAwJTtcbn1cblxuYm9keSAudWktc2VsZWN0YnV0dG9uIC51aS1idXR0b24ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNkYWRhZGE7XG4gICAgLyogYm9yZGVyOiAxcHggc29saWQgI2RhZGFkYTsgKi9cbiAgICBjb2xvcjogIzMzMzMzMztcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC4ycywgYm94LXNoYWRvdyAwLjJzO1xuICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC4ycywgYm94LXNoYWRvdyAwLjJzO1xuICAgIHdpZHRoOjIzMy4zM3B4XG59XG4iLCIuc2MtaW9uLXNlZ21lbnQtbWQtaCB7XG4gIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgLS1iYWNrZ3JvdW5kLWNoZWNrZWQ6IG5vbmU7XG4gIC0tYmFja2dyb3VuZC1ob3ZlcjogcmdiYSh2YXIoLS1pb24tY29sb3ItcHJpbWFyeS1yZ2IsNTYsMTI4LDI1NSksMC4wNCk7XG4gIC0tYmFja2dyb3VuZC1hY3RpdmF0ZWQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiLDU2LDEyOCwyNTUpLDAuMTYpO1xuICAtLWNvbG9yLWNoZWNrZWQ6IHdoaXRlO1xuICAtLWNvbG9yLWNoZWNrZWQtZGlzYWJsZWQ6IHZhcigtLWNvbG9yLWNoZWNrZWQpO1xuICAtLWluZGljYXRvci1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gIC0tYmFja2dyb3VuZC1jaGVja2VkOiByZWQ7XG59XG5cbi5jdXN0b20tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogIzE4MjUzNTtcbiAgY29sb3I6ICNmZmY7XG59XG5cbi5idXR0b24tbmF0aXZlIHtcbiAgLS1iYWNrZ3JvdW5kLWNvbG9yOnJlZCA7XG59XG5cbi5pb24tc2VnbWVudC1idXR0b24ge1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xufVxuXG4uc2VnbWVudC1idXR0b24ge1xuICBib3JkZXItc3R5bGU6IG5vbmU7XG4gIGJvcmRlci1jb2xvcjogI2U2MjEwMDtcbiAgY29sb3I6ICNlNjIxMDA7XG4gIGJvcmRlci13aWR0aDogdGhpbjtcbn1cblxuLnVpLWRyb3Bkb3duIHtcbiAgYmFja2dyb3VuZDogI2ZmZmZmZjtcbiAgYm9yZGVyOiAxcHggc29saWQgI2E2YTZhNjtcbiAgLXdlYmtpdC10cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4ycztcbiAgdHJhbnNpdGlvbjogYm9yZGVyLWNvbG9yIDAuMnM7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG5ib2R5IC51aS1zZWxlY3RidXR0b24gLnVpLWJ1dHRvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNkYWRhZGE7XG4gIC8qIGJvcmRlcjogMXB4IHNvbGlkICNkYWRhZGE7ICovXG4gIGNvbG9yOiAjMzMzMzMzO1xuICAtd2Via2l0LXRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC4ycywgYm94LXNoYWRvdyAwLjJzO1xuICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLWNvbG9yIDAuMnMsIGJveC1zaGFkb3cgMC4ycztcbiAgd2lkdGg6IDIzMy4zM3B4O1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/add-device/add-device.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/add-device/add-device.page.ts ***!
+  \***********************************************/
+/*! exports provided: AddDevicePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddDevicePage", function() { return AddDevicePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+let AddDevicePage = class AddDevicePage {
+    constructor(modal) {
+        this.modal = modal;
+        this.addDeviceID = "";
+        this.selectedType = 'Profiles';
+        this.profile = false;
+        this.key = true;
+        this.additional = true;
+        this.selectedkeyDevice = "A";
+        this.selectedkeyActivated = "No";
+        this.option = "";
+        this.cities = [
+            { name: 'New York', code: 'NY' },
+            { name: 'Rome', code: 'RM' },
+            { name: 'London', code: 'LDN' },
+            { name: 'Istanbul', code: 'IST' },
+            { name: 'Paris', code: 'PRS' }
+        ];
+        this.service = [
+            { name: 'Istanbul', code: 'IST' },
+            { name: 'Paris', code: 'PRS' }
+        ];
+        this.keysDevice = [
+            { label: 'A', value: 'A' },
+            { label: 'B', value: 'B' },
+            { label: 'C', value: 'C' }
+        ];
+        this.keyActivated = [
+            { label: 'Yes', value: 'Yes' },
+            { label: 'No', value: 'No' },
+        ];
+    }
+    ngOnInit() {
+        this.types = [
+            { label: 'Profiles', value: 'Profiles' },
+            { label: 'Keys', value: 'Keys' },
+            { label: 'Additional', value: 'Additional' }
+        ];
+    }
+    onOptionClick(event) {
+        var count = event.index;
+        if (count == 0) {
+            this.profile = false;
+            this.key = true;
+            this.additional = true;
+        }
+        else if (count == 1) {
+            this.key = false;
+            this.profile = true;
+            this.additional = true;
+        }
+        else {
+            this.key = true;
+            this.profile = true;
+            this.additional = false;
+        }
+    }
+    finalCall() {
+        //alert(this.selectedType+"_"+"_"+this.addDeviceID+"_"+this.comment+"_"+this.selectedCity.code+"_"+this.selectedService.code+"_"+this.selectedkeyDevice+"_"+this.selectedkeyActivated+"_"+this.option)
+        if (this.selectedType == undefined || this.selectedType == "" || this.addDeviceID == undefined || this.addDeviceID == "" || this.selectedCity.code == undefined || this.selectedCity.code == ""
+            || this.selectedService.code == undefined || this.selectedService.code == "" || this.selectedkeyDevice == undefined || this.selectedkeyDevice == "" || this.selectedkeyActivated == undefined || this.selectedkeyActivated == ""
+            || this.option == undefined || this.option == "") {
+            alert("Enter all Details");
+        }
+        else {
+            alert("True"); //API Call
+        }
+    }
+    closeModal() {
+        this.modal.dismiss();
+    }
+};
+AddDevicePage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+];
+AddDevicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-add-device',
+        template: __webpack_require__(/*! raw-loader!./add-device.page.html */ "./node_modules/raw-loader/index.js!./src/app/add-device/add-device.page.html"),
+        styles: [__webpack_require__(/*! ./add-device.page.scss */ "./src/app/add-device/add-device.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
+], AddDevicePage);
 
 
 
@@ -966,13 +1043,8 @@ const routes = [
     },
     {
         path: 'list',
-        loadChildren: () => __webpack_require__.e(/*! import() | list-list-module */ "list-list-module").then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(m => m.ListPageModule)
+        loadChildren: () => Promise.all(/*! import() | list-list-module */[__webpack_require__.e("default~deviceactivity-deviceactivity-module~list-list-module"), __webpack_require__.e("list-list-module")]).then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(m => m.ListPageModule)
     },
-    // { 
-    //   path: 'add-device-modal',
-    //  loadChildren: () => import('./add-device-modal/add-device-modal.module').then(m => m.AddDeviceModalPageModule)  
-    // }, 
-    { path: 'add-device-modal', loadChildren: './add-device-modal/add-device-modal.module#AddDeviceModalPageModule' },
     { path: 'super-admin', loadChildren: './super-admin/super-admin.module#SuperAdminPageModule' },
     { path: 'menu-page', loadChildren: './menu-page/menu-page.module#MenuPagePageModule' },
     { path: 'add-admin', loadChildren: './add-admin/add-admin.module#AddAdminPageModule' },
@@ -983,7 +1055,9 @@ const routes = [
     { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'table', loadChildren: './table/table.module#TablePageModule' },
     { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
-    { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' }
+    { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },
+    { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },
+    { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -1007,7 +1081,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: var (--ion-color-light);\n}\n\n.accordion-list {\n  margin-bottom: 4px;\n  --ion-item-background:#fff;\n}\n\n.accordion-list .section, .accordion-list .section-active {\n  --min-height:48px;\n}\n\n.section {\n  --ion-item-background:#fff;\n  --ion-item-color:#000;\n}\n\n.section-active {\n  --ion-item-background:#ffc400;\n  --ion-item-color:#000;\n  font-weight: 600;\n}\n\n.child-list {\n  padding-bottom: 0.5vw;\n  margin-left: 5vh;\n  border-bottom: 0.5px solid gray !important;\n}\n\n.child-list .child, .child-list .child-active {\n  margin-bottom: 2px;\n}\n\n.child {\n  --ion-item-background:#e8e7e6;\n  --ion-item-color:#000;\n}\n\n.child-active {\n  --ion-item-background:#fad86b;\n  --ion-item-color:#fff;\n  border: 1px solid black;\n}\n\n.child-active ion-icon {\n  color: #000;\n}\n\n.product-list {\n  padding: 0px;\n  margin: 0px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQ0FBQTtBQ0NKOztBREVBO0VBQ0ksa0JBQUE7RUFDQSwwQkFBQTtBQ0NKOztBRENJO0VBQ0ksaUJBQUE7QUNDUjs7QURHQTtFQUNJLDBCQUFBO0VBQ0EscUJBQUE7QUNBSjs7QURJQTtFQUNJLDZCQUFBO0VBQ0EscUJBQUE7RUFDQSxnQkFBQTtBQ0RKOztBRElBO0VBQ0kscUJBQUE7RUFDQSxnQkFBQTtFQUNBLDBDQUFBO0FDREo7O0FERUk7RUFDSSxrQkFBQTtBQ0FSOztBRElBO0VBQ0ksNkJBQUE7RUFDQSxxQkFBQTtBQ0RKOztBRElBO0VBQ0ksNkJBQUE7RUFDQSxxQkFBQTtFQUNBLHVCQUFBO0FDREo7O0FERUk7RUFDSSxXQUFBO0FDQVI7O0FESUE7RUFDSSxZQUFBO0VBQ0EsV0FBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XG4gICAgLS1iYWNrZ3JvdW5kOiB2YXIgKC0taW9uLWNvbG9yLWxpZ2h0KTtcbn1cblxuLmFjY29yZGlvbi1saXN0e1xuICAgIG1hcmdpbi1ib3R0b206NHB4O1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZmZmO1xuXG4gICAgLnNlY3Rpb24sIC5zZWN0aW9uLWFjdGl2ZXtcbiAgICAgICAgLS1taW4taGVpZ2h0OjQ4cHg7XG4gICAgfVxufVxuXG4uc2VjdGlvbntcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6I2ZmZjtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiMwMDA7XG5cbn1cblxuLnNlY3Rpb24tYWN0aXZle1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZmZjNDAwO1xuICAgIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbiAgICBmb250LXdlaWdodDogNjAwO1xufVxuXG4uY2hpbGQtbGlzdHtcbiAgICBwYWRkaW5nLWJvdHRvbTowLjV2dztcbiAgICBtYXJnaW4tbGVmdDogNXZoO1xuICAgIGJvcmRlci1ib3R0b206IDAuNXB4IHNvbGlkIGdyYXkgIWltcG9ydGFudDtcbiAgICAuY2hpbGQsIC5jaGlsZC1hY3RpdmV7XG4gICAgICAgIG1hcmdpbi1ib3R0b206MnB4O1xuICAgICAgXG4gICAgfVxufVxuLmNoaWxke1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZThlN2U2O1xuICAgIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbiAgXG59XG4uY2hpbGQtYWN0aXZle1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZmFkODZiO1xuICAgIC0taW9uLWl0ZW0tY29sb3I6I2ZmZjtcbiAgICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgICBpb24taWNvbntcbiAgICAgICAgY29sb3I6ICMwMDA7XG4gICAgfVxufVxuXG4ucHJvZHVjdC1saXN0e1xuICAgIHBhZGRpbmc6IDBweDtcbiAgICBtYXJnaW46IDBweDtcbn1cblxuXG5cblxuIiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHZhciAoLS1pb24tY29sb3ItbGlnaHQpO1xufVxuXG4uYWNjb3JkaW9uLWxpc3Qge1xuICBtYXJnaW4tYm90dG9tOiA0cHg7XG4gIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZmZmO1xufVxuLmFjY29yZGlvbi1saXN0IC5zZWN0aW9uLCAuYWNjb3JkaW9uLWxpc3QgLnNlY3Rpb24tYWN0aXZlIHtcbiAgLS1taW4taGVpZ2h0OjQ4cHg7XG59XG5cbi5zZWN0aW9uIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiNmZmY7XG4gIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbn1cblxuLnNlY3Rpb24tYWN0aXZlIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiNmZmM0MDA7XG4gIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuLmNoaWxkLWxpc3Qge1xuICBwYWRkaW5nLWJvdHRvbTogMC41dnc7XG4gIG1hcmdpbi1sZWZ0OiA1dmg7XG4gIGJvcmRlci1ib3R0b206IDAuNXB4IHNvbGlkIGdyYXkgIWltcG9ydGFudDtcbn1cbi5jaGlsZC1saXN0IC5jaGlsZCwgLmNoaWxkLWxpc3QgLmNoaWxkLWFjdGl2ZSB7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbn1cblxuLmNoaWxkIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiNlOGU3ZTY7XG4gIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbn1cblxuLmNoaWxkLWFjdGl2ZSB7XG4gIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZmFkODZiO1xuICAtLWlvbi1pdGVtLWNvbG9yOiNmZmY7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xufVxuLmNoaWxkLWFjdGl2ZSBpb24taWNvbiB7XG4gIGNvbG9yOiAjMDAwO1xufVxuXG4ucHJvZHVjdC1saXN0IHtcbiAgcGFkZGluZzogMHB4O1xuICBtYXJnaW46IDBweDtcbn0iXX0= */"
+module.exports = "ion-content {\n  --background: var (--ion-color-light);\n}\n\n.accordion-list {\n  margin-bottom: 4px;\n  --ion-item-background:#fff;\n}\n\n.accordion-list .section, .accordion-list .section-active {\n  --min-height:48px;\n}\n\n.section {\n  --ion-item-background:#fff;\n  --ion-item-color:#000;\n}\n\n.section-active {\n  --ion-item-background:#49c5b6 ;\n  --ion-item-color:#000;\n  font-weight: 600;\n}\n\n.child-list {\n  padding-bottom: 0.5vw;\n  margin-left: 5vh;\n  border-bottom: 0.5px solid gray !important;\n}\n\n.child-list .child, .child-list .child-active {\n  margin-bottom: 2px;\n}\n\n.child {\n  --ion-item-background:#e8e7e6;\n  --ion-item-color:#000;\n}\n\n.child-active {\n  --ion-item-background:#49c5b6 ;\n  --ion-item-color:#fff;\n  border: 1px solid black;\n}\n\n.child-active ion-icon {\n  color: #000;\n}\n\n.product-list {\n  padding: 0px;\n  margin: 0px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQ0FBQTtBQ0NKOztBREVBO0VBQ0ksa0JBQUE7RUFDQSwwQkFBQTtBQ0NKOztBRENJO0VBQ0ksaUJBQUE7QUNDUjs7QURHQTtFQUNJLDBCQUFBO0VBQ0EscUJBQUE7QUNBSjs7QURJQTtFQUNJLDhCQUFBO0VBQ0EscUJBQUE7RUFDQSxnQkFBQTtBQ0RKOztBRElBO0VBQ0kscUJBQUE7RUFDQSxnQkFBQTtFQUNBLDBDQUFBO0FDREo7O0FERUk7RUFDSSxrQkFBQTtBQ0FSOztBRElBO0VBQ0ksNkJBQUE7RUFDQSxxQkFBQTtBQ0RKOztBRElBO0VBQ0ksOEJBQUE7RUFDQSxxQkFBQTtFQUNBLHVCQUFBO0FDREo7O0FERUk7RUFDSSxXQUFBO0FDQVI7O0FESUE7RUFDSSxZQUFBO0VBQ0EsV0FBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XG4gICAgLS1iYWNrZ3JvdW5kOiB2YXIgKC0taW9uLWNvbG9yLWxpZ2h0KTtcbn1cblxuLmFjY29yZGlvbi1saXN0e1xuICAgIG1hcmdpbi1ib3R0b206NHB4O1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojZmZmO1xuXG4gICAgLnNlY3Rpb24sIC5zZWN0aW9uLWFjdGl2ZXtcbiAgICAgICAgLS1taW4taGVpZ2h0OjQ4cHg7XG4gICAgfVxufVxuXG4uc2VjdGlvbntcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6I2ZmZjtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiMwMDA7XG5cbn1cblxuLnNlY3Rpb24tYWN0aXZle1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojNDljNWI2IDtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiMwMDA7XG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuLmNoaWxkLWxpc3R7XG4gICAgcGFkZGluZy1ib3R0b206MC41dnc7XG4gICAgbWFyZ2luLWxlZnQ6IDV2aDtcbiAgICBib3JkZXItYm90dG9tOiAwLjVweCBzb2xpZCBncmF5ICFpbXBvcnRhbnQ7XG4gICAgLmNoaWxkLCAuY2hpbGQtYWN0aXZle1xuICAgICAgICBtYXJnaW4tYm90dG9tOjJweDtcbiAgICAgIFxuICAgIH1cbn1cbi5jaGlsZHtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6I2U4ZTdlNjtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiMwMDA7XG4gIFxufVxuLmNoaWxkLWFjdGl2ZXtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6IzQ5YzViNiA7XG4gICAgLS1pb24taXRlbS1jb2xvcjojZmZmO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xuICAgIGlvbi1pY29ue1xuICAgICAgICBjb2xvcjogIzAwMDtcbiAgICB9XG59XG5cbi5wcm9kdWN0LWxpc3R7XG4gICAgcGFkZGluZzogMHB4O1xuICAgIG1hcmdpbjogMHB4O1xufVxuXG5cblxuXG4iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyICgtLWlvbi1jb2xvci1saWdodCk7XG59XG5cbi5hY2NvcmRpb24tbGlzdCB7XG4gIG1hcmdpbi1ib3R0b206IDRweDtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiNmZmY7XG59XG4uYWNjb3JkaW9uLWxpc3QgLnNlY3Rpb24sIC5hY2NvcmRpb24tbGlzdCAuc2VjdGlvbi1hY3RpdmUge1xuICAtLW1pbi1oZWlnaHQ6NDhweDtcbn1cblxuLnNlY3Rpb24ge1xuICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6I2ZmZjtcbiAgLS1pb24taXRlbS1jb2xvcjojMDAwO1xufVxuXG4uc2VjdGlvbi1hY3RpdmUge1xuICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6IzQ5YzViNiA7XG4gIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuLmNoaWxkLWxpc3Qge1xuICBwYWRkaW5nLWJvdHRvbTogMC41dnc7XG4gIG1hcmdpbi1sZWZ0OiA1dmg7XG4gIGJvcmRlci1ib3R0b206IDAuNXB4IHNvbGlkIGdyYXkgIWltcG9ydGFudDtcbn1cbi5jaGlsZC1saXN0IC5jaGlsZCwgLmNoaWxkLWxpc3QgLmNoaWxkLWFjdGl2ZSB7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbn1cblxuLmNoaWxkIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiNlOGU3ZTY7XG4gIC0taW9uLWl0ZW0tY29sb3I6IzAwMDtcbn1cblxuLmNoaWxkLWFjdGl2ZSB7XG4gIC0taW9uLWl0ZW0tYmFja2dyb3VuZDojNDljNWI2IDtcbiAgLS1pb24taXRlbS1jb2xvcjojZmZmO1xuICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbn1cbi5jaGlsZC1hY3RpdmUgaW9uLWljb24ge1xuICBjb2xvcjogIzAwMDtcbn1cblxuLnByb2R1Y3QtbGlzdCB7XG4gIHBhZGRpbmc6IDBweDtcbiAgbWFyZ2luOiAwcHg7XG59Il19 */"
 
 /***/ }),
 
@@ -1111,22 +1185,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./add-device-modal/add-device-modal.page */ "./src/app/add-device-modal/add-device-modal.page.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared-component/shared-component.module */ "./src/app/shared-component/shared-component.module.ts");
-/* harmony import */ var _actions_actions_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./actions/actions.component */ "./src/app/actions/actions.component.ts");
-/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
-/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _add_device_without_profile_add_device_without_profile_page__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./add-device-without-profile/add-device-without-profile.page */ "./src/app/add-device-without-profile/add-device-without-profile.page.ts");
-/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
-/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
-/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _add_device_modal_add_device_modal_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./add-device-modal/add-device-modal.module */ "./src/app/add-device-modal/add-device-modal.module.ts");
-/* harmony import */ var _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./cell-custom/cell-custom.component */ "./src/app/cell-custom/cell-custom.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared-component/shared-component.module */ "./src/app/shared-component/shared-component.module.ts");
+/* harmony import */ var _actions_actions_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./actions/actions.component */ "./src/app/actions/actions.component.ts");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./cell-custom/cell-custom.component */ "./src/app/cell-custom/cell-custom.component.ts");
+/* harmony import */ var _add_device_add_device_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./add-device/add-device.module */ "./src/app/add-device/add-device.module.ts");
+/* harmony import */ var _add_device_woprofile_add_device_woprofile_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./add-device-woprofile/add-device-woprofile.module */ "./src/app/add-device-woprofile/add-device-woprofile.module.ts");
 
 
 
@@ -1137,8 +1210,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
+//import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
 
 
 
@@ -1152,35 +1224,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _actions_actions_component__WEBPACK_IMPORTED_MODULE_13__["ActionsComponent"],
-            _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_10__["AddDeviceModalPage"],
-            _add_device_without_profile_add_device_without_profile_page__WEBPACK_IMPORTED_MODULE_15__["AddDeviceWithoutProfilePage"],
-            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_22__["CellCustomComponent"]
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _actions_actions_component__WEBPACK_IMPORTED_MODULE_12__["ActionsComponent"],
+            // AddDeviceModalPage,
+            // AddDeviceWithoutProfilePage,
+            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_19__["CellCustomComponent"],
         ],
         entryComponents: [
-            _actions_actions_component__WEBPACK_IMPORTED_MODULE_13__["ActionsComponent"],
-            _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_10__["AddDeviceModalPage"],
-            _add_device_without_profile_add_device_without_profile_page__WEBPACK_IMPORTED_MODULE_15__["AddDeviceWithoutProfilePage"],
-            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_22__["CellCustomComponent"]
+            _actions_actions_component__WEBPACK_IMPORTED_MODULE_12__["ActionsComponent"],
+            // AddDeviceModalPage,
+            // AddDeviceWithoutProfilePage,
+            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_19__["CellCustomComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
-            _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_12__["SharedComponentModule"],
-            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14__["SelectButtonModule"],
-            primeng_primeng__WEBPACK_IMPORTED_MODULE_16__["DropdownModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
+            _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_11__["SharedComponentModule"],
+            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13__["SelectButtonModule"],
+            primeng_primeng__WEBPACK_IMPORTED_MODULE_14__["DropdownModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
-            ag_grid_angular__WEBPACK_IMPORTED_MODULE_17__["AgGridModule"],
-            primeng_primeng__WEBPACK_IMPORTED_MODULE_16__["MultiSelectModule"],
-            _add_device_modal_add_device_modal_module__WEBPACK_IMPORTED_MODULE_21__["AddDeviceModalPageModule"],
-            _angular_fire__WEBPACK_IMPORTED_MODULE_18__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_20__["environment"].firebase),
-            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_19__["AngularFirestoreModule"],
+            ag_grid_angular__WEBPACK_IMPORTED_MODULE_15__["AgGridModule"],
+            primeng_primeng__WEBPACK_IMPORTED_MODULE_14__["MultiSelectModule"],
+            _add_device_add_device_module__WEBPACK_IMPORTED_MODULE_20__["AddDevicePageModule"],
+            //AddDeviceWithoutProfilePageModule,
+            _add_device_woprofile_add_device_woprofile_module__WEBPACK_IMPORTED_MODULE_21__["AddDeviceWOProfilePageModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_16__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_18__["environment"].firebase),
+            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__["AngularFirestoreModule"],
         ],
         schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]],
         providers: [
@@ -1221,16 +1296,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../add-device-modal/add-device-modal.page */ "./src/app/add-device-modal/add-device-modal.page.ts");
+/* harmony import */ var _add_device_add_device_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../add-device/add-device.page */ "./src/app/add-device/add-device.page.ts");
+/* harmony import */ var _actions_actions_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions/actions.component */ "./src/app/actions/actions.component.ts");
 
 
 
 
 
+
+//import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 let CellCustomComponent = class CellCustomComponent {
-    constructor(modalController, router) {
+    constructor(modalController, router, popoverController) {
         this.modalController = modalController;
         this.router = router;
+        this.popoverController = popoverController;
     }
     agInit(params) {
         this.params = params;
@@ -1249,7 +1328,7 @@ let CellCustomComponent = class CellCustomComponent {
             // });
             // return await popover.present();
             const modal = yield this.modalController.create({
-                component: _add_device_modal_add_device_modal_page__WEBPACK_IMPORTED_MODULE_4__["AddDeviceModalPage"],
+                component: _add_device_add_device_page__WEBPACK_IMPORTED_MODULE_4__["AddDevicePage"],
                 cssClass: 'my-custom-modal-css'
             });
             return yield modal.present();
@@ -1261,10 +1340,27 @@ let CellCustomComponent = class CellCustomComponent {
         localStorage.setItem("viewdevice", rowData.data.appeui);
         this.router.navigateByUrl('/deviceactivity');
     }
+    action(ev) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            // const popover = await this.popoverController.create({
+            //   component: ActionsComponent,
+            //   translucent: true
+            // });
+            // return await popover.present();
+            const popover = yield this.popoverController.create({
+                component: _actions_actions_component__WEBPACK_IMPORTED_MODULE_5__["ActionsComponent"],
+                event: ev,
+                translucent: true,
+                mode: 'ios'
+            });
+            return yield popover.present();
+        });
+    }
 };
 CellCustomComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] }
 ];
 CellCustomComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1272,7 +1368,7 @@ CellCustomComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./cell-custom.component.html */ "./node_modules/raw-loader/index.js!./src/app/cell-custom/cell-custom.component.html"),
         styles: [__webpack_require__(/*! ./cell-custom.component.scss */ "./src/app/cell-custom/cell-custom.component.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]])
 ], CellCustomComponent);
 
 

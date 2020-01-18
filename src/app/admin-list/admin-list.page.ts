@@ -5,7 +5,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
-import { AddDeviceModalPageModule } from '../add-device-modal/add-device-modal.module';
+//import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.page.html',
@@ -98,12 +98,12 @@ export class AdminListPage implements OnInit {
         width: 170,
       
       },
-      {
-        headerName: "Account Detail",
-        field: "account_details",
-        width: 170,
-        filter:false
-      },
+      // {
+      //   headerName: "Account Detail",
+      //   field: "account_details",
+      //   width: 170,
+      //   filter:false
+      // },
       {
         headerName: "Email Id",
         field: "email_id",
@@ -232,7 +232,7 @@ async deleteAdmin() {
     .subscribe(result => {
      for(var i=0;i<result.length;i++)
     {
-      var account_details = result[i].payload.doc.data()['account_details']
+     // var account_details = result[i].payload.doc.data()['account_details']
       var address = result[i].payload.doc.data()['address']
       var authorized_person = result[i].payload.doc.data()['authorized_person']
       var client_name = result[i].payload.doc.data()['client_name']
@@ -243,7 +243,9 @@ async deleteAdmin() {
       var no_of_wings = result[i].payload.doc.data()['no_of_wings']
       var project_name =result[i].payload.doc.data()['project_name']
       var id = result[i].payload.doc.id
-      this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+      this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+
+     // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
 
       
     }
