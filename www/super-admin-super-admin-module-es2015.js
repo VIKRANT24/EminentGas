@@ -37,10 +37,10 @@ let FirebaseService = class FirebaseService {
     getUser(userKey) {
         return this.db.collection('users').doc(userKey).snapshotChanges();
     }
-    updateUser(client, address, arm, person, wings, flats, project, account, email, mobile, id) {
+    updateUser(client, address, arm, person, wings, flats, project, email, mobile, id) {
         // value.nameToSearch = value.name.toLowerCase();
         return this.db.collection('Admin/').doc(id).set({
-            account_details: account,
+            //  account_details:account,
             address: address,
             authorized_person: person,
             client_name: client,
@@ -67,9 +67,9 @@ let FirebaseService = class FirebaseService {
     searchUsersByAge(value) {
         return this.db.collection('users', ref => ref.orderBy('age').startAt(value)).snapshotChanges();
     }
-    createUser(client, address, arm, person, wings, flats, project, account, email, mobile) {
+    createUser(client, address, arm, person, wings, flats, project, email, mobile) {
         return this.db.collection('Admin/').add({
-            account_details: account,
+            // account_details:account,
             address: address,
             authorized_person: person,
             client_name: client,

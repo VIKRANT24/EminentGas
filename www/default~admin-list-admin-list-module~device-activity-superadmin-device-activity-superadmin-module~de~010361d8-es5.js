@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~deviceactivity-deviceactivity-module~list-list-module"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~admin-list-admin-list-module~device-activity-superadmin-device-activity-superadmin-module~de~010361d8"],{
 
 /***/ "./node_modules/moment/locale sync recursive ^\\.\\/.*$":
 /*!**************************************************!*\
@@ -17649,79 +17649,80 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseService", function() { return FirebaseService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
 
 
 
-let FirebaseService = class FirebaseService {
-    constructor(db) {
+var FirebaseService = /** @class */ (function () {
+    function FirebaseService(db) {
         this.db = db;
     }
-    getAvatars() {
+    FirebaseService.prototype.getAvatars = function () {
         return this.db.collection('/avatar').valueChanges();
-    }
-    getUser(userKey) {
+    };
+    FirebaseService.prototype.getUser = function (userKey) {
         return this.db.collection('users').doc(userKey).snapshotChanges();
-    }
-    updateUser(client, address, arm, person, wings, flats, project, account, email, mobile, id) {
+    };
+    FirebaseService.prototype.updateUser = function (client, address, arm, person, wings, flats, project, email, mobile, id) {
         // value.nameToSearch = value.name.toLowerCase();
         return this.db.collection('Admin/').doc(id).set({
-            account_details: account,
+            //  account_details:account,
             address: address,
             authorized_person: person,
             client_name: client,
-            email_id: email, mobile,
+            email_id: email, mobile: mobile,
             no_of_arms: arm,
             no_of_flats: flats,
             no_of_wings: wings,
             project_name: project,
             pwd: 'Abc@123'
         });
-    }
-    deleteUser(userKey) {
+    };
+    FirebaseService.prototype.deleteUser = function (userKey) {
         return this.db.collection('Admin').doc(userKey).delete();
-    }
-    getUsers() {
+    };
+    FirebaseService.prototype.getUsers = function () {
         return this.db.collection('Admin').snapshotChanges();
-    }
-    getDevices() {
+    };
+    FirebaseService.prototype.getDevices = function () {
         return this.db.collection('Devices').snapshotChanges();
-    }
-    searchUsers(email, pwd) {
-        return this.db.collection('Admin', ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges();
-    }
-    searchUsersByAge(value) {
-        return this.db.collection('users', ref => ref.orderBy('age').startAt(value)).snapshotChanges();
-    }
-    createUser(client, address, arm, person, wings, flats, project, account, email, mobile) {
+    };
+    FirebaseService.prototype.searchUsers = function (email, pwd) {
+        return this.db.collection('Admin', function (ref) { return ref.where('email_id', '==', email).where('pwd', '==', pwd); }).snapshotChanges();
+    };
+    FirebaseService.prototype.searchUsersByAge = function (value) {
+        return this.db.collection('users', function (ref) { return ref.orderBy('age').startAt(value); }).snapshotChanges();
+    };
+    FirebaseService.prototype.createUser = function (client, address, arm, person, wings, flats, project, email, mobile) {
         return this.db.collection('Admin/').add({
-            account_details: account,
+            // account_details:account,
             address: address,
             authorized_person: person,
             client_name: client,
-            email_id: email, mobile,
+            email_id: email, mobile: mobile,
             no_of_arms: arm,
             no_of_flats: flats,
             no_of_wings: wings,
             project_name: project,
             pwd: 'Abc@123'
         });
-    }
-};
-FirebaseService.ctorParameters = () => [
-    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
-];
-FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
-], FirebaseService);
+    };
+    FirebaseService.ctorParameters = function () { return [
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+    ]; };
+    FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+    ], FirebaseService);
+    return FirebaseService;
+}());
 
 
 
 /***/ })
 
 }]);
-//# sourceMappingURL=default~deviceactivity-deviceactivity-module~list-list-module-es2015.js.map
+//# sourceMappingURL=default~admin-list-admin-list-module~device-activity-superadmin-device-activity-superadmin-module~de~010361d8-es5.js.map

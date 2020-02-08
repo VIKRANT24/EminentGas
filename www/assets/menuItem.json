@@ -23,21 +23,6 @@
           ]
          
         },
-        {
-            "name": "Group",
-            "children": [
-                                {
-                                  "name" : "Manage Groups",
-                                  "icon" : "construct"
-                                 
-                               },
-                               {
-                                  "name" : "Group Activity",
-                                  "icon" : "folder-open"
-                               }
-              ]
-           
-          },
           {
             "name": "Profile",
             "children": [
@@ -52,35 +37,8 @@
                    
               ]
            
-          },
-          {
-            "name": "Find",
-            "children": [
-                                 {
-                                  "name" : "Find Devices",
-                                  "icon" : "construct"
-                               },
-                               {
-                                  "name" : "Find Users",
-                                  "icon" : "folder-open"
-                               }
-              ]
-           
-          },
-          {
-            "name": "Account",
-            "children": [
-                                {
-                                  "name" : "Manage Users",
-                                  "icon" : "construct"
-                               },
-                               {
-                                  "name" : "Manage Customers",
-                                  "icon" : "folder-open"
-                               }
-              ]
-           
           }
+
     ]
 }
 

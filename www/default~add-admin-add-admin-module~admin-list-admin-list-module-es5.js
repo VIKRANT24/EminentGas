@@ -25,7 +25,7 @@ __export(__webpack_require__(/*! ./components/inputtext/inputtext */ "./node_mod
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n            <ion-toolbar>\n              <ion-title >{{page}}</ion-title>\n            </ion-toolbar>\n          </ion-header>\n          <ion-content >\n            <ion-card>\n              \n              \n                <ion-card-content style=\"text-align: center;\">\n                    <ion-item>\n                       <ion-input placeholder=\"Client Name\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"client\"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-input placeholder=\"Address\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"address\"></ion-input>\n                     </ion-item>\n                     <!-- <ion-item>\n                        <ion-input placeholder=\"No of AMRS\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"arm\"></ion-input>\n                     </ion-item> -->\n                     <ion-item>\n                        <ion-label>No of AMRS</ion-label>\n                        <ion-select placeholder=\"Select ARM\"  multiple=\"true\" [(ngModel)]=\"arm\">\n                          <ion-select-option  *ngFor=\"let device of arms\">{{device.deveui}}</ion-select-option>\n                          \n                        </ion-select>\n                      </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"Authorized Person\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"person\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"No of Wings\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"wings\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"No of Flats\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"flats\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"Project Name\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"project\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"Account Details\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"account\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"Email ID\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"email\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"Mobile No\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"mobile\"></ion-input>\n                     </ion-item>\n    \n    \n                            <ion-button expand=\"block\" style=\"width:50%;color:white;float: right;\n                            margin-top: 20px;margin-bottom: 20px;\" color=\"shade\"(click)=\"create()\" *ngIf=\"create_show\">Create</ion-button>\n\n<ion-button expand=\"block\" style=\"width:50%;color:white;float: right;\nmargin-top: 20px;margin-bottom: 20px;\" color=\"shade\" (click)=\"update()\" *ngIf=\"update_show\">Update</ion-button>\n    \n                </ion-card-content>\n              </ion-card>\n          </ion-content>"
+module.exports = "<ion-header>\n            <ion-toolbar>\n              <ion-title >{{page}}</ion-title>\n            </ion-toolbar>\n          </ion-header>\n          <ion-content >\n            <ion-card>\n              \n              \n                <ion-card-content style=\"text-align: center;\">\n                    <ion-item>\n                       <ion-input placeholder=\"Client Name\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"client\"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-input placeholder=\"Address\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"address\"></ion-input>\n                     </ion-item>\n                     <!-- <ion-item>\n                        <ion-input placeholder=\"No of AMRS\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"arm\"></ion-input>\n                     </ion-item> -->\n                     <ion-item>\n                        <ion-label>No of AMRS</ion-label>\n                        <ion-select placeholder=\"Select ARM\"  multiple=\"true\" [(ngModel)]=\"arm\" (ionChange)=\"selectARM($event)\">\n                          <ion-select-option  *ngFor=\"let device of arms\">{{device.deveui}}</ion-select-option>\n                          \n                        </ion-select>\n                      </ion-item>\n                      <ul *ngFor=\"let item of selected_arms\">\n                      \n                        <li style=\"text-align:left;\">{{item.deveui}} : <input type=\"text\" style=\"border-radius:10px;text-align: center;border-color: #49c5b6;\" placeholder=\"Enter flat no.\" /></li>\n                        \n                      </ul>\n                     <ion-item>\n                        <ion-input placeholder=\"Authorized Person\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"person\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"No of Wings\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"wings\"></ion-input>\n                     </ion-item>\n                     <!-- <ion-item>\n                        <ion-input placeholder=\"No of Flats\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"flats\"></ion-input>\n                     </ion-item> -->\n                     \n                     <ion-item>\n                        <ion-input placeholder=\"Project Name\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"project\"></ion-input>\n                     </ion-item>\n                     <!-- <ion-item>\n                        <ion-input placeholder=\"Account Details\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"account\"></ion-input>\n                     </ion-item> -->\n                     <ion-item>\n                        <ion-input placeholder=\"Email ID\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"email\"></ion-input>\n                     </ion-item>\n                     <ion-item>\n                        <ion-input placeholder=\"Mobile No\" style=\"margin-top:-10px;color:#666666;\" [(ngModel)]=\"mobile\"></ion-input>\n                     </ion-item>\n    \n    \n                            <ion-button expand=\"block\" style=\"width:50%;color:white;float: right;\n                            margin-top: 20px;margin-bottom: 20px;\" color=\"shade\"(click)=\"create()\" *ngIf=\"create_show\">Create</ion-button>\n\n<ion-button expand=\"block\" style=\"width:50%;color:white;float: right;\nmargin-top: 20px;margin-bottom: 20px;\" color=\"shade\" (click)=\"update()\" *ngIf=\"update_show\">Update</ion-button>\n    \n                </ion-card-content>\n              </ion-card>\n          </ion-content>"
 
 /***/ }),
 
@@ -36,7 +36,7 @@ module.exports = "<ion-header>\n            <ion-toolbar>\n              <ion-ti
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-button {\n  border-radius: 50px;\n  background-color: #49c5b6 !important;\n  --box-shadow:none;\n  color: white;\n}\n\nion-toolbar {\n  --background: #2a3f54;\n  color: #fff;\n}\n\nion-item {\n  border-style: solid;\n  border-width: thin;\n  border-color: #e6e6e6;\n  margin-top: 10px;\n  height: 40px;\n  border-radius: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRkLWFkbWluL2FkZC1hZG1pbi5wYWdlLnNjc3MiLCJzcmMvYXBwL2FkZC1hZG1pbi9hZGQtYWRtaW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7RUFDQSxvQ0FBQTtFQUNBLGlCQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREdFO0VBQ0YscUJBQUE7RUFDQSxXQUFBO0FDQUE7O0FER0U7RUFDRSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EscUJBQUE7RUFDRCxnQkFBQTtFQUFnQixZQUFBO0VBQVksbUJBQUE7QUNFL0IiLCJmaWxlIjoic3JjL2FwcC9hZGQtYWRtaW4vYWRkLWFkbWluLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b24ge1xuICBib3JkZXItcmFkaXVzOjUwcHggO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDljNWI2ICFpbXBvcnRhbnQ7XG4gIC0tYm94LXNoYWRvdzpub25lO1xuICBjb2xvcjp3aGl0ZVxuICBcbiAgfVxuXG4gIGlvbi10b29sYmFye1xuLS1iYWNrZ3JvdW5kOiAjMmEzZjU0O1xuY29sb3I6I2ZmZlxuICB9XG5cbiAgaW9uLWl0ZW17XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBib3JkZXItd2lkdGg6IHRoaW47XG4gICAgYm9yZGVyLWNvbG9yOiAjZTZlNmU2O1xuICAgbWFyZ2luLXRvcDoxMHB4O2hlaWdodDo0MHB4O2JvcmRlci1yYWRpdXM6IDI1cHg7XG4gIH0iLCJpb24tYnV0dG9uIHtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzQ5YzViNiAhaW1wb3J0YW50O1xuICAtLWJveC1zaGFkb3c6bm9uZTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogIzJhM2Y1NDtcbiAgY29sb3I6ICNmZmY7XG59XG5cbmlvbi1pdGVtIHtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLXdpZHRoOiB0aGluO1xuICBib3JkZXItY29sb3I6ICNlNmU2ZTY7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG4gIGhlaWdodDogNDBweDtcbiAgYm9yZGVyLXJhZGl1czogMjVweDtcbn0iXX0= */"
+module.exports = "ion-button {\n  border-radius: 50px;\n  background-color: #49c5b6 !important;\n  --box-shadow:none;\n  color: white;\n}\n\nion-toolbar {\n  --background: #2a3f54;\n  color: #fff;\n}\n\nion-item {\n  border-style: solid;\n  border-width: thin;\n  border-color: #e6e6e6;\n  margin-top: 10px;\n  height: 40px;\n  border-radius: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRkLWFkbWluL2FkZC1hZG1pbi5wYWdlLnNjc3MiLCJzcmMvYXBwL2FkZC1hZG1pbi9hZGQtYWRtaW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7RUFDQSxvQ0FBQTtFQUNBLGlCQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREdFO0VBQ0YscUJBQUE7RUFDQSxXQUFBO0FDQUE7O0FESUU7RUFDRSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EscUJBQUE7RUFDRCxnQkFBQTtFQUFnQixZQUFBO0VBQVksbUJBQUE7QUNDL0IiLCJmaWxlIjoic3JjL2FwcC9hZGQtYWRtaW4vYWRkLWFkbWluLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b24ge1xuICBib3JkZXItcmFkaXVzOjUwcHggO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDljNWI2ICFpbXBvcnRhbnQ7XG4gIC0tYm94LXNoYWRvdzpub25lO1xuICBjb2xvcjp3aGl0ZVxuICBcbiAgfVxuXG4gIGlvbi10b29sYmFye1xuLS1iYWNrZ3JvdW5kOiAjMmEzZjU0O1xuY29sb3I6I2ZmZjtcblxuICB9XG5cbiAgaW9uLWl0ZW17XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBib3JkZXItd2lkdGg6IHRoaW47XG4gICAgYm9yZGVyLWNvbG9yOiAjZTZlNmU2O1xuICAgbWFyZ2luLXRvcDoxMHB4O2hlaWdodDo0MHB4O2JvcmRlci1yYWRpdXM6IDI1cHg7XG4gIH1cblxuXG5cblxuXG4gICIsImlvbi1idXR0b24ge1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDljNWI2ICFpbXBvcnRhbnQ7XG4gIC0tYm94LXNoYWRvdzpub25lO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiAjMmEzZjU0O1xuICBjb2xvcjogI2ZmZjtcbn1cblxuaW9uLWl0ZW0ge1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItd2lkdGg6IHRoaW47XG4gIGJvcmRlci1jb2xvcjogI2U2ZTZlNjtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBib3JkZXItcmFkaXVzOiAyNXB4O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -64,8 +64,10 @@ var _assets_device_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__
 
 
 
+
 var AddAdminPage = /** @class */ (function () {
-    function AddAdminPage(firebaseService, modalCtrl, events, http, alertController) {
+    function AddAdminPage(loadingController, firebaseService, modalCtrl, events, http, alertController) {
+        this.loadingController = loadingController;
         this.firebaseService = firebaseService;
         this.modalCtrl = modalCtrl;
         this.events = events;
@@ -86,6 +88,7 @@ var AddAdminPage = /** @class */ (function () {
         this.create_show = false;
         this.update_show = false;
         this.arms = [];
+        this.selected_arms = [];
         this.arms = _assets_device_json__WEBPACK_IMPORTED_MODULE_4__;
         console.log(this.arm);
     }
@@ -107,15 +110,35 @@ var AddAdminPage = /** @class */ (function () {
             this.wings = this.data[0].no_of_wings;
             this.flats = this.data[0].no_of_flats;
             this.project = this.data[0].project_name;
-            this.account = this.data[0].account_details;
+            //this.account=this.data[0].account_details
             this.email = this.data[0].email_id;
             this.mobile = this.data[0].mobile;
             this.id = this.data[0].id;
         }
     };
+    AddAdminPage.prototype.showLoader = function () {
+        this.loaderToShow = this.loadingController.create({
+            // message: 'This Loader will Not AutoHide'
+            spinner: 'crescent',
+            cssClass: 'custom-loader-class'
+        }).then(function (res) {
+            res.present();
+            res.onDidDismiss().then(function (dis) {
+                console.log('Loading dismissed!');
+            });
+        });
+        //  this.hideLoader();
+    };
+    AddAdminPage.prototype.hideLoader = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.loadingController.dismiss();
+        }, 4000);
+    };
     AddAdminPage.prototype.create = function () {
         var _this = this;
-        this.firebaseService.createUser(this.client, this.address, this.arm, this.person, this.wings, this.flats, this.project, this.account, this.email, this.mobile)
+        this.showLoader();
+        this.firebaseService.createUser(this.client, this.address, this.arm, this.person, this.wings, this.flats, this.project, this.email, this.mobile)
             .then(function (res) {
             var data = res;
             console.log(data);
@@ -123,15 +146,23 @@ var AddAdminPage = /** @class */ (function () {
             _this.modalCtrl.dismiss();
         });
         this.send_email(this.email);
+        this.hideLoader();
         this.success_msg();
+    };
+    AddAdminPage.prototype.selectARM = function (event) {
+        for (var i = 0; i < this.arm.length; i++) {
+            this.selected_arms.push(_assets_device_json__WEBPACK_IMPORTED_MODULE_4__[i]);
+        }
     };
     AddAdminPage.prototype.update = function () {
         var _this = this;
-        this.firebaseService.updateUser(this.client, this.address, this.arm, this.person, this.wings, this.flats, this.project, this.account, this.email, this.mobile, this.id)
+        this.showLoader();
+        this.firebaseService.updateUser(this.client, this.address, this.arm, this.person, this.wings, this.flats, this.project, this.email, this.mobile, this.id)
             .then(function (res) {
             _this.events.publish('update_list');
             // this.router.navigate(['/home']);
             _this.modalCtrl.dismiss();
+            _this.hideLoader();
             _this.update_msg();
         });
     };
@@ -192,6 +223,7 @@ var AddAdminPage = /** @class */ (function () {
         });
     };
     AddAdminPage.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] },
         { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Events"] },
@@ -208,95 +240,9 @@ var AddAdminPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./add-admin.page.html */ "./node_modules/raw-loader/index.js!./src/app/add-admin/add-admin.page.html"),
             styles: [__webpack_require__(/*! ./add-admin.page.scss */ "./src/app/add-admin/add-admin.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Events"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Events"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
     ], AddAdminPage);
     return AddAdminPage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/firebase.service.ts":
-/*!**********************************************!*\
-  !*** ./src/app/services/firebase.service.ts ***!
-  \**********************************************/
-/*! exports provided: FirebaseService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseService", function() { return FirebaseService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
-
-
-
-var FirebaseService = /** @class */ (function () {
-    function FirebaseService(db) {
-        this.db = db;
-    }
-    FirebaseService.prototype.getAvatars = function () {
-        return this.db.collection('/avatar').valueChanges();
-    };
-    FirebaseService.prototype.getUser = function (userKey) {
-        return this.db.collection('users').doc(userKey).snapshotChanges();
-    };
-    FirebaseService.prototype.updateUser = function (client, address, arm, person, wings, flats, project, account, email, mobile, id) {
-        // value.nameToSearch = value.name.toLowerCase();
-        return this.db.collection('Admin/').doc(id).set({
-            account_details: account,
-            address: address,
-            authorized_person: person,
-            client_name: client,
-            email_id: email, mobile: mobile,
-            no_of_arms: arm,
-            no_of_flats: flats,
-            no_of_wings: wings,
-            project_name: project,
-            pwd: 'Abc@123'
-        });
-    };
-    FirebaseService.prototype.deleteUser = function (userKey) {
-        return this.db.collection('Admin').doc(userKey).delete();
-    };
-    FirebaseService.prototype.getUsers = function () {
-        return this.db.collection('Admin').snapshotChanges();
-    };
-    FirebaseService.prototype.getDevices = function () {
-        return this.db.collection('Devices').snapshotChanges();
-    };
-    FirebaseService.prototype.searchUsers = function (email, pwd) {
-        return this.db.collection('Admin', function (ref) { return ref.where('email_id', '==', email).where('pwd', '==', pwd); }).snapshotChanges();
-    };
-    FirebaseService.prototype.searchUsersByAge = function (value) {
-        return this.db.collection('users', function (ref) { return ref.orderBy('age').startAt(value); }).snapshotChanges();
-    };
-    FirebaseService.prototype.createUser = function (client, address, arm, person, wings, flats, project, account, email, mobile) {
-        return this.db.collection('Admin/').add({
-            account_details: account,
-            address: address,
-            authorized_person: person,
-            client_name: client,
-            email_id: email, mobile: mobile,
-            no_of_arms: arm,
-            no_of_flats: flats,
-            no_of_wings: wings,
-            project_name: project,
-            pwd: 'Abc@123'
-        });
-    };
-    FirebaseService.ctorParameters = function () { return [
-        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
-    ]; };
-    FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
-    ], FirebaseService);
-    return FirebaseService;
 }());
 
 

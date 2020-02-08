@@ -93,6 +93,91 @@ AddAdminPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 
 
+/***/ }),
+
+/***/ "./src/app/services/firebase.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/firebase.service.ts ***!
+  \**********************************************/
+/*! exports provided: FirebaseService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseService", function() { return FirebaseService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+
+
+
+let FirebaseService = class FirebaseService {
+    constructor(db) {
+        this.db = db;
+    }
+    getAvatars() {
+        return this.db.collection('/avatar').valueChanges();
+    }
+    getUser(userKey) {
+        return this.db.collection('users').doc(userKey).snapshotChanges();
+    }
+    updateUser(client, address, arm, person, wings, flats, project, email, mobile, id) {
+        // value.nameToSearch = value.name.toLowerCase();
+        return this.db.collection('Admin/').doc(id).set({
+            //  account_details:account,
+            address: address,
+            authorized_person: person,
+            client_name: client,
+            email_id: email, mobile,
+            no_of_arms: arm,
+            no_of_flats: flats,
+            no_of_wings: wings,
+            project_name: project,
+            pwd: 'Abc@123'
+        });
+    }
+    deleteUser(userKey) {
+        return this.db.collection('Admin').doc(userKey).delete();
+    }
+    getUsers() {
+        return this.db.collection('Admin').snapshotChanges();
+    }
+    getDevices() {
+        return this.db.collection('Devices').snapshotChanges();
+    }
+    searchUsers(email, pwd) {
+        return this.db.collection('Admin', ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges();
+    }
+    searchUsersByAge(value) {
+        return this.db.collection('users', ref => ref.orderBy('age').startAt(value)).snapshotChanges();
+    }
+    createUser(client, address, arm, person, wings, flats, project, email, mobile) {
+        return this.db.collection('Admin/').add({
+            // account_details:account,
+            address: address,
+            authorized_person: person,
+            client_name: client,
+            email_id: email, mobile,
+            no_of_arms: arm,
+            no_of_flats: flats,
+            no_of_wings: wings,
+            project_name: project,
+            pwd: 'Abc@123'
+        });
+    }
+};
+FirebaseService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+], FirebaseService);
+
+
+
 /***/ })
 
 }]);

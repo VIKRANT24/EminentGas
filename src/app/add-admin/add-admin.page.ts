@@ -18,7 +18,7 @@ import { LoadingController } from '@ionic/angular';
 export class AddAdminPage implements OnInit {
   client:any=""
   address:any=""
-  arm:any=""
+  arm:any=[]
   person:any=""
   wings:any=""
   flats:any=""
@@ -33,7 +33,8 @@ export class AddAdminPage implements OnInit {
   @Input() data: any;
   arms:any=[];
  loaderToShow: any;
- 
+ selected_arms:any=[];
+ arm_flats:any=[];
 
 
   submitted: boolean;
@@ -60,7 +61,7 @@ export class AddAdminPage implements OnInit {
 console.log(this.data)
   this.client=this.data[0].client_name
   this.address=this.data[0].address
-  this.arm=this.data[0].no_of_arms
+  //this.arm=this.data[0].no_of_arms
   this.person=this.data[0].authorized_person
   this.wings=this.data[0].no_of_wings
   this.flats=this.data[0].no_of_flats
@@ -70,6 +71,15 @@ console.log(this.data)
   this.mobile=this.data[0].mobile
   this.id=this.data[0].id
 
+  for(var i = 0;i<this.data[0].no_of_arms.length;i++)
+  {
+    var deveui = this.data[0].no_of_arms[i].split('-')[0]
+    var flats = this.data[0].no_of_arms[i].split('-')[1]
+
+    this.selected_arms.push({'deveui':deveui,'flats':flats})
+    this.arm_flats.push(deveui+"-"+flats)
+    this.arm.push(deveui)
+  }
 
  }
  
@@ -99,7 +109,8 @@ hideLoader() {
 create()
 {
   this.showLoader()
-  this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
+  this.firebaseService.createUser(this.client,this.address,this.arm_flats,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
+  //this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
 	.then(
 	  res => {
 var data =  res
@@ -108,11 +119,29 @@ this.events.publish('update_list');
 this.modalCtrl.dismiss();
 	  }
   )
-  this.send_email(this.email)
+  //this.send_email(this.email)
   this.hideLoader()
   this.success_msg()
 
 
+}
+
+selectARM(event)
+{
+  if(this.selected_arms.length==0)
+  this.selected_arms =[]
+  for(var i=0;i<this.arm.length;i++)
+  {
+    var position = data.findIndex(c=>c.deveui == this.arm[i])
+    if(this.selected_arms.findIndex(a=>a.deveui==this.arm[i]) < 0 )
+    this.selected_arms.push(data[position])
+  }
+}
+
+assign_flats(item,event)
+{
+if(!this.arm_flats.includes(item+"-"+event))
+this.arm_flats.push(item+"-"+event)
 }
 
 update()

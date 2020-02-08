@@ -37,10 +37,10 @@ var FirebaseService = /** @class */ (function () {
     FirebaseService.prototype.getUser = function (userKey) {
         return this.db.collection('users').doc(userKey).snapshotChanges();
     };
-    FirebaseService.prototype.updateUser = function (client, address, arm, person, wings, flats, project, account, email, mobile, id) {
+    FirebaseService.prototype.updateUser = function (client, address, arm, person, wings, flats, project, email, mobile, id) {
         // value.nameToSearch = value.name.toLowerCase();
         return this.db.collection('Admin/').doc(id).set({
-            account_details: account,
+            //  account_details:account,
             address: address,
             authorized_person: person,
             client_name: client,
@@ -67,9 +67,9 @@ var FirebaseService = /** @class */ (function () {
     FirebaseService.prototype.searchUsersByAge = function (value) {
         return this.db.collection('users', function (ref) { return ref.orderBy('age').startAt(value); }).snapshotChanges();
     };
-    FirebaseService.prototype.createUser = function (client, address, arm, person, wings, flats, project, account, email, mobile) {
+    FirebaseService.prototype.createUser = function (client, address, arm, person, wings, flats, project, email, mobile) {
         return this.db.collection('Admin/').add({
-            account_details: account,
+            // account_details:account,
             address: address,
             authorized_person: person,
             client_name: client,

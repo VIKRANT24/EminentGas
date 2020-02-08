@@ -26,12 +26,20 @@ var map = {
 	],
 	"./admin-list/admin-list.module": [
 		"./src/app/admin-list/admin-list.module.ts",
+		"default~admin-list-admin-list-module~device-activity-superadmin-device-activity-superadmin-module~de~010361d8",
 		"default~add-admin-add-admin-module~admin-list-admin-list-module",
+		"common",
 		"admin-list-admin-list-module"
+	],
+	"./device-activity-superadmin/device-activity-superadmin.module": [
+		"./src/app/device-activity-superadmin/device-activity-superadmin.module.ts",
+		"default~admin-list-admin-list-module~device-activity-superadmin-device-activity-superadmin-module~de~010361d8",
+		"common",
+		"device-activity-superadmin-device-activity-superadmin-module"
 	],
 	"./deviceactivity/deviceactivity.module": [
 		"./src/app/deviceactivity/deviceactivity.module.ts",
-		"default~deviceactivity-deviceactivity-module~list-list-module",
+		"default~admin-list-admin-list-module~device-activity-superadmin-device-activity-superadmin-module~de~010361d8",
 		"deviceactivity-deviceactivity-module"
 	],
 	"./edit-admin/edit-admin.module": [
@@ -535,7 +543,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"custom-toolbar\">\n    <i
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n<ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n<!-- <ion-header >\n    <ion-toolbar color=\"primary\">\n      <ion-title>\n        Home\n      </ion-title>\n      <ion-buttons slot=\"end\">\n        <ion-button (click)=\"automaticClose= !automaticClose\">\n          <ion-icon slot=\"icon-only\" name=\"close\" *ngIf=\"automaticClose\"></ion-icon>\n          <ion-icon slot=\"icon-only\" name=\"resize\" *ngIf=\"!automaticClose\"></ion-icon>\n        </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n  </ion-header> -->\n\n  \n  <ion-content>\n      <div style=\"width:100%;height:200px;background-color:#2a3f54;text-align: center;\"> \n          <img  src=\"assets/imgs/transparent_logo.png\"  style=\"background-color: white;width: 70%;height: 65px;border-radius: 20px;margin-top: 5%;\"/>\n          <div style=\"color: white;margin-top: 20%;\">\n             vikrantrane24@gmail.com\n          </div>\n        </div>\n    <ion-list *ngFor=\"let item of information; let i =index;\" class=\"accordion-list\" llines=\"none\" detail=\"false\" no-padding>\n<ion-item tappable (click)=\"toggleSection(i)\" [ngClass]=\"{'section-active':item.open, 'section': !item.open}\">\n    <ion-icon slot=\"end\" name=\"arrow-dropright\" *ngIf=\"!item.open\"></ion-icon>\n    <ion-icon name=\"arrow-dropdown\" slot=\"end\" *ngIf=\"item.open\"></ion-icon>\n   \n  <ion-label >\n    {{item.name}}\n  </ion-label>\n</ion-item>\n<div *ngIf=\"item.children && item.open\">\n  <ion-list *ngFor=\"let child of item.children; let j= index;\"  class=\"child-list\">\n        <ion-label (click)=\"toggleItem(i,j)\">\n          {{child.name}}\n        </ion-label>\n       \n  </ion-list>\n \n</div>\n    </ion-list>\n    <ion-list  style=\"padding:0px\">\n        <ion-item>\n          \n                <ion-icon  name=\"log-out\" style=\"margin-right: 15px;font-size: 25px;\" slot=\"end\"></ion-icon>\n             \n            <ion-label>Logout</ion-label>\n          </ion-item>\n       \n  </ion-list>\n  </ion-content>\n</ion-menu>\n<ion-router-outlet main></ion-router-outlet>\n</ion-split-pane>\n</ion-app>\n\n  <!-- <ion-app>\n  <ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list >\n          <!-- <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle> -->\n          \n<!--          <ion-item-group>\n              <ion-item-divider icon=\"construct\"(click)=\"subList('device')\" color=\"light\">Devices\n              </ion-item-divider>\n                \n              <ion-item \n                    *ngFor=\"let device of devices\" lines=\"none\">\n                    <ion-icon name=\"{{ device.icon }}\" item-left></ion-icon>\n                    {{ device.name }}\n                 </ion-item>\n               \n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider (click)=\"subList('group')\" color=\"light\">Groups</ion-item-divider>\n                 <ion-item\n                    *ngFor=\"let group of groups\" lines=\"none\">\n                    <ion-icon name=\"{{ group.icon }}\" item-left></ion-icon>\n                    {{ group.name }}\n                 </ion-item>\n           </ion-item-group>\n           <ion-item-group>\n              <ion-item-divider (click)=\"subList('profile')\" color=\"light\">Profiles</ion-item-divider>\n                 <ion-item style=\"animation: backwards;\"\n                    *ngFor=\"let profile of profiles\"\n                    (click)=\"sectionToLoad(profile)\" lines=\"none\">\n                    <ion-icon name=\"{{ profile.icon }}\" item-left></ion-icon>\n                    {{ profile.name }}\n                 </ion-item>\n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider  (click)=\"subList('find')\" color=\"light\">Find</ion-item-divider>\n                 <ion-item \n                    *ngFor=\"let find of find\"\n                    (click)=\"sectionToLoad(find)\" lines=\"none\">\n                    <ion-icon name=\"{{ find.icon }}\" item-left></ion-icon>\n                    {{ find.name }}\n                 </ion-item>\n           </ion-item-group>\n         <ion-item-group>\n             <ion-item-divider   (click)=\"subList('account')\"color=\"light\">Accounts</ion-item-divider>\n                <ion-item \n                   *ngFor=\"let account of accounts\"\n                   (click)=\"sectionToLoad(account)\" lines=\"none\">\n                   <ion-icon name=\"{{ account.icon }}\" item-left></ion-icon>\n                   {{ account.name }}\n                </ion-item>\n          </ion-item-group>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app> -->"
+module.exports = "<ion-app>\n<ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n<!-- <ion-header >\n    <ion-toolbar color=\"primary\">\n      <ion-title>\n        Home\n      </ion-title>\n      <ion-buttons slot=\"end\">\n        <ion-button (click)=\"automaticClose= !automaticClose\">\n          <ion-icon slot=\"icon-only\" name=\"close\" *ngIf=\"automaticClose\"></ion-icon>\n          <ion-icon slot=\"icon-only\" name=\"resize\" *ngIf=\"!automaticClose\"></ion-icon>\n        </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n  </ion-header> -->\n\n  \n  <ion-content>\n      <div style=\"width:100%;height:200px;background-color:#2a3f54;text-align: center;\"> \n          <img  src=\"assets/imgs/transparent_logo.png\"  style=\"background-color: white;width: 70%;height: 65px;border-radius: 20px;margin-top: 5%;\"/>\n          <div style=\"color: white;margin-top: 20%;\">\n             vikrantrane24@gmail.com\n          </div>\n        </div>\n    <ion-list *ngFor=\"let item of information; let i =index;\" class=\"accordion-list\" llines=\"none\" detail=\"false\" no-padding>\n<ion-item tappable (click)=\"toggleSection(i)\" [ngClass]=\"{'section-active':item.open, 'section': !item.open}\">\n    <ion-icon slot=\"end\" name=\"arrow-dropright\" *ngIf=\"!item.open\"></ion-icon>\n    <ion-icon name=\"arrow-dropdown\" slot=\"end\" *ngIf=\"item.open\"></ion-icon>\n   \n  <ion-label >\n    {{item.name}}\n  </ion-label>\n</ion-item>\n<div *ngIf=\"item.children && item.open\">\n  <ion-list *ngFor=\"let child of item.children; let j= index;\"  class=\"child-list\">\n        <ion-label (click)=\"toggleItem(i,j)\">\n          {{child.name}}\n        </ion-label>\n       \n  </ion-list>\n \n</div>\n    </ion-list>\n    <ion-list  style=\"padding:0px\">\n        <ion-item (click)=\"logout()\">\n          \n                <ion-icon  name=\"log-out\" style=\"margin-right: 15px;font-size: 25px;\" slot=\"end\"></ion-icon>\n             \n            <ion-label>Logout</ion-label>\n          </ion-item>\n       \n  </ion-list>\n  </ion-content>\n</ion-menu>\n<ion-router-outlet main></ion-router-outlet>\n</ion-split-pane>\n</ion-app>\n\n  <!-- <ion-app>\n  <ion-split-pane disabled>\n    <ion-menu type=\"overlay\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list >\n          <!-- <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle> -->\n          \n<!--          <ion-item-group>\n              <ion-item-divider icon=\"construct\"(click)=\"subList('device')\" color=\"light\">Devices\n              </ion-item-divider>\n                \n              <ion-item \n                    *ngFor=\"let device of devices\" lines=\"none\">\n                    <ion-icon name=\"{{ device.icon }}\" item-left></ion-icon>\n                    {{ device.name }}\n                 </ion-item>\n               \n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider (click)=\"subList('group')\" color=\"light\">Groups</ion-item-divider>\n                 <ion-item\n                    *ngFor=\"let group of groups\" lines=\"none\">\n                    <ion-icon name=\"{{ group.icon }}\" item-left></ion-icon>\n                    {{ group.name }}\n                 </ion-item>\n           </ion-item-group>\n           <ion-item-group>\n              <ion-item-divider (click)=\"subList('profile')\" color=\"light\">Profiles</ion-item-divider>\n                 <ion-item style=\"animation: backwards;\"\n                    *ngFor=\"let profile of profiles\"\n                    (click)=\"sectionToLoad(profile)\" lines=\"none\">\n                    <ion-icon name=\"{{ profile.icon }}\" item-left></ion-icon>\n                    {{ profile.name }}\n                 </ion-item>\n           </ion-item-group>\n            <ion-item-group>\n              <ion-item-divider  (click)=\"subList('find')\" color=\"light\">Find</ion-item-divider>\n                 <ion-item \n                    *ngFor=\"let find of find\"\n                    (click)=\"sectionToLoad(find)\" lines=\"none\">\n                    <ion-icon name=\"{{ find.icon }}\" item-left></ion-icon>\n                    {{ find.name }}\n                 </ion-item>\n           </ion-item-group>\n         <ion-item-group>\n             <ion-item-divider   (click)=\"subList('account')\"color=\"light\">Accounts</ion-item-divider>\n                <ion-item \n                   *ngFor=\"let account of accounts\"\n                   (click)=\"sectionToLoad(account)\" lines=\"none\">\n                   <ion-icon name=\"{{ account.icon }}\" item-left></ion-icon>\n                   {{ account.name }}\n                </ion-item>\n          </ion-item-group>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app> -->"
 
 /***/ }),
 
@@ -546,7 +554,7 @@ module.exports = "<ion-app>\n<ion-split-pane disabled>\n    <ion-menu type=\"ove
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n <div style=\"text-align: center;\">\n <ion-button  color=\"danger\" style=\"height: 20px;margin-top: -5px;\"(click)=\"editRow()\">Edit</ion-button>\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">View</ion-button>\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">Delete</ion-button> \n<!-- <ion-label (click)=\"action()\">Action   <ion-icon name=\"ios-arrow-down\"></ion-icon></ion-label> -->\n\n</div> \n<!-- <p-overlayPanel #op>\n        Content\n    </p-overlayPanel>\n    \n    <button type=\"text\" pButton label=\"Basic\" (click)=\"op.toggle($event)\"></button> -->\n\n\n    "
+module.exports = "\n <div style=\"text-align: center;\">\n <!-- <ion-button  color=\"danger\" style=\"height: 20px;margin-top: -5px;\"(click)=\"editRow()\">Edit</ion-button> -->\n<ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">View</ion-button>\n<!-- <ion-button color=\"danger\" style=\"height: 20px;margin-top: -5px;\" (click)=\"viewRow()\">Delete</ion-button>  -->\n<!-- <ion-label (click)=\"action()\">Action   <ion-icon name=\"ios-arrow-down\"></ion-icon></ion-label> -->\n\n</div> \n<!-- <p-overlayPanel #op>\n        Content\n    </p-overlayPanel>\n    \n    <button type=\"text\" pButton label=\"Basic\" (click)=\"op.toggle($event)\"></button> -->\n\n\n    "
 
 /***/ }),
 
@@ -1059,7 +1067,7 @@ var routes = [
     },
     {
         path: 'list',
-        loadChildren: function () { return Promise.all(/*! import() | list-list-module */[__webpack_require__.e("default~deviceactivity-deviceactivity-module~list-list-module"), __webpack_require__.e("list-list-module")]).then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(function (m) { return m.ListPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | list-list-module */[__webpack_require__.e("default~admin-list-admin-list-module~device-activity-superadmin-device-activity-superadmin-module~de~010361d8"), __webpack_require__.e("list-list-module")]).then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(function (m) { return m.ListPageModule; }); }
     },
     { path: 'super-admin', loadChildren: './super-admin/super-admin.module#SuperAdminPageModule' },
     { path: 'menu-page', loadChildren: './menu-page/menu-page.module#MenuPagePageModule' },
@@ -1073,7 +1081,8 @@ var routes = [
     { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
     { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },
     { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },
-    { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' }
+    { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' },
+    { path: 'device-activity-superadmin', loadChildren: './device-activity-superadmin/device-activity-superadmin.module#DeviceActivitySuperadminPageModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1120,6 +1129,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
@@ -1134,12 +1145,14 @@ __webpack_require__.r(__webpack_exports__);
 //   storageBucket: "eminent-gas-tech.appspot.com",
 // };
 var AppComponent = /** @class */ (function () {
-    function AppComponent(httpData, platform, statusBar, splashScreen) {
+    function AppComponent(httpData, platform, statusBar, splashScreen, alertController, router) {
         var _this = this;
         this.httpData = httpData;
         this.platform = platform;
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
+        this.alertController = alertController;
+        this.router = router;
         this.automaticClose = false;
         this.httpData.get('assets/menuItem.json').subscribe(function (res) {
             _this.information = res['items'];
@@ -1166,11 +1179,53 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.toggleItem = function (index, childIndex) {
         alert(JSON.stringify(this.information[index].children[childIndex].name));
     };
+    AppComponent.prototype.logout = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        localStorage.removeItem("admin");
+                        return [4 /*yield*/, this.alertController.create({
+                                header: 'Logout !',
+                                message: 'Do you want to logout ?',
+                                buttons: [
+                                    {
+                                        text: 'No',
+                                        role: 'cancel',
+                                        cssClass: 'secondary',
+                                        handler: function (blah) {
+                                            console.log('Confirm Cancel: blah');
+                                        }
+                                    }, {
+                                        text: 'Yes',
+                                        handler: function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                                            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                                                this.router.navigateByUrl('/super-admin');
+                                                return [2 /*return*/];
+                                            });
+                                        }); }
+                                    }
+                                ]
+                            })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     AppComponent.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-        { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] }
+        { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1178,7 +1233,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());

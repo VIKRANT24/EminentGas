@@ -19,20 +19,26 @@
                      </ion-item> -->
                      <ion-item>
                         <ion-label>No of AMRS</ion-label>
-                        <ion-select placeholder="Select ARM"  multiple="true" [(ngModel)]="arm">
+                        <ion-select placeholder="Select ARM"  multiple="true" [(ngModel)]="arm" (ionChange)="selectARM($event)">
                           <ion-select-option  *ngFor="let device of arms">{{device.deveui}}</ion-select-option>
                           
                         </ion-select>
                       </ion-item>
+                      <ul *ngFor="let item of selected_arms">
+                      
+                        <li style="text-align:left;">{{item.deveui}} : <input type="text" value="{{item.flats}}" (blur)="assign_flats(item.deveui,$event.target.value)" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Enter flat no." /></li>
+                        
+                      </ul>
                      <ion-item>
                         <ion-input placeholder="Authorized Person" style="margin-top:-10px;color:#666666;" [(ngModel)]="person"></ion-input>
                      </ion-item>
                      <ion-item>
                         <ion-input placeholder="No of Wings" style="margin-top:-10px;color:#666666;" [(ngModel)]="wings"></ion-input>
                      </ion-item>
-                     <ion-item>
+                     <!-- <ion-item>
                         <ion-input placeholder="No of Flats" style="margin-top:-10px;color:#666666;" [(ngModel)]="flats"></ion-input>
-                     </ion-item>
+                     </ion-item> -->
+                     
                      <ion-item>
                         <ion-input placeholder="Project Name" style="margin-top:-10px;color:#666666;" [(ngModel)]="project"></ion-input>
                      </ion-item>
