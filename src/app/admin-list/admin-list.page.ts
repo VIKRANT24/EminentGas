@@ -4,7 +4,7 @@ import { AddAdminPage } from '../add-admin/add-admin.page';
 import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
-import { Route,Router } from '@angular/router';
+import { Route,Router, ActivatedRoute } from '@angular/router';
 import { DeviceActivitySuperadminPage } from '../device-activity-superadmin/device-activity-superadmin.page';
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
 
@@ -27,23 +27,36 @@ export class AdminListPage implements OnInit {
    rowData:any=[]; 
    rowSelection:any="multiple";
    items: Array<any>;
-  constructor(public navCtrl:NavController, private router: Router,public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
+   firstLogin:any
+  constructor(private route: ActivatedRoute,public navCtrl:NavController, private router: Router,public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
+      
+
+    // this.route.queryParams.subscribe(params => {
+    //   if (this.router.getCurrentNavigation().extras.state) {
+    //     this.firstLogin = this.router.getCurrentNavigation().extras.state.firstLogin;
+      
+    //   }
+    // });
+
+    this.firstLogin = localStorage.getItem('superAdminLogin')
     this.getData();
+
     var isLogin = localStorage.getItem("admin")
     if(isLogin==null)
     [
       this.router.navigateByUrl('/super-admin')
     ]
     
+    
+  }
+  ionViewWillEnter() {
 
   }
+ 
 
  
 
   ngOnInit() {
-
-    
-
     this.events.subscribe('update_list', (data) => {
       this.getData();
     });
@@ -230,32 +243,75 @@ async deleteAdmin() {
   getData(){
     this.rowData1 = []
     this.rowData = []
+    var count = 0
+   if(this.firstLogin == "firstLogin"){
+    localStorage.setItem('superAdminLogin','')
+     
+  
     this.firebaseService.getUsers()
     .subscribe(result => {
-     for(var i=0;i<result.length;i++)
-    {
-     // var account_details = result[i].payload.doc.data()['account_details']
-      var address = result[i].payload.doc.data()['address']
-      var authorized_person = result[i].payload.doc.data()['authorized_person']
-      var client_name = result[i].payload.doc.data()['client_name']
-      var email_id = result[i].payload.doc.data()['email_id']
-      var mobile =result[i].payload.doc.data()['mobile']
-      var no_of_arms = result[i].payload.doc.data()['no_of_arms']
-      var no_of_flats = result[i].payload.doc.data()['no_of_flats']
-      var no_of_wings = result[i].payload.doc.data()['no_of_wings']
-      var project_name =result[i].payload.doc.data()['project_name']
-      var id = result[i].payload.doc.id
-      this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+      count = count + 1
+     //   alert(result.length)
+     if(count != 1){
+        for(var i=0;i<result.length;i++)
+        {
+          
+         // var account_details = result[i].payload.doc.data()['account_details']
+          var address = result[i].payload.doc.data()['address']
+          var authorized_person = result[i].payload.doc.data()['authorized_person']
+          var client_name = result[i].payload.doc.data()['client_name']
+          var email_id = result[i].payload.doc.data()['email_id']
+          var mobile =result[i].payload.doc.data()['mobile']
+          var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+          var no_of_flats = result[i].payload.doc.data()['no_of_flats']
+          var no_of_wings = result[i].payload.doc.data()['no_of_wings']
+          var project_name =result[i].payload.doc.data()['project_name']
+          var id = result[i].payload.doc.id
+          this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+    
+         // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+    
+          
+        }
+    
+        this.rowData = this.rowData1
 
-     // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+      }else{
+    
+      }
+    }) 
+ 
+  }else{
+    this.firebaseService.getUsers()
+    .subscribe(result => {
+        for(var i=0;i<result.length;i++)
+        {
+          
+         // var account_details = result[i].payload.doc.data()['account_details']
+          var address = result[i].payload.doc.data()['address']
+          var authorized_person = result[i].payload.doc.data()['authorized_person']
+          var client_name = result[i].payload.doc.data()['client_name']
+          var email_id = result[i].payload.doc.data()['email_id']
+          var mobile =result[i].payload.doc.data()['mobile']
+          var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+          var no_of_flats = result[i].payload.doc.data()['no_of_flats']
+          var no_of_wings = result[i].payload.doc.data()['no_of_wings']
+          var project_name =result[i].payload.doc.data()['project_name']
+          var id = result[i].payload.doc.id
+          this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+    
+         // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+    
+          
+        }
+    
+        this.rowData = this.rowData1
 
       
-    }
 
-    this.rowData = this.rowData1
     })
     
-   
+  }
   }
 
   onGridReady(params)
