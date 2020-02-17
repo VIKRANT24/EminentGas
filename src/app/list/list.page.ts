@@ -106,41 +106,55 @@ export class ListPage {
       {
         headerName: "DEVEUI",
         field: "deveui",
-        width: 250,
+        width: 300,
         headerCheckboxSelection: true,
         headerCheckboxSelectionFilteredOnly: true,
         checkboxSelection: true
       },
+      // {
+      //   headerName: "Comment",
+      //   field: "comment",
+      //   width: 250,
+      // },
+      // {
+      //   headerName: "Groups",
+      //   field: "groups",
+      //   width: 250,
+      // },
+      // {
+      //   headerName: "Apps",
+      //   field: "applications",
+      //   width: 250,
+      // },
+      // {
+      //   headerName: "Last Seen",
+      //   field: "last_reception",
+      //   width: 250,
+      // },
       {
-        headerName: "Comment",
-        field: "comment",
-        width: 250,
-      },
-      {
-        headerName: "Groups",
-        field: "groups",
-        width: 250,
-      },
-      {
-        headerName: "Apps",
-        field: "applications",
-        width: 250,
-      },
-      {
-        headerName: "Last Seen",
-        field: "last_reception",
-        width: 250,
+        headerName: "Flat no",
+        field: "flat",
+        width: 300,
+        filter: false,
+        value: '2408'
       },
       {
         headerName: "Cubic meter",
         field: "cubic",
-        width: 180,
+        width: 300,
         filter: false,
         value: '1.34'
       },
+      {
+        headerName: "Amount",
+        field: "amount",
+        width: 300,
+        filter: false,
+        value: '500'
+      },
       {headerName: 'Actions',
        field: 'action', 
-       width: 330,
+       width: 300,
        filter: false,
        cellRendererFramework: CellCustomComponent
        //template: '<p-overlayPanel #op>Content</p-overlayPanel><button type="text" pButton label="Basic" (click)="op.toggle($event)">zxzzx</button>'
@@ -174,6 +188,7 @@ export class ListPage {
       {
         if(arms_array.includes(result[i].payload.doc.data()['deveui']))
         {
+          
         var deveui = result[i].payload.doc.data()['deveui']
         var devaddr = result[i].payload.doc.data()['devaddr']
         var appeui = result[i].payload.doc.data()['appeui']
@@ -188,17 +203,54 @@ export class ListPage {
         var expiry_time_uplink =result[i].payload.doc.data()['expiry_time_uplink']
         var expiry_time_downlink =result[i].payload.doc.data()['expiry_time_downlink']
        // var last_reception = moment(result[i].payload.doc.data()['last_reception'].toInt()).format("DD-MM-YYYY h:mm:ss");
-       var date_data = result[i].payload.doc.data()['last_reception']
-       var last_reception = moment(date_data).format("DD/MM/YYYY h:mm:ss")
+        var date_data = result[i].payload.doc.data()['last_reception']
+        var last_reception = moment(date_data).format("DD/MM/YYYY h:mm:ss")
         var groups =result[i].payload.doc.data()['groups']
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']
         var cubic = "1.34"
+        
         this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic})
       }
-        
       }
       this.rowData = this.rowData1
+
+      for(var j = 0;j<this.rowData.length;j++)
+      {
+        this.cubic(this.rowData[j].deveui,j)
+      }
+
+    })
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api; // To access the grids API
+  }
+
+  async cubic(device,j)
+  {
+    this.firebaseService.getDataPackets(this.rowData[j].deveui).subscribe(async result1 => {
+      var cubic =""
+      if(result1[0]!=undefined)
+      {
+        var datapackets = result1[0].payload.doc.data()
+        var  data= datapackets['data']
+
+        var hex=data.substring(2, 10)
+        var decimal=parseInt(hex,16); 
+        cubic =  (decimal * 0.01).toString()
+        var a = j
+        this.rowData[j]["cubic"] = cubic
+        this.gridApi.setRowData(this.rowData);
+      }
+      else
+      {
+        cubic = "0.00"
+        this.rowData[j]["cubic"] = cubic
+        this.gridApi.setRowData(this.rowData);
+      }
+   
+
     })
   }
 

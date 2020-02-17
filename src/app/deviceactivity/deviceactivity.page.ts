@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SelectdevicemodalPage } from '../selectdevicemodal/selectdevicemodal.page';
-
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-deviceactivity',
@@ -19,8 +19,12 @@ export class DeviceactivityPage implements OnInit {
   rowData1:any=[]; 
    rowData:any=[]; 
   rowSelection:any="multiple";
-  constructor(public modalController: ModalController) { 
+  datapackets:any=[]; 
+  constructor(public modalController: ModalController,public firebaseService: FirebaseService) { 
     this.device = localStorage.getItem("viewdevice")
+
+    this.getdatapackets(this.device)
+
     this.columnDefs = [
       {
         headerName: "Direction",
@@ -57,7 +61,7 @@ export class DeviceactivityPage implements OnInit {
       },
       {
         headerName: "Data Rate",
-        field: "rate",
+        field: "data_rate",
         width: 250,
         filter: false,
       },
@@ -80,6 +84,27 @@ export class DeviceactivityPage implements OnInit {
        
     ];
 
+  }
+
+  getdatapackets(device)
+  {
+    
+    this.firebaseService.getDataPackets(device).subscribe(async result => {
+    var datapackets = result[0].payload.doc.data()
+      
+    var  data= datapackets['data']
+    var  data_rate= datapackets['data_rate']
+    var  device= datapackets['device']
+    var direction= datapackets['direction']
+    var fcnt= datapackets['fcnt']
+    var port= datapackets['port']
+    var  rssi= datapackets['rssi']
+    var  time= datapackets['time']
+
+    this.datapackets.push({'data':data,'data_rate':data_rate,'device':device,'direction':direction,'fcnt':fcnt,'port':port,'rssi':rssi,'time':time})
+
+    this.rowData = this.datapackets
+    })
   }
 
   ngOnInit() {
