@@ -51,6 +51,11 @@ export class FirebaseService {
   
   }
 
+  getDataPackets(device){
+    return this.db.collection('DataPackets',ref => ref.where('device', '==', device)).snapshotChanges()
+  
+  }
+
   searchUsersByAge(value){
     return this.db.collection('users',ref => ref.orderBy('age').startAt(value)).snapshotChanges();
   }

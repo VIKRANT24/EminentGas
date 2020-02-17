@@ -43,7 +43,8 @@
           [enableFilter]="true"
           [floatingFilter]="true"
           [suppressRowClickSelection]="true"
-          [rowSelection]="rowSelection">
+          [rowSelection]="rowSelection"
+          (gridReady)="onGridReady($event)">>
           </ag-grid-angular>
       </ion-card-content>
       
