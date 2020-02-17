@@ -34,7 +34,13 @@ export class AddAdminPage implements OnInit {
   arms:any=[];
  loaderToShow: any;
  selected_arms:any=[];
+ selected_arms_details:any=[];
  arm_flats:any=[];
+ flatNo:any="";
+ meterNo:any="";
+ meterDefValue:any="";
+ amrDefValue:any="";
+ amrWithValues:any=[]
 
 
   submitted: boolean;
@@ -109,7 +115,7 @@ hideLoader() {
 create()
 {
   this.showLoader()
-  this.firebaseService.createUser(this.client,this.address,this.arm_flats,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
+  this.firebaseService.createUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
   //this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
 	.then(
 	  res => {
@@ -128,21 +134,29 @@ this.modalCtrl.dismiss();
 
 selectARM(event)
 {
-  if(this.selected_arms.length==0)
   this.selected_arms =[]
   for(var i=0;i<this.arm.length;i++)
   {
     var position = data.findIndex(c=>c.deveui == this.arm[i])
     if(this.selected_arms.findIndex(a=>a.deveui==this.arm[i]) < 0 )
     this.selected_arms.push(data[position])
+  
+  }
+  for(var i=0;i<this.selected_arms.length;i++){
+    var deviceId=this.selected_arms[i].deveui
+    for(var j=0;j<this.selected_arms_details.length;j++){
+      if(!this.selected_arms_details[j].includes(deviceId)){
+        this.selected_arms_details.pop(this.selected_arms_details[j])
+      }
+    }
   }
 }
 
-assign_flats(item,event)
-{
-if(!this.arm_flats.includes(item+"-"+event))
-this.arm_flats.push(item+"-"+event)
-}
+// assign_flats(item,event)
+// {
+// if(!this.arm_flats.includes(item+"-"+event))
+// this.arm_flats.push(item+"-"+event)
+// }
 
 update()
 {
@@ -200,6 +214,29 @@ async update_msg()
   });
 
   await alert.present();
+}
+
+addValue(item,deviceui){
+  var count=0
+  var deviceUi=deviceui.deveui
+  var valueData=document.getElementById(item)
+  var abc = valueData.children[0].children
+  var xyz = abc[0].children
+  var flatNo=xyz['flatNo'].value
+  var meterNo=xyz['meterNo'].value
+  var meterDefValue=xyz['meterDefValue'].value
+  var amrDefValue=xyz['amrDefValue'].value
+  var dataObj=deviceUi+"-"+flatNo+","+meterNo+","+meterDefValue+","+amrDefValue
+  for(var i=0;i<this.selected_arms_details.length;i++){
+    if(this.selected_arms_details[i].includes(deviceUi)){
+      count=1
+      break
+    }
+    
+  }
+  if(count==0){
+  this.selected_arms_details.push(dataObj)
+  }
 }
   
 }

@@ -19,6 +19,26 @@ color:#fff;
    margin-top:10px;height:40px;border-radius: 25px;
   }
 
+  .scrollmenu {
+    background-color:#ffffff;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 50px;
+    
+  }
+  
+  .scrollmenu a {
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  .scrollmenu a:hover {
+    background-color: #000000;
+  }
 
 
 

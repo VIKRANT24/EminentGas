@@ -24,10 +24,16 @@
                           
                         </ion-select>
                       </ion-item>
-                      <ul *ngFor="let item of selected_arms">
-                      
-                        <li style="text-align:left;">{{item.deveui}} : <input type="text" value="{{item.flats}}" (blur)="assign_flats(item.deveui,$event.target.value)" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Enter flat no." /></li>
-                        
+                      <ul *ngFor="let item of selected_arms;let i=index" [id]="i">
+                        <li style="text-align:left;">
+                            <div class="scrollmenu" style="height: 6vh">{{item.deveui}} :
+                          <input  type="text" name="flatNo" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Enter flat no." />
+                          <input  type="text" name="meterNo"  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter no" />
+                          <input  type="text" name="meterDefValue"  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter Default Value" />
+                          <input  type="text" name="amrDefValue" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="AMR Default Value" />
+                          <ion-button color="primary" (click)="addValue(i,item)" style="height:4vh;margin-top: -1vh;">Add</ion-button>
+                        </div>
+                        </li>
                       </ul>
                      <ion-item>
                         <ion-input placeholder="Authorized Person" style="margin-top:-10px;color:#666666;" [(ngModel)]="person"></ion-input>

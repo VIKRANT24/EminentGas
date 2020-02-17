@@ -34,6 +34,7 @@
     "angular-flatpickr": "^3.6.6",
     "angularfire2": "^5.2.1",
     "cordova-plugin-email-composer": "^0.9.2",
+    "cordova-sqlite-storage": "^4.0.0",
     "core-js": "^2.5.4",
     "firebase": "^7.2.2",
     "font-awesome": "^4.7.0",
@@ -75,6 +76,8 @@
   },
   "description": "An Ionic project",
   "cordova": {
-    "plugins": {}
+    "plugins": {
+      "cordova-sqlite-storage": {}
+    }
   }
 }
