@@ -34,6 +34,7 @@ export class ListPage {
   rowData:any=[]; 
   rowSelection:any="multiple";
   devices:any;
+  splitarm:any=[]; 
    constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
     var user = localStorage.getItem("username")
     var pwd = localStorage.getItem("pwd")
@@ -171,9 +172,23 @@ export class ListPage {
   getAdminArm(user,pwd)
   {
     this.firebaseService.searchUsers(user ,pwd).subscribe(async result => {
-      var no_of_arms = result[0].payload.doc.data()['no_of_arms']
-      this.devices = no_of_arms.length
-      this.getDevices(no_of_arms)
+      var dataresult = result[0].payload.doc.data()['no_of_arms']
+      for(var i = 0 ;i<dataresult.length;i++)
+      {
+        var splitdata = dataresult[i].split('-')
+        var other_values = splitdata[1].split(',')
+
+        var device = splitdata[0]
+        var flat = other_values[0]
+        var meterno = other_values[1]
+        var meterdefault = other_values[2]
+        var amrdefault = other_values[3]
+        
+        this.splitarm.push({device,flat,meterno,meterdefault,amrdefault})
+
+      }
+     
+      this.getDevices(this.splitarm)
     })
 
 
@@ -192,10 +207,12 @@ export class ListPage {
    
     this.firebaseService.getDevices()
     .subscribe(result => {
-      var arms_array = no_of_arms.toString().split(",")
+      //var arms_array = no_of_arms.toString().split(",")
       for(var i=0;i<result.length;i++)
       {
-        if(arms_array.includes(result[i].payload.doc.data()['deveui']))
+        
+       // if(no_of_arms.includes(result[i].payload.doc.data()['deveui']))
+       if((no_of_arms.filter(e => e.device === result[i].payload.doc.data()['deveui']).length > 0))
         {
           
         var deveui = result[i].payload.doc.data()['deveui']
@@ -218,8 +235,9 @@ export class ListPage {
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']
         var cubic = "1.34"
+        var flat = no_of_arms[i].flat
         
-        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic})
+        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat})
       }
       }
       this.rowData = this.rowData1

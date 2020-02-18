@@ -3822,7 +3822,11 @@ __webpack_require__.r(__webpack_exports__);
 
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
 let AdminListPage = class AdminListPage {
-    constructor(navCtrl, router, alertController, toastController, modalController, firebaseService, events) {
+    constructor(route, navCtrl, router, alertController, toastController, modalController, firebaseService, events) {
+        // this.route.queryParams.subscribe(params => {
+        //   if (this.router.getCurrentNavigation().extras.state) {
+        //     this.firstLogin = this.router.getCurrentNavigation().extras.state.firstLogin;
+        this.route = route;
         this.navCtrl = navCtrl;
         this.router = router;
         this.alertController = alertController;
@@ -3833,12 +3837,17 @@ let AdminListPage = class AdminListPage {
         this.rowData1 = [];
         this.rowData = [];
         this.rowSelection = "multiple";
+        //   }
+        // });
+        this.firstLogin = localStorage.getItem('superAdminLogin');
         this.getData();
         var isLogin = localStorage.getItem("admin");
         if (isLogin == null)
             [
                 this.router.navigateByUrl('/super-admin')
             ];
+    }
+    ionViewWillEnter() {
     }
     ngOnInit() {
         this.events.subscribe('update_list', (data) => {
@@ -4015,25 +4024,56 @@ let AdminListPage = class AdminListPage {
     getData() {
         this.rowData1 = [];
         this.rowData = [];
-        this.firebaseService.getUsers()
-            .subscribe(result => {
-            for (var i = 0; i < result.length; i++) {
-                // var account_details = result[i].payload.doc.data()['account_details']
-                var address = result[i].payload.doc.data()['address'];
-                var authorized_person = result[i].payload.doc.data()['authorized_person'];
-                var client_name = result[i].payload.doc.data()['client_name'];
-                var email_id = result[i].payload.doc.data()['email_id'];
-                var mobile = result[i].payload.doc.data()['mobile'];
-                var no_of_arms = result[i].payload.doc.data()['no_of_arms'];
-                var no_of_flats = result[i].payload.doc.data()['no_of_flats'];
-                var no_of_wings = result[i].payload.doc.data()['no_of_wings'];
-                var project_name = result[i].payload.doc.data()['project_name'];
-                var id = result[i].payload.doc.id;
-                this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id });
-                // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
-            }
-            this.rowData = this.rowData1;
-        });
+        var count = 0;
+        if (this.firstLogin == "firstLogin") {
+            localStorage.setItem('superAdminLogin', '');
+            this.firebaseService.getUsers()
+                .subscribe(result => {
+                count = count + 1;
+                //   alert(result.length)
+                if (count != 1) {
+                    for (var i = 0; i < result.length; i++) {
+                        // var account_details = result[i].payload.doc.data()['account_details']
+                        var address = result[i].payload.doc.data()['address'];
+                        var authorized_person = result[i].payload.doc.data()['authorized_person'];
+                        var client_name = result[i].payload.doc.data()['client_name'];
+                        var email_id = result[i].payload.doc.data()['email_id'];
+                        var mobile = result[i].payload.doc.data()['mobile'];
+                        var no_of_arms = result[i].payload.doc.data()['no_of_arms'];
+                        var no_of_flats = result[i].payload.doc.data()['no_of_flats'];
+                        var no_of_wings = result[i].payload.doc.data()['no_of_wings'];
+                        var project_name = result[i].payload.doc.data()['project_name'];
+                        var id = result[i].payload.doc.id;
+                        this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id });
+                        // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+                    }
+                    this.rowData = this.rowData1;
+                }
+                else {
+                }
+            });
+        }
+        else {
+            this.firebaseService.getUsers()
+                .subscribe(result => {
+                for (var i = 0; i < result.length; i++) {
+                    // var account_details = result[i].payload.doc.data()['account_details']
+                    var address = result[i].payload.doc.data()['address'];
+                    var authorized_person = result[i].payload.doc.data()['authorized_person'];
+                    var client_name = result[i].payload.doc.data()['client_name'];
+                    var email_id = result[i].payload.doc.data()['email_id'];
+                    var mobile = result[i].payload.doc.data()['mobile'];
+                    var no_of_arms = result[i].payload.doc.data()['no_of_arms'];
+                    var no_of_flats = result[i].payload.doc.data()['no_of_flats'];
+                    var no_of_wings = result[i].payload.doc.data()['no_of_wings'];
+                    var project_name = result[i].payload.doc.data()['project_name'];
+                    var id = result[i].payload.doc.id;
+                    this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id });
+                    // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+                }
+                this.rowData = this.rowData1;
+            });
+        }
     }
     onGridReady(params) {
         this.gridApi = params.api;
@@ -4119,6 +4159,7 @@ let AdminListPage = class AdminListPage {
     }
 };
 AdminListPage.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
@@ -4133,7 +4174,7 @@ AdminListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./admin-list.page.html */ "./node_modules/raw-loader/index.js!./src/app/admin-list/admin-list.page.html"),
         styles: [__webpack_require__(/*! ./admin-list.page.scss */ "./src/app/admin-list/admin-list.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
 ], AdminListPage);
 
 

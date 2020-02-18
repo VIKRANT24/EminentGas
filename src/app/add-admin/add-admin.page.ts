@@ -128,7 +128,7 @@ this.events.publish('update_list');
 this.modalCtrl.dismiss();
 	  }
   )
-  //this.send_email(this.email)
+ // this.send_email(this.email)
   this.hideLoader()
   this.success_msg()
 
