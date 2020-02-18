@@ -124,6 +124,7 @@ create()
 	  res => {
 var data =  res
 console.log(data)
+localStorage.setItem('superAdminLogin','')
 this.events.publish('update_list');
 this.modalCtrl.dismiss();
 	  }
