@@ -151,7 +151,7 @@ export class ListPage {
         field: "cubic",
         width: 300,
         filter: false,
-        value: '1.34'
+        value: ''
       },
       // {
       //   headerName: "Amount",
@@ -205,6 +205,7 @@ export class ListPage {
   {
     this.firebaseService.getMethod("amr_readings.json","").then(data =>{
       this.amr_readings = JSON.parse(data)
+     // this.amr_readings = JSON.parse('{"-M0N4f0TmNKwscuC-Elp":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp1":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp2":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQGy","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"}}')
 
       var user = localStorage.getItem("username")
       var pwd = localStorage.getItem("pwd")
@@ -245,7 +246,7 @@ export class ListPage {
         var groups =result[i].payload.doc.data()['groups']
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']
-        var cubic = "1.34"
+        var cubic = ""
         var flat = no_of_arms[i].flat
         var meter = no_of_arms[i].meterno
         
@@ -288,8 +289,8 @@ var cubic =""
     for (var key in data) {
       if(device == data[key].deveui)
         {
-          //var dataframe = data[key].dataFrame
-          var dataframe = "EQAAAA4Bsg=="
+          var dataframe = data[key].dataFrame
+          //var dataframe = "EQAAAA4Bsg=="
 
           var raw = atob(dataframe);
 
@@ -305,10 +306,20 @@ var cubic =""
 
         var hex_value =  HEX.toUpperCase();
 
+        if(hex_value.length>10)
+        {
         var hex=hex_value.substring(2, 10)
         var decimal=parseInt(hex,16); 
-        cubic =  (decimal * 0.01).toString()
-        var a = j
+        var current_cubic = this.rowData[j].cubic;
+        var cubic_readings =  (decimal * 0.01).toString();
+        cubic = (+current_cubic + +cubic_readings).toString()
+        }
+        else
+        {
+          cubic = ""
+          var current_cubic = this.rowData[j].cubic
+          cubic = current_cubic + cubic
+        }
         this.rowData[j]["cubic"] = cubic
         this.gridApi.setRowData(this.rowData);
   

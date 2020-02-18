@@ -4022,6 +4022,7 @@ let AdminListPage = class AdminListPage {
         });
     }
     getData() {
+        this.firstLogin = localStorage.getItem('superAdminLogin');
         this.rowData1 = [];
         this.rowData = [];
         var count = 0;
@@ -4120,6 +4121,7 @@ let AdminListPage = class AdminListPage {
                 localStorage.setItem("pwd", 'Abc@123');
                 const modal = yield this.modalController.create({
                     component: _device_activity_superadmin_device_activity_superadmin_page__WEBPACK_IMPORTED_MODULE_6__["DeviceActivitySuperadminPage"],
+                    // component:ListPage,
                     componentProps: {
                         data: selected_row,
                     }

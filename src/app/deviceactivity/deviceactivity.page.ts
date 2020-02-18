@@ -20,6 +20,7 @@ export class DeviceactivityPage implements OnInit {
    rowData:any=[]; 
   rowSelection:any="multiple";
   datapackets:any=[];
+  payloads:any="";
   public amr_readings:any; 
   constructor(public modalController: ModalController,public firebaseService: FirebaseService) { 
     this.device = localStorage.getItem("viewdevice")
@@ -44,11 +45,18 @@ export class DeviceactivityPage implements OnInit {
       //   filter:"agDateColumnFilter"
       // },
       {
+        headerName: "Time",
+        field: "time",
+        width: 250,
+        filter: false,
+      },
+      {
         headerName: "FCNT",
         field: "fcnt",
         width: 250,
         filter: false,
       },
+      
       {
         headerName: "Port",
         field: "port",
@@ -71,7 +79,20 @@ export class DeviceactivityPage implements OnInit {
         field: "rssi",
         width: 250,
         filter: false,
+       },
+       {
+        headerName: "Cubic meter",
+        field: "cubic",
+        width: 250,
+        filter: false,
+       },
+       {
+        headerName: "Data",
+        field: "data",
+        width: 250,
+        filter: false,
        }
+
       // {
       //   headerName: "Decrypted",
       //   field: "decrypted",
@@ -109,12 +130,13 @@ export class DeviceactivityPage implements OnInit {
 
     this.firebaseService.getMethod("amr_readings.json","").then(data =>{
       this.amr_readings = JSON.parse(data)
+    // this.amr_readings = JSON.parse('{"-M0N4f0TmNKwscuC-Elp":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp1":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp2":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQGy","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"}}')
       var cubic=""
       for (var key in this.amr_readings) {
         if(device == this.amr_readings[key].deveui)
           {
-            //var dataframe = data[key].dataFrame
-            var dataframe = "EQAAAA4Bsg=="
+            var dataframe = this.amr_readings[key].dataFrame
+           // var dataframe = "EQAAAA4Bsg=="
   
             var raw = atob(dataframe);
   
@@ -129,20 +151,29 @@ export class DeviceactivityPage implements OnInit {
             }
   
           var hex_value =  HEX.toUpperCase();
+
+          if(hex_value.length>10)
+        {
   
           var hex=hex_value.substring(2, 10)
           var decimal=parseInt(hex,16); 
           cubic =  (decimal * 0.01).toString()
-
+        }
+        else
+        {
+          cubic = ""
+        }
 
           var direction= "Up"
     var fcnt= this.amr_readings[key].fcnt
     var port= this.amr_readings[key].port
     var  rssi= this.amr_readings[key].rssi
     var data_rate = this.amr_readings[key].dr_used
+    var time = this.amr_readings[key].timestamp
+   
    
 
-    this.datapackets.push({'data':data,'data_rate':data_rate,'device':device,'direction':direction,'fcnt':fcnt,'port':port,'rssi':rssi,})
+    this.datapackets.push({'data':hex_value,'time':time,'data_rate':data_rate,'device':device,'direction':direction,'fcnt':fcnt,'port':port,'rssi':rssi,'cubic':cubic})
 
     this.rowData = this.datapackets
           

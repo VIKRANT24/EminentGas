@@ -47,6 +47,10 @@ var map = {
 		"common",
 		"edit-admin-edit-admin-module"
 	],
+	"./list-superadmin/list-superadmin.module": [
+		"./src/app/list-superadmin/list-superadmin.module.ts",
+		"list-superadmin-list-superadmin-module"
+	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
 		"login-login-module"
@@ -1082,7 +1086,8 @@ var routes = [
     { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },
     { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },
     { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' },
-    { path: 'device-activity-superadmin', loadChildren: './device-activity-superadmin/device-activity-superadmin.module#DeviceActivitySuperadminPageModule' }
+    { path: 'device-activity-superadmin', loadChildren: './device-activity-superadmin/device-activity-superadmin.module#DeviceActivitySuperadminPageModule' },
+    { path: 'list-superadmin', loadChildren: './list-superadmin/list-superadmin.module#ListSuperadminPageModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

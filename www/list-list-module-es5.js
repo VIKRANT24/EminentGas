@@ -140,9 +140,6 @@ var ListPage = /** @class */ (function () {
         this.rowData = [];
         this.rowSelection = "multiple";
         this.splitarm = [];
-        var user = localStorage.getItem("username");
-        var pwd = localStorage.getItem("pwd");
-        this.getAdminArm(user, pwd);
         this.getAMRReadings();
         // this.columnDefs = [
         //   {
@@ -242,11 +239,18 @@ var ListPage = /** @class */ (function () {
                 value: '2408'
             },
             {
+                headerName: "Meter no",
+                field: "meter",
+                width: 300,
+                filter: false,
+                value: '2408'
+            },
+            {
                 headerName: "Cubic meter",
                 field: "cubic",
                 width: 300,
                 filter: false,
-                value: '1.34'
+                value: ''
             },
             // {
             //   headerName: "Amount",
@@ -271,6 +275,7 @@ var ListPage = /** @class */ (function () {
             var dataresult, i, splitdata, other_values, device, flat, meterno, meterdefault, amrdefault;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 dataresult = result[0].payload.doc.data()['no_of_arms'];
+                this.devices = dataresult.length;
                 for (i = 0; i < dataresult.length; i++) {
                     splitdata = dataresult[i].split('-');
                     other_values = splitdata[1].split(',');
@@ -290,6 +295,10 @@ var ListPage = /** @class */ (function () {
         var _this = this;
         this.firebaseService.getMethod("amr_readings.json", "").then(function (data) {
             _this.amr_readings = JSON.parse(data);
+            // this.amr_readings = JSON.parse('{"-M0N4f0TmNKwscuC-Elp":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp1":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp2":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQGy","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"}}')
+            var user = localStorage.getItem("username");
+            var pwd = localStorage.getItem("pwd");
+            _this.getAdminArm(user, pwd);
             console.log(_this.amr_readings);
         });
     };
@@ -320,9 +329,10 @@ var ListPage = /** @class */ (function () {
                     var groups = result[i].payload.doc.data()['groups'];
                     var applications = result[i].payload.doc.data()['applications'];
                     var tags = result[i].payload.doc.data()['tags'];
-                    var cubic = "1.34";
+                    var cubic = "";
                     var flat = no_of_arms[i].flat;
-                    _this.rowData1.push({ 'deveui': deveui, 'devaddr': devaddr, 'appeui': appeui, 'comment': comment, 'latitude': latitude, 'longitude': longitude, 'altitude': altitude, 'device_status': device_status, 'dl_fcnt': dl_fcnt, 'lora_device_class': lora_device_class, 'registration_status': registration_status, 'expiry_time_uplink': expiry_time_uplink, 'expiry_time_downlink': expiry_time_downlink, 'last_reception': last_reception, 'groups': groups, 'applications': applications, 'tags': tags, 'cubic': cubic, 'flat': flat });
+                    var meter = no_of_arms[i].meterno;
+                    _this.rowData1.push({ 'deveui': deveui, 'devaddr': devaddr, 'appeui': appeui, 'comment': comment, 'latitude': latitude, 'longitude': longitude, 'altitude': altitude, 'device_status': device_status, 'dl_fcnt': dl_fcnt, 'lora_device_class': lora_device_class, 'registration_status': registration_status, 'expiry_time_uplink': expiry_time_uplink, 'expiry_time_downlink': expiry_time_downlink, 'last_reception': last_reception, 'groups': groups, 'applications': applications, 'tags': tags, 'cubic': cubic, 'flat': flat, 'meter': meter });
                 }
             }
             _this.rowData = _this.rowData1;
@@ -351,8 +361,8 @@ var ListPage = /** @class */ (function () {
         // });
         for (var key in data) {
             if (device == data[key].deveui) {
-                //var dataframe = data[key].dataFrame
-                var dataframe = "EQAAAA4Bsg==";
+                var dataframe = data[key].dataFrame;
+                //var dataframe = "EQAAAA4Bsg=="
                 var raw = atob(dataframe);
                 var HEX = '';
                 for (var i = 0; i < raw.length; i++) {
@@ -360,10 +370,18 @@ var ListPage = /** @class */ (function () {
                     HEX += (_hex.length == 2 ? _hex : '0' + _hex);
                 }
                 var hex_value = HEX.toUpperCase();
-                var hex = hex_value.substring(2, 10);
-                var decimal = parseInt(hex, 16);
-                cubic = (decimal * 0.01).toString();
-                var a = j;
+                if (hex_value.length > 10) {
+                    var hex = hex_value.substring(2, 10);
+                    var decimal = parseInt(hex, 16);
+                    var current_cubic = this.rowData[j].cubic;
+                    var cubic_readings = (decimal * 0.01).toString();
+                    cubic = (+current_cubic + +cubic_readings).toString();
+                }
+                else {
+                    cubic = "";
+                    var current_cubic = this.rowData[j].cubic;
+                    cubic = current_cubic + cubic;
+                }
                 this.rowData[j]["cubic"] = cubic;
                 this.gridApi.setRowData(this.rowData);
             }

@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header >\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Device Activity\n    </ion-title>\n   \n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are no payloads for device: <b>{{device}}.</b></p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" ><ion-icon name=\"add\"></ion-icon> Send Data</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"selectDevice()\"><ion-icon name=\"add\"></ion-icon> Select Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" ><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n\n            <ion-card-content>\n              <ag-grid-angular\n              style=\"width: 100%; height: 600px;\"\n              class=\"ag-theme-balham\"\n              [columnDefs]=\"columnDefs\"\n              [rowData]=\"rowData\"\n              [enableSorting]=\"true\"\n              [animateRows]=\"true\"\n              [pagination]=\"true\"\n              [paginationPageSize]=\"50\"\n              [enableFilter]=\"true\"\n              [floatingFilter]=\"true\"\n              [suppressRowClickSelection]=\"true\"\n              [rowSelection]=\"rowSelection\">\n              </ag-grid-angular>\n          </ion-card-content>\n</ion-content>\n"
+module.exports = "<ion-header >\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Device Activity\n    </ion-title>\n   \n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{datapackets.length}} payloads for device: <b>{{device}}.</b></p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" ><ion-icon name=\"add\"></ion-icon> Send Data</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"selectDevice()\"><ion-icon name=\"add\"></ion-icon> Select Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" ><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n\n            <ion-card-content>\n              <ag-grid-angular\n              style=\"width: 100%; height: 600px;\"\n              class=\"ag-theme-balham\"\n              [columnDefs]=\"columnDefs\"\n              [rowData]=\"rowData\"\n              [enableSorting]=\"true\"\n              [animateRows]=\"true\"\n              [pagination]=\"true\"\n              [paginationPageSize]=\"50\"\n              [enableFilter]=\"true\"\n              [floatingFilter]=\"true\"\n              [suppressRowClickSelection]=\"true\"\n              [rowSelection]=\"rowSelection\">\n              </ag-grid-angular>\n          </ion-card-content>\n</ion-content>\n"
 
 /***/ }),
 
@@ -122,6 +122,7 @@ var DeviceactivityPage = /** @class */ (function () {
         this.rowData = [];
         this.rowSelection = "multiple";
         this.datapackets = [];
+        this.payloads = "";
         this.device = localStorage.getItem("viewdevice");
         this.getdatapackets(this.device);
         this.columnDefs = [
@@ -140,6 +141,12 @@ var DeviceactivityPage = /** @class */ (function () {
             //   width: 250,
             //   filter:"agDateColumnFilter"
             // },
+            {
+                headerName: "Time",
+                field: "time",
+                width: 250,
+                filter: false,
+            },
             {
                 headerName: "FCNT",
                 field: "fcnt",
@@ -166,6 +173,18 @@ var DeviceactivityPage = /** @class */ (function () {
             {
                 headerName: "RSSI",
                 field: "rssi",
+                width: 250,
+                filter: false,
+            },
+            {
+                headerName: "Cubic meter",
+                field: "cubic",
+                width: 250,
+                filter: false,
+            },
+            {
+                headerName: "Data",
+                field: "data",
                 width: 250,
                 filter: false,
             }
@@ -198,11 +217,12 @@ var DeviceactivityPage = /** @class */ (function () {
         // })
         this.firebaseService.getMethod("amr_readings.json", "").then(function (data) {
             _this.amr_readings = JSON.parse(data);
+            // this.amr_readings = JSON.parse('{"-M0N4f0TmNKwscuC-Elp":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp1":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp2":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQGy","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"}}')
             var cubic = "";
             for (var key in _this.amr_readings) {
                 if (device == _this.amr_readings[key].deveui) {
-                    //var dataframe = data[key].dataFrame
-                    var dataframe = "EQAAAA4Bsg==";
+                    var dataframe = _this.amr_readings[key].dataFrame;
+                    // var dataframe = "EQAAAA4Bsg=="
                     var raw = atob(dataframe);
                     var HEX = '';
                     for (var i = 0; i < raw.length; i++) {
@@ -210,15 +230,21 @@ var DeviceactivityPage = /** @class */ (function () {
                         HEX += (_hex.length == 2 ? _hex : '0' + _hex);
                     }
                     var hex_value = HEX.toUpperCase();
-                    var hex = hex_value.substring(2, 10);
-                    var decimal = parseInt(hex, 16);
-                    cubic = (decimal * 0.01).toString();
+                    if (hex_value.length > 10) {
+                        var hex = hex_value.substring(2, 10);
+                        var decimal = parseInt(hex, 16);
+                        cubic = (decimal * 0.01).toString();
+                    }
+                    else {
+                        cubic = "";
+                    }
                     var direction = "Up";
                     var fcnt = _this.amr_readings[key].fcnt;
                     var port = _this.amr_readings[key].port;
                     var rssi = _this.amr_readings[key].rssi;
                     var data_rate = _this.amr_readings[key].dr_used;
-                    _this.datapackets.push({ 'data': data, 'data_rate': data_rate, 'device': device, 'direction': direction, 'fcnt': fcnt, 'port': port, 'rssi': rssi, });
+                    var time = _this.amr_readings[key].timestamp;
+                    _this.datapackets.push({ 'data': hex_value, 'time': time, 'data_rate': data_rate, 'device': device, 'direction': direction, 'fcnt': fcnt, 'port': port, 'rssi': rssi, 'cubic': cubic });
                     _this.rowData = _this.datapackets;
                 }
                 else {

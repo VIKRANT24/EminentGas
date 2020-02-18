@@ -162,10 +162,11 @@ var AddAdminPage = /** @class */ (function () {
             .then(function (res) {
             var data = res;
             console.log(data);
+            localStorage.setItem('superAdminLogin', '');
             _this.events.publish('update_list');
             _this.modalCtrl.dismiss();
         });
-        this.send_email(this.email);
+        // this.send_email(this.email)
         this.hideLoader();
         this.success_msg();
     };
@@ -261,7 +262,7 @@ var AddAdminPage = /** @class */ (function () {
     };
     AddAdminPage.prototype.addValue = function (item, deviceui) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var count, deviceUi, valueData, abc, xyz, flatNo, meterNo, meterDefValue, amrDefValue, toast, dataObj, i;
+            var count, deviceUi, valueData, abc, xyz, flatNo, meterNo, meterDefValue, amrDefValue, toast, dataObj, i, toast, toast;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -284,7 +285,7 @@ var AddAdminPage = /** @class */ (function () {
                     case 1:
                         toast = _a.sent();
                         toast.present();
-                        return [3 /*break*/, 3];
+                        return [3 /*break*/, 6];
                     case 2:
                         dataObj = deviceUi + "-" + flatNo + "," + meterNo + "," + meterDefValue + "," + amrDefValue;
                         for (i = 0; i < this.selected_arms_details.length; i++) {
@@ -293,11 +294,29 @@ var AddAdminPage = /** @class */ (function () {
                                 break;
                             }
                         }
-                        if (count == 0) {
-                            this.selected_arms_details.push(dataObj);
-                        }
-                        _a.label = 3;
-                    case 3: return [2 /*return*/];
+                        if (!(count == 0)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.toastController.create({
+                                message: 'Added successfully',
+                                duration: 2000,
+                                color: 'medium',
+                                position: 'top'
+                            })];
+                    case 3:
+                        toast = _a.sent();
+                        toast.present();
+                        this.selected_arms_details.push(dataObj);
+                        return [3 /*break*/, 6];
+                    case 4: return [4 /*yield*/, this.toastController.create({
+                            message: 'Already added',
+                            duration: 2000,
+                            color: 'medium',
+                            position: 'top'
+                        })];
+                    case 5:
+                        toast = _a.sent();
+                        toast.present();
+                        _a.label = 6;
+                    case 6: return [2 /*return*/];
                 }
             });
         });

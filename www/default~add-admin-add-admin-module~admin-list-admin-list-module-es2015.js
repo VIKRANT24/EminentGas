@@ -160,10 +160,11 @@ let AddAdminPage = class AddAdminPage {
             .then(res => {
             var data = res;
             console.log(data);
+            localStorage.setItem('superAdminLogin', '');
             this.events.publish('update_list');
             this.modalCtrl.dismiss();
         });
-        this.send_email(this.email);
+        // this.send_email(this.email)
         this.hideLoader();
         this.success_msg();
     }
@@ -264,7 +265,23 @@ let AddAdminPage = class AddAdminPage {
                     }
                 }
                 if (count == 0) {
+                    const toast = yield this.toastController.create({
+                        message: 'Added successfully',
+                        duration: 2000,
+                        color: 'medium',
+                        position: 'top'
+                    });
+                    toast.present();
                     this.selected_arms_details.push(dataObj);
+                }
+                else {
+                    const toast = yield this.toastController.create({
+                        message: 'Already added',
+                        duration: 2000,
+                        color: 'medium',
+                        position: 'top'
+                    });
+                    toast.present();
                 }
             }
         });
