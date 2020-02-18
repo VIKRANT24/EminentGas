@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
-import { ModalController,AlertController } from '@ionic/angular';
+import { ModalController,AlertController,ToastController } from '@ionic/angular';
 import { Events } from '@ionic/angular';
 import { FirebaseDatabase } from '@angular/fire';
 import data from '../../assets/device.json'
@@ -46,7 +46,7 @@ export class AddAdminPage implements OnInit {
   submitted: boolean;
 
   description: string;
-  constructor(public loadingController: LoadingController,public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController) { 
+  constructor(public loadingController: LoadingController,public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController,public toastController: ToastController) { 
     this.arms = data;
     console.log(this.arm)
   }
@@ -216,7 +216,7 @@ async update_msg()
   await alert.present();
 }
 
-addValue(item,deviceui){
+async addValue(item,deviceui){
   var count=0
   var deviceUi=deviceui.deveui
   var valueData=document.getElementById(item)
@@ -226,6 +226,18 @@ addValue(item,deviceui){
   var meterNo=xyz['meterNo'].value
   var meterDefValue=xyz['meterDefValue'].value
   var amrDefValue=xyz['amrDefValue'].value
+  if(flatNo==""||meterNo==""||meterDefValue==""||amrDefValue==""){
+    
+      const toast = await this.toastController.create({
+        message: 'Please enter Password',
+        duration: 2000,
+        color:'medium',
+        position: 'top'
+      });
+     toast.present();
+     
+  }
+  else{
   var dataObj=deviceUi+"-"+flatNo+","+meterNo+","+meterDefValue+","+amrDefValue
   for(var i=0;i<this.selected_arms_details.length;i++){
     if(this.selected_arms_details[i].includes(deviceUi)){
@@ -237,6 +249,7 @@ addValue(item,deviceui){
   if(count==0){
   this.selected_arms_details.push(dataObj)
   }
+}
 }
   
 }
