@@ -146,13 +146,13 @@ export class ListPage {
         filter: false,
         value: '1.34'
       },
-      {
-        headerName: "Amount",
-        field: "amount",
-        width: 300,
-        filter: false,
-        value: '500'
-      },
+      // {
+      //   headerName: "Amount",
+      //   field: "amount",
+      //   width: 300,
+      //   filter: false,
+      //   value: '500'
+      // },
       {headerName: 'Actions',
        field: 'action', 
        width: 300,
@@ -236,26 +236,59 @@ export class ListPage {
     this.gridApi = params.api; // To access the grids API
   }
 
-  async cubic(device,j)
+  cubic(device,j)
   {
+  //this.base64ToBase16("EQAAAA4Bsg==")
 var data = this.amr_readings
-    Object.keys(data).forEach(function(key) {
+var cubic =""
+    // Object.keys(data).forEach(function(key) {
+    //   if(device == data[key].deveui)
+    //   {
+    //     console.log("yes"+data[key].deveui);
+    //     var dataframe = data[key].dataFrame
       
+    //     console.log(this.rowData)
+
+    //   }
+    //   else{
+    //     console.log("no"+data[key].deveui);
+    //   }
+    // });
+
+    for (var key in data) {
       if(device == data[key].deveui)
-      {
-        console.log("yes"+data[key].deveui);
-        var dataframe = data[key].dataFrame
-        //this.base64ToBase16("EQAAAA4Bsg==")
-        console.log(this.rowData)
+        {
+          //var dataframe = data[key].dataFrame
+          var dataframe = "EQAAAA4Bsg=="
 
-      }
-      else{
-        console.log("no"+data[key].deveui);
-      }
-    });
+          var raw = atob(dataframe);
 
-    // var position = this.amr_readings.findIndex(c=>c.deveui == device)
-    // console.log(position)
+          var HEX = '';
+        
+          for ( var i = 0; i < raw.length; i++ ) {
+        
+            var _hex = raw.charCodeAt(i).toString(16)
+        
+            HEX += (_hex.length==2?_hex:'0'+_hex);
+        
+          }
+
+        var hex_value =  HEX.toUpperCase();
+
+        var hex=hex_value.substring(2, 10)
+        var decimal=parseInt(hex,16); 
+        cubic =  (decimal * 0.01).toString()
+        var a = j
+        this.rowData[j]["cubic"] = cubic
+        this.gridApi.setRowData(this.rowData);
+  
+        }
+        else{
+          console.log("no"+data[key].deveui);
+        }
+  }
+
+
 
     
 
