@@ -117,6 +117,7 @@ hideLoader() {
 
 create()
 {
+  
   this.showLoader()
   this.firebaseService.createUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
   //this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
@@ -127,6 +128,7 @@ console.log(data)
 localStorage.setItem('superAdminLogin','')
 this.events.publish('update_list');
 this.modalCtrl.dismiss();
+
 	  }
   )
   //this.send_email(this.email)
@@ -200,6 +202,7 @@ send_email(email)
 
 async success_msg()
 {
+  
   const alert = await this.alertController.create({
     header: 'Eminent Gas Tech',
     message: 'Admin has been created successfully and credentials has been sent through email.',
