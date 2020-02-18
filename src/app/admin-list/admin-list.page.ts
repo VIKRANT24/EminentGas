@@ -235,6 +235,7 @@ async deleteAdmin() {
 
   async add()
   {
+    
     const modal = await this.modalController.create({
       component: AddAdminPage
     });
@@ -242,6 +243,7 @@ async deleteAdmin() {
   }
 
   getData(){
+    this.firstLogin = localStorage.getItem('superAdminLogin')
     this.rowData1 = []
     this.rowData = []
     var count = 0
