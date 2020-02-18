@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {Headers,RequestOptions,Http,URLSearchParams} from '@angular/http'
+import 'rxjs/add/operator/map'
 
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseService {
 
-  constructor(public db: AngularFirestore) {}
+export class FirebaseService {
+  private data : any;
+  private baseURL:any;
+  constructor(public db: AngularFirestore,public http: Http) {
+    this.baseURL = "https://eminent-gas-tech.firebaseio.com/"
+
+  }
 
   getAvatars(){
       return this.db.collection('/avatar').valueChanges()
@@ -74,5 +81,31 @@ export class FirebaseService {
         project_name:project,
         pwd:'Abc@123'
     });
+  }
+
+  getMethod(page,params)
+  {
+    if(this.data)
+    {
+return Promise.resolve(this.data);
+    }
+    return new Promise((resolve,reject)=>{
+      let options = new RequestOptions();
+      options.headers = new Headers();
+      options.headers.append('Accept','application/json');
+      options.headers.append('Contest-type','application/json');
+
+      this.http.get(this.baseURL+page,params)
+       .subscribe(data=>{
+          var myobj = data['_body'];
+          resolve(myobj);
+         
+       },
+       err => {
+            var error = err['_body'];
+            resolve(error);
+       });
+      });
+            
   }
 }
