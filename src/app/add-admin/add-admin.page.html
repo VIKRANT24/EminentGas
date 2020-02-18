@@ -27,10 +27,10 @@
                       <ul *ngFor="let item of selected_arms;let i=index" [id]="i">
                         <li style="text-align:left;">
                             <div class="scrollmenu" style="height: 6vh">{{item.deveui}} :
-                          <input  type="text" name="flatNo" value=item.flatNo style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Enter flat no." />
-                          <input  type="text" name="meterNo" value=item.meterNo  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter no" />
-                          <input  type="text" name="meterDefValue" value=item.meterDefValue  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter Default Value" />
-                          <input  type="text" name="amrDefValue" value=item.amrDefValue style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="AMR Default Value" />
+                          <input  type="text" name="flatNo" [(ngModel)]="selected_arms[i].flatNo" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Enter flat no." />
+                          <input  type="text" name="meterNo" [(ngModel)]="selected_arms[i].meterNo"  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter no" />
+                          <input  type="text" name="meterDefValue" [(ngModel)]="selected_arms[i].meterDefValue"  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter Default Value" />
+                          <input  type="text" name="amrDefValue" [(ngModel)]="selected_arms[i].amrDefValue" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="AMR Default Value" />
                           <ion-button color="primary" (click)="addValue(i,item)" style="height:4vh;margin-top: -1vh;">Add</ion-button>
                         </div>
                         </li>
