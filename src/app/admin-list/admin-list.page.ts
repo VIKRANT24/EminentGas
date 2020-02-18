@@ -6,6 +6,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { Events } from '@ionic/angular';
 import { Route,Router, ActivatedRoute } from '@angular/router';
 import { DeviceActivitySuperadminPage } from '../device-activity-superadmin/device-activity-superadmin.page';
+import {ListPage} from '../list/list.page'
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
 
 @Component({
@@ -371,7 +372,8 @@ async deleteAdmin() {
     localStorage.setItem("username",selected_row[0].email_id)
     localStorage.setItem("pwd",'Abc@123')
       const modal = await this.modalController.create({
-        component: DeviceActivitySuperadminPage,
+       // component: DeviceActivitySuperadminPage,
+       component:ListPage,
         componentProps: { 
           data: selected_row,
         }

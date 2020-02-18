@@ -36,11 +36,10 @@ export class ListPage {
   devices:any;
   splitarm:any=[]; 
    constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
-    var user = localStorage.getItem("username")
-    var pwd = localStorage.getItem("pwd")
-
-    this.getAdminArm(user,pwd)
+   
     this.getAMRReadings()
+   
+    
 
     // this.columnDefs = [
     //   {
@@ -141,6 +140,13 @@ export class ListPage {
         value: '2408'
       },
       {
+        headerName: "Meter no",
+        field: "meter",
+        width: 300,
+        filter: false,
+        value: '2408'
+      },
+      {
         headerName: "Cubic meter",
         field: "cubic",
         width: 300,
@@ -173,6 +179,7 @@ export class ListPage {
   {
     this.firebaseService.searchUsers(user ,pwd).subscribe(async result => {
       var dataresult = result[0].payload.doc.data()['no_of_arms']
+      this.devices = dataresult.length
       for(var i = 0 ;i<dataresult.length;i++)
       {
         var splitdata = dataresult[i].split('-')
@@ -198,6 +205,10 @@ export class ListPage {
   {
     this.firebaseService.getMethod("amr_readings.json","").then(data =>{
       this.amr_readings = JSON.parse(data)
+
+      var user = localStorage.getItem("username")
+      var pwd = localStorage.getItem("pwd")
+      this.getAdminArm(user,pwd)
       console.log(this.amr_readings)
       })
   }
@@ -236,8 +247,9 @@ export class ListPage {
         var tags =result[i].payload.doc.data()['tags']
         var cubic = "1.34"
         var flat = no_of_arms[i].flat
+        var meter = no_of_arms[i].meterno
         
-        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat})
+        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat,'meter':meter})
       }
       }
       this.rowData = this.rowData1
