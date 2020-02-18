@@ -81,8 +81,11 @@ console.log(this.data)
   {
     var deveui = this.data[0].no_of_arms[i].split('-')[0]
     var flats = this.data[0].no_of_arms[i].split('-')[1]
-
-    this.selected_arms.push({'deveui':deveui,'flats':flats})
+    var flatNo=flats.split(',')[0]
+    var meterNo=flats.split(',')[1]
+    var meterDefValue=flats.split(',')[2]
+    var amrDefValue=flats.split(',')[3]
+    this.selected_arms.push({'deveui':deveui,'flatNo':flatNo,'meterNo':meterNo,'meterDefValue':meterDefValue,'amrDefValue':amrDefValue})
     this.arm_flats.push(deveui+"-"+flats)
     this.arm.push(deveui)
   }
@@ -229,7 +232,7 @@ async addValue(item,deviceui){
   if(flatNo==""||meterNo==""||meterDefValue==""||amrDefValue==""){
     
       const toast = await this.toastController.create({
-        message: 'Please enter Password',
+        message: 'Please enter all fields',
         duration: 2000,
         color:'medium',
         position: 'top'
