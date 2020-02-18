@@ -108,17 +108,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _selectdevicemodal_selectdevicemodal_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../selectdevicemodal/selectdevicemodal.page */ "./src/app/selectdevicemodal/selectdevicemodal.page.ts");
+/* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
+
 
 
 
 
 var DeviceactivityPage = /** @class */ (function () {
-    function DeviceactivityPage(modalController) {
+    function DeviceactivityPage(modalController, firebaseService) {
         this.modalController = modalController;
+        this.firebaseService = firebaseService;
         this.rowData1 = [];
         this.rowData = [];
         this.rowSelection = "multiple";
+        this.datapackets = [];
         this.device = localStorage.getItem("viewdevice");
+        this.getdatapackets(this.device);
         this.columnDefs = [
             {
                 headerName: "Direction",
@@ -129,12 +134,12 @@ var DeviceactivityPage = /** @class */ (function () {
                 checkboxSelection: true,
                 filter: false,
             },
-            {
-                headerName: "Time",
-                field: "time",
-                width: 250,
-                filter: "agDateColumnFilter"
-            },
+            // {
+            //   headerName: "Time",
+            //   field: "time",
+            //   width: 250,
+            //   filter:"agDateColumnFilter"
+            // },
             {
                 headerName: "FCNT",
                 field: "fcnt",
@@ -154,7 +159,7 @@ var DeviceactivityPage = /** @class */ (function () {
             },
             {
                 headerName: "Data Rate",
-                field: "rate",
+                field: "data_rate",
                 width: 250,
                 filter: false,
             },
@@ -163,19 +168,65 @@ var DeviceactivityPage = /** @class */ (function () {
                 field: "rssi",
                 width: 250,
                 filter: false,
-            },
-            {
-                headerName: "Decrypted",
-                field: "decrypted",
-                width: 250,
-                filter: false,
-            },
-            { headerName: 'Actions',
-                field: 'action',
-                width: 330,
-                filter: false },
+            }
+            // {
+            //   headerName: "Decrypted",
+            //   field: "decrypted",
+            //   width: 250,
+            //   filter: false,
+            // },
+            // {headerName: 'Actions',
+            //  field: 'action', 
+            //  width: 330,
+            //  filter: false},
         ];
     }
+    DeviceactivityPage.prototype.getdatapackets = function (device) {
+        // this.firebaseService.getDataPackets(device).subscribe(async result => {
+        // var datapackets = result[0].payload.doc.data()
+        var _this = this;
+        // var  data= datapackets['data']
+        // var  data_rate= datapackets['data_rate']
+        // var  device= datapackets['device']
+        // var direction= datapackets['direction']
+        // var fcnt= datapackets['fcnt']
+        // var port= datapackets['port']
+        // var  rssi= datapackets['rssi']
+        // var  time= datapackets['time']
+        // this.datapackets.push({'data':data,'data_rate':data_rate,'device':device,'direction':direction,'fcnt':fcnt,'port':port,'rssi':rssi,'time':time})
+        // this.rowData = this.datapackets
+        // })
+        this.firebaseService.getMethod("amr_readings.json", "").then(function (data) {
+            _this.amr_readings = JSON.parse(data);
+            var cubic = "";
+            for (var key in _this.amr_readings) {
+                if (device == _this.amr_readings[key].deveui) {
+                    //var dataframe = data[key].dataFrame
+                    var dataframe = "EQAAAA4Bsg==";
+                    var raw = atob(dataframe);
+                    var HEX = '';
+                    for (var i = 0; i < raw.length; i++) {
+                        var _hex = raw.charCodeAt(i).toString(16);
+                        HEX += (_hex.length == 2 ? _hex : '0' + _hex);
+                    }
+                    var hex_value = HEX.toUpperCase();
+                    var hex = hex_value.substring(2, 10);
+                    var decimal = parseInt(hex, 16);
+                    cubic = (decimal * 0.01).toString();
+                    var direction = "Up";
+                    var fcnt = _this.amr_readings[key].fcnt;
+                    var port = _this.amr_readings[key].port;
+                    var rssi = _this.amr_readings[key].rssi;
+                    var data_rate = _this.amr_readings[key].dr_used;
+                    _this.datapackets.push({ 'data': data, 'data_rate': data_rate, 'device': device, 'direction': direction, 'fcnt': fcnt, 'port': port, 'rssi': rssi, });
+                    _this.rowData = _this.datapackets;
+                }
+                else {
+                    console.log("no" + data[key].deveui);
+                }
+            }
+        });
+    };
     DeviceactivityPage.prototype.ngOnInit = function () {
     };
     DeviceactivityPage.prototype.selectDevice = function () {
@@ -195,7 +246,8 @@ var DeviceactivityPage = /** @class */ (function () {
         });
     };
     DeviceactivityPage.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+        { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"] }
     ]; };
     DeviceactivityPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -203,7 +255,7 @@ var DeviceactivityPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./deviceactivity.page.html */ "./node_modules/raw-loader/index.js!./src/app/deviceactivity/deviceactivity.page.html"),
             styles: [__webpack_require__(/*! ./deviceactivity.page.scss */ "./src/app/deviceactivity/deviceactivity.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"]])
     ], DeviceactivityPage);
     return DeviceactivityPage;
 }());

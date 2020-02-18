@@ -1223,23 +1223,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared-component/shared-component.module */ "./src/app/shared-component/shared-component.module.ts");
-/* harmony import */ var _actions_actions_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./actions/actions.component */ "./src/app/actions/actions.component.ts");
-/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
-/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
-/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
-/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./cell-custom/cell-custom.component */ "./src/app/cell-custom/cell-custom.component.ts");
-/* harmony import */ var _add_device_add_device_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./add-device/add-device.module */ "./src/app/add-device/add-device.module.ts");
-/* harmony import */ var _add_device_woprofile_add_device_woprofile_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./add-device-woprofile/add-device-woprofile.module */ "./src/app/add-device-woprofile/add-device-woprofile.module.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/esm2015/http.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared-component/shared-component.module */ "./src/app/shared-component/shared-component.module.ts");
+/* harmony import */ var _actions_actions_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./actions/actions.component */ "./src/app/actions/actions.component.ts");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! primeng/selectbutton */ "./node_modules/primeng/selectbutton.js");
+/* harmony import */ var primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./cell-custom/cell-custom.component */ "./src/app/cell-custom/cell-custom.component.ts");
+/* harmony import */ var _add_device_add_device_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./add-device/add-device.module */ "./src/app/add-device/add-device.module.ts");
+/* harmony import */ var _add_device_woprofile_add_device_woprofile_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./add-device-woprofile/add-device-woprofile.module */ "./src/app/add-device-woprofile/add-device-woprofile.module.ts");
+
 
 
 
@@ -1269,33 +1271,34 @@ let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _actions_actions_component__WEBPACK_IMPORTED_MODULE_12__["ActionsComponent"],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _actions_actions_component__WEBPACK_IMPORTED_MODULE_13__["ActionsComponent"],
             // AddDeviceModalPage,
             // AddDeviceWithoutProfilePage,
-            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_19__["CellCustomComponent"],
+            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_20__["CellCustomComponent"],
         ],
         entryComponents: [
-            _actions_actions_component__WEBPACK_IMPORTED_MODULE_12__["ActionsComponent"],
+            _actions_actions_component__WEBPACK_IMPORTED_MODULE_13__["ActionsComponent"],
             // AddDeviceModalPage,
             // AddDeviceWithoutProfilePage,
-            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_19__["CellCustomComponent"],
+            _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_20__["CellCustomComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
-            _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_11__["SharedComponentModule"],
-            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_13__["SelectButtonModule"],
-            primeng_primeng__WEBPACK_IMPORTED_MODULE_14__["DropdownModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
-            ag_grid_angular__WEBPACK_IMPORTED_MODULE_15__["AgGridModule"],
-            primeng_primeng__WEBPACK_IMPORTED_MODULE_14__["MultiSelectModule"],
-            _add_device_add_device_module__WEBPACK_IMPORTED_MODULE_20__["AddDevicePageModule"],
+            _angular_http__WEBPACK_IMPORTED_MODULE_8__["HttpModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
+            _shared_component_shared_component_module__WEBPACK_IMPORTED_MODULE_12__["SharedComponentModule"],
+            primeng_selectbutton__WEBPACK_IMPORTED_MODULE_14__["SelectButtonModule"],
+            primeng_primeng__WEBPACK_IMPORTED_MODULE_15__["DropdownModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
+            ag_grid_angular__WEBPACK_IMPORTED_MODULE_16__["AgGridModule"],
+            primeng_primeng__WEBPACK_IMPORTED_MODULE_15__["MultiSelectModule"],
+            _add_device_add_device_module__WEBPACK_IMPORTED_MODULE_21__["AddDevicePageModule"],
             //AddDeviceWithoutProfilePageModule,
-            _add_device_woprofile_add_device_woprofile_module__WEBPACK_IMPORTED_MODULE_21__["AddDeviceWOProfilePageModule"],
-            _angular_fire__WEBPACK_IMPORTED_MODULE_16__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_18__["environment"].firebase),
-            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__["AngularFirestoreModule"],
+            _add_device_woprofile_add_device_woprofile_module__WEBPACK_IMPORTED_MODULE_22__["AddDeviceWOProfilePageModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_17__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_19__["environment"].firebase),
+            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_18__["AngularFirestoreModule"],
         ],
         schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]],
         providers: [
@@ -1377,7 +1380,7 @@ let CellCustomComponent = class CellCustomComponent {
     viewRow() {
         let rowData = this.params;
         console.log(rowData);
-        localStorage.setItem("viewdevice", rowData.data.appeui);
+        localStorage.setItem("viewdevice", rowData.data.deveui);
         this.router.navigateByUrl('/deviceactivity');
     }
     action(ev) {

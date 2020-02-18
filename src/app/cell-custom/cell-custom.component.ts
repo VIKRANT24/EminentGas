@@ -52,7 +52,7 @@ export class CellCustomComponent implements OnInit {
   viewRow() {
   let rowData = this.params;
   console.log(rowData);
-  localStorage.setItem("viewdevice",rowData.data.appeui)
+  localStorage.setItem("viewdevice",rowData.data.deveui)
   this.router.navigateByUrl('/deviceactivity');
   
   }
