@@ -124,6 +124,7 @@ create()
 	  res => {
 var data =  res
 console.log(data)
+localStorage.setItem('superAdminLogin','')
 this.events.publish('update_list');
 this.modalCtrl.dismiss();
 	  }
@@ -250,7 +251,23 @@ async addValue(item,deviceui){
     
   }
   if(count==0){
+    const toast = await this.toastController.create({
+      message: 'Added successfully',
+      duration: 2000,
+      color:'medium',
+      position: 'top'
+    });
+   toast.present();
   this.selected_arms_details.push(dataObj)
+  }
+  else{
+    const toast = await this.toastController.create({
+      message: 'Already added',
+      duration: 2000,
+      color:'medium',
+      position: 'top'
+    });
+   toast.present();
   }
 }
 }
