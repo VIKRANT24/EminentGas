@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
+import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import { AddDeviceModalPage } from './add-device-modal/add-device-modal.page';
@@ -42,6 +43,7 @@ import { AddDeviceWOProfilePage } from './add-device-woprofile/add-device-woprof
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    HttpModule,
     AppRoutingModule,
     HttpClientModule,
     SharedComponentModule,

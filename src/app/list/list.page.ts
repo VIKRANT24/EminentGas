@@ -26,12 +26,12 @@ import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-wopro
 export class ListPage {
   public gridApi;
   public gridColumnApi;
-
+  public amr_readings:any; 
   public columnDefs;
   public defaultColDef;
   public frameworkComponents;
   rowData1:any=[]; 
-   rowData:any=[]; 
+  rowData:any=[]; 
   rowSelection:any="multiple";
   devices:any;
    constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
@@ -39,6 +39,7 @@ export class ListPage {
     var pwd = localStorage.getItem("pwd")
 
     this.getAdminArm(user,pwd)
+    this.getAMRReadings()
 
     // this.columnDefs = [
     //   {
@@ -178,6 +179,14 @@ export class ListPage {
 
   }
 
+  getAMRReadings()
+  {
+    this.firebaseService.getMethod("amr_readings.json","").then(data =>{
+      this.amr_readings = JSON.parse(data)
+      console.log(this.amr_readings)
+      })
+  }
+
   getDevices(no_of_arms)
   {
    
@@ -229,29 +238,50 @@ export class ListPage {
 
   async cubic(device,j)
   {
-    this.firebaseService.getDataPackets(this.rowData[j].deveui).subscribe(async result1 => {
-      var cubic =""
-      if(result1[0]!=undefined)
+var data = this.amr_readings
+    Object.keys(data).forEach(function(key) {
+      
+      if(device == data[key].deveui)
       {
-        var datapackets = result1[0].payload.doc.data()
-        var  data= datapackets['data']
+        console.log("yes"+data[key].deveui);
+        var dataframe = data[key].dataFrame
+        //this.base64ToBase16("EQAAAA4Bsg==")
+        console.log(this.rowData)
 
-        var hex=data.substring(2, 10)
-        var decimal=parseInt(hex,16); 
-        cubic =  (decimal * 0.01).toString()
-        var a = j
-        this.rowData[j]["cubic"] = cubic
-        this.gridApi.setRowData(this.rowData);
       }
-      else
-      {
-        cubic = "0.00"
-        this.rowData[j]["cubic"] = cubic
-        this.gridApi.setRowData(this.rowData);
+      else{
+        console.log("no"+data[key].deveui);
       }
+    });
+
+    // var position = this.amr_readings.findIndex(c=>c.deveui == device)
+    // console.log(position)
+
+    
+
+    // this.firebaseService.getDataPackets(this.rowData[j].deveui).subscribe(async result1 => {
+    //   var cubic =""
+    //   if(result1[0]!=undefined)
+    //   {
+    //     var datapackets = result1[0].payload.doc.data()
+    //     var  data= datapackets['data']
+
+    //     var hex=data.substring(2, 10)
+    //     var decimal=parseInt(hex,16); 
+    //     cubic =  (decimal * 0.01).toString()
+    //     var a = j
+    //     this.rowData[j]["cubic"] = cubic
+    //     this.gridApi.setRowData(this.rowData);
+    //   }
+    //   else
+    //   {
+    //     cubic = "0.00"
+    //     this.rowData[j]["cubic"] = cubic
+    //     this.gridApi.setRowData(this.rowData);
+    //   }
    
 
-    })
+    // })
   }
 
   async addDevice() {
@@ -275,6 +305,33 @@ async addDeviceWithoutProfile() {
 
   
  //this.router.navigateByUrl('/add-device');
+}
+
+// base64ToBase16(base64) {
+//   return window.atob(base64)
+//       .split('')
+//       .map(function (aChar) {
+//         return ('0' + aChar.charCodeAt(0).toString(16)).slice(-2);
+//       })
+//      .join('')
+//      .toUpperCase(); // Per your example output
+// }
+
+async base64ToBase16(base64) {
+
+  var raw = atob(base64);
+
+  var HEX = '';
+
+  for ( var i = 0; i < raw.length; i++ ) {
+
+    var _hex = raw.charCodeAt(i).toString(16)
+
+    HEX += (_hex.length==2?_hex:'0'+_hex);
+
+  }
+  return HEX.toUpperCase();
+
 }
 }
 
