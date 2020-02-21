@@ -198,7 +198,7 @@ export class ListPage {
         var meterno = other_values[1]
         var meterdefault = other_values[2]
         var amrdefault = other_values[3]
-        
+       
         this.splitarm.push({device,flat,meterno,meterdefault,amrdefault})
 
       }

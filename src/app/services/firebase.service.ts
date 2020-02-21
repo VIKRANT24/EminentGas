@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {Headers,RequestOptions,Http,URLSearchParams} from '@angular/http'
 import 'rxjs/add/operator/map'
+import firebase from 'firebase'
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,17 @@ export class FirebaseService {
   deleteUser(userKey){
     return this.db.collection('Admin').doc(userKey).delete();
   }
+
+deleteARM(ARMKey,id)
+  {
+    let documentRef =  this.db.collection('Admin').doc('no_of_arms');
+
+    documentRef.update({
+      "Admin": firebase.firestore.FieldValue.arrayRemove({"no_of_arms":ARMKey})
+  });
+
+  }
+
 
   getUsers(){
     return this.db.collection('Admin').snapshotChanges();
