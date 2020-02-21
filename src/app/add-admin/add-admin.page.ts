@@ -26,6 +26,7 @@ export class AddAdminPage implements OnInit {
   account:any=""
   email:any=""
   mobile:any=""
+  userActivation:any=""
   id:any=""
   page:any=""
   create_show:boolean=false
@@ -72,6 +73,7 @@ console.log(this.data)
   //this.account=this.data[0].account_details
   this.email=this.data[0].email_id
   this.mobile=this.data[0].mobile
+  this.userActivation=this.data[0].flag
   this.id=this.data[0].id
 
   for(var i = 0;i<this.data[0].no_of_arms.length;i++)
@@ -116,7 +118,7 @@ create()
 {
   
   this.showLoader()
-  this.firebaseService.createUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
+  this.firebaseService.createUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile,this.userActivation)
   //this.firebaseService.createUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile)
 	.then(
 	  res => {
@@ -164,7 +166,7 @@ selectARM(event)
 update()
 {
   this.showLoader()
-  this.firebaseService.updateUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile,this.id)
+  this.firebaseService.updateUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile,this.id,this.userActivation)
   .then(
     res => {
       this.events.publish('update_list');
