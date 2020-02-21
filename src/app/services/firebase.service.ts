@@ -58,10 +58,6 @@ export class FirebaseService {
     return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges()
   }
 
-  clientLoginResponse(email,pwd){
-    return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd).where('flag','==','1')).snapshotChanges()
-  
-  }
   getDataPackets(device){
     return this.db.collection('DataPackets',ref => ref.where('device', '==', device)).snapshotChanges()
   

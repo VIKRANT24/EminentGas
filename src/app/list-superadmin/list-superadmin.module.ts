@@ -23,6 +23,6 @@ const routes: Routes = [
     OverlayPanelModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ListSuperadminPage]
+  declarations: []
 })
 export class ListSuperadminPageModule {}

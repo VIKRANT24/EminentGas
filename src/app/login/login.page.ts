@@ -54,9 +54,15 @@ export class LoginPage implements OnInit {
     }
     else{
     
-      this.firebaseService.clientLoginResponse(this.userid ,this.pwd).subscribe(async result => {
+      this.firebaseService.searchUsers(this.userid ,this.pwd).subscribe(async result => {
+        var flag=''
         if(result.length>0)
         {
+          for(var i=0;i<result.length;i++)
+          {
+            flag =result[i].payload.doc.data()['flag']
+          }
+          if(flag=='1'){
           const toast = await this.toastController.create({
             message: 'Succesfully logged-in.',
             duration: 2000,
@@ -69,6 +75,16 @@ export class LoginPage implements OnInit {
          localStorage.setItem("pwd",this.pwd)
        // this.router.navigate([ 'list', { id: this.userid } ]);
        // this.navCtrl.navigateForward('list',{'data':'dsd'})
+        }
+        else{
+          const toast = await this.toastController.create({
+            message: 'Please Contact Admin',
+            duration: 2000,
+            color:'success',
+            position: 'top'
+          });
+         toast.present();
+        }
         }
         else
         {
