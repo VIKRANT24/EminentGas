@@ -266,12 +266,13 @@ async deleteAdmin() {
           var client_name = result[i].payload.doc.data()['client_name']
           var email_id = result[i].payload.doc.data()['email_id']
           var mobile =result[i].payload.doc.data()['mobile']
-          var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+          var no_of_arms=result[i].payload.doc.data()['no_of_arms']
           var no_of_flats = result[i].payload.doc.data()['no_of_flats']
           var no_of_wings = result[i].payload.doc.data()['no_of_wings']
           var project_name =result[i].payload.doc.data()['project_name']
           var id = result[i].payload.doc.id
-          this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+          var flag =result[i].payload.doc.data()['flag']
+          this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id,'flag':flag})
     
          // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
     
@@ -297,12 +298,13 @@ async deleteAdmin() {
           var client_name = result[i].payload.doc.data()['client_name']
           var email_id = result[i].payload.doc.data()['email_id']
           var mobile =result[i].payload.doc.data()['mobile']
-          var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+          var no_of_arms=result[i].payload.doc.data()['no_of_arms']
           var no_of_flats = result[i].payload.doc.data()['no_of_flats']
           var no_of_wings = result[i].payload.doc.data()['no_of_wings']
           var project_name =result[i].payload.doc.data()['project_name']
           var id = result[i].payload.doc.id
-          this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
+          var flag =result[i].payload.doc.data()['flag']
+          this.rowData1.push({'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id,'flag':flag})
     
          // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
     
