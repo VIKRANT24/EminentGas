@@ -25,7 +25,7 @@ __export(__webpack_require__(/*! ./components/overlaypanel/overlaypanel */ "./no
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Devices\n      </ion-title>\n     \n    </ion-toolbar>\n  </ion-header>\n      \n      <ion-content>\n        \n        <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{devices}} devices registered.</p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"addDevice()\"  ><ion-icon name=\"add\"></ion-icon> Add Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"addDeviceWithoutProfile()\" ><ion-icon name=\"add\"></ion-icon>  Add Device w/o profile</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" ><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 600px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          [rowSelection]=\"rowSelection\">\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n          \n       \n      </ion-content>\n      \n      <!-- [multiSortKey]=\"multiSortKey\"         (gridReady)=\"onGridReady($event)\"-->\n\n      "
+module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Devices\n      </ion-title>\n     \n    </ion-toolbar>\n  </ion-header>\n      \n      <ion-content>\n        \n        <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{devices}} devices registered.</p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"addDevice()\"  ><ion-icon name=\"add\"></ion-icon> Add Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"addDeviceWithoutProfile()\" ><ion-icon name=\"add\"></ion-icon>  Add Device w/o profile</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" ><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 600px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          [rowSelection]=\"rowSelection\"\n          (gridReady)=\"onGridReady($event)\">>\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n          \n       \n      </ion-content>\n      \n      <!-- [multiSortKey]=\"multiSortKey\"         (gridReady)=\"onGridReady($event)\"-->\n\n      "
 
 /***/ }),
 
@@ -136,9 +136,11 @@ let ListPage = class ListPage {
         this.rowData1 = [];
         this.rowData = [];
         this.rowSelection = "multiple";
+        this.splitarm = [];
         var user = localStorage.getItem("username");
         var pwd = localStorage.getItem("pwd");
         this.getAdminArm(user, pwd);
+        this.getAMRReadings();
         // this.columnDefs = [
         //   {
         //     headerName: "Athlete",
@@ -204,41 +206,55 @@ let ListPage = class ListPage {
             {
                 headerName: "DEVEUI",
                 field: "deveui",
-                width: 250,
+                width: 300,
                 headerCheckboxSelection: true,
                 headerCheckboxSelectionFilteredOnly: true,
                 checkboxSelection: true
             },
+            // {
+            //   headerName: "Comment",
+            //   field: "comment",
+            //   width: 250,
+            // },
+            // {
+            //   headerName: "Groups",
+            //   field: "groups",
+            //   width: 250,
+            // },
+            // {
+            //   headerName: "Apps",
+            //   field: "applications",
+            //   width: 250,
+            // },
+            // {
+            //   headerName: "Last Seen",
+            //   field: "last_reception",
+            //   width: 250,
+            // },
             {
-                headerName: "Comment",
-                field: "comment",
-                width: 250,
-            },
-            {
-                headerName: "Groups",
-                field: "groups",
-                width: 250,
-            },
-            {
-                headerName: "Apps",
-                field: "applications",
-                width: 250,
-            },
-            {
-                headerName: "Last Seen",
-                field: "last_reception",
-                width: 250,
+                headerName: "Flat no",
+                field: "flat",
+                width: 300,
+                filter: false,
+                value: '2408'
             },
             {
                 headerName: "Cubic meter",
                 field: "cubic",
-                width: 180,
+                width: 300,
                 filter: false,
                 value: '1.34'
             },
+            // {
+            //   headerName: "Amount",
+            //   field: "amount",
+            //   width: 300,
+            //   filter: false,
+            //   value: '500'
+            // },
             { headerName: 'Actions',
                 field: 'action',
-                width: 330,
+                width: 300,
                 filter: false,
                 cellRendererFramework: _cell_custom_cell_custom_component__WEBPACK_IMPORTED_MODULE_4__["CellCustomComponent"]
                 //template: '<p-overlayPanel #op>Content</p-overlayPanel><button type="text" pButton label="Basic" (click)="op.toggle($event)">zxzzx</button>'
@@ -248,17 +264,33 @@ let ListPage = class ListPage {
     }
     getAdminArm(user, pwd) {
         this.firebaseService.searchUsers(user, pwd).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            var no_of_arms = result[0].payload.doc.data()['no_of_arms'];
-            this.devices = no_of_arms.length;
-            this.getDevices(no_of_arms);
+            var dataresult = result[0].payload.doc.data()['no_of_arms'];
+            for (var i = 0; i < dataresult.length; i++) {
+                var splitdata = dataresult[i].split('-');
+                var other_values = splitdata[1].split(',');
+                var device = splitdata[0];
+                var flat = other_values[0];
+                var meterno = other_values[1];
+                var meterdefault = other_values[2];
+                var amrdefault = other_values[3];
+                this.splitarm.push({ device, flat, meterno, meterdefault, amrdefault });
+            }
+            this.getDevices(this.splitarm);
         }));
+    }
+    getAMRReadings() {
+        this.firebaseService.getMethod("amr_readings.json", "").then(data => {
+            this.amr_readings = JSON.parse(data);
+            console.log(this.amr_readings);
+        });
     }
     getDevices(no_of_arms) {
         this.firebaseService.getDevices()
             .subscribe(result => {
-            var arms_array = no_of_arms.toString().split(",");
+            //var arms_array = no_of_arms.toString().split(",")
             for (var i = 0; i < result.length; i++) {
-                if (arms_array.includes(result[i].payload.doc.data()['deveui'])) {
+                // if(no_of_arms.includes(result[i].payload.doc.data()['deveui']))
+                if ((no_of_arms.filter(e => e.device === result[i].payload.doc.data()['deveui']).length > 0)) {
                     var deveui = result[i].payload.doc.data()['deveui'];
                     var devaddr = result[i].payload.doc.data()['devaddr'];
                     var appeui = result[i].payload.doc.data()['appeui'];
@@ -279,11 +311,76 @@ let ListPage = class ListPage {
                     var applications = result[i].payload.doc.data()['applications'];
                     var tags = result[i].payload.doc.data()['tags'];
                     var cubic = "1.34";
-                    this.rowData1.push({ 'deveui': deveui, 'devaddr': devaddr, 'appeui': appeui, 'comment': comment, 'latitude': latitude, 'longitude': longitude, 'altitude': altitude, 'device_status': device_status, 'dl_fcnt': dl_fcnt, 'lora_device_class': lora_device_class, 'registration_status': registration_status, 'expiry_time_uplink': expiry_time_uplink, 'expiry_time_downlink': expiry_time_downlink, 'last_reception': last_reception, 'groups': groups, 'applications': applications, 'tags': tags, 'cubic': cubic });
+                    var flat = no_of_arms[i].flat;
+                    this.rowData1.push({ 'deveui': deveui, 'devaddr': devaddr, 'appeui': appeui, 'comment': comment, 'latitude': latitude, 'longitude': longitude, 'altitude': altitude, 'device_status': device_status, 'dl_fcnt': dl_fcnt, 'lora_device_class': lora_device_class, 'registration_status': registration_status, 'expiry_time_uplink': expiry_time_uplink, 'expiry_time_downlink': expiry_time_downlink, 'last_reception': last_reception, 'groups': groups, 'applications': applications, 'tags': tags, 'cubic': cubic, 'flat': flat });
                 }
             }
             this.rowData = this.rowData1;
+            for (var j = 0; j < this.rowData.length; j++) {
+                this.cubic(this.rowData[j].deveui, j);
+            }
         });
+    }
+    onGridReady(params) {
+        this.gridApi = params.api; // To access the grids API
+    }
+    cubic(device, j) {
+        //this.base64ToBase16("EQAAAA4Bsg==")
+        var data = this.amr_readings;
+        var cubic = "";
+        // Object.keys(data).forEach(function(key) {
+        //   if(device == data[key].deveui)
+        //   {
+        //     console.log("yes"+data[key].deveui);
+        //     var dataframe = data[key].dataFrame
+        //     console.log(this.rowData)
+        //   }
+        //   else{
+        //     console.log("no"+data[key].deveui);
+        //   }
+        // });
+        for (var key in data) {
+            if (device == data[key].deveui) {
+                //var dataframe = data[key].dataFrame
+                var dataframe = "EQAAAA4Bsg==";
+                var raw = atob(dataframe);
+                var HEX = '';
+                for (var i = 0; i < raw.length; i++) {
+                    var _hex = raw.charCodeAt(i).toString(16);
+                    HEX += (_hex.length == 2 ? _hex : '0' + _hex);
+                }
+                var hex_value = HEX.toUpperCase();
+                var hex = hex_value.substring(2, 10);
+                var decimal = parseInt(hex, 16);
+                cubic = (decimal * 0.01).toString();
+                var a = j;
+                this.rowData[j]["cubic"] = cubic;
+                this.gridApi.setRowData(this.rowData);
+            }
+            else {
+                console.log("no" + data[key].deveui);
+            }
+        }
+        // this.firebaseService.getDataPackets(this.rowData[j].deveui).subscribe(async result1 => {
+        //   var cubic =""
+        //   if(result1[0]!=undefined)
+        //   {
+        //     var datapackets = result1[0].payload.doc.data()
+        //     var  data= datapackets['data']
+        //     var hex=data.substring(2, 10)
+        //     var decimal=parseInt(hex,16); 
+        //     cubic =  (decimal * 0.01).toString()
+        //     var a = j
+        //     this.rowData[j]["cubic"] = cubic
+        //     this.gridApi.setRowData(this.rowData);
+        //   }
+        //   else
+        //   {
+        //     cubic = "0.00"
+        //     this.rowData[j]["cubic"] = cubic
+        //     this.gridApi.setRowData(this.rowData);
+        //   }
+        // })
     }
     addDevice() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -303,6 +400,26 @@ let ListPage = class ListPage {
             });
             return yield modal.present();
             //this.router.navigateByUrl('/add-device');
+        });
+    }
+    // base64ToBase16(base64) {
+    //   return window.atob(base64)
+    //       .split('')
+    //       .map(function (aChar) {
+    //         return ('0' + aChar.charCodeAt(0).toString(16)).slice(-2);
+    //       })
+    //      .join('')
+    //      .toUpperCase(); // Per your example output
+    // }
+    base64ToBase16(base64) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            var raw = atob(base64);
+            var HEX = '';
+            for (var i = 0; i < raw.length; i++) {
+                var _hex = raw.charCodeAt(i).toString(16);
+                HEX += (_hex.length == 2 ? _hex : '0' + _hex);
+            }
+            return HEX.toUpperCase();
         });
     }
 };
