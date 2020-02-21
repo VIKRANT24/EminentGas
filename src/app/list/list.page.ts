@@ -39,7 +39,7 @@ export class ListPage {
    
     this.getAMRReadings()
    
-    
+    localStorage.setItem('list','clientList')
 
     // this.columnDefs = [
     //   {

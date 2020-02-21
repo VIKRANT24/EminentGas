@@ -6,7 +6,7 @@ import  moment from 'moment';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
 import { ModalController } from '@ionic/angular';
 import { AddDevicePage } from '../add-device/add-device.page';
-import { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
+//loimport { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
 import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-woprofile.page'
 
 @Component({
@@ -31,7 +31,7 @@ export class ListSuperadminPage {
    
     this.getAMRReadings()
    
-    
+    localStorage.setItem('list','superAdminList')
 
     // this.columnDefs = [
     //   {
@@ -354,6 +354,7 @@ async addDeviceWithoutProfile() {
 
   const modal = await this.modalController.create({
     component: AddDeviceWOProfilePage,
+    showBackdrop:true,
     cssClass: 'my-custom-modal-css'
   });
   return await modal.present();
@@ -387,6 +388,9 @@ async base64ToBase16(base64) {
   }
   return HEX.toUpperCase();
 
+}
+closeModal(){
+  this.modalController.dismiss()
 }
 }
 

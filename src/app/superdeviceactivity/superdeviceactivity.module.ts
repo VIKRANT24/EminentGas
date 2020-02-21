@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { AgGridModule } from "ag-grid-angular";
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import { ListSuperadminPage } from './list-superadmin.page';
+import { IonicModule } from '@ionic/angular';
+//import { SelectdevicemodalPage } from '../selectdevicemodal/selectdevicemodal.page';
+import { SuperdeviceactivityPage } from './superdeviceactivity.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListSuperadminPage
-  }
+    component: SuperdeviceactivityPage
+  },
+  // {
+  //   path: '',
+  //   component: SelectdevicemodalPage
+  // }
 ];
 
 @NgModule({
@@ -20,9 +24,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     AgGridModule,
-    OverlayPanelModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ListSuperadminPage]
+  declarations: [SuperdeviceactivityPage]
 })
-export class ListSuperadminPageModule {}
+export class SuperdeviceactivityPageModule {}

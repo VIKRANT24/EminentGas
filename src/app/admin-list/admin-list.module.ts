@@ -12,6 +12,7 @@ import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
 import { AgGridModule } from "ag-grid-angular";
+import { ListSuperadminPage } from '../list-superadmin/list-superadmin.page';
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: DeviceActivitySuperadminPage
+    component: ListSuperadminPage
   }
 ];
 
@@ -38,6 +39,6 @@ const routes: Routes = [
     AgGridModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdminListPage,AddAdminPage,DeviceActivitySuperadminPage]
+  declarations: [AdminListPage,AddAdminPage,ListSuperadminPage]
 })
 export class AdminListPageModule {}
