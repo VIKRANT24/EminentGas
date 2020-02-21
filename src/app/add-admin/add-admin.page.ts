@@ -41,11 +41,8 @@ export class AddAdminPage implements OnInit {
  meterDefValue:any="";
  amrDefValue:any="";
  amrWithValues:any=[]
-
-
-  submitted: boolean;
-
-  description: string;
+ submitted: boolean;
+ description: string;
   constructor(public loadingController: LoadingController,public firebaseService: FirebaseService,public modalCtrl:ModalController,public events:Events,public http: HttpClient,public alertController:AlertController,public toastController: ToastController) { 
     this.arms = data;
     console.log(this.arm)
@@ -164,7 +161,7 @@ selectARM(event)
 update()
 {
   this.showLoader()
-  this.firebaseService.updateUser(this.client,this.address,this.arm,this.person,this.wings,this.flats,this.project,this.email,this.mobile,this.id)
+  this.firebaseService.updateUser(this.client,this.address,this.selected_arms_details,this.person,this.wings,this.flats,this.project,this.email,this.mobile,this.id)
   .then(
     res => {
       this.events.publish('update_list');
@@ -174,6 +171,7 @@ update()
      this.update_msg()
     }
   )
+  //this.selected_arms_details=[]
 }
 
 send_email(email)

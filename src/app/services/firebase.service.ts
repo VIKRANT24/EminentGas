@@ -79,7 +79,8 @@ export class FirebaseService {
         no_of_flats:flats,
         no_of_wings:wings,
         project_name:project,
-        pwd:'Abc@123'
+        pwd:'Abc@123',
+        flag:0
     });
   }
 

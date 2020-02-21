@@ -262,7 +262,13 @@ async deleteAdmin() {
           var client_name = result[i].payload.doc.data()['client_name']
           var email_id = result[i].payload.doc.data()['email_id']
           var mobile =result[i].payload.doc.data()['mobile']
-          var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+          var no_of_arms=[] 
+          var arms_data=result[i].payload.doc.data()['no_of_arms']
+          for(var i=0;i<arms_data.length;i++){
+            var splitedData=arms_data[i].split('-')
+            no_of_arms.push(splitedData[0])
+
+          }
           var no_of_flats = result[i].payload.doc.data()['no_of_flats']
           var no_of_wings = result[i].payload.doc.data()['no_of_wings']
           var project_name =result[i].payload.doc.data()['project_name']
@@ -293,7 +299,13 @@ async deleteAdmin() {
           var client_name = result[i].payload.doc.data()['client_name']
           var email_id = result[i].payload.doc.data()['email_id']
           var mobile =result[i].payload.doc.data()['mobile']
-          var no_of_arms = result[i].payload.doc.data()['no_of_arms']
+          var no_of_arms =[]
+          var arms_data=result[i].payload.doc.data()['no_of_arms']
+          for(var i=0;i<arms_data.length;i++){
+            var splitedData=arms_data[i].split('-')
+            no_of_arms.push(splitedData[0])
+
+          }
           var no_of_flats = result[i].payload.doc.data()['no_of_flats']
           var no_of_wings = result[i].payload.doc.data()['no_of_wings']
           var project_name =result[i].payload.doc.data()['project_name']
