@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'menu-page',
     pathMatch: 'full'
   },
   {
@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'add-device-without-profile', loadChildren: './add-device-without-profile/add-device-without-profile.module#AddDeviceWithoutProfilePageModule' },
   { path: 'deviceactivity', loadChildren: './deviceactivity/deviceactivity.module#DeviceactivityPageModule' },
   { path: 'add-device', loadChildren: './add-device/add-device.module#AddDevicePageModule' },
-  { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' },  { path: 'device-activity-superadmin', loadChildren: './device-activity-superadmin/device-activity-superadmin.module#DeviceActivitySuperadminPageModule' },
+  { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' },
+  { path: 'device-activity-superadmin', loadChildren: './device-activity-superadmin/device-activity-superadmin.module#DeviceActivitySuperadminPageModule' },
   { path: 'list-superadmin', loadChildren: './list-superadmin/list-superadmin.module#ListSuperadminPageModule' }
 
 

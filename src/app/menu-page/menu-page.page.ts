@@ -20,11 +20,11 @@ export class MenuPagePage implements OnInit {
 
   ngOnInit() {
   }
-  addAdmin(){
-this.navCtrl.navigateForward('/add-admin')
+  openAdminLogin(){
+this.navCtrl.navigateForward('/super-admin')
   }
 
-  adminList(){
-    this.navCtrl.navigateForward('/admin-list')
+  openClientLogin(){
+    this.navCtrl.navigateForward('/login')
       }
 }
