@@ -5,6 +5,7 @@ import { Route,Router } from '@angular/router';
 import { AddDevicePage } from '../add-device/add-device.page';
 
 import { ActionsComponent } from '../actions/actions.component';
+import { SuperdeviceactivityPage } from '../superdeviceactivity/superdeviceactivity.page';
 //import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
 
 @Component({
@@ -15,11 +16,17 @@ import { ActionsComponent } from '../actions/actions.component';
 export class CellCustomComponent implements OnInit {
   data: any;
   params: any;
+  adminLogin:any
+  checkLogin:any
  
   constructor(public modalController: ModalController,public router:Router,public popoverController:PopoverController) { 
-
+    this.checkLogin = localStorage.getItem('list')
+    if(this.checkLogin == 'clientList' ){
+    this.adminLogin = false
+  }else{
+    this.adminLogin = true
   }
-  
+}
   agInit(params) {
   this.params = params;
   this.data =  params.value;
@@ -49,11 +56,25 @@ export class CellCustomComponent implements OnInit {
   
   }
   
-  viewRow() {
+  async viewRow() {
   let rowData = this.params;
   console.log(rowData);
   localStorage.setItem("viewdevice",rowData.data.deveui)
-  this.router.navigateByUrl('/deviceactivity');
+ 
+  if(this.checkLogin == 'clientList'){
+    this.router.navigateByUrl('/deviceactivity');
+  }else{
+   // this.router.navigateByUrl('/superdeviceactivity');
+   const modal = await this.modalController.create({
+    component: SuperdeviceactivityPage,
+    cssClass: 'my-custom-modal-css',
+    // componentProps: { 
+    //   data: selected_row,
+    // }
+  });
+  return await modal.present();
+  }
+ 
   
   }
 

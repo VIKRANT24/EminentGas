@@ -26,6 +26,7 @@ import { AddDevicePageModule } from './add-device/add-device.module';
 import { AddDeviceWOProfilePageModule } from './add-device-woprofile/add-device-woprofile.module'
 import { AddDeviceWithoutProfilePageModule } from './add-device-without-profile/add-device-without-profile.module';
 import { AddDeviceWOProfilePage } from './add-device-woprofile/add-device-woprofile.page';
+import { SuperdeviceactivityPageModule } from './superdeviceactivity/superdeviceactivity.module';
 
 @NgModule({
   declarations: [AppComponent,ActionsComponent,
@@ -53,6 +54,8 @@ import { AddDeviceWOProfilePage } from './add-device-woprofile/add-device-woprof
     AgGridModule,
     MultiSelectModule,
     AddDevicePageModule,
+    SuperdeviceactivityPageModule,
+    
     //AddDeviceWithoutProfilePageModule,
     AddDeviceWOProfilePageModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,7 +1,9 @@
 <ion-header >
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon end name="close" md="md-close" style="background-color: transparent;"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>
       Devices
@@ -17,10 +19,10 @@
               
             <ion-row>
               <ion-col>
-                  <ion-button  shape="round" color="shade" expand="full" (click)="addDevice()"  ><ion-icon name="add"></ion-icon> Add Device</ion-button>
+                  <!-- <ion-button  shape="round" color="shade" expand="full" (click)="addDevice()"  ><ion-icon name="add"></ion-icon> Add Device</ion-button> -->
               </ion-col>
               <ion-col>
-                  <ion-button shape="round" expand="full" color="shade" (click)="addDeviceWithoutProfile()" ><ion-icon name="add"></ion-icon>  Add Device w/o profile</ion-button>
+                  <!-- <ion-button shape="round" expand="full" color="shade" (click)="addDeviceWithoutProfile()" ><ion-icon name="add"></ion-icon>  Add Device w/o profile</ion-button> -->
               </ion-col>
               <ion-col>
                   <ion-button shape="round" expand="full" color="shade" ><ion-icon name="refresh"></ion-icon>  Refresh List</ion-button>

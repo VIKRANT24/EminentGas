@@ -8,6 +8,7 @@ import { Route,Router, ActivatedRoute } from '@angular/router';
 import { DeviceActivitySuperadminPage } from '../device-activity-superadmin/device-activity-superadmin.page';
 import {ListPage} from '../list/list.page'
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
+import { ListSuperadminPage } from '../list-superadmin/list-superadmin.page';
 
 @Component({
   selector: 'app-admin-list',
@@ -374,8 +375,8 @@ async deleteAdmin() {
     localStorage.setItem("username",selected_row[0].email_id)
     localStorage.setItem("pwd",'Abc@123')
       const modal = await this.modalController.create({
-        component: DeviceActivitySuperadminPage,
-      // component:ListPage,
+        component: ListSuperadminPage,
+        cssClass: 'my-custom-modal-css',
         componentProps: { 
           data: selected_row,
         }
@@ -404,7 +405,7 @@ async deleteAdmin() {
         }, {
           text: 'Yes',
           handler: async () => {
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/super-admin');
           }
         }
       ]
