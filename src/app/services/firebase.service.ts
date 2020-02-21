@@ -24,7 +24,7 @@ export class FirebaseService {
   }
   
 
-  updateUser(client,address,arm,person,wings,flats,project,email,mobile,id){
+  updateUser(client,address,arm,person,wings,flats,project,email,mobile,id,userActivation){
    // value.nameToSearch = value.name.toLowerCase();
     return this.db.collection('Admin/').doc(id).set({
     //  account_details:account,
@@ -36,7 +36,8 @@ export class FirebaseService {
       no_of_flats:flats,
       no_of_wings:wings,
       project_name:project,
-      pwd:'Abc@123'
+      pwd:'Abc@123',
+      flag:userActivation
   }
     );
   }
@@ -55,9 +56,12 @@ export class FirebaseService {
 
   searchUsers(email,pwd){
     return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges()
-  
   }
 
+  clientLoginResponse(email,pwd){
+    return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd).where('flag','==','1')).snapshotChanges()
+  
+  }
   getDataPackets(device){
     return this.db.collection('DataPackets',ref => ref.where('device', '==', device)).snapshotChanges()
   
@@ -68,7 +72,7 @@ export class FirebaseService {
   }
 
 
-  createUser(client,address,arm,person,wings,flats,project,email,mobile){
+  createUser(client,address,arm,person,wings,flats,project,email,mobile,userActivation){
     return this.db.collection('Admin/').add({
       // account_details:account,
         address:address,
@@ -79,7 +83,8 @@ export class FirebaseService {
         no_of_flats:flats,
         no_of_wings:wings,
         project_name:project,
-        pwd:'Abc@123'
+        pwd:'Abc@123',
+        flag:userActivation
     });
   }
 

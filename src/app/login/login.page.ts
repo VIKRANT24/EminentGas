@@ -54,7 +54,7 @@ export class LoginPage implements OnInit {
     }
     else{
     
-      this.firebaseService.searchUsers(this.userid ,this.pwd).subscribe(async result => {
+      this.firebaseService.clientLoginResponse(this.userid ,this.pwd).subscribe(async result => {
         if(result.length>0)
         {
           const toast = await this.toastController.create({
