@@ -175,6 +175,14 @@ export class ListPage {
    // this.rowData=data;
   }
 
+  refresh()
+  {
+    this.rowData1=[]
+    this.rowData=[]; 
+    this.splitarm=[]; 
+    this.getAMRReadings()
+  }
+
   getAdminArm(user,pwd)
   {
     this.firebaseService.searchUsers(user ,pwd).subscribe(async result => {
@@ -246,7 +254,7 @@ export class ListPage {
         var groups =result[i].payload.doc.data()['groups']
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']
-        var cubic = ""
+        var cubic = no_of_arms[i].amrdefault
         var flat = no_of_arms[i].flat
         var meter = no_of_arms[i].meterno
         

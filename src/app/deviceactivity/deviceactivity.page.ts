@@ -132,6 +132,7 @@ export class DeviceactivityPage implements OnInit {
       this.amr_readings = JSON.parse(data)
     // this.amr_readings = JSON.parse('{"-M0N4f0TmNKwscuC-Elp":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp1":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp2":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQGy","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"}}')
       var cubic=""
+      
       for (var key in this.amr_readings) {
         if(device == this.amr_readings[key].deveui)
           {
@@ -161,7 +162,7 @@ export class DeviceactivityPage implements OnInit {
         }
         else
         {
-          cubic = ""
+          cubic = "0.00"
         }
 
           var direction= "Up"
@@ -180,7 +181,7 @@ export class DeviceactivityPage implements OnInit {
     
           }
           else{
-            console.log("no"+data[key].deveui);
+            console.log("no"+this.amr_readings[key].deveui);
           }
     }
       })
@@ -195,7 +196,19 @@ export class DeviceactivityPage implements OnInit {
       const modal = await this.modalController.create({
         component: SelectdevicemodalPage
       });
+
+      modal.onDidDismiss().then((dataReturned) => {
+        this.device=dataReturned.data[0].deveui
+        this.datapackets=[]
+        this.getdatapackets(dataReturned.data[0].deveui)
+console.log(dataReturned.data[0].deveui)
+      });
+   
+      
       return await modal.present();
+
+    
+     
     }
 
 }

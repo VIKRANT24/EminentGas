@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
-import { Platform ,AlertController} from '@ionic/angular';
+import { Platform ,AlertController,MenuController} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClient } from '@angular/common/http';
 import { Route,Router } from '@angular/router';
+
 
 // const config = {
 //   apiKey: "AIzaSyCxk372bpVybPuj_5xKrB9Xy_vTD93REd4",
@@ -23,11 +24,13 @@ export class AppComponent {
  
 information:any[];
 automaticClose = false;
-constructor(private httpData:HttpClient,public platform:Platform,public statusBar:StatusBar,public splashScreen:SplashScreen,public alertController:AlertController, private router: Router){
+username:any;
+constructor(public menuCtrl: MenuController,private httpData:HttpClient,public platform:Platform,public statusBar:StatusBar,public splashScreen:SplashScreen,public alertController:AlertController, private router: Router){
 this.httpData.get('assets/menuItem.json').subscribe(res => {
   this.information =res['items'];
   this.information[0].open =false;
   this.initializeApp();
+  this.username = localStorage.getItem('username')
 });
 }
 
@@ -70,6 +73,7 @@ async logout(){
       }, {
         text: 'Yes',
         handler: async () => {
+          this.menuCtrl.close();
           this.router.navigateByUrl('/super-admin');
         }
       }

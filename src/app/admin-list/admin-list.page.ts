@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
-import { NavController, AlertController, ToastController, ModalController, } from '@ionic/angular';
+import { NavController, AlertController, ToastController, ModalController,MenuController} from '@ionic/angular';
 import { AddAdminPage } from '../add-admin/add-admin.page';
 import { FirebaseService } from '../services/firebase.service';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -29,7 +29,7 @@ export class AdminListPage implements OnInit {
    rowSelection:any="multiple";
    items: Array<any>;
    firstLogin:any
-  constructor(private route: ActivatedRoute,public navCtrl:NavController, private router: Router,public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
+  constructor(public menuCtrl: MenuController,private route: ActivatedRoute,public navCtrl:NavController, private router: Router,public alertController:AlertController,public toastController: ToastController,public modalController:ModalController,public firebaseService: FirebaseService,public events:Events) { 
       
 
     // this.route.queryParams.subscribe(params => {
@@ -404,7 +404,8 @@ async deleteAdmin() {
         }, {
           text: 'Yes',
           handler: async () => {
-            this.router.navigateByUrl('/login');
+            this.menuCtrl.close()
+            this.router.navigateByUrl('/super-admin');
           }
         }
       ]
