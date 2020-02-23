@@ -179,6 +179,7 @@ export class ListSuperadminPage {
   {
     this.firebaseService.searchUsers(user ,pwd).subscribe(async result => {
       var dataresult = result[0].payload.doc.data()['no_of_arms']
+      var primary_id=result[0].payload.doc.id
       this.devices = dataresult.length
       for(var i = 0 ;i<dataresult.length;i++)
       {
@@ -190,8 +191,8 @@ export class ListSuperadminPage {
         var meterno = other_values[1]
         var meterdefault = other_values[2]
         var amrdefault = other_values[3]
-        
-        this.splitarm.push({device,flat,meterno,meterdefault,amrdefault})
+        var originalValue = dataresult[i]
+        this.splitarm.push({device,flat,meterno,meterdefault,amrdefault,originalValue,primary_id})
 
       }
      
@@ -248,8 +249,10 @@ export class ListSuperadminPage {
         var cubic = no_of_arms[i].amrdefault
         var flat = no_of_arms[i].flat
         var meter = no_of_arms[i].meterno
+        var original = no_of_arms[i].originalValue
+        var primary = no_of_arms[i].primary_id
         
-        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat,'meter':meter})
+        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat,'meter':meter,'original':original,'primary':primary})
       }
       }
       this.rowData = this.rowData1

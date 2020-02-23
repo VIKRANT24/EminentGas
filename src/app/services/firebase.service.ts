@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, } from '@angular/fire/firestore';
 import {Headers,RequestOptions,Http,URLSearchParams} from '@angular/http'
 import 'rxjs/add/operator/map'
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 @Injectable({
   providedIn: 'root'
@@ -47,12 +47,12 @@ export class FirebaseService {
     return this.db.collection('Admin').doc(userKey).delete();
   }
 
-  deleteARM(ARMKey,id)
+deleteARM(ARMKey,id)
   {
-    let documentRef =  this.db.collection('Admin').doc(id);
+    let documentRef =  this.db.collection('Admin').doc('no_of_arms');
 
     documentRef.update({
-      "no_of_arms": firebase.firestore.FieldValue.arrayRemove({"eventid":ARMKey})
+      "Admin": firebase.firestore.FieldValue.arrayRemove({"no_of_arms":ARMKey})
   });
 
   }
@@ -69,10 +69,6 @@ export class FirebaseService {
     return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges()
   }
 
-  clientLoginResponse(email,pwd){
-    return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd).where('flag','==','1')).snapshotChanges()
-  
-  }
   getDataPackets(device){
     return this.db.collection('DataPackets',ref => ref.where('device', '==', device)).snapshotChanges()
   
