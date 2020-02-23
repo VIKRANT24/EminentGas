@@ -3,7 +3,7 @@ import { ModalController,PopoverController } from '@ionic/angular';
 import { Route,Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 import { AddDevicePage } from '../add-device/add-device.page';
-
+import { Events } from '@ionic/angular';
 import { ActionsComponent } from '../actions/actions.component';
 import { SuperdeviceactivityPage } from '../superdeviceactivity/superdeviceactivity.page';
 //import { AddDeviceModalPage } from '../add-device-modal/add-device-modal.page';
@@ -19,7 +19,7 @@ export class CellCustomComponent implements OnInit {
   adminLogin:any
   checkLogin:any
  
-  constructor(public modalController: ModalController,public router:Router,public popoverController:PopoverController, public firebaseservice:FirebaseService) { 
+  constructor(public events:Events,public modalController: ModalController,public router:Router,public popoverController:PopoverController, public firebaseservice:FirebaseService) { 
     this.checkLogin = localStorage.getItem('list')
     if(this.checkLogin == 'clientList' ){
     this.adminLogin = false
@@ -81,7 +81,11 @@ export class CellCustomComponent implements OnInit {
   deleteRow(){
     let rowData = this.params;
     console.log(rowData);
-    this.firebaseservice.deleteARM(rowData.data.original,rowData.data.primary)
+    this.firebaseservice.deleteARM(rowData.data.original,rowData.data.primary).then(data=>
+      {
+        this.events.publish('update_list');
+        this.events.publish('amr_list');
+      })
   
 
   }

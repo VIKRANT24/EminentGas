@@ -78,9 +78,9 @@ export class LoginPage implements OnInit {
         }
         else{
           const toast = await this.toastController.create({
-            message: 'Please Contact Admin',
+            message: 'Please contact Admin',
             duration: 2000,
-            color:'success',
+            color:'danger',
             position: 'top'
           });
          toast.present();

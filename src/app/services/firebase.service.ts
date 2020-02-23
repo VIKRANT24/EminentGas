@@ -49,10 +49,10 @@ export class FirebaseService {
 
 deleteARM(ARMKey,id)
   {
-    let documentRef =  this.db.collection('Admin').doc('no_of_arms');
+    let documentRef =  this.db.collection('Admin').doc(id);
 
-    documentRef.update({
-      "Admin": firebase.firestore.FieldValue.arrayRemove({"no_of_arms":ARMKey})
+   return documentRef.update({
+      "no_of_arms": firebase.firestore.FieldValue.arrayRemove(ARMKey)
   });
 
   }

@@ -4,11 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import  moment from 'moment';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
-import { ModalController } from '@ionic/angular';
+import { ModalController,ToastController } from '@ionic/angular';
 import { AddDevicePage } from '../add-device/add-device.page';
 //loimport { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
 import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-woprofile.page'
-
+import { Events } from '@ionic/angular';
+import { async } from 'q';
 @Component({
   selector: 'app-list-superadmin',
   templateUrl: './list-superadmin.page.html',
@@ -27,8 +28,16 @@ export class ListSuperadminPage {
   rowSelection:any="multiple";
   devices:any;
   splitarm:any=[]; 
-   constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
-   
+   constructor(public toastController:ToastController,public events:Events,public firebaseService: FirebaseService,public modalController: ModalController) { 
+    this.events.subscribe('amr_list', (data) => {
+      this.refresh();
+      this.updatemessage();    
+    });
+
+
+    
+
+
     this.getAMRReadings()
    
     localStorage.setItem('list','superAdminList')
@@ -167,6 +176,8 @@ export class ListSuperadminPage {
    // this.rowData=data;
   }
 
+ 
+
   refresh()
   {
     this.rowData1=[]
@@ -175,9 +186,23 @@ export class ListSuperadminPage {
     this.getAMRReadings()
   }
 
+
+  async updatemessage()
+  {
+    const toast = await this.toastController.create({
+      message: 'Record deleted  successfully',
+      duration: 2000,
+      color:'medium',
+      position: 'top'
+    });
+   toast.present();
+  }
+
   getAdminArm(user,pwd)
   {
     this.firebaseService.searchUsers(user ,pwd).subscribe(async result => {
+
+      
       var dataresult = result[0].payload.doc.data()['no_of_arms']
       var primary_id=result[0].payload.doc.id
       this.devices = dataresult.length
