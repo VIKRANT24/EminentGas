@@ -43,7 +43,7 @@ export class AdminListPage implements OnInit {
     this.firstLogin = localStorage.getItem('superAdminLogin')
     this.getData();
 
-    var isLogin = localStorage.getItem("admin")
+    var isLogin = localStorage.getItem("username")
     if(isLogin==null)
     [
       this.router.navigateByUrl('/super-admin')

@@ -257,6 +257,7 @@ export class ListPage {
         var cubic = no_of_arms[i].amrdefault
         var flat = no_of_arms[i].flat
         var meter = no_of_arms[i].meterno
+        localStorage.setItem("viewdevice",result[0].payload.doc.data()['deveui'])
         
         this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat,'meter':meter})
       }

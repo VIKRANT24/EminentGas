@@ -31,7 +31,8 @@ const routes: Routes = [
   { path: 'add-device-woprofile', loadChildren: './add-device-woprofile/add-device-woprofile.module#AddDeviceWOProfilePageModule' },
   { path: 'device-activity-superadmin', loadChildren: './device-activity-superadmin/device-activity-superadmin.module#DeviceActivitySuperadminPageModule' },
   { path: 'list-superadmin', loadChildren: './list-superadmin/list-superadmin.module#ListSuperadminPageModule' },
-  { path: 'superdeviceactivity', loadChildren: './superdeviceactivity/superdeviceactivity.module#SuperdeviceactivityPageModule' }
+  { path: 'superdeviceactivity', loadChildren: './superdeviceactivity/superdeviceactivity.module#SuperdeviceactivityPageModule' },  { path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofilePageModule' }
+
 
 ];
 

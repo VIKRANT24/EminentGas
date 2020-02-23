@@ -74,8 +74,8 @@ deleteARM(ARMKey,id)
   
   }
 
-  searchUsersByAge(value){
-    return this.db.collection('users',ref => ref.orderBy('age').startAt(value)).snapshotChanges();
+  searchUsersByEmail(email){
+    return this.db.collection('Admin',ref => ref.where('email_id', '==', email)).snapshotChanges()
   }
 
 
