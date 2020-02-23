@@ -108,25 +108,18 @@ export class DeviceactivityPage implements OnInit {
 
   }
 
+  refresh()
+  {
+    this.rowData1=[]; 
+    this.rowData=[]; 
+   this.datapackets=[];
+   this.getdatapackets(this.device)
+  }
+
   getdatapackets(device)
   {
     
-    // this.firebaseService.getDataPackets(device).subscribe(async result => {
-    // var datapackets = result[0].payload.doc.data()
-      
-    // var  data= datapackets['data']
-    // var  data_rate= datapackets['data_rate']
-    // var  device= datapackets['device']
-    // var direction= datapackets['direction']
-    // var fcnt= datapackets['fcnt']
-    // var port= datapackets['port']
-    // var  rssi= datapackets['rssi']
-    // var  time= datapackets['time']
-
-    // this.datapackets.push({'data':data,'data_rate':data_rate,'device':device,'direction':direction,'fcnt':fcnt,'port':port,'rssi':rssi,'time':time})
-
-    // this.rowData = this.datapackets
-    // })
+  
 
     this.firebaseService.getMethod("amr_readings.json","").then(data =>{
       this.amr_readings = JSON.parse(data)
