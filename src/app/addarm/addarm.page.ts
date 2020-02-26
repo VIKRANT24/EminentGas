@@ -21,8 +21,10 @@ export class AddarmPage implements OnInit{
   rowData:any=[]; 
   user_selected_arm:any=[]
   @Input() data: any;
+  splitarm:any=[]
   constructor(public firebaseService: FirebaseService, public toastController:ToastController, public modalCtrl:ModalController) { 
-    this.getAMRDevices()
+   
+    this.getAdminArm()
 
 
   }
@@ -75,6 +77,41 @@ export class AddarmPage implements OnInit{
   }
 
 
+  getAdminArm()
+  {
+    var user_data = JSON.parse(localStorage.getItem('selected_user'))
+    this.firebaseService.searchUsers(user_data[0].email_id ,'Abc@123').subscribe(async result => {
+
+      
+      var dataresult = result[0].payload.doc.data()['no_of_arms']
+      var primary_id=result[0].payload.doc.id
+     // this.devices = dataresult.length
+      for(var i = 0 ;i<dataresult.length;i++)
+      {
+        var splitdata = dataresult[i].split('-')
+        var other_values = splitdata[1].split(',')
+
+        var deveui = splitdata[0]
+        var flat = other_values[0]
+        var meter_no = other_values[1]
+        var default_meter = other_values[2]
+        var default_amr = other_values[3]
+        var originalValue = dataresult[i]
+        this.splitarm.push({deveui,flat,meter_no,default_meter,default_amr,originalValue,primary_id})
+        this.rowData1.push({'deveui':deveui,'flat':flat,'meter_no':meter_no,'default_meter':default_meter,'default_amr':default_amr})
+        var data_for_array = deveui +"-"+flat+","+meter_no+","+default_meter+","+default_amr
+        this.user_selected_arm.push(data_for_array)
+
+      }
+     console.log( this.splitarm)
+     this.getAMRDevices()
+      //this.getDevices(this.splitarm)
+    })
+
+
+  }
+
+
   getAMRDevices()
   {
     this.firebaseService.getARM()
@@ -108,13 +145,27 @@ export class AddarmPage implements OnInit{
       {
 
        // this.user_selected_arm.push({'deveui':selected_row[0].deveui,'flat':selected_row[0].flat,'meter_no':selected_row[0].meter_no,'default_meter':selected_row[0].default_meter,'default_amr':selected_row[0].default_amr})
-       var data_for_array = selected_row[0].deveui +"-"+selected_row[0].flat+"-"+selected_row[0].meter_no+"-"+selected_row[0].default_meter+"-"+selected_row[0].default_amr
-       this.user_selected_arm.push(data_for_array)
+       var data_for_array = selected_row[0].deveui +"-"+selected_row[0].flat+","+selected_row[0].meter_no+","+selected_row[0].default_meter+","+selected_row[0].default_amr
+       if(this.user_selected_arm.includes(data_for_array)==false)
+       {
+        this.user_selected_arm.push(data_for_array)
 
         this.firebaseService.AddARM(this.user_selected_arm)
         .then(result => {
           console.log(result)
         })
+       }
+       else
+       {
+        const toast = await this.toastController.create({
+          message: 'AMR already added.',
+          duration: 2000,
+          color:'medium',
+          position: 'top'
+        });
+       toast.present();
+       }
+      
        
       }
       else

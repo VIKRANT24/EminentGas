@@ -57,6 +57,8 @@ deleteARM(ARMKey,id)
 
   }
 
+  
+
   AddARM(arm)
   {
     var user_data = JSON.parse(localStorage.getItem('selected_user'))
@@ -70,7 +72,8 @@ deleteARM(ARMKey,id)
       no_of_arms: arm,
       no_of_wings: user_data[0].no_of_wings,
       project_name: user_data[0].project_name,
-      flag: "1"
+      flag: "1",
+      pwd:'Abc@123',
     }
       );
 
