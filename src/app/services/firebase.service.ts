@@ -57,11 +57,11 @@ deleteARM(ARMKey,id)
 
   }
 
-  AddARM(id,arm)
+  AddARM(arm)
   {
     var user_data = JSON.parse(localStorage.getItem('selected_user'))
     //var arm = ["70b3d5f830001b46-101,12345,00,12", "70b3d5f830001b53-202,23456,12,23"]
-    return this.db.collection('Admin/').doc(id).set({
+    return this.db.collection('Admin/').doc(user_data[0].id).set({
       address: user_data[0].address,
       authorized_person: user_data[0].authorized_person,
       client_name: user_data[0].client_name,
