@@ -3,7 +3,7 @@ import  moment from 'moment';
 import { FirebaseService } from '../services/firebase.service';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
 import { AgGridAngular } from 'ag-grid-angular';
-import { NavController, AlertController, ToastController, ModalController, } from '@ionic/angular';
+import { NavController, AlertController, ToastController, ModalController,Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-addarm',
@@ -22,13 +22,19 @@ export class AddarmPage implements OnInit{
   user_selected_arm:any=[]
   @Input() data: any;
   splitarm:any=[]
-  constructor(public firebaseService: FirebaseService, public toastController:ToastController, public modalCtrl:ModalController) { 
+  constructor(public firebaseService: FirebaseService, public toastController:ToastController, public modalCtrl:ModalController,public events:Events) { 
    
     this.getAdminArm()
 
 
   }
-
+  refreshAddArm(){
+    this.getAdminArm()
+    this.rowData1=[]; 
+    this.rowData=[]; 
+    this.user_selected_arm=[]
+    this.events.publish('update_list');
+  }
   ngOnInit()
   {
     this.columnDefs = [
@@ -161,6 +167,7 @@ export class AddarmPage implements OnInit{
           position: 'top'
         });
        toast.present();
+       this.refreshAddArm()
        }
        else
        {
@@ -213,7 +220,7 @@ export class AddarmPage implements OnInit{
         .then(result => {
           console.log(result)
         })
-       
+        this.refreshAddArm()
       }
       else
       {

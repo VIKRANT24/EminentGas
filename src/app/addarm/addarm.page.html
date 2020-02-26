@@ -10,7 +10,7 @@
     <ion-content>
         <p *ngIf="display" style="text-align:center;color: #f44336">Please select atleast one device!!</p>
       <ion-card>
-      
+          <ion-button shape="round" expand="full" color="shade" (click)="refreshAddArm()"><ion-icon name="refresh"></ion-icon>  Refresh List</ion-button>
     <ion-card-content>
         <ag-grid-angular
         style="width: 100%; height: 350px;"
