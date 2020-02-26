@@ -185,6 +185,20 @@ async deleteAdmin() {
   }
 
   async AlertConfirmDelete() {
+    var selected_row = this.gridApi.getSelectedRows()
+
+    if(selected_row.length==0)
+    {
+      const toast = await this.toastController.create({
+        message: 'Please select Admin to delete.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
+    }
+    else
+    {
     const alert = await this.alertController.create({
       header: 'Confirm!',
       message: 'Do you want to delete this admin ?',
@@ -239,6 +253,7 @@ async deleteAdmin() {
     });
 
     await alert.present();
+  }
   }
 
   async add()
@@ -436,6 +451,18 @@ async deleteAdmin() {
   {
 
     var selected_row = this.gridApi.getSelectedRows()
+    if(selected_row.length==0)
+    {
+      const toast = await this.toastController.create({
+        message: 'Please select Admin to add.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
+    }
+    else
+    {
     localStorage.setItem('selected_user',JSON.stringify(selected_row))
 
     const modal = await this.modalController.create({
@@ -446,6 +473,7 @@ async deleteAdmin() {
       }
     });
     return await modal.present();
+  }
   }
  
   onBtnExport() {
