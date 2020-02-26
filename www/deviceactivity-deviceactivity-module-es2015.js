@@ -7,18 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header >\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Device Activity\n    </ion-title>\n   \n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{datapackets.length}} payloads for device: <b>{{device}}.</b></p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" ><ion-icon name=\"add\"></ion-icon> Send Data</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"selectDevice()\"><ion-icon name=\"add\"></ion-icon> Select Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" ><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n\n            <ion-card-content>\n              <ag-grid-angular\n              style=\"width: 100%; height: 600px;\"\n              class=\"ag-theme-balham\"\n              [columnDefs]=\"columnDefs\"\n              [rowData]=\"rowData\"\n              [enableSorting]=\"true\"\n              [animateRows]=\"true\"\n              [pagination]=\"true\"\n              [paginationPageSize]=\"50\"\n              [enableFilter]=\"true\"\n              [floatingFilter]=\"true\"\n              [suppressRowClickSelection]=\"true\"\n              [rowSelection]=\"rowSelection\">\n              </ag-grid-angular>\n          </ion-card-content>\n</ion-content>\n"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/selectdevicemodal/selectdevicemodal.page.html":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/selectdevicemodal/selectdevicemodal.page.html ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header >\n  <ion-toolbar>\n    <ion-title>\n      Select Devices\n    </ion-title>\n   \n  </ion-toolbar>\n</ion-header>\n    \n    <ion-content>\n        <p *ngIf=\"display\" style=\"text-align:center;color: #f44336\">Please select atleast one device!!</p>\n      <ion-card>\n      \n    <ion-card-content>\n        <ag-grid-angular\n        style=\"width: 100%; height: 350px;\"\n        class=\"ag-theme-balham\"\n        [columnDefs]=\"columnDefs\"\n        [rowData]=\"rowData\"\n        [enableSorting]=\"true\"\n        [animateRows]=\"true\"\n        [pagination]=\"true\"\n        [paginationPageSize]=\"10\"\n        [enableFilter]=\"true\"\n        [floatingFilter]=\"true\"\n        [suppressRowClickSelection]=\"true\"\n        [rowSelection]=\"rowSelection\"\n        (gridReady)=\"onGridReady($event)\"\n        >\n        </ag-grid-angular>\n    </ion-card-content>\n\n    \n  \n        </ion-card>\n       \n        <div style=\"margin-right:2vh\">\n        <ion-button fill=\"outline\" style=\"float:right\" >Cancel</ion-button>\n        <ion-button style=\"float:right\" (click)=\"onOkClick()\">Ok</ion-button>\n      </div>\n    </ion-content>\n    \n    <!-- [multiSortKey]=\"multiSortKey\"         (gridReady)=\"onGridReady($event)\"-->"
+module.exports = "<ion-header >\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Device Activity\n    </ion-title>\n   \n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{datapackets.length}} payloads for device: <b>{{device}}.</b></p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" ><ion-icon name=\"add\"></ion-icon> Send Data</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"selectDevice()\"><ion-icon name=\"add\"></ion-icon> Select Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"refresh()\"><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n\n            <ion-card-content>\n              <ag-grid-angular\n              style=\"width: 100%; height: 600px;\"\n              class=\"ag-theme-balham\"\n              [columnDefs]=\"columnDefs\"\n              [rowData]=\"rowData\"\n              [enableSorting]=\"true\"\n              [animateRows]=\"true\"\n              [pagination]=\"true\"\n              [paginationPageSize]=\"50\"\n              [enableFilter]=\"true\"\n              [floatingFilter]=\"true\"\n              [suppressRowClickSelection]=\"true\"\n              [rowSelection]=\"rowSelection\">\n              </ag-grid-angular>\n          </ion-card-content>\n</ion-content>\n"
 
 /***/ }),
 
@@ -197,20 +186,13 @@ let DeviceactivityPage = class DeviceactivityPage {
             //  filter: false},
         ];
     }
+    refresh() {
+        this.rowData1 = [];
+        this.rowData = [];
+        this.datapackets = [];
+        this.getdatapackets(this.device);
+    }
     getdatapackets(device) {
-        // this.firebaseService.getDataPackets(device).subscribe(async result => {
-        // var datapackets = result[0].payload.doc.data()
-        // var  data= datapackets['data']
-        // var  data_rate= datapackets['data_rate']
-        // var  device= datapackets['device']
-        // var direction= datapackets['direction']
-        // var fcnt= datapackets['fcnt']
-        // var port= datapackets['port']
-        // var  rssi= datapackets['rssi']
-        // var  time= datapackets['time']
-        // this.datapackets.push({'data':data,'data_rate':data_rate,'device':device,'direction':direction,'fcnt':fcnt,'port':port,'rssi':rssi,'time':time})
-        // this.rowData = this.datapackets
-        // })
         this.firebaseService.getMethod("amr_readings.json", "").then(data => {
             this.amr_readings = JSON.parse(data);
             // this.amr_readings = JSON.parse('{"-M0N4f0TmNKwscuC-Elp":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp1":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQAAAA4Bsg==","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"},"-M0N4f0TmNKwscuC-Elp2":{"confirmed":true,"cr_used":"4/5","dataFrame":"EQGy","data_format":"base64","decrypted":true,"devaddr":805313363,"deveui":"70b3d5f830001b53","device_redundancy":1,"dr_used":"SF12BW125","early":false,"fcnt":97,"freq":865402500,"id":1582025844799,"live":true,"port":200,"rssi":-114,"sf_used":12,"snr":-21,"time_on_air_ms":1318.912,"timestamp":"2020-02-18T11:37:24.799Z"}}')
@@ -232,7 +214,7 @@ let DeviceactivityPage = class DeviceactivityPage {
                         cubic = (decimal * 0.01).toString();
                     }
                     else {
-                        cubic = "";
+                        cubic = "0.00";
                     }
                     var direction = "Up";
                     var fcnt = this.amr_readings[key].fcnt;
@@ -244,7 +226,7 @@ let DeviceactivityPage = class DeviceactivityPage {
                     this.rowData = this.datapackets;
                 }
                 else {
-                    console.log("no" + data[key].deveui);
+                    console.log("no" + this.amr_readings[key].deveui);
                 }
             }
         });
@@ -255,6 +237,12 @@ let DeviceactivityPage = class DeviceactivityPage {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const modal = yield this.modalController.create({
                 component: _selectdevicemodal_selectdevicemodal_page__WEBPACK_IMPORTED_MODULE_3__["SelectdevicemodalPage"]
+            });
+            modal.onDidDismiss().then((dataReturned) => {
+                this.device = dataReturned.data[0].deveui;
+                this.datapackets = [];
+                this.getdatapackets(dataReturned.data[0].deveui);
+                console.log(dataReturned.data[0].deveui);
             });
             return yield modal.present();
         });
@@ -272,145 +260,6 @@ DeviceactivityPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"]])
 ], DeviceactivityPage);
-
-
-
-/***/ }),
-
-/***/ "./src/app/selectdevicemodal/selectdevicemodal.page.scss":
-/*!***************************************************************!*\
-  !*** ./src/app/selectdevicemodal/selectdevicemodal.page.scss ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NlbGVjdGRldmljZW1vZGFsL3NlbGVjdGRldmljZW1vZGFsLnBhZ2Uuc2NzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/selectdevicemodal/selectdevicemodal.page.ts":
-/*!*************************************************************!*\
-  !*** ./src/app/selectdevicemodal/selectdevicemodal.page.ts ***!
-  \*************************************************************/
-/*! exports provided: SelectdevicemodalPage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectdevicemodalPage", function() { return SelectdevicemodalPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-
-
-
-
-
-let SelectdevicemodalPage = class SelectdevicemodalPage {
-    constructor(firebaseService, toastController, modalCtrl) {
-        this.firebaseService = firebaseService;
-        this.toastController = toastController;
-        this.modalCtrl = modalCtrl;
-        this.rowData1 = [];
-        this.rowData = [];
-        this.rowSelection = "multiple";
-        this.display = false;
-        var user = localStorage.getItem("username");
-        var pwd = localStorage.getItem("pwd");
-        this.getAdminArm(user, pwd);
-        this.columnDefs = [
-            {
-                headerName: "DEVEUI",
-                field: "deveui",
-                width: 220,
-                headerCheckboxSelection: true,
-                headerCheckboxSelectionFilteredOnly: true,
-                checkboxSelection: true
-            },
-            {
-                headerName: "Comment",
-                field: "comment",
-                width: 220,
-            },
-            {
-                headerName: "Last Seen",
-                field: "last_reception",
-                width: 220,
-                filter: "agDateColumnFilter"
-            },
-        ];
-        // this.rowData=data;
-    }
-    getAdminArm(user, pwd) {
-        this.firebaseService.searchUsers(user, pwd).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            var no_of_arms = result[0].payload.doc.data()['no_of_arms'];
-            this.devices = no_of_arms.length;
-            this.getDevices(no_of_arms);
-        }));
-    }
-    getDevices(no_of_arms) {
-        this.firebaseService.getDevices()
-            .subscribe(result => {
-            var arms_array = no_of_arms.toString().split(",");
-            for (var i = 0; i < result.length; i++) {
-                if (arms_array.includes(result[i].payload.doc.data()['deveui'])) {
-                    var deveui = result[i].payload.doc.data()['deveui'];
-                    var devaddr = result[i].payload.doc.data()['devaddr'];
-                    var appeui = result[i].payload.doc.data()['appeui'];
-                    var comment = result[i].payload.doc.data()['comment'];
-                    var latitude = result[i].payload.doc.data()['latitude'];
-                    var longitude = result[i].payload.doc.data()['longitude'];
-                    var altitude = result[i].payload.doc.data()['altitude'];
-                    var device_status = result[i].payload.doc.data()['device_status'];
-                    var dl_fcnt = result[i].payload.doc.data()['dl_fcnt'];
-                    var lora_device_class = result[i].payload.doc.data()['lora_device_class'];
-                    var registration_status = result[i].payload.doc.data()['registration_status'];
-                    var expiry_time_uplink = result[i].payload.doc.data()['expiry_time_uplink'];
-                    var expiry_time_downlink = result[i].payload.doc.data()['expiry_time_downlink'];
-                    // var last_reception = moment(result[i].payload.doc.data()['last_reception'].toInt()).format("DD-MM-YYYY h:mm:ss");
-                    var date_data = result[i].payload.doc.data()['last_reception'];
-                    var last_reception = moment__WEBPACK_IMPORTED_MODULE_2___default()(date_data).format("DD-MM-YYYY h:mm:ss");
-                    var groups = result[i].payload.doc.data()['groups'];
-                    var applications = result[i].payload.doc.data()['applications'];
-                    var tags = result[i].payload.doc.data()['tags'];
-                    this.rowData1.push({ 'deveui': deveui, 'devaddr': devaddr, 'appeui': appeui, 'comment': comment, 'latitude': latitude, 'longitude': longitude, 'altitude': altitude, 'device_status': device_status, 'dl_fcnt': dl_fcnt, 'lora_device_class': lora_device_class, 'registration_status': registration_status, 'expiry_time_uplink': expiry_time_uplink, 'expiry_time_downlink': expiry_time_downlink, 'last_reception': last_reception, 'groups': groups, 'applications': applications, 'tags': tags });
-                }
-            }
-            this.rowData = this.rowData1;
-        });
-    }
-    onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-    }
-    onOkClick() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            var selected_row = this.gridApi.getSelectedRows();
-            if (selected_row.length == 0) {
-                this.display = true;
-            }
-            else {
-                this.display = false;
-            }
-        });
-    }
-};
-SelectdevicemodalPage.ctorParameters = () => [
-    { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] }
-];
-SelectdevicemodalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-selectdevicemodal',
-        template: __webpack_require__(/*! raw-loader!./selectdevicemodal.page.html */ "./node_modules/raw-loader/index.js!./src/app/selectdevicemodal/selectdevicemodal.page.html"),
-        styles: [__webpack_require__(/*! ./selectdevicemodal.page.scss */ "./src/app/selectdevicemodal/selectdevicemodal.page.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"]])
-], SelectdevicemodalPage);
 
 
 

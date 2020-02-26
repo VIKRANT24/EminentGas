@@ -9,6 +9,7 @@ import { DeviceActivitySuperadminPage } from '../device-activity-superadmin/devi
 import {ListPage} from '../list/list.page'
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
 import { ListSuperadminPage } from '../list-superadmin/list-superadmin.page';
+import { AddarmPage } from '../addarm/addarm.page'
 
 @Component({
   selector: 'app-admin-list',
@@ -43,7 +44,7 @@ export class AdminListPage implements OnInit {
     this.firstLogin = localStorage.getItem('superAdminLogin')
     this.getData();
 
-    var isLogin = localStorage.getItem("username")
+    var isLogin = localStorage.getItem("admin")
     if(isLogin==null)
     [
       this.router.navigateByUrl('/super-admin')
@@ -423,6 +424,22 @@ async deleteAdmin() {
   async view()
   {
    
+  }
+
+  async addAMR()
+  {
+
+    var selected_row = this.gridApi.getSelectedRows()
+    localStorage.setItem('selected_user',JSON.stringify(selected_row))
+
+    const modal = await this.modalController.create({
+      component: AddarmPage,
+      cssClass: 'my-custom-modal-css',
+      componentProps: { 
+        data: selected_row,
+      }
+    });
+    return await modal.present();
   }
 }
 

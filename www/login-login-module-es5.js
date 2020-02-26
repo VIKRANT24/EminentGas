@@ -11,43 +11,6 @@ module.exports = "\n<head>\n  <meta charset=\"utf-8\" />\n  <title>Ionic App</ti
 
 /***/ }),
 
-/***/ "./node_modules/rxjs-compat/_esm5/add/operator/map.js":
-/*!************************************************************!*\
-  !*** ./node_modules/rxjs-compat/_esm5/add/operator/map.js ***!
-  \************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _operator_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../operator/map */ "./node_modules/rxjs-compat/_esm5/operator/map.js");
-
-
-rxjs__WEBPACK_IMPORTED_MODULE_0__["Observable"].prototype.map = _operator_map__WEBPACK_IMPORTED_MODULE_1__["map"];
-//# sourceMappingURL=map.js.map
-
-/***/ }),
-
-/***/ "./node_modules/rxjs-compat/_esm5/operator/map.js":
-/*!********************************************************!*\
-  !*** ./node_modules/rxjs-compat/_esm5/operator/map.js ***!
-  \********************************************************/
-/*! exports provided: map */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-function map(project, thisArg) {
-    return Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(project, thisArg)(this);
-}
-//# sourceMappingURL=map.js.map
-
-/***/ }),
-
 /***/ "./src/app/login/login.module.ts":
 /*!***************************************!*\
   !*** ./src/app/login/login.module.ts ***!
@@ -179,11 +142,16 @@ var LoginPage = /** @class */ (function () {
                         return [3 /*break*/, 5];
                     case 4:
                         this.firebaseService.searchUsers(this.userid, this.pwd).subscribe(function (result) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-                            var toast, toast;
+                            var flag, i, toast, toast, toast;
                             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
-                                        if (!(result.length > 0)) return [3 /*break*/, 2];
+                                        flag = '';
+                                        if (!(result.length > 0)) return [3 /*break*/, 5];
+                                        for (i = 0; i < result.length; i++) {
+                                            flag = result[i].payload.doc.data()['flag'];
+                                        }
+                                        if (!(flag == '1')) return [3 /*break*/, 2];
                                         return [4 /*yield*/, this.toastController.create({
                                                 message: 'Succesfully logged-in.',
                                                 duration: 2000,
@@ -198,7 +166,7 @@ var LoginPage = /** @class */ (function () {
                                         localStorage.setItem("pwd", this.pwd);
                                         return [3 /*break*/, 4];
                                     case 2: return [4 /*yield*/, this.toastController.create({
-                                            message: 'Invalid Email or Password.',
+                                            message: 'Please contact Admin',
                                             duration: 2000,
                                             color: 'danger',
                                             position: 'top'
@@ -207,7 +175,18 @@ var LoginPage = /** @class */ (function () {
                                         toast = _a.sent();
                                         toast.present();
                                         _a.label = 4;
-                                    case 4: return [2 /*return*/];
+                                    case 4: return [3 /*break*/, 7];
+                                    case 5: return [4 /*yield*/, this.toastController.create({
+                                            message: 'Invalid Email or Password.',
+                                            duration: 2000,
+                                            color: 'danger',
+                                            position: 'top'
+                                        })];
+                                    case 6:
+                                        toast = _a.sent();
+                                        toast.present();
+                                        _a.label = 7;
+                                    case 7: return [2 /*return*/];
                                 }
                             });
                         }); });
@@ -251,122 +230,6 @@ var LoginPage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
     ], LoginPage);
     return LoginPage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/firebase.service.ts":
-/*!**********************************************!*\
-  !*** ./src/app/services/firebase.service.ts ***!
-  \**********************************************/
-/*! exports provided: FirebaseService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseService", function() { return FirebaseService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
-
-
-
-
-
-var FirebaseService = /** @class */ (function () {
-    function FirebaseService(db, http) {
-        this.db = db;
-        this.http = http;
-        this.baseURL = "https://eminent-gas-tech.firebaseio.com/";
-    }
-    FirebaseService.prototype.getAvatars = function () {
-        return this.db.collection('/avatar').valueChanges();
-    };
-    FirebaseService.prototype.getUser = function (userKey) {
-        return this.db.collection('users').doc(userKey).snapshotChanges();
-    };
-    FirebaseService.prototype.updateUser = function (client, address, arm, person, wings, flats, project, email, mobile, id) {
-        // value.nameToSearch = value.name.toLowerCase();
-        return this.db.collection('Admin/').doc(id).set({
-            //  account_details:account,
-            address: address,
-            authorized_person: person,
-            client_name: client,
-            email_id: email, mobile: mobile,
-            no_of_arms: arm,
-            no_of_flats: flats,
-            no_of_wings: wings,
-            project_name: project,
-            pwd: 'Abc@123'
-        });
-    };
-    FirebaseService.prototype.deleteUser = function (userKey) {
-        return this.db.collection('Admin').doc(userKey).delete();
-    };
-    FirebaseService.prototype.getUsers = function () {
-        return this.db.collection('Admin').snapshotChanges();
-    };
-    FirebaseService.prototype.getDevices = function () {
-        return this.db.collection('Devices').snapshotChanges();
-    };
-    FirebaseService.prototype.searchUsers = function (email, pwd) {
-        return this.db.collection('Admin', function (ref) { return ref.where('email_id', '==', email).where('pwd', '==', pwd); }).snapshotChanges();
-    };
-    FirebaseService.prototype.getDataPackets = function (device) {
-        return this.db.collection('DataPackets', function (ref) { return ref.where('device', '==', device); }).snapshotChanges();
-    };
-    FirebaseService.prototype.searchUsersByAge = function (value) {
-        return this.db.collection('users', function (ref) { return ref.orderBy('age').startAt(value); }).snapshotChanges();
-    };
-    FirebaseService.prototype.createUser = function (client, address, arm, person, wings, flats, project, email, mobile) {
-        return this.db.collection('Admin/').add({
-            // account_details:account,
-            address: address,
-            authorized_person: person,
-            client_name: client,
-            email_id: email, mobile: mobile,
-            no_of_arms: arm,
-            no_of_flats: flats,
-            no_of_wings: wings,
-            project_name: project,
-            pwd: 'Abc@123'
-        });
-    };
-    FirebaseService.prototype.getMethod = function (page, params) {
-        var _this = this;
-        if (this.data) {
-            return Promise.resolve(this.data);
-        }
-        return new Promise(function (resolve, reject) {
-            var options = new _angular_http__WEBPACK_IMPORTED_MODULE_3__["RequestOptions"]();
-            options.headers = new _angular_http__WEBPACK_IMPORTED_MODULE_3__["Headers"]();
-            options.headers.append('Accept', 'application/json');
-            options.headers.append('Contest-type', 'application/json');
-            _this.http.get(_this.baseURL + page, params)
-                .subscribe(function (data) {
-                var myobj = data['_body'];
-                resolve(myobj);
-            }, function (err) {
-                var error = err['_body'];
-                resolve(error);
-            });
-        });
-    };
-    FirebaseService.ctorParameters = function () { return [
-        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
-        { type: _angular_http__WEBPACK_IMPORTED_MODULE_3__["Http"] }
-    ]; };
-    FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"], _angular_http__WEBPACK_IMPORTED_MODULE_3__["Http"]])
-    ], FirebaseService);
-    return FirebaseService;
 }());
 
 

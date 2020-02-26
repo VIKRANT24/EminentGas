@@ -86,6 +86,7 @@ console.log(this.data)
     var amrDefValue=flats.split(',')[3]
     this.selected_arms.push({'deveui':deveui,'flatNo':flatNo,'meterNo':meterNo,'meterDefValue':meterDefValue,'amrDefValue':amrDefValue})
     this.arm_flats.push(deveui+"-"+flats)
+    this.selected_arms_details.push(deveui+"-"+flats)
     this.arm.push(deveui)
     
   }
@@ -131,7 +132,7 @@ this.modalCtrl.dismiss();
 
 	  }
   )
- // this.send_email(this.email)
+  this.send_email(this.email)
   this.hideLoader()
   this.success_msg()
 
@@ -151,12 +152,43 @@ selectARM(event)
   for(var i=0;i<this.selected_arms.length;i++){
     var deviceId=this.selected_arms[i].deveui
     for(var j=0;j<this.selected_arms_details.length;j++){
-      if(!this.selected_arms_details[j].includes(deviceId)){
+      if(this.selected_arms_details[j].includes(deviceId)){
+ 
+      }
+      else
+      {
         this.selected_arms_details.pop(this.selected_arms_details[j])
       }
+      
     }
   }
 }
+
+// selectARM(event)
+// {
+//   //this.selected_arms =[]
+//   for(var i=0;i<this.arm.length;i++)
+//   {
+   
+//     if(this.selected_arms.findIndex(a=>a.deveui==this.arm[i]) < 0 )
+//     this.selected_arms.push({'deveui':this.arm[i]})
+  
+//   }
+
+//   for(var i=0;i<this.selected_arms.length;i++)
+//   {
+   
+//     var pos = this.arm.includes(this.selected_arms[i].deveui)
+//     if(pos==false)
+//     {
+//       this.selected_arms.splice(i,1)
+
+//      // var newdata = this.selected_arms_details.findIndex(a=>a.includes(this.selected_arms[i].deveui))
+//     }
+  
+//   }
+
+// }
 
 // assign_flats(item,event)
 // {
@@ -177,7 +209,7 @@ update()
      this.update_msg()
     }
   )
-  //this.selected_arms_details=[]
+  //this.selected_arms_details=[]a
 }
 
 send_email(email)
@@ -273,6 +305,73 @@ async addValue(item,deviceui){
     });
    toast.present();
   }
+}
+}
+
+
+async editValue(item,deviceui){
+  var count=0
+  var deviceUi=deviceui.deveui
+  var valueData=document.getElementById(item)
+  var abc = valueData.children[0].children
+  var xyz = abc[0].children
+  var flatNo=xyz['flatNo'].value
+  var meterNo=xyz['meterNo'].value
+  var meterDefValue=xyz['meterDefValue'].value
+  var amrDefValue=xyz['amrDefValue'].value
+  if(flatNo==""||meterNo==""||meterDefValue==""||amrDefValue==""){
+    
+      const toast = await this.toastController.create({
+        message: 'Please enter all fields',
+        duration: 2000,
+        color:'medium',
+        position: 'top'
+      });
+     toast.present();
+     
+  }
+  else{
+  var dataObj=deviceUi+"-"+flatNo+","+meterNo+","+meterDefValue+","+amrDefValue
+    this.selected_arms_details.splice(item,1)
+    this.selected_arms_details.splice(item, 0, dataObj);
+
+       const toast = await this.toastController.create({
+      message: 'Record updated successfully',
+      duration: 2000,
+      color:'medium',
+      position: 'top'
+    });
+   toast.present();
+
+
+  // for(var i=0;i<this.selected_arms_details.length;i++){
+  //   if(this.selected_arms_details[i].includes(deviceUi)){
+  //     count=1
+  //     break
+  //   }
+    
+  // }
+  // if(count==0){
+  //   const toast = await this.toastController.create({
+  //     message: 'Added successfully',
+  //     duration: 2000,
+  //     color:'medium',
+  //     position: 'top'
+  //   });
+  //  toast.present();
+  // this.selected_arms_details.push(dataObj)
+  // }
+  // else{
+  //   this.selected_arms_details.splice(item,1)
+  //   this.selected_arms_details.splice(item, 0, dataObj);
+  //   const toast = await this.toastController.create({
+  //     message: 'Record updated',
+  //     duration: 2000,
+  //     color:'medium',
+  //     position: 'top'
+  //   });
+  //  toast.present();
+  // }
 }
 }
   

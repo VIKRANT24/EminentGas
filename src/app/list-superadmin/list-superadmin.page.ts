@@ -239,6 +239,7 @@ export class ListSuperadminPage {
       })
   }
 
+
   getDevices(no_of_arms)
   {
    
@@ -271,13 +272,15 @@ export class ListSuperadminPage {
         var groups =result[i].payload.doc.data()['groups']
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']
-        var cubic = no_of_arms[i].amrdefault
-        var flat = no_of_arms[i].flat
-        var meter = no_of_arms[i].meterno
-        var original = no_of_arms[i].originalValue
-        var primary = no_of_arms[i].primary_id
+        var findindex = no_of_arms.findIndex(e=>e.device == deveui)
+        var cubic = no_of_arms[findindex].amrdefault
+        var flat = no_of_arms[findindex].flat
+        var meter = no_of_arms[findindex].meterno
+        localStorage.setItem("viewdevice",result[i].payload.doc.data()['deveui'])
+        var originalValue = no_of_arms[findindex].originalValue
+        var primary = no_of_arms[findindex].primary_id
         
-        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat,'meter':meter,'original':original,'primary':primary})
+        this.rowData1.push({'deveui':deveui,'devaddr':devaddr,'appeui':appeui,'comment':comment,'latitude':latitude,'longitude':longitude,'altitude':altitude,'device_status':device_status,'dl_fcnt':dl_fcnt,'lora_device_class':lora_device_class,'registration_status':registration_status,'expiry_time_uplink':expiry_time_uplink,'expiry_time_downlink':expiry_time_downlink,'last_reception':last_reception,'groups':groups,'applications':applications,'tags':tags,'cubic':cubic,'flat':flat,'meter':meter,'original':originalValue,'primary':primary})
       }
       }
       this.rowData = this.rowData1

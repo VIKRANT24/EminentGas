@@ -30,7 +30,7 @@ this.httpData.get('assets/menuItem.json').subscribe(res => {
   this.information =res['items'];
   this.information[0].open =false;
   this.initializeApp();
-  this.username = localStorage.getItem('admin')
+  this.username = localStorage.getItem('username')
 });
 }
 

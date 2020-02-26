@@ -1,6 +1,6 @@
 [
     {
-      "deveui": "70b3d5f830001b53",
+      "deveui": "70b3d5f830001b46",
       "devaddr": "29981719",
       "appeui": "3cc1f60500000337",
       "comment": "Class A",
@@ -19,7 +19,7 @@
       "tags": null
     },
     {
-      "deveui": "3cc1f60500000335",
+      "deveui": "70b3d5f830001b53",
       "devaddr": "15016688",
       "appeui": "0000000000000000",
       "comment": "Class A",

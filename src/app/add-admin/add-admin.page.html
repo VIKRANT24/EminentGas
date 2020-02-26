@@ -31,7 +31,8 @@
                           <input  type="text" name="meterNo" [(ngModel)]="selected_arms[i].meterNo"  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter no" />
                           <input  type="text" name="meterDefValue" [(ngModel)]="selected_arms[i].meterDefValue"  style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="Meter Default Value" />
                           <input  type="text" name="amrDefValue" [(ngModel)]="selected_arms[i].amrDefValue" style="border-radius:10px;text-align: center;border-color: #49c5b6;" placeholder="AMR Default Value" />
-                          <ion-button color="primary" (click)="addValue(i,item)" style="height:4vh;margin-top: -1vh;">Add</ion-button>
+                          <ion-button color="primary" (click)="addValue(i,item)" style="height: 3.5vh;margin-top: -0.3vh;">Add</ion-button>
+                          <ion-button color="primary" (click)="editValue(i,item)" style="height: 3.5vh;margin-top: -0.3vh;">Edit</ion-button>
                         </div>
                         </li>
                       </ul>
