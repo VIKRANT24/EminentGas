@@ -47,15 +47,7 @@ export class FirebaseService {
     return this.db.collection('Admin').doc(userKey).delete();
   }
 
-deleteARM(ARMKey,id)
-  {
-    let documentRef =  this.db.collection('Admin').doc('no_of_arms');
 
-    documentRef.update({
-      "Admin": firebase.firestore.FieldValue.arrayRemove({"no_of_arms":ARMKey})
-  });
-
-  }
 
 
   getUsers(){

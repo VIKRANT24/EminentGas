@@ -78,13 +78,7 @@ export class CellCustomComponent implements OnInit {
  
   
   }
-  deleteRow(){
-    let rowData = this.params;
-    console.log(rowData);
-    this.firebaseservice.deleteARM(rowData.data.original,rowData.data.primary)
-  
 
-  }
 
  
 async action(ev)
