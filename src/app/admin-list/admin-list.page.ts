@@ -441,6 +441,25 @@ async deleteAdmin() {
     });
     return await modal.present();
   }
+ 
+  onBtnExport() {
+    var params = getParams();
+    // if (params.suppressQuotes || params.columnSeparator) {
+    //   alert(
+    //     "NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel."
+    //   );
+    // }
+    this.gridApi.exportDataAsCsv(params);
+  }
+}
+
+function getParams() {
+  return {
+    // suppressQuotes: getValue("#suppressQuotes"),
+    // columnSeparator: getValue("#columnSeparator"),
+    // customHeader: getValue("#customHeader"),
+    // customFooter: getValue("#customFooter")
+  };
 }
 
 

@@ -78,6 +78,7 @@ export class CellCustomComponent implements OnInit {
  
   
   }
+
   deleteRow(){
     let rowData = this.params;
     console.log(rowData);
@@ -85,10 +86,10 @@ export class CellCustomComponent implements OnInit {
       {
         this.events.publish('update_list');
         this.events.publish('amr_list');
-      })
-  
+      });
+    }
 
-  }
+
 
  
 async action(ev)
