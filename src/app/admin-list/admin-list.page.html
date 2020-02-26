@@ -57,12 +57,16 @@
               </ion-col>
               <ion-col>
                 <ion-button  shape="round" color="shade" expand="full" (click)="viewDetails()"><ion-icon name="add" ></ion-icon> View</ion-button>
-            </ion-col>            
+            </ion-col>
+            <ion-col>
+              <ion-button  shape="round" color="shade" expand="full" (click)="addAMR()"><ion-icon name="add" ></ion-icon> Add ARM</ion-button>
+          </ion-col>
+            
             </ion-row>
           </ion-grid>
 
           <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-            <ion-fab-button color="danger" (click)="onBtnExport()">
+            <ion-fab-button style="color:#49c5b6" (click)="onBtnExport()">
               <ion-icon name="md-download"></ion-icon>
             </ion-fab-button>
           </ion-fab>

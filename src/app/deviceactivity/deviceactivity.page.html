@@ -11,13 +11,19 @@
 </ion-header>
 
 <ion-content>
-  <p style="margin-bottom: 10px;margin-left: 20px;margin-top: 30px">There are {{datapackets.length}} payloads for device: <b>{{device}}.</b></p>
-          <ion-grid>
+  <p style="margin-bottom: 10px;margin-left: 20px;margin-top: 30px" *ngIf="datapackets.length==0">There are no payloads for device: <b>{{device}}.</b></p>
+  <p style="margin-bottom: 10px;margin-left: 20px;margin-top: 30px" *ngIf="datapackets.length>0">There are {{datapackets.length}} payloads for device: <b>{{device}}.</b></p>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button style="color:#49c5b6" (click)="onBtnExport()">
+      <ion-icon name="md-download"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>      
+  <ion-grid>
                 
               <ion-row>
-                <ion-col>
+                <!-- <ion-col>
                     <ion-button  shape="round" color="shade" expand="full" ><ion-icon name="add"></ion-icon> Send Data</ion-button>
-                </ion-col>
+                </ion-col> -->
                 <ion-col>
                     <ion-button shape="round" expand="full" color="shade" (click)="selectDevice()"><ion-icon name="add"></ion-icon> Select Device</ion-button>
                 </ion-col>
@@ -42,7 +48,8 @@
               [enableFilter]="true"
               [floatingFilter]="true"
               [suppressRowClickSelection]="true"
-              [rowSelection]="rowSelection">
+              [rowSelection]="rowSelection"
+              (gridReady)="onGridReady($event)">
               </ag-grid-angular>
           </ion-card-content>
 </ion-content>

@@ -3704,7 +3704,7 @@ __export(__webpack_require__(/*! ./components/table/table */ "./node_modules/pri
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Admin List\n      </ion-title>\n      <div (click)=\"logout()\" slot=\"end\">\n        <ion-icon  name=\"log-out\" style=\"margin-right: 15px;font-size: 25px;\" ></ion-icon>\n      </div>\n     \n    </ion-toolbar>\n   \n  </ion-header>\n      \n      <ion-content>\n\n        <!-- <span class=\"ui-float-label\" style=\"margin-top: 2vh;margin-left: 1vh;\">\n            <input id=\"float-input\" type=\"text\" size=\"30\" pInputText> \n            <label for=\"float-input\">Username</label>\n        </span> -->\n\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 400px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [animateRows]=\"true\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          (gridReady)=\"onGridReady($event)\"\n         >\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n\n          <ion-grid>\n                \n            <ion-row>\n              <ion-col>\n                  <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"add()\"><ion-icon name=\"add\" ></ion-icon> Add Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"edit()\"><ion-icon name=\"create\" ></ion-icon> Edit Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"AlertConfirmDelete()\" ><ion-icon name=\"trash\"></ion-icon> Delete Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"viewDetails()\"><ion-icon name=\"add\" ></ion-icon> View</ion-button>\n            </ion-col>\n            \n            </ion-row>\n          </ion-grid>\n\n        \n      </ion-content>\n      \n\n \n "
+module.exports = "<ion-header >\n    <ion-toolbar>\n      <!-- <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons> -->\n      <ion-title>\n        Admin List\n      </ion-title>\n      <div (click)=\"logout()\" slot=\"end\">\n        <ion-icon  name=\"log-out\" style=\"margin-right: 15px;font-size: 25px;\" ></ion-icon>\n      </div>\n     \n    </ion-toolbar>\n   \n  </ion-header>\n      \n      <ion-content>\n\n        <!-- <span class=\"ui-float-label\" style=\"margin-top: 2vh;margin-left: 1vh;\">\n            <input id=\"float-input\" type=\"text\" size=\"30\" pInputText> \n            <label for=\"float-input\">Username</label>\n        </span> -->\n\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 400px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [animateRows]=\"true\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          (gridReady)=\"onGridReady($event)\"\n         >\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n\n          <ion-grid>\n                \n            <ion-row>\n              <ion-col>\n                  <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"add()\"><ion-icon name=\"add\" ></ion-icon> Add Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"edit()\"><ion-icon name=\"create\" ></ion-icon> Edit Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                  <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"AlertConfirmDelete()\" ><ion-icon name=\"trash\"></ion-icon> Delete Admin</ion-button>\n              </ion-col>\n              <ion-col>\n                <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"viewDetails()\"><ion-icon name=\"add\" ></ion-icon> View</ion-button>\n            </ion-col>\n            \n            </ion-row>\n          </ion-grid>\n\n        \n      </ion-content>\n      \n\n \n "
 
 /***/ }),
 
@@ -3726,15 +3726,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _admin_list_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin-list.page */ "./src/app/admin-list/admin-list.page.ts");
 /* harmony import */ var _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../add-admin/add-admin.page */ "./src/app/add-admin/add-admin.page.ts");
-/* harmony import */ var _device_activity_superadmin_device_activity_superadmin_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../device-activity-superadmin/device-activity-superadmin.page */ "./src/app/device-activity-superadmin/device-activity-superadmin.page.ts");
-/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeng/table */ "./node_modules/primeng/table.js");
-/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(primeng_table__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primeng/inputtext */ "./node_modules/primeng/inputtext.js");
-/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(primeng_inputtext__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! primeng/dialog */ "./node_modules/primeng/dialog.js");
-/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(primeng_dialog__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
-/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeng/table */ "./node_modules/primeng/table.js");
+/* harmony import */ var primeng_table__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(primeng_table__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeng/inputtext */ "./node_modules/primeng/inputtext.js");
+/* harmony import */ var primeng_inputtext__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(primeng_inputtext__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primeng/dialog */ "./node_modules/primeng/dialog.js");
+/* harmony import */ var primeng_dialog__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(primeng_dialog__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ag-grid-angular */ "./node_modules/ag-grid-angular/main.js");
+/* harmony import */ var ag_grid_angular__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(ag_grid_angular__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _list_superadmin_list_superadmin_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../list-superadmin/list-superadmin.page */ "./src/app/list-superadmin/list-superadmin.page.ts");
 
 
 
@@ -3759,7 +3759,7 @@ var routes = [
     },
     {
         path: '',
-        component: _device_activity_superadmin_device_activity_superadmin_page__WEBPACK_IMPORTED_MODULE_8__["DeviceActivitySuperadminPage"]
+        component: _list_superadmin_list_superadmin_page__WEBPACK_IMPORTED_MODULE_12__["ListSuperadminPage"]
     }
 ];
 var AdminListPageModule = /** @class */ (function () {
@@ -3771,13 +3771,13 @@ var AdminListPageModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
-                primeng_table__WEBPACK_IMPORTED_MODULE_9__["TableModule"],
-                primeng_inputtext__WEBPACK_IMPORTED_MODULE_10__["InputTextModule"],
-                primeng_dialog__WEBPACK_IMPORTED_MODULE_11__["DialogModule"],
-                ag_grid_angular__WEBPACK_IMPORTED_MODULE_12__["AgGridModule"],
+                primeng_table__WEBPACK_IMPORTED_MODULE_8__["TableModule"],
+                primeng_inputtext__WEBPACK_IMPORTED_MODULE_9__["InputTextModule"],
+                primeng_dialog__WEBPACK_IMPORTED_MODULE_10__["DialogModule"],
+                ag_grid_angular__WEBPACK_IMPORTED_MODULE_11__["AgGridModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
             ],
-            declarations: [_admin_list_page__WEBPACK_IMPORTED_MODULE_6__["AdminListPage"], _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_7__["AddAdminPage"], _device_activity_superadmin_device_activity_superadmin_page__WEBPACK_IMPORTED_MODULE_8__["DeviceActivitySuperadminPage"]]
+            declarations: [_admin_list_page__WEBPACK_IMPORTED_MODULE_6__["AdminListPage"], _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_7__["AddAdminPage"], _list_superadmin_list_superadmin_page__WEBPACK_IMPORTED_MODULE_12__["ListSuperadminPage"]]
         })
     ], AdminListPageModule);
     return AdminListPageModule;
@@ -3794,7 +3794,7 @@ var AdminListPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-button {\n  border-radius: 50px;\n  background-color: #49c5b6 !important;\n  --box-shadow:none;\n  color: white;\n}\n\nion-toolbar {\n  --background: #2a3f54;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0VBQ0Esb0NBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURHSTtFQUNKLHFCQUFBO0VBQ0EsV0FBQTtBQ0FBIiwiZmlsZSI6InNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b24ge1xuICAgIGJvcmRlci1yYWRpdXM6NTBweCA7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzQ5YzViNiAhaW1wb3J0YW50O1xuICAgIC0tYm94LXNoYWRvdzpub25lO1xuICAgIGNvbG9yOndoaXRlXG4gICAgXG4gICAgfVxuXG4gICAgaW9uLXRvb2xiYXJ7XG4tLWJhY2tncm91bmQ6ICMyYTNmNTQ7XG5jb2xvcjojZmZmXG4gICAgfSIsImlvbi1idXR0b24ge1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDljNWI2ICFpbXBvcnRhbnQ7XG4gIC0tYm94LXNoYWRvdzpub25lO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiAjMmEzZjU0O1xuICBjb2xvcjogI2ZmZjtcbn0iXX0= */"
+module.exports = "ion-button {\n  border-radius: 50px;\n  background-color: #49c5b6 !important;\n  --box-shadow:none;\n  color: white;\n}\n\nion-toolbar {\n  --background: #2a3f54;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92aWtyYW50dmlsYXNyYW5lL0Rlc2t0b3AvRW1pbmVudEdhcy9FbWluZW50R2FzL3NyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0VBQ0Esb0NBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURHSTtFQUNKLHFCQUFBO0VBQ0EsV0FBQTtBQ0FBIiwiZmlsZSI6InNyYy9hcHAvYWRtaW4tbGlzdC9hZG1pbi1saXN0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b24ge1xuICAgIGJvcmRlci1yYWRpdXM6NTBweCA7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzQ5YzViNiAhaW1wb3J0YW50O1xuICAgIC0tYm94LXNoYWRvdzpub25lO1xuICAgIGNvbG9yOndoaXRlXG4gICAgXG4gICAgfVxuXG4gICAgaW9uLXRvb2xiYXJ7XG4tLWJhY2tncm91bmQ6ICMyYTNmNTQ7XG5jb2xvcjojZmZmXG4gICAgfVxuIiwiaW9uLWJ1dHRvbiB7XG4gIGJvcmRlci1yYWRpdXM6IDUwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICM0OWM1YjYgIWltcG9ydGFudDtcbiAgLS1ib3gtc2hhZG93Om5vbmU7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6ICMyYTNmNTQ7XG4gIGNvbG9yOiAjZmZmO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -3814,8 +3814,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _add_admin_add_admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-admin/add-admin.page */ "./src/app/add-admin/add-admin.page.ts");
 /* harmony import */ var _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/firebase.service */ "./src/app/services/firebase.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _device_activity_superadmin_device_activity_superadmin_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../device-activity-superadmin/device-activity-superadmin.page */ "./src/app/device-activity-superadmin/device-activity-superadmin.page.ts");
-
+/* harmony import */ var _list_superadmin_list_superadmin_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../list-superadmin/list-superadmin.page */ "./src/app/list-superadmin/list-superadmin.page.ts");
 
 
 
@@ -3824,11 +3823,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //import { AddDeviceModalPageModule } from '.add-device-modal/add-device-modal.module';
+
 var AdminListPage = /** @class */ (function () {
-    function AdminListPage(route, navCtrl, router, alertController, toastController, modalController, firebaseService, events) {
+    function AdminListPage(menuCtrl, route, navCtrl, router, alertController, toastController, modalController, firebaseService, events) {
         // this.route.queryParams.subscribe(params => {
         //   if (this.router.getCurrentNavigation().extras.state) {
         //     this.firstLogin = this.router.getCurrentNavigation().extras.state.firstLogin;
+        this.menuCtrl = menuCtrl;
         this.route = route;
         this.navCtrl = navCtrl;
         this.router = router;
@@ -3844,7 +3845,7 @@ var AdminListPage = /** @class */ (function () {
         // });
         this.firstLogin = localStorage.getItem('superAdminLogin');
         this.getData();
-        var isLogin = localStorage.getItem("admin");
+        var isLogin = localStorage.getItem("username");
         if (isLogin == null)
             [
                 this.router.navigateByUrl('/super-admin')
@@ -4108,7 +4109,8 @@ var AdminListPage = /** @class */ (function () {
                         var no_of_wings = result[i].payload.doc.data()['no_of_wings'];
                         var project_name = result[i].payload.doc.data()['project_name'];
                         var id = result[i].payload.doc.id;
-                        _this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id });
+                        var flag = result[i].payload.doc.data()['flag'];
+                        _this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id, 'flag': flag });
                         // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
                     }
                     _this.rowData = _this.rowData1;
@@ -4132,7 +4134,8 @@ var AdminListPage = /** @class */ (function () {
                     var no_of_wings = result[i].payload.doc.data()['no_of_wings'];
                     var project_name = result[i].payload.doc.data()['project_name'];
                     var id = result[i].payload.doc.id;
-                    _this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id });
+                    var flag = result[i].payload.doc.data()['flag'];
+                    _this.rowData1.push({ 'address': address, 'authorized_person': authorized_person, 'client_name': client_name, 'email_id': email_id, 'mobile': mobile, 'no_of_arms': no_of_arms, 'no_of_flats': no_of_flats, 'no_of_wings': no_of_wings, 'project_name': project_name, 'id': id, 'flag': flag });
                     // this.rowData1.push({'account_details':account_details,'address':address,'authorized_person':authorized_person,'client_name':client_name,'email_id':email_id,'mobile':mobile,'no_of_arms':no_of_arms,'no_of_flats':no_of_flats,'no_of_wings':no_of_wings,'project_name':project_name,'id':id})
                 }
                 _this.rowData = _this.rowData1;
@@ -4199,8 +4202,8 @@ var AdminListPage = /** @class */ (function () {
                         localStorage.setItem("username", selected_row[0].email_id);
                         localStorage.setItem("pwd", 'Abc@123');
                         return [4 /*yield*/, this.modalController.create({
-                                component: _device_activity_superadmin_device_activity_superadmin_page__WEBPACK_IMPORTED_MODULE_6__["DeviceActivitySuperadminPage"],
-                                // component:ListPage,
+                                component: _list_superadmin_list_superadmin_page__WEBPACK_IMPORTED_MODULE_6__["ListSuperadminPage"],
+                                cssClass: 'my-custom-modal-css',
                                 componentProps: {
                                     data: selected_row,
                                 }
@@ -4237,7 +4240,8 @@ var AdminListPage = /** @class */ (function () {
                                         text: 'Yes',
                                         handler: function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
                                             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                                                this.router.navigateByUrl('/login');
+                                                this.menuCtrl.close();
+                                                this.router.navigateByUrl('/super-admin');
                                                 return [2 /*return*/];
                                             });
                                         }); }
@@ -4262,6 +4266,7 @@ var AdminListPage = /** @class */ (function () {
         });
     };
     AdminListPage.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
@@ -4277,7 +4282,7 @@ var AdminListPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./admin-list.page.html */ "./node_modules/raw-loader/index.js!./src/app/admin-list/admin-list.page.html"),
             styles: [__webpack_require__(/*! ./admin-list.page.scss */ "./src/app/admin-list/admin-list.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
     ], AdminListPage);
     return AdminListPage;
 }());

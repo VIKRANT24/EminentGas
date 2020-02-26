@@ -64,6 +64,7 @@ export class SuperAdminPage {
           }
         };
         localStorage.setItem('superAdminLogin','firstLogin')
+        
         localStorage.setItem("admin",this.userid)
         localStorage.setItem("pwd",this.pwd)
          this.router.navigateByUrl('/admin-list',navigationExtras);

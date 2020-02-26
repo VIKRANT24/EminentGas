@@ -1,23 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["list-list-module"],{
 
-/***/ "./node_modules/primeng/overlaypanel.js":
-/*!**********************************************!*\
-  !*** ./node_modules/primeng/overlaypanel.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* Shorthand */
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./components/overlaypanel/overlaypanel */ "./node_modules/primeng/components/overlaypanel/overlaypanel.js"));
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/index.js!./src/app/list/list.page.html":
 /*!***************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/list/list.page.html ***!
@@ -25,7 +7,7 @@ __export(__webpack_require__(/*! ./components/overlaypanel/overlaypanel */ "./no
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Devices\n      </ion-title>\n     \n    </ion-toolbar>\n  </ion-header>\n      \n      <ion-content>\n        \n        <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{devices}} devices registered.</p>\n          <ion-grid>\n                \n              <ion-row>\n                <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"addDevice()\"  ><ion-icon name=\"add\"></ion-icon> Add Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"addDeviceWithoutProfile()\" ><ion-icon name=\"add\"></ion-icon>  Add Device w/o profile</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" ><ion-icon name=\"refresh\"></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 600px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          [rowSelection]=\"rowSelection\"\n          (gridReady)=\"onGridReady($event)\">>\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n          \n       \n      </ion-content>\n      \n      <!-- [multiSortKey]=\"multiSortKey\"         (gridReady)=\"onGridReady($event)\"-->\n\n      "
+module.exports = "<ion-header >\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>\n        Devices\n      </ion-title>\n     \n    </ion-toolbar>\n  </ion-header>\n      \n      <ion-content>\n        \n        <p style=\"margin-bottom: 10px;margin-left: 20px;margin-top: 30px\">There are {{devices}} devices registered.</p>\n          <ion-grid>\n                \n              <ion-row>\n                <!-- <ion-col>\n                    <ion-button  shape=\"round\" color=\"shade\" expand=\"full\" (click)=\"addDevice()\"  ><ion-icon name=\"add\"></ion-icon> Add Device</ion-button>\n                </ion-col>\n                <ion-col>\n                    <ion-button shape=\"round\" expand=\"full\" color=\"shade\" (click)=\"addDeviceWithoutProfile()\" ><ion-icon name=\"add\"></ion-icon>  Add Device w/o profile</ion-button>\n                </ion-col> -->\n                <ion-col>\n                    <ion-button style=\"float:right\" shape=\"round\"  color=\"shade\" (click)=\"refresh()\" ><ion-icon name=\"refresh\" ></ion-icon>  Refresh List</ion-button>\n                </ion-col>\n              \n              \n              </ion-row>\n            </ion-grid>\n        <ion-card>\n      <ion-card-content>\n          <ag-grid-angular\n          style=\"width: 100%; height: 600px;\"\n          class=\"ag-theme-balham\"\n          [columnDefs]=\"columnDefs\"\n          [rowData]=\"rowData\"\n          [enableSorting]=\"true\"\n          [animateRows]=\"true\"\n          [pagination]=\"true\"\n          [paginationPageSize]=\"50\"\n          [enableFilter]=\"true\"\n          [floatingFilter]=\"true\"\n          [suppressRowClickSelection]=\"true\"\n          [rowSelection]=\"rowSelection\"\n          (gridReady)=\"onGridReady($event)\">>\n          </ag-grid-angular>\n      </ion-card-content>\n      \n          </ion-card>\n          \n       \n      </ion-content>\n      \n      <!-- [multiSortKey]=\"multiSortKey\"         (gridReady)=\"onGridReady($event)\"-->\n\n      "
 
 /***/ }),
 
@@ -138,6 +120,7 @@ let ListPage = class ListPage {
         this.rowSelection = "multiple";
         this.splitarm = [];
         this.getAMRReadings();
+        localStorage.setItem('list', 'clientList');
         // this.columnDefs = [
         //   {
         //     headerName: "Athlete",
@@ -266,6 +249,12 @@ let ListPage = class ListPage {
         ];
         // this.rowData=data;
     }
+    refresh() {
+        this.rowData1 = [];
+        this.rowData = [];
+        this.splitarm = [];
+        this.getAMRReadings();
+    }
     getAdminArm(user, pwd) {
         this.firebaseService.searchUsers(user, pwd).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             var dataresult = result[0].payload.doc.data()['no_of_arms'];
@@ -319,9 +308,10 @@ let ListPage = class ListPage {
                     var groups = result[i].payload.doc.data()['groups'];
                     var applications = result[i].payload.doc.data()['applications'];
                     var tags = result[i].payload.doc.data()['tags'];
-                    var cubic = "";
+                    var cubic = no_of_arms[i].amrdefault;
                     var flat = no_of_arms[i].flat;
                     var meter = no_of_arms[i].meterno;
+                    localStorage.setItem("viewdevice", result[0].payload.doc.data()['deveui']);
                     this.rowData1.push({ 'deveui': deveui, 'devaddr': devaddr, 'appeui': appeui, 'comment': comment, 'latitude': latitude, 'longitude': longitude, 'altitude': altitude, 'device_status': device_status, 'dl_fcnt': dl_fcnt, 'lora_device_class': lora_device_class, 'registration_status': registration_status, 'expiry_time_uplink': expiry_time_uplink, 'expiry_time_downlink': expiry_time_downlink, 'last_reception': last_reception, 'groups': groups, 'applications': applications, 'tags': tags, 'cubic': cubic, 'flat': flat, 'meter': meter });
                 }
             }
