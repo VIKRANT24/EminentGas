@@ -193,5 +193,44 @@ export class AddarmPage implements OnInit{
     }
    
   }
+  async delete()
+  {
+    var selected_row = this.gridApi.getSelectedRows()
+    if(selected_row.length>0)
+    {
+      
+      if(selected_row[0].flat!=""&&selected_row[0].meter_no!=""&&selected_row[0].default_meter!=""&&selected_row[0].default_amr!="")
+      {
+       var data_for_array = selected_row[0].deveui +"-"+selected_row[0].flat+","+selected_row[0].meter_no+","+selected_row[0].default_meter+","+selected_row[0].default_amr
+        this.firebaseService.adminDeleteARM(data_for_array)
+        .then(result => {
+          console.log(result)
+        })
+       
+      }
+      else
+      {
+        const toast = await this.toastController.create({
+          message: 'Empty ARM can not be deleted',
+          duration: 2000,
+          color:'medium',
+          position: 'top'
+        });
+       toast.present();
+      }
 
+  
+    }
+    else
+    {
+      const toast = await this.toastController.create({
+        message: 'Please select AMR to delete.',
+        duration: 2000,
+        color:'medium',
+        position: 'top'
+      });
+     toast.present();
+    }
+   
+  }
 }

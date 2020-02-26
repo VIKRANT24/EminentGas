@@ -56,8 +56,15 @@ deleteARM(ARMKey,id)
   });
 
   }
+  adminDeleteARM(ARMKey)
+  {
+    var user_data = JSON.parse(localStorage.getItem('selected_user'))
+   let documentRef =  this.db.collection('Admin').doc(user_data[0].id);
+   return documentRef.update({
+      "no_of_arms": firebase.firestore.FieldValue.arrayRemove(ARMKey)
+  });
 
-  
+}
 
   AddARM(arm)
   {
