@@ -75,10 +75,16 @@ export class AdminListPage implements OnInit {
       //   checkboxSelection: true
       // },
       {
+        headerName: "Id",
+        field: "id",
+        width: 250,
+        checkboxSelection: true
+      },
+      {
         headerName: "Client Name",
         field: "client_name",
         width: 170,
-        checkboxSelection: true
+        filter:true
       },
       {
         headerName: "Address",
