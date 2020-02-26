@@ -436,6 +436,18 @@ async deleteAdmin() {
   {
 
     var selected_row = this.gridApi.getSelectedRows()
+    if(selected_row.length==0)
+    {
+      const toast = await this.toastController.create({
+        message: 'Please select Admin to add.',
+        duration: 2000,
+        color:'danger',
+        position: 'top'
+      });
+     toast.present();
+    }
+    else
+    {
     localStorage.setItem('selected_user',JSON.stringify(selected_row))
 
     const modal = await this.modalController.create({
@@ -446,6 +458,7 @@ async deleteAdmin() {
       }
     });
     return await modal.present();
+  }
   }
  
   onBtnExport() {
