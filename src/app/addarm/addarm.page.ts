@@ -107,9 +107,11 @@ export class AddarmPage implements OnInit{
       if(selected_row[0].flat!=""&&selected_row[0].meter_no!=""&&selected_row[0].default_meter!=""&&selected_row[0].default_amr!="")
       {
 
-        this.user_selected_arm.push({'deveui':selected_row[0].deveui,'flat':selected_row[0].flat,'meter_no':selected_row[0].meter_no,'default_meter':selected_row[0].default_meter,'default_amr':selected_row[0].default_amr})
+       // this.user_selected_arm.push({'deveui':selected_row[0].deveui,'flat':selected_row[0].flat,'meter_no':selected_row[0].meter_no,'default_meter':selected_row[0].default_meter,'default_amr':selected_row[0].default_amr})
+       var data_for_array = selected_row[0].deveui +"-"+selected_row[0].flat+"-"+selected_row[0].meter_no+"-"+selected_row[0].default_meter+"-"+selected_row[0].default_amr
+       this.user_selected_arm.push(data_for_array)
 
-        this.firebaseService.AddARM()
+        this.firebaseService.AddARM(selected_row[0].id,this.user_selected_arm)
         .then(result => {
           console.log(result)
         })
