@@ -57,15 +57,15 @@
               </ion-col>
               <ion-col>
                 <ion-button  shape="round" color="shade" expand="full" (click)="viewDetails()"><ion-icon name="add" ></ion-icon> View</ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button  shape="round" color="shade" expand="full" (click)="onBtnExport()"><ion-icon name="add" ></ion-icon> Download file</ion-button>
-          </ion-col>
-            
+            </ion-col>            
             </ion-row>
           </ion-grid>
 
-        
+          <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+            <ion-fab-button color="danger" (click)="onBtnExport()">
+              <ion-icon name="md-download"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
       </ion-content>
       
 
