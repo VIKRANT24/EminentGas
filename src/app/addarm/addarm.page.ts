@@ -154,6 +154,13 @@ export class AddarmPage implements OnInit{
         .then(result => {
           console.log(result)
         })
+        const toast = await this.toastController.create({
+          message: 'AMR deleted successfully.',
+          duration: 2000,
+          color:'medium',
+          position: 'top'
+        });
+       toast.present();
        }
        else
        {
