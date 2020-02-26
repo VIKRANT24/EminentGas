@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, } from '@angular/fire/firestore';
 import {Headers,RequestOptions,Http,URLSearchParams} from '@angular/http'
 import 'rxjs/add/operator/map'
 import firebase from 'firebase'
@@ -47,9 +47,15 @@ export class FirebaseService {
     return this.db.collection('Admin').doc(userKey).delete();
   }
 
+deleteARM(ARMKey,id)
+  {
+    let documentRef =  this.db.collection('Admin').doc(id);
 
+   return documentRef.update({
+      "no_of_arms": firebase.firestore.FieldValue.arrayRemove(ARMKey)
+  });
 
-
+  }
   getUsers(){
     return this.db.collection('Admin').snapshotChanges();
   }
@@ -62,17 +68,13 @@ export class FirebaseService {
     return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd)).snapshotChanges()
   }
 
-  clientLoginResponse(email,pwd){
-    return this.db.collection('Admin',ref => ref.where('email_id', '==', email).where('pwd', '==', pwd).where('flag','==','1')).snapshotChanges()
-  
-  }
   getDataPackets(device){
     return this.db.collection('DataPackets',ref => ref.where('device', '==', device)).snapshotChanges()
   
   }
 
-  searchUsersByAge(value){
-    return this.db.collection('users',ref => ref.orderBy('age').startAt(value)).snapshotChanges();
+  searchUsersByEmail(email){
+    return this.db.collection('Admin',ref => ref.where('email_id', '==', email)).snapshotChanges()
   }
 
 

@@ -4,11 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import  moment from 'moment';
 import { CellCustomComponent } from '../cell-custom/cell-custom.component';
-import { ModalController } from '@ionic/angular';
+import { ModalController,ToastController } from '@ionic/angular';
 import { AddDevicePage } from '../add-device/add-device.page';
 //loimport { AddDeviceWithoutProfilePage } from '../add-device-without-profile/add-device-without-profile.page';
 import { AddDeviceWOProfilePage } from '../add-device-woprofile/add-device-woprofile.page'
-
+import { Events } from '@ionic/angular';
+import { async } from 'q';
 @Component({
   selector: 'app-list-superadmin',
   templateUrl: './list-superadmin.page.html',
@@ -27,8 +28,16 @@ export class ListSuperadminPage {
   rowSelection:any="multiple";
   devices:any;
   splitarm:any=[]; 
-   constructor(public firebaseService: FirebaseService,public modalController: ModalController) { 
-   
+   constructor(public toastController:ToastController,public events:Events,public firebaseService: FirebaseService,public modalController: ModalController) { 
+    this.events.subscribe('amr_list', (data) => {
+      this.refresh();
+      this.updatemessage();    
+    });
+
+
+    
+
+
     this.getAMRReadings()
    
     localStorage.setItem('list','superAdminList')
@@ -167,9 +176,33 @@ export class ListSuperadminPage {
    // this.rowData=data;
   }
 
+ 
+
+  refresh()
+  {
+    this.rowData1=[]
+    this.rowData=[]; 
+    this.splitarm=[]; 
+    this.getAMRReadings()
+  }
+
+
+  async updatemessage()
+  {
+    const toast = await this.toastController.create({
+      message: 'Record deleted  successfully',
+      duration: 2000,
+      color:'medium',
+      position: 'top'
+    });
+   toast.present();
+  }
+
   getAdminArm(user,pwd)
   {
     this.firebaseService.searchUsers(user ,pwd).subscribe(async result => {
+
+      
       var dataresult = result[0].payload.doc.data()['no_of_arms']
       var primary_id=result[0].payload.doc.id
       this.devices = dataresult.length
@@ -238,7 +271,7 @@ export class ListSuperadminPage {
         var groups =result[i].payload.doc.data()['groups']
         var applications =result[i].payload.doc.data()['applications']
         var tags =result[i].payload.doc.data()['tags']
-        var cubic = "1.34"
+        var cubic = no_of_arms[i].amrdefault
         var flat = no_of_arms[i].flat
         var meter = no_of_arms[i].meterno
         var original = no_of_arms[i].originalValue
@@ -283,8 +316,8 @@ var cubic =""
     for (var key in data) {
       if(device == data[key].deveui)
         {
-          //var dataframe = data[key].dataFrame
-          var dataframe = "EQAAAA4Bsg=="
+          var dataframe = data[key].dataFrame
+          //var dataframe = "EQAAAA4Bsg=="
 
           var raw = atob(dataframe);
 
@@ -300,10 +333,20 @@ var cubic =""
 
         var hex_value =  HEX.toUpperCase();
 
+        if(hex_value.length>10)
+        {
         var hex=hex_value.substring(2, 10)
         var decimal=parseInt(hex,16); 
-        cubic =  (decimal * 0.01).toString()
-        var a = j
+        var current_cubic = this.rowData[j].cubic;
+        var cubic_readings =  (decimal * 0.01).toString();
+        cubic = (+current_cubic + +cubic_readings).toString()
+        }
+        else
+        {
+          cubic = ""
+          var current_cubic = this.rowData[j].cubic
+          cubic = current_cubic + cubic
+        }
         this.rowData[j]["cubic"] = cubic
         this.gridApi.setRowData(this.rowData);
   

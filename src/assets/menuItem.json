@@ -10,14 +10,6 @@
                            {
                               "name" : "Device Activity",
                               "icon" : "folder-open"
-                           },
-                           {
-                              "name" : "Network Map",
-                              "icon" : "logo-apple"
-                           },
-                           {
-                              "name" : "Batch Registration",
-                              "icon" : "logo-android"
                            }
                
           ]
@@ -27,12 +19,8 @@
             "name": "Profile",
             "children": [
                                 {
-                                  "name" :  "Device Profiles",
+                                  "name" :  "My Profile",
                                   "icon" : "construct"
-                               },
-                               {
-                                  "name" : "Service Profiles",
-                                  "icon" : "folder-open"
                                }
                    
               ]

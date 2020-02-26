@@ -30,7 +30,7 @@ this.httpData.get('assets/menuItem.json').subscribe(res => {
   this.information =res['items'];
   this.information[0].open =false;
   this.initializeApp();
-  this.username = localStorage.getItem('username')
+  this.username = localStorage.getItem('admin')
 });
 }
 
@@ -54,7 +54,25 @@ if(this.information && this.information[index].open){
 
 
 toggleItem(index,childIndex){
-alert(JSON.stringify( this.information[index].children[childIndex].name))
+if(this.information[index].children[childIndex].name == "My Profile")
+{
+  this.menuCtrl.close();
+  this.router.navigateByUrl('/myprofile');
+}
+else if(this.information[index].children[childIndex].name == "Manage Devices")
+
+{
+  this.menuCtrl.close();
+  this.router.navigateByUrl('/list');
+}
+else if(this.information[index].children[childIndex].name == "Device Activity")
+
+{
+  this.menuCtrl.close();
+  this.router.navigateByUrl('/deviceactivity');
+}
+
+
 }
 
 async logout(){
@@ -68,13 +86,14 @@ async logout(){
         role: 'cancel',
         cssClass: 'secondary',
         handler: (blah) => {
+          this.menuCtrl.close();
           console.log('Confirm Cancel: blah');
         }
       }, {
         text: 'Yes',
         handler: async () => {
           this.menuCtrl.close();
-          this.router.navigateByUrl('/super-admin');
+          this.router.navigateByUrl('/login');
         }
       }
     ]

@@ -64,17 +64,19 @@ export class SuperAdminPage {
           }
         };
         localStorage.setItem('superAdminLogin','firstLogin')
+        localStorage.setItem("admin",this.userid)
+        localStorage.setItem("pwd",this.pwd)
          this.router.navigateByUrl('/admin-list',navigationExtras);
-         if( this.check == true)
-         {
-          localStorage.setItem("admin",this.userid)
-          localStorage.setItem("pwd",this.pwd)
-        localStorage.setItem('rememberMe',this.check)
-         }else{
-          localStorage.setItem("admin",'')
-          localStorage.setItem("pwd",'')
-        localStorage.setItem('rememberMe','false') 
-         }
+        //  if( this.check == true)
+        //  {
+        //   localStorage.setItem("admin",this.userid)
+        //   localStorage.setItem("pwd",this.pwd)
+        // localStorage.setItem('rememberMe',this.check)
+        //  }else{
+        //   localStorage.setItem("admin",'')
+        //   localStorage.setItem("pwd",'')
+        // localStorage.setItem('rememberMe','false') 
+        //  }
         }
         else
         {

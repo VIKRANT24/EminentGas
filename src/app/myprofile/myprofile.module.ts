@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
 import { IonicModule } from '@ionic/angular';
-import { AgGridModule } from "ag-grid-angular";
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import { ListSuperadminPage } from './list-superadmin.page';
+
+import { MyprofilePage } from './myprofile.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListSuperadminPage
+    component: MyprofilePage
   }
 ];
 
@@ -19,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgGridModule,
-    OverlayPanelModule,
     RouterModule.forChild(routes)
   ],
-  declarations: []
+  declarations: [MyprofilePage]
 })
-export class ListSuperadminPageModule {}
+export class MyprofilePageModule {}

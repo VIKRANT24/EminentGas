@@ -87,6 +87,7 @@ console.log(this.data)
     this.selected_arms.push({'deveui':deveui,'flatNo':flatNo,'meterNo':meterNo,'meterDefValue':meterDefValue,'amrDefValue':amrDefValue})
     this.arm_flats.push(deveui+"-"+flats)
     this.arm.push(deveui)
+    
   }
 
  }
